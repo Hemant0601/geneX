@@ -3,7 +3,7 @@
 **For:** Hemant · **Account:** cal.com/askhemant (Cal.com Free) · **Embedded at:** askhemant.ai/book
 **Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §4 ("Free or paid discovery call?") and §5 (funnel stages 5–6) · account clicks: [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §9 · the call itself: [`01-fit-call-script.md`](./01-fit-call-script.md)
 
-> **The rule in one line:** the Fit Call is **free but gated**. Anyone whose budget is **under ₹15K**, or who is **outside the niche**, gets the free **Lead Leak Kit** and the **₹1,999 / $99 Ask Hemant Session** link instead of a free call (strategy §4).
+> **The rule in one line:** the Fit Call is **free but gated**. Anyone whose budget is **under ₹15K**, or any real-estate or clinic business with **under 20 leads a month**, gets the free **Lead Leak Kit** and the **₹1,999 / $99 Ask Hemant Session** link instead of a free call. Any other business with a budget of **₹15K or more** keeps the call: the likely outcome is a **Quick Win Build** or an **AI Build Scoping** (§4).
 >
 > Cal.com menu names below are general knowledge and **unverified** (hidden events, booking limits, booking-question types, "requires confirmation", routing forms and webhooks on the free plan were not researched). Fix this file if your screen differs.
 
@@ -15,28 +15,31 @@
 |---|---|---|---|---|---|---|
 | **Fit Call** | `https://cal.com/askhemant/fit-call` | 20 min | **Public** (embedded on /book) | Everyone, via bio link 1 and the site | **Fit Calls:** Tue–Thu 11:00–13:00 and 16:00–18:00 IST, plus 2 evening slots (Tue 19:30–19:50, Thu 20:30–20:50 IST) for the UK and US East | Max **6 bookings a week**; minimum notice **12 hours** (time to read the intake); 10-min buffer after; bookable up to 21 days ahead; Google Meet; the intake form in §2 |
 | **Ask Hemant Session** | `https://cal.com/askhemant/ask-hemant-session` | 45 min | Hidden | Shown on the Razorpay / PayPal success page after paying ₹1,999 / $99 | **Paid work:** Mon–Fri 11:00–13:00 and 15:00–18:00 IST, plus Tue/Thu 19:30–21:00 | Minimum notice 4 hours (the Session promise is **within 48 hours**); questions in §3 |
-| **Audit Workshop** | `https://cal.com/askhemant/audit-workshop` | 60 min | Hidden | Sent within 1 working day of the ₹9,999 / $499 Audit payment | Paid work | Question: "Who else from your team will join?" |
-| **Audit Review** | `https://cal.com/askhemant/audit-review` | 30 min | Hidden | Sent with the Leak Report and Loom (Audit day 5) | Paid work | — |
+| **Audit Workshop** | `https://cal.com/askhemant/audit-workshop` | 60 min | Hidden | Sent within 1 working day of the ₹9,999 / $499 payment for a **Lead Leak Audit** or an **AI Build Scoping** (both use this event) | Paid work | Question: "Who else from your team will join?" |
+| **Audit Review** | `https://cal.com/askhemant/audit-review` | 30 min | Hidden | Sent with the Leak Report or the scoping pack and the recorded walkthrough (day 5) | Paid work | — |
 | **Kickoff** | `https://cal.com/askhemant/kickoff` | 45 min | Hidden | Sent after the deposit and the signed agreement | Paid work | Question: "Have you completed the onboarding form? (yes/no)" |
-| **Client call** *(optional)* | `https://cal.com/askhemant/client-call` | 45 min | Hidden | Active clients only | Paid work | For the day-5 demo, go-live training, the 2 Team training sessions and the monthly Growth optimisation call |
+| **Client call** *(optional)* | `https://cal.com/askhemant/client-call` | 30 min | Hidden | Active clients only | Paid work | For the day-5 demo, go-live training, the 2 Team training sessions, the monthly Growth optimisation call and the founding feedback interview |
 
 If Cal.com Free doesn't offer **hidden** event types, keep them off the public profile by sending their links by hand only ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §9).
 
 ### Event descriptions (paste into each event)
 
 **Fit Call**
-> A 20-minute diagnosis of your lead flow and an honest yes or no on fit. Free. I'll only pitch if it's a fit.
+> A 20-minute diagnosis and an honest yes or no on fit. Free. If your budget is under ₹15K, I'll point you to the free kit and the paid Ask Hemant Session instead.
 >
-> Please answer the 7 short questions so I can come prepared. If your budget is under ₹15K, or your business is outside real estate and clinics, I'll point you to the free kit and the paid Session instead: it's not a trap, it just saves you 20 minutes.
+> Please answer the 7 short questions so I can come prepared. I'll only pitch if it's a fit.
 
 **Ask Hemant Session**
 > 45 minutes on any AI or automation question. You get the recording and a written action list within 24 hours. 100% of the fee is credited to an Audit or build booked within 14 days. Book only after paying (₹1,999 / $99, price excludes GST).
 
 **Audit Workshop**
-> The 60-minute workshop for your Lead Leak Audit. Please fill the pre-audit form first. Bring whoever replies to your leads day to day.
+> The 60-minute workshop for your Lead Leak Audit or AI Build Scoping. Please fill the pre-audit (or pre-scoping) form first. Bring whoever replies to your leads day to day, or, for a Scoping, whoever runs the process today.
 
 **Audit Review**
-> 30 minutes to go through your Leak Report, the lead-flow map, the ROI worksheet (your numbers) and the fixed quote.
+> 30 minutes to go through your results and the fixed quote. Lead Leak Audit: the Leak Report, the lead-flow map and the ROI worksheet (your numbers). AI Build Scoping: the use-case spec, the architecture sketch, the data-handling and risk notes and the milestone plan.
+
+**Client call**
+> 30 minutes for active clients: demos, training, optimisation and feedback calls. Book only when I've sent you this link.
 
 **Kickoff**
 > 45 minutes to start your build: we go through the access checklist together, confirm the scope and set the go-live date. The 10-working-day clock starts when the checklist is complete.
@@ -72,7 +75,7 @@ Privacy line under the form (Cal.com description or the /book page): *"Your answ
 2. **Name or email you paid with** (short text, required) so you can match it to the Razorpay or PayPal payment before the call.
 3. **Anything I should look at beforehand?** (URL or long text, optional)
 
-**Audit Workshop:** "Who else from your team will join?" (short text, optional).
+**Audit Workshop** (Lead Leak Audit and AI Build Scoping): "Who else from your team will join?" (short text, optional). The pre-audit and pre-scoping forms are in [`12-audit-delivery.md`](./12-audit-delivery.md) §A1 and §B1.
 **Kickoff:** "Have you completed the onboarding form?" (yes/no).
 
 Check every Session and Audit booking against a received payment. If a booking has no payment, message once: "Hi [Name], I can't see the payment for this booking yet. Here's the link: [link]. The slot stays reserved for 12 hours."
@@ -86,10 +89,11 @@ The 12-hour minimum notice gives you time to triage. Open each new booking and g
 | Colour | Rule | Action |
 |---|---|---|
 | **Green: keep** | Q1 is real estate (India or UAE) or a clinic **and** Q7 is ₹15–40K or higher **and** Q4 is 20 or more | Keep the call. Prepare with [`01-fit-call-script.md`](./01-fit-call-script.md) §0 |
+| **Green-GEN: keep, general business** | Q1 is **Other business** **and** Q7 is ₹15–40K or higher (any Q4) | Keep the call. Likely outcome: a **Quick Win Build** (₹24,999 / $999) or an **AI Build Scoping** (₹9,999 / $499, credited to the build). Prepare with the GEN diagnosis in [`01-fit-call-script.md`](./01-fit-call-script.md) §2.1 |
 | **Green + founding flag** | Green, Q6 mentions "founding", Q4 is 40–100 or 100–500 (or 500+), before Mon 30 Nov 2026 with slots left | Keep. Read [`10-founding-client-program.md`](./10-founding-client-program.md) §4 before the call. Max 1 founding slot for a Dubai broker |
 | **Green: Team or Audit likely** | Green and (Q7 is ₹40K–1L or ₹1L+, or 4+ sources ticked, or a team mentioned) | Keep. Expect to recommend the Audit, then the Team system |
-| **Amber: keep, set expectations** | In niche, budget ≥ ₹15K, but Q4 is `20–40` or Q5 is `Within 5 minutes` | Keep. Be ready to say a full system may not pay off yet |
-| **Red: route to Kit + Session** | Q7 is **Under ₹15K**, **or** Q4 is **Under 20**, **or** Q1 is **Other business** | Cancel with message R1 (below) |
+| **Amber: keep, set expectations** | Real estate or clinic, budget ≥ ₹15K, but Q4 is `20–40` or Q5 is `Within 5 minutes` | Keep. Be ready to say a full system may not pay off yet |
+| **Red: route to Kit + Session** | Q7 is **Under ₹15K** (any business), **or** Q1 is real estate or a clinic **and** Q4 is **Under 20** | Cancel with message R1 (below) |
 | **Red: agency before partner launch** | Q1 is **Marketing agency** and the booking is before **Mon 16 Nov 2026** | If Q6 names a specific broker or clinic client with a lead problem: keep. Otherwise cancel with message R2 |
 | **Agency from 16 Nov** | Q1 is Marketing agency | Keep (Agency Partner channel, list price −25%) |
 | **Red: declined work** | Q6 asks for bulk or cold WhatsApp messaging, or a general-purpose ChatGPT bot on WhatsApp | Cancel with message R3 |
@@ -101,8 +105,8 @@ The 12-hour minimum notice gives you time to triage. Open each new booking and g
 ### Cancellation and reschedule messages (paste into Cal.com's cancellation reason, and send the same on WhatsApp)
 
 **R1: route to Kit + Session**
-- **EN:** Hi [Name], thanks for booking. I read your answers before every call, and I don't think a free Fit Call is the best use of your time yet, [because a full system pays off from about 20 leads a month / because my builds focus on real estate and clinics / because the build starts above ₹15K]. Two things that will help right now: the free Lead Leak Kit (askhemant.ai/kit) covers the quick fixes with tools you already have, and if you'd like 45 minutes of focused help on your exact setup, the Ask Hemant Session is ₹1,999 / $99 with a written action list: askhemant.ai/pricing. The fee is credited if we build within 14 days.
-- **HI:** Hi [Name], booking ke liye thanks. Har call se pehle answers padhta hoon, aur lagta hai abhi free Fit Call aapke time ka sabse achha use nahi hoga, [kyunki full system mahine ki lagbhag 20 leads se upar faayda deta hai / kyunki mere builds real estate aur clinics par focused hain / kyunki build ₹15K se upar shuru hota hai]. Abhi do cheezein kaam aayengi: free Lead Leak Kit (askhemant.ai/kit) existing tools se quick fixes deta hai, aur apne setup par 45 minute ki focused help chahiye toh Ask Hemant Session ₹1,999 ka hai, written action list ke saath: askhemant.ai/pricing. 14 din mein build karein toh fees credit.
+- **EN:** Hi [Name], thanks for booking. I read your answers before every call, and I don't think a free Fit Call is the best use of your time yet, [budget under ₹15K: because my builds start above ₹15K / real estate or clinic under 20 leads: because a full lead system pays off from about 20 leads a month]. Two things that will help right now: the free Lead Leak Kit (askhemant.ai/kit) covers the quick fixes with tools you already have, and if you'd like 45 minutes of focused help on your exact setup, the Ask Hemant Session is ₹1,999 / $99 with a written action list: askhemant.ai/pricing. The fee is credited if we build within 14 days.
+- **HI:** Hi [Name], booking ke liye thanks. Har call se pehle answers padhta hoon, aur lagta hai abhi free Fit Call aapke time ka sabse achha use nahi hoga, [budget under ₹15K: kyunki mere builds ₹15K se upar shuru hote hain / real estate or clinic under 20 leads: kyunki full lead system mahine ki lagbhag 20 leads se upar faayda deta hai]. Abhi do cheezein kaam aayengi: free Lead Leak Kit (askhemant.ai/kit) existing tools se quick fixes deta hai, aur apne setup par 45 minute ki focused help chahiye toh Ask Hemant Session ₹1,999 ka hai, written action list ke saath: askhemant.ai/pricing. 14 din mein build karein toh fees credit.
 
 **R2: agency before 16 Nov**
 - **EN:** Hi [Name], thanks for booking. I'm opening the Agency Partner option from Mon 16 Nov: any of my systems, built under your brand, at list price −25%. Until then I'm only taking calls about a specific broker or clinic client. If you have one in mind, rebook and name them in the "fix first" box; otherwise email hello@askhemant.ai and I'll send the partner details when it opens.

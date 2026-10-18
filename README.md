@@ -31,7 +31,7 @@ Everything needed to launch **AskHemant**: Hemant Kumar's AI + automation consul
 9. **Run every Fit Call from the script.** Send the proposal and payment link the same day. → [`sales/01-fit-call-script.md`](sales/01-fit-call-script.md), [`sales/03-proposal-template.md`](sales/03-proposal-template.md)
 10. **Review the scorecard every Sunday.** → [`docs/04-weekly-operating-system.md`](docs/04-weekly-operating-system.md), [`docs/kpi-scorecard.csv`](docs/kpi-scorecard.csv)
 
-The full day-by-day plan, with 167 checkboxes from today to day 90 (Sat 16 Jan 2027), is in **[`docs/02-launch-checklist.md`](docs/02-launch-checklist.md)**.
+The full day-by-day plan, with 177 checkboxes from today to day 90 (Sat 16 Jan 2027) and the price-rise step after it, is in **[`docs/02-launch-checklist.md`](docs/02-launch-checklist.md)**.
 
 ---
 
@@ -47,9 +47,11 @@ lead-magnet/   The Lead Leak Kit: HTML source → 13-page PDF + page PNGs, plus 
 instagram/     Profile setup, launch posts P01–P10, 30-day calendar, 20 reel scripts, stories/broadcast/collabs,
                hashtags & SEO, DM automation playbook, content tracker
 instagram/graphics/  Rendered, ready-to-post assets: carousels, highlight covers, reel covers, story frames, video overlays
-tools/render/  Re-renders the graphics from instagram/carousels.json + templates (Node + Playwright)
+tools/         render/ re-renders the graphics from instagram/carousels.json (Node + Playwright);
+               switch-domain.mjs moves everything to askhemant.com for the lean path
 sales/         Fit Call script, Cal.com intake, proposal, pricing sheet, agreement template, onboarding,
-               follow-ups, case study + consent, India invoicing notes, founding program, warm outreach
+               follow-ups, case study + consent, India invoicing notes, founding program, warm outreach,
+               audit delivery templates (Lead Leak Audit + AI Build Scoping)
 automations/   Six importable n8n workflows: kit signup → pipeline, DEMO speed-to-lead, AI WhatsApp qualifier,
                clinic missed-call text-back, daily digest, Cal.com reminders. Plus WhatsApp templates, prompt, demo data
 ```

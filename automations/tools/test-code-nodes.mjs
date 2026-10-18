@@ -428,14 +428,28 @@ await test('06 match: cancellation flags booking_status only; unknown attendee b
   eq(Object.keys(n.row), readFileSync(join(DIR, 'sheets', 'pipeline.csv'), 'utf8').trim().split(','), 'new row columns');
   eq([n.row.stage, n.row.form, n.row.lane], ['Call booked', 'calcom_fit-call', 'RE'], 'new row values');
 });
-await test('06 match: red route (budget under ₹15K, under 20 leads, Other business) adds the Kit + Session note', async () => {
-  const cases = [['budget', 'Under ₹15K (under about $170)'], ['leads-per-month', 'Under 20'], ['business-type', 'Other business']];
-  for (const [k, v] of cases) {
-    const { row } = await match([], 'calcom-booking-created.json', 26, (x) => { x.payload.responses[k].value = v; });
-    ok(/ROUTE: .*Ask Hemant Session link \(₹1,999 \/ \$99\)/.test(row.notes), `${k}: ${row.notes}`);
+await test('06 match: red route (budget under ₹15K, or real estate / clinic under 20 leads) adds the Kit + Session note', async () => {
+  const red = (k, v, more) => (x) => { x.payload.responses[k].value = v; if (more) x.payload.responses[more[0]].value = more[1]; };
+  const cases = [
+    ['budget under ₹15K', red('budget', 'Under ₹15K (under about $170)')],
+    ['real estate, under 20 leads', red('leads-per-month', 'Under 20')],
+    ['clinic, under 20 leads', red('leads-per-month', 'Under 20', ['business-type', 'Clinic: dental'])],
+    ['Other business, budget under ₹15K', red('budget', 'Under ₹15K (under about $170)', ['business-type', 'Other business'])],
+  ];
+  for (const [k, mutate] of cases) {
+    const { row } = await match([], 'calcom-booking-created.json', 26, mutate);
+    ok(/ROUTE \(red\): .*Ask Hemant Session link \(₹1,999 \/ \$99\)/.test(row.notes), `${k}: ${row.notes}`);
   }
   const { row } = await match([]);
-  ok(!/ROUTE:/.test(row.notes), 'a fit lead gets no routing note');
+  ok(!/ROUTE/.test(row.notes), 'a fit lead gets no routing note');
+});
+await test('06 match: "Other business" with a budget of ₹15K or more is green-GEN (keep the Fit Call), even under 20 leads', async () => {
+  for (const leads of ['40–100', 'Under 20']) {
+    const { row } = await match([], 'calcom-booking-created.json', 26, (x) => { x.payload.responses['business-type'].value = 'Other business'; x.payload.responses['leads-per-month'].value = leads; });
+    ok(!/ROUTE \(red\)|Ask Hemant Session/.test(row.notes), `${leads}: no red note: ${row.notes}`);
+    ok(/ROUTE \(green-GEN\): keep the Fit Call; likely outcome is a Quick Win Build or an AI Build Scoping\./.test(row.notes), `${leads}: green-GEN note`);
+    eq(row.lane, 'GEN', 'lane');
+  }
 });
 await test('06 match: a lead who replied STOP (marketing_consent = stopped) gets no WhatsApp confirmation or reminder', async () => {
   const { row, decision } = await match([{ lead_id: 'AH-9', email: 'meera.test@example.com', stage: 'New', marketing_consent: 'stopped', notes: '' }]);

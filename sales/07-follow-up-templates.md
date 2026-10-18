@@ -63,7 +63,15 @@ askhemant.ai · hello@askhemant.ai · WhatsApp +{{WHATSAPP_NUMBER}}
 
 > HI: Call ke liye thanks, [Name]. Aap founding program ke liye achha fit hain. 24 ghante mein written terms bhej dunga: Audit + poora Sprint ₹14,999 mein, measurement aur publication terms saaf likhe hue. Padh kar sign karne se pehle kuch pay nahi karna.
 
-### 1D. Not a fit
+### 1D. Next step = AI Build Scoping (general business or a Custom AI build)
+**WhatsApp** (send the per-client payment link the same day)
+> Thanks for the call, [Name]. Quick recap: you want to automate [process, their words], and success means [their metric]. Next step is the AI Build Scoping (₹9,999, 5 working days, 100% credited to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days): [Razorpay payment link]. Once it's through, I'll send the pre-scoping form and the workshop link within 1 working day.
+
+> HI: Call ke liye thanks, [Name]. Recap: aap [process] automate karna chahte hain, aur success ka matlab hai [their metric]. Agla step AI Build Scoping hai (₹9,999, 5 working days, 30 din mein Quick Win Build ya Custom AI build book karein toh poora credit): [Razorpay payment link]. Payment hote hi 1 working day mein pre-scoping form aur workshop link bhej dunga.
+
+Outside India: "I'll send a Skydo invoice for $499 today."
+
+### 1E. Not a fit
 **WhatsApp**
 > Thanks for the honest chat, [Name]. As I said, a full system isn't the right fit yet. The free kit covers the quick fixes: askhemant.ai/kit. If you'd like 45 minutes of focused help, the Ask Hemant Session is ₹1,999 ({{RAZORPAY_SESSION_LINK}}), with a written action list. Would it be OK if I check in when your volume grows?
 
@@ -78,7 +86,7 @@ askhemant.ai · hello@askhemant.ai · WhatsApp +{{WHATSAPP_NUMBER}}
 **Email** · Subject: `Proposal AH-P-2026-[NNN] for [Business] (valid until [date])`
 > Hi [Name],
 >
-> Here's your proposal (PDF attached) and a 3-minute walkthrough: [Loom link].
+> Here's your proposal (PDF attached) and a 3-minute walkthrough: [video link].
 >
 > In short:
 > - **Option A:** Speed-to-Lead Sprint, ₹[34,999], live in 10 working days after access.
@@ -90,9 +98,9 @@ askhemant.ai · hello@askhemant.ai · WhatsApp +{{WHATSAPP_NUMBER}}
 > [signature]
 
 **WhatsApp**
-> Hi [Name], your proposal is in your email ([email]), with a 3-minute video: [Loom link]. Two options, A or B. Valid until [date]. Any questions, message me here.
+> Hi [Name], your proposal is in your email ([email]), with a 3-minute video: [video link]. Two options, A or B. Valid until [date]. Any questions, message me here.
 
-> HI: Hi [Name], proposal aapke email ([email]) par bhej diya hai, 3 minute ke video ke saath: [Loom link]. Do options, A ya B. [Date] tak valid. Koi sawaal ho toh yahin message kijiye.
+> HI: Hi [Name], proposal aapke email ([email]) par bhej diya hai, 3 minute ke video ke saath: [video link]. Do options, A ya B. [Date] tak valid. Koi sawaal ho toh yahin message kijiye.
 
 ---
 
@@ -135,7 +143,7 @@ After D+7: stage → **Lost** (reason). No more follow-ups unless they write.
 
 ---
 
-## 4. Lead Leak Audit
+## 4. Lead Leak Audit and AI Build Scoping
 
 ### Paid → next steps (within 1 working day)
 **Email** · Subject: `Your Lead Leak Audit: 2 quick steps`
@@ -145,17 +153,35 @@ After D+7: stage → **Lost** (reason). No more follow-ups unless they write.
 >
 > During the Audit, with your OK, I'll send timed test enquiries through up to 3 of your own channels. I'll tell you which ones before I do. You'll have the Leak Report within 5 working days of the workshop. [signature]
 
+The pre-audit form's exact fields, the timed-test protocol and every Audit template: [`12-audit-delivery.md`](./12-audit-delivery.md) Part A.
+
 ### Delivered (day 5)
 **Email** · Subject: `Your Leak Report + fixed quote`
 > Hi [Name], your Lead Leak Audit is attached: the Leak Report, your lead-flow map (today and proposed), the ROI worksheet (every number in it is yours) and the fixed quote. Your 20-minute recorded walkthrough: [link] [Loom paid plan, or an unlisted YouTube / Google Drive video: Loom Free reportedly stops at 5 minutes]. Book the 30-minute review here: https://cal.com/askhemant/audit-review.
 >
 > The ₹9,999 is credited in full to a Sprint booked by **[date: Leak Report + 30 days]**. [signature]
 
-### Credit reminder (day 20 after the report, only if they haven't decided)
-**WhatsApp**
-> Hi [Name], a quick heads-up: your Audit credit (₹9,999) is valid until [date]. If you want to go ahead with the Sprint, I can start on [earliest date]. If not, no problem at all.
+### AI Build Scoping: paid → next steps (within 1 working day)
+**Email** · Subject: `Your AI Build Scoping: 2 quick steps`
+> Hi [Name], thank you, payment received. Two steps to start:
+> 1. **Pre-scoping form** (15 minutes): [Tally link]
+> 2. **Book the 60-minute workshop:** https://cal.com/askhemant/audit-workshop. Bring whoever runs [the process] today, and anyone who'll use the new system.
+>
+> You'll have the scoping pack (use-case spec, architecture sketch, data-handling and risk notes, milestone plan and fixed quote) within 5 working days of the workshop. [signature]
 
-> HI: Hi [Name], chhota sa reminder: aapka Audit credit (₹9,999) [date] tak valid hai. Sprint karna ho toh [earliest date] se shuru kar sakte hain. Nahi toh bilkul koi baat nahi.
+Form fields and the scoping templates: [`12-audit-delivery.md`](./12-audit-delivery.md) Part B.
+
+### AI Build Scoping: delivered (day 5)
+**Email** · Subject: `Your scoping pack + fixed quote`
+> Hi [Name], your AI Build Scoping is attached: the use-case spec, the architecture sketch, the data-handling and risk notes, the milestone plan with acceptance criteria, and the fixed quote. Your 20-minute recorded walkthrough: [link]. Book the 30-minute review here: https://cal.com/askhemant/audit-review.
+>
+> The ₹9,999 is credited in full to a Quick Win Build or a Custom AI Agent / AI Product Build booked by **[date: scoping pack + 30 days]**. [signature]
+
+### Credit reminder (day 20 after the report or scoping pack, only if they haven't decided)
+**WhatsApp**
+> Hi [Name], a quick heads-up: your [Audit / Scoping] credit (₹9,999) is valid until [date]. If you want to go ahead with the [Sprint / build], I can start on [earliest date]. If not, no problem at all.
+
+> HI: Hi [Name], chhota sa reminder: aapka [Audit / Scoping] credit (₹9,999) [date] tak valid hai. [Sprint / build] karna ho toh [earliest date] se shuru kar sakte hain. Nahi toh bilkul koi baat nahi.
 
 ---
 

@@ -29,7 +29,7 @@ Comment to Message (auto)        Custom keyword reply (auto)      FAQ answer (au
                      ┌─────────────────────┼──────────────────────┐
                      ▼                     ▼                      ▼
            askhemant.ai/book        Kit + Ask Hemant Session    "Not now": ask permission
-           (Cal.com intake)         (under ₹15K / out of niche)  to check back; then stop
+           (Cal.com intake)         (<₹15K, or RE/CL <20 leads)  to check back; then stop
 ```
 
 | Keyword | Comment variants to set up (exact, case-sensitive) | What the first DM delivers | Live by | Used by |
@@ -317,8 +317,8 @@ Never put a link in a public reply (it isn't clickable) and never reply with the
 - **HI:** Thanks [Name]. Samajh gaya: leads aap laate hain, aur leak aksar form ke baad hota hai. Mid-November se Agency Partner option khul raha hai: mere systems aapke brand ke under, list price se 25% kam. Kya aapka koi ek client hai jahan abhi slow replies results kharab kar rahe hain?
 
 **E. Other business**
-- **EN:** Thanks [Name]. The kit is written for property and clinic enquiries, but the 10 pm test works for any business that gets leads. My builds focus on real estate and clinics; for anything else, the best start is a 45-min Ask Hemant Session (₹1,999 / $99 excl. GST, 100% credited to an Audit or build booked within 14 days): askhemant.ai/pricing. What's the one task you'd automate first?
-- **HI:** Thanks [Name]. Kit property aur clinic enquiries ke liye likha hai, par 10 pm test har business par chalta hai jahan leads aati hain. Mere builds real estate aur clinics par focused hain; baaki businesses ke liye best start hai 45-min Ask Hemant Session (₹1,999, GST alag; 14 din mein Audit ya build book karein toh poora credit): askhemant.ai/pricing. Aap sabse pehle kaunsa kaam automate karna chahenge?
+- **EN:** Thanks [Name]. The kit is written for property and clinic enquiries, but the 10 pm test works for any business that gets leads. I build for other businesses too: a single workflow is a Quick Win Build (₹24,999 / $999 excl. GST), and bigger AI builds start with an AI Build Scoping (₹9,999 / $499, credited to the build). What's the one task you'd automate first? If your budget is ₹15K or more, the next step is a free 20-min Fit Call (askhemant.ai/book); if you'd rather get advice, the 45-min Ask Hemant Session is ₹1,999 / $99 (askhemant.ai/pricing).
+- **HI:** Thanks [Name]. Kit property aur clinic enquiries ke liye likha hai, par 10 pm test har business par chalta hai jahan leads aati hain. Main dusre businesses ke liye bhi build karta hoon: ek workflow ho toh Quick Win Build (₹24,999, GST alag), aur bade AI builds AI Build Scoping (₹9,999, build mein poora credit) se shuru hote hain. Aap sabse pehle kaunsa kaam automate karna chahenge? Budget ₹15K ya usse zyada hai toh agla step free 20-min Fit Call hai (askhemant.ai/book); sirf advice chahiye toh 45-min Ask Hemant Session ₹1,999 ka hai (askhemant.ai/pricing).
 
 **F. Learner / builder**
 - **EN:** Love that. The kit is aimed at business owners, but the lead-flow ideas still apply. I share my own builds every Wednesday (Build Log). If you ever want 1:1 help on a specific build, that's the 45-min Ask Hemant Session: askhemant.ai/pricing. Good luck with it!
@@ -353,7 +353,8 @@ Never put a link in a public reply (it isn't clickable) and never reply with the
 | "Too expensive" | Objection reply §7.1 | §7.1 |
 | "Meta's AI is free" | §7.2 | §7.2 |
 | Gives source + volume (≥ about 20 leads a month) | Thanks. At [volume] a month from [source], the first leak I'd check is [after-hours replies / no follow-up after day 2]. Want me to map it on a free 20-min call? askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=price. I'll only pitch if it's a fit. | Thanks. [Source] se mahine ki [volume] leads mein pehle [raat ke replies / day 2 ke baad follow-up] check karte hain. Free 20-min call par map kar dein? askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=price. Pitch tabhi, jab fit ho. |
-| Under 20 leads a month, or a budget under ₹15K | `/notfit` (§8) | `/notfit` HI |
+| A budget under ₹15K, or a broker or clinic with under 20 leads a month | `/notfit` (§8) | `/notfit` HI |
+| Another kind of business with a task to automate and a budget of ₹15K or more (any lead volume) | Good one. That sounds like a Quick Win Build (₹24,999 / $999 excl. GST) or, for something bigger, an AI Build Scoping first. Want to talk it through on a free 20-min call? askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=price. I'll only pitch if it's a fit. | Badhiya. Yeh Quick Win Build (₹24,999, GST alag) jaisa lagta hai; kaam bada hai toh pehle AI Build Scoping. Free 20-min call par baat karein? askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=price. Pitch tabhi, jab fit ho. |
 
 **Handover/tagging:** human from the first reply; tag `kw-PRICE` + lane.
 
@@ -477,7 +478,7 @@ Opt-in by joining; one post a week; never DM people to "join my channel". Channe
 - **EN:** Booked, thank you [Name]. The 7 questions on the form help me come prepared, so the call is about you, not about me. I'll send a WhatsApp reminder 2 hours before. See you on [day].
 - **HI:** Booking ho gayi, thanks [Name]. Form ke 7 sawaal se main tayyari ke saath aaunga, taaki call aapke baare mein ho. 2 ghante pehle WhatsApp reminder aayega. [Day] ko milte hain.
 
-**Doesn't fit (under ₹15K, under about 20 leads a month, or out of niche)** → `/notfit` (§8).
+**Doesn't fit (a budget under ₹15K, or a real-estate or clinic business with under about 20 leads a month)** → `/notfit` (§8). Any other business with a budget of ₹15K or more is welcome on a Fit Call, whatever its lead volume; the likely outcome is a Quick Win Build or an AI Build Scoping.
 
 **"Not now"** → §7.4.
 
@@ -534,7 +535,7 @@ Add these as Instagram **saved replies** (shortcut → text). The WhatsApp Busin
 | `book` | Happy to map your lead flow on a free 20-min Fit Call: askhemant.ai/book. I'll only pitch if it's a fit. | Free 20-min Fit Call par aapka lead flow map kar dete hain: askhemant.ai/book. Pitch tabhi, jab fit ho. |
 | `founding` | Founding details: askhemant.ai/founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. What do you sell, and roughly how many enquiries a month? | Founding details: askhemant.ai/founding. 3 slots, ₹14,999 / $599 (GST alag), Mon 30 Nov 2026 tak ya slots bharne tak. Aap kya bechte hain, aur mahine mein kitni enquiries? |
 | `session` | The Ask Hemant Session is 45 minutes on any AI or automation question, with the recording and a written action list within 24 hours: ₹1,999 excl. GST → {{RAZORPAY_SESSION_LINK}} · outside India $99 → {{PAYPAL_SESSION_LINK}}. 100% credited to an Audit or build booked within 14 days. | Ask Hemant Session: kisi bhi AI ya automation sawaal par 45 minute, recording aur 24 ghante mein written action list: ₹1,999 (GST alag) → {{RAZORPAY_SESSION_LINK}} · India ke bahar $99 → {{PAYPAL_SESSION_LINK}}. 14 din mein Audit ya build book karein toh poora credit. |
-| `notfit` | Thanks for the detail. Honestly, a full system isn't the right fit yet. The free kit covers the quick fixes (askhemant.ai/kit), and if you'd like an hour of focused help, the Ask Hemant Session is ₹1,999 / $99 (excl. GST): askhemant.ai/pricing. | Details ke liye thanks. Seedhi baat: abhi full system sahi fit nahi hai. Free kit quick fixes cover karta hai (askhemant.ai/kit), aur focused help chahiye toh Ask Hemant Session ₹1,999 (GST alag) ka hai: askhemant.ai/pricing. |
+| `notfit` | Thanks for the detail. Honestly, a full system isn't the right fit yet. The free kit covers the quick fixes (askhemant.ai/kit), and if you'd like 45 minutes of focused help, the Ask Hemant Session is ₹1,999 / $99 (excl. GST): askhemant.ai/pricing. | Details ke liye thanks. Seedhi baat: abhi full system sahi fit nahi hai. Free kit quick fixes cover karta hai (askhemant.ai/kit), aur 45 minute ki focused help chahiye toh Ask Hemant Session ₹1,999 (GST alag) ka hai: askhemant.ai/pricing. |
 | `meta` | §7.2 EN | §7.2 HI |
 | `details` | §7.3 EN | §7.3 HI |
 | `later` | §7.4 EN | §7.4 HI |

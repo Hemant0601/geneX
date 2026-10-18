@@ -94,6 +94,7 @@ When a founding agreement is **signed** (not before):
 
 When the **3rd slot is signed**, or on **Mon 30 Nov 2026 at 23:59 IST**:
 - [ ] `foundingSlotsLeft: 0` (or past the `foundingDeadline`), redeploy; the site shows "The founding program is closed".
+- [ ] In the kit, replace the founding box on the last page ([`lead-magnet/src/kit.html`](../lead-magnet/src/kit.html), marked with the HTML comment `FOUNDING-BOX`) with the Lead Leak Audit box (₹9,999 / $499) that sits commented out just below it (`AUDIT-BOX`), run `node lead-magnet/render.mjs` (it also updates the website copy of the PDF) and redeploy.
 - [ ] Switch the FOUNDING auto-DM to the closed text ([`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.3).
 - [ ] Disable the Razorpay founding page ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §14.2) and hide the WhatsApp catalogue item.
 - [ ] One honest Story: "All 3 founding slots are taken" or "The founding program closed today". No waitlist, no "one more slot".

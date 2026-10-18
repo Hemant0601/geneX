@@ -132,7 +132,7 @@ Every **marketing** template (5–8, and any first reply Meta files as marketing
 | **5** | **Demo on test leads** (Client call, 30 min) → feedback list | Feedback within 1 working day |
 | 6–8 | Fixes; 8 am digest; edge cases (after-hours, duplicates, Hinglish replies, opt-out) | — |
 | 9 | Go-live dry run with 5 test leads per source (Schedule A acceptance criteria) | Join the dry run if possible |
-| **10** | **Go-live**; balance payment link; Loom handover + 1-page SOP | Approve go-live; pay the balance |
+| **10** | **Go-live**; balance payment link; recorded handover + 1-page SOP | Approve go-live; pay the balance |
 | Go-live → +14 days | **Warranty.** Review AI conversations daily (founding: the **first 100**); tune prompts | Report anything odd |
 | **~Day 24** (warranty end) | Warranty-end message with the Lead Desk Care offer ([`07-follow-up-templates.md`](./07-follow-up-templates.md) §12) | Decide on Care |
 | Founding: go-live + 30 days | After-measurement; feedback interview; case-study draft ([`10-founding-client-program.md`](./10-founding-client-program.md) §6) | 30-minute interview |
@@ -151,7 +151,7 @@ Every **marketing** template (5–8, and any first reply Meta files as marketing
 - [ ] Reminders scheduled correctly across time zones (UAE clients: Asia/Dubai).
 - [ ] Error alerts route to you (and to the client's owner for anything urgent).
 - [ ] AI spend limit set on the client's account.
-- [ ] Loom handover recorded (record in OBS + Drive if longer than Loom Free's reported 5 minutes) and 1-page SOP sent.
+- [ ] Handover video recorded (Loom, or OBS + Drive if longer than Loom Free's reported 5 minutes) and 1-page SOP sent.
 - [ ] Balance payment link sent; go-live message sent ([`07-follow-up-templates.md`](./07-follow-up-templates.md) §11).
 
 ---

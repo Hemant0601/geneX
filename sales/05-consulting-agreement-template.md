@@ -24,9 +24,9 @@
 
 ### 2. Timeline, access and acceptance
 2.1 **Start of the clock.** Timelines are counted in **working days** (Mon–Fri, excluding Indian national holidays) from the day the **access checklist** in **Schedule C** is complete ("**Full Access**"), not from signature or payment.
-2.2 **Milestones** are in Schedule B. For a Sprint: a working demo on test leads by **day 5** and go-live by **day 10** after Full Access (Team system: day 15).
+2.2 **Milestones** are in Schedule B. For a Sprint: a working demo on test leads by **day 5** and go-live by **day 10** after Full Access (Team system: day 15). For a Custom AI Agent / AI Product Build: the milestones, acceptance criteria and weeks in Schedule B.
 2.3 **On-time promise.** If a Sprint is not live within **10 working days** of Full Access (15 for the Team system), you receive the **first month of Lead Desk Care free**. This is your only remedy for delay. The clock **pauses** for any day on which I am waiting for something you or a third party you control must provide: access, information, feedback, Meta business verification, template approval, or payment.
-2.4 **Acceptance.** At go-live I will show the system working against the acceptance criteria in Schedule A. You have **3 working days** to report anything that doesn't meet them, and I will fix those items. The deliverables are accepted when you confirm in writing, or when **5 working days** pass after go-live without a report, or when the system is used with real leads for 5 working days, whichever comes first.
+2.4 **Acceptance.** At go-live (and, for a build with milestones in Schedule B, at each milestone) I will show the system working against the acceptance criteria in Schedule A or Schedule B. You have **3 working days** to report anything that doesn't meet them, and I will fix those items. The deliverables are accepted when you confirm in writing, or when **5 working days** pass after go-live without a report, or when the system is used with real leads for 5 working days, whichever comes first.
 
 ### 3. Scope and change requests
 3.1 **Out of scope** unless listed in Schedule A: running costs (clause 6); lead sources beyond those listed; integrations a third-party platform doesn't allow; running ads or buying leads; voice-AI calls; bulk, cold or unsolicited WhatsApp broadcasts; general-purpose chatbots; AI replies to medical, legal or price-negotiation questions without human review; software licences; data clean-up of existing records; training beyond what Schedule A lists.
@@ -35,10 +35,10 @@
 
 ### 4. Fees and payment
 4.1 Fees are in Schedule B, in **[INR / USD]**, and **exclude GST**. [If registered: GST is added at the applicable rate.] [If export: "Supply meant for export under LUT without payment of IGST" where the conditions for zero-rating are met.] **[LAWYER/CA: confirm wording]**
-4.2 **Payment terms:** builds (Sprints, the Team system and, unless Schedule B says otherwise, the Quick Win Build): **50% to start, 50% at go-live**; Lead Leak Audit and Ask Hemant Session: 100% upfront; retainers: monthly in advance (Schedule F).
+4.2 **Payment terms:** builds (Sprints, the Team system and, unless Schedule B says otherwise, the Quick Win Build): **50% to start, 50% at go-live**; Custom AI Agent / AI Product Build: at least 50% to start, the rest by the milestones in Schedule B; Lead Leak Audit, AI Build Scoping and Ask Hemant Session: 100% upfront; retainers: monthly in advance (Schedule F).
 4.3 Payment methods: in India, Razorpay payment link; outside India, Skydo or Wise Business invoice. Invoices are payable within **7 days**.
-4.4 **Credits:** an Ask Hemant Session fee is credited to an Audit or build booked within 14 days; a Lead Leak Audit fee is credited to a Sprint (Solo, Clinic or Team) booked within 30 days of the Leak Report. Credits equal the amount actually paid.
-4.5 **Late payment.** If a payment is more than 7 days overdue, I may pause work until it is paid; timelines move by the length of the pause. The Loom handover and SOP are delivered, and ownership passes under clause 7, on payment of the go-live instalment.
+4.4 **Credits:** an Ask Hemant Session fee is credited to an Audit or build booked within 14 days; a Lead Leak Audit fee is credited to a Sprint (Solo, Clinic or Team) booked within 30 days of the Leak Report; an AI Build Scoping fee is credited to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days of the scoping pack. Credits equal the amount actually paid.
+4.5 **Late payment.** If a payment is more than 7 days overdue, I may pause work until it is paid; timelines move by the length of the pause. The recorded handover and SOP are delivered, and ownership passes under clause 7, on payment of the go-live instalment.
 4.6 Each party bears its own bank and payment-processor fees.
 
 ### 5. Your responsibilities
@@ -73,7 +73,7 @@
 10.2 What I commit to is the scope in Schedule A, the timeline and on-time promise in clause 2, and the warranty in clause 11.
 
 ### 11. Warranty and support
-11.1 **Bug-fix warranty** from go-live: **14 days** for the Solo Sprint, the Missed-Call & No-Show Recovery Sprint and the Quick Win Build; **30 days** for the Team system. I will fix defects in what I built, free of charge, within a reasonable time (usually 1–2 working days).
+11.1 **Bug-fix warranty** from go-live: **14 days** for the Solo Sprint, the Missed-Call & No-Show Recovery Sprint and the Quick Win Build; **30 days** for the Team system; for a Custom AI Agent / AI Product Build, the period in Schedule B. I will fix defects in what I built, free of charge, within a reasonable time (usually 1–2 working days).
 11.2 The warranty doesn't cover: changes or outages at third-party platforms; changes made by you or others; new features; problems caused by missing payment on your provider accounts.
 11.3 After the warranty, support is available through **Lead Desk Care / Growth** (Schedule F) or at the hourly rate.
 
@@ -153,6 +153,7 @@
 | Option B: Lead Desk Care | ₹9,999 / $299 a month | Monthly in advance from warranty end |
 
 Milestones: Full Access → day 5 demo → day 10 go-live (Team: day 15) → warranty end.
+*[Custom AI Agent / AI Product Build: replace this schedule with box 3 of the multi-milestone proposal ([`03-proposal-template.md`](./03-proposal-template.md) §5): milestones, acceptance criteria, weeks, payments and the warranty period. Schedule A is its box 2.]*
 
 ### Schedule C: Access checklist
 As in [`06-client-onboarding-checklist.md`](./06-client-onboarding-checklist.md) §2, completed and dated: Full Access date **[date]**.

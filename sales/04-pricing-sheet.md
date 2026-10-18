@@ -21,6 +21,7 @@
 | 1 | Fit Call (20 min) | Free (intake required) | Free | — | — | Tue–Thu, max 6/week | — |
 | 1b | **Ask Hemant Session** (45 min) | **₹1,999** | **$99** | 100% upfront | — | Within 48 hours | — |
 | 2 | **Lead Leak Audit** | **₹9,999** | **$499** | 100% upfront | — | 5 working days | — |
+| 2b | **AI Build Scoping** (the Audit variant for Quick Win and Custom AI builds) | **₹9,999** | **$499** | 100% upfront | — | 5 working days | — |
 | F | **Founding Client Pilot** (Audit + Solo or Clinic Sprint) | **₹14,999** | **$599** | 50/50 | ₹7,500 / ₹7,499 · $300 / $299 | ~3 weeks + 30-day measurement | 14 days |
 | 3a | **Speed-to-Lead Sprint (Solo)** | **₹34,999** | **$1,499** | 50/50 | ₹17,500 / ₹17,499 · $750 / $749 | 10 working days after access | 14 days |
 | 3b | **Speed-to-Lead System (Team)** | **₹79,999** | **$2,999** | 50/50 | ₹40,000 / ₹39,999 · $1,500 / $1,499 | 15 working days | 30 days |
@@ -28,7 +29,7 @@
 | 4a | **Lead Desk Care** | **₹9,999/mo** | **$299/mo** | Monthly in advance | — | 30 days' notice to cancel | — |
 | 4b | **Lead Desk Growth** | **₹24,999/mo** | **$799/mo** | Monthly in advance | — | 3-month minimum | — |
 | Q | **Quick Win Build** | **₹24,999** | **$999** | 50/50 *(default; **Decision for Hemant**, below)* | ₹12,500 / ₹12,499 · $500 / $499 | 7–10 working days | 14-day bug-fix window |
-| C | **Custom AI Agent / AI Product Build** | **from ₹1,50,000** | **from $6,000** | At least 50% upfront; rest by milestones set in the Audit | — | 4–8 weeks | Set in the Audit |
+| C | **Custom AI Agent / AI Product Build** | **from ₹1,50,000** | **from $6,000** | At least 50% upfront; rest by milestones set in the AI Build Scoping | — | 4–8 weeks | Set in the Scoping |
 | + | Extra lead source | ₹4,999 | $199 | With the build | — | 3–7 days | As build |
 | + | Google review-request flow | ₹7,999 | $349 | With the build | — | 3–7 days | As build |
 | + | Listing-to-content kit (AI captions + reel scripts from listing details) | ₹12,999 | $549 | With the build | — | 3–7 days | As build |
@@ -49,15 +50,17 @@ Split rule: 50% rounded **up** to the nearest rupee/dollar at the start, the res
 
 ### 1. Fit Call
 - **Scope:** 20-minute diagnosis; the 1–2 biggest leaks named; an honest yes or no and the next step. **Not included:** designing the solution (that's the Audit).
-- **Gate:** the 7-question Cal.com intake; under ₹15K or out of niche → Kit + Session ([`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) §4).
-- **Next step:** Audit (link sent on WhatsApp during the call), Sprint proposal within 24 hours, founding terms within 24 hours, or Kit + Session.
+- **Best for:** owners with a budget of ₹15K or more: brokers and clinics for lead systems, any business for a Quick Win or AI build.
+- **Gate:** the 7-question Cal.com intake. **Red** (→ Kit + Session instead of a call): budget under ₹15K, **or** a real-estate or clinic business with under 20 leads a month. "Other business" with a budget of ₹15K or more is **green-GEN**: keep the call; the likely outcome is a Quick Win Build or an AI Build Scoping ([`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) §4).
+- **Next step:** Audit (link sent on WhatsApp during the call), AI Build Scoping (link the same day), Sprint or Quick Win proposal within 24 hours, founding terms within 24 hours, or Kit + Session.
 
 ### 1b. Ask Hemant Session (side door)
 - **Scope:** 45-minute call on any AI or automation question · the recording · a written action list **within 24 hours**.
 - **Not included:** building it (that's a Quick Win Build or a Sprint).
 - **Terms:** 100% upfront (Razorpay `{{RAZORPAY_SESSION_LINK}}`; abroad PayPal `{{PAYPAL_SESSION_LINK}}`). Free reschedule with 24 hours' notice; if Hemant cancels and no new time works, full refund (website terms §9).
-- **Credit:** **100% credited to an Audit or build booked within 14 days** of the Session.
-- **Upsell path:** → Quick Win Build (non-niche) · → Audit (niche) · → Kit for DIY.
+- **Book this instead of a Fit Call if:** you want advice rather than a build, or your budget is under ₹15K.
+- **Credit:** **100% credited to an Audit or build booked within 14 days** of the Session (the AI Build Scoping counts as an Audit).
+- **Upsell path:** → Quick Win Build or AI Build Scoping (any business) · → Lead Leak Audit (real estate, clinics) · → Kit for DIY.
 
 ### 2. Lead Leak Audit
 - **Scope:** pre-audit form · 60-minute workshop · timed test enquiries through **up to 3** of the client's own channels (with consent) · current and proposed lead-flow map · **Leak Report** (each leak, evidence, fix, effort) · ROI worksheet using **the client's own numbers** · system blueprint with a **fixed quote** · 20-minute recorded walkthrough + 30-minute review call. (Loom's free plan reportedly caps recordings at 5 minutes: use Loom's paid plan, or an OBS/phone recording shared unlisted via YouTube or Google Drive.)
@@ -65,7 +68,18 @@ Split rule: 50% rounded **up** to the nearest rupee/dollar at the start, the res
 - **Timeline:** 5 working days from the workshop.
 - **Terms:** 100% upfront (`{{RAZORPAY_AUDIT_LINK}}`; abroad a Skydo invoice for $499). Full refund if cancelled before the workshop; after it, not refundable but still credited (website terms §9).
 - **Credit:** **100% credited to a Sprint booked within 30 days.** House rule: count the 30 days from the day the Leak Report is delivered, and say so in the Leak Report. The credit also applies to the Team system or Clinic Sprint quoted in the blueprint.
-- **Upsell path:** → Solo Sprint / Team / Clinic Sprint / Custom AI (scoped only after an Audit).
+- **Delivery, day by day, with every template:** [`12-audit-delivery.md`](./12-audit-delivery.md) Part A.
+- **Upsell path:** → Solo Sprint / Team / Clinic Sprint. (Custom AI is scoped in an AI Build Scoping, §2b.)
+
+### 2b. AI Build Scoping (the Audit variant for general businesses and AI builds)
+- **Scope:** pre-scoping form + 60-minute workshop · **use-case spec** (the process, inputs and outputs, users, data sources, success metric) · **architecture sketch** · **data-handling and risk notes** (DPDP-minded) · **milestone plan with acceptance criteria** · **fixed quote** · 20-minute recorded walkthrough + 30-minute review call.
+- **Not included:** the build · prototypes or test builds · model, API and hosting costs (client's accounts) · invented ROI.
+- **Timeline:** 5 working days from the workshop. Uses the same hidden Cal.com events as the Audit (`audit-workshop`, `audit-review`).
+- **Terms:** 100% upfront. India: a per-client Razorpay Payment Link for ₹9,999 (§9); abroad: a Skydo invoice for $499. Same cancellation and refund terms as the Lead Leak Audit.
+- **Credit:** **100% credited to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days**, counted from the day the scoping pack is delivered (say so in the pack).
+- **Best for:** green-GEN Fit Calls (Other business, budget ₹15K or more) and anyone who wants an internal AI assistant or an AI product.
+- **Delivery, day by day, with every template:** [`12-audit-delivery.md`](./12-audit-delivery.md) Part B.
+- **Upsell path:** → Quick Win Build · → Custom AI Agent / AI Product Build (multi-milestone proposal: [`03-proposal-template.md`](./03-proposal-template.md) §5) · → Lead Desk Care after the warranty.
 
 ### F. Founding Client Pilot (3 slots, closes Mon 30 Nov 2026 23:59 IST or when full)
 - **Scope:** Lead Leak Audit + Solo Sprint, **or** Lead Leak Audit + Missed-Call & No-Show Recovery Sprint. Same scope as list price; nothing cut. Baseline measured during the build; re-measured 30 days after go-live; human review of the first 100 AI conversations.
@@ -76,7 +90,7 @@ Split rule: 50% rounded **up** to the nearest rupee/dollar at the start, the res
 - **Upsell path:** → Lead Desk Care at warranty end → case study → referrals.
 
 ### 3a. Speed-to-Lead Sprint (Solo)
-- **Scope:** capture from **up to 3 sources** (Meta lead ads, website form, Instagram DMs, portal alerts where the portal allows) · instant WhatsApp first reply on the official platform · AI qualifier scoped to the business, English or Hinglish (budget, BHK/type, locality, timeline, loan or cash, self-use or investment) · hot/warm/cold tags · handover rules (hot lead → WhatsApp alert to the agent) · site-visit booking with reminders 24 h and 2 h before + Maps pin · 30-day follow-up of 6–8 messages with opt-out · log in Google Sheets or the existing CRM · 8 am daily digest · up to 10 Meta-approved templates · Loom handover + 1-page SOP · **14-day bug-fix warranty**.
+- **Scope:** capture from **up to 3 sources** (Meta lead ads, website form, Instagram DMs, portal alerts where the portal allows) · instant WhatsApp first reply on the official platform · AI qualifier scoped to the business, English or Hinglish (budget, BHK/type, locality, timeline, loan or cash, self-use or investment) · hot/warm/cold tags · handover rules (hot lead → WhatsApp alert to the agent) · site-visit booking with reminders 24 h and 2 h before + Maps pin · 30-day follow-up of 6–8 messages with opt-out · log in Google Sheets or the existing CRM · 8 am daily digest · up to 10 Meta-approved templates · recorded handover + 1-page SOP · **14-day bug-fix warranty**.
 - **Not included:** running costs · a 4th+ source (add-on) · portal integrations the portal doesn't allow · running ads / buying leads · voice-AI calls · bulk or cold broadcasts · CRM licences · AI answers to price negotiations (to a human).
 - **Timeline:** 10 working days **after access is granted**. Day 5 demo, day 10 go-live, warranty ends 14 days after go-live (strategy: "day 24") → retainer offer.
 - **On-time promise:** not live within 10 working days of full access → **first month of Lead Desk Care free**.
@@ -104,13 +118,14 @@ Split rule: 50% rounded **up** to the nearest rupee/dollar at the start, the res
 - **Terms:** monthly in advance; **3-month minimum**. Pitch to the best client in month 3 (strategy §9).
 
 ### Q. Quick Win Build
-- **Scope:** one workflow of up to about 10 steps for any business (e.g. form → CRM → WhatsApp/email follow-up; invoice PDF → AI extraction → Sheet or Zoho Books) · documentation · Loom handover · 14-day bug-fix window.
+- **Scope:** one workflow of up to about 10 steps for any business (e.g. form → CRM → WhatsApp/email follow-up; invoice PDF → AI extraction → Sheet or Zoho Books) · documentation · recorded handover · 14-day bug-fix window.
 - **Not included:** workflows beyond about 10 steps · licences and API usage.
-- **Usually sold via:** the Ask Hemant Session (credit applies within 14 days).
+- **Usually sold via:** a green-GEN Fit Call, the Ask Hemant Session (credit applies within 14 days) or an AI Build Scoping (credit applies within 30 days).
 
 ### C. Custom AI Agent / AI Product Build
-- **Scope:** a GPT- or Claude-powered assistant trained on company SOPs and documents, or a first version of an AI-powered product. **Only scoped after an Audit**; scope, milestones and acceptance criteria are set there.
-- **Not included:** a fixed price before the Audit · model and hosting costs (client's accounts).
+- **Scope:** a GPT- or Claude-powered assistant trained on company SOPs and documents, or a first version of an AI-powered product. **Scoped in an AI Build Scoping (₹9,999 / $499, credited to the build)**; scope, milestones and acceptance criteria are set there.
+- **Proposal:** the multi-milestone section of [`03-proposal-template.md`](./03-proposal-template.md) §5 (milestones, acceptance criteria, change control, running costs, IP and data).
+- **Not included:** a fixed price before the Scoping · model and hosting costs (client's accounts).
 
 ---
 
@@ -125,9 +140,12 @@ Credits are the **amount actually paid**, and they chain. The total a client pay
 | Session → Audit → Sprint | ₹1,999 + ₹8,000 + ₹7,501 + ₹17,499 | ₹34,999 |
 | Audit → Team (within 30 days) | ₹9,999 + ₹30,001 + ₹39,999 | ₹79,999 |
 | Session → Quick Win (within 14 days) | ₹1,999 + ₹10,501 + ₹12,499 | ₹24,999 |
+| Session → AI Build Scoping (within 14 days) | ₹1,999 + ₹8,000 | ₹9,999 |
+| AI Build Scoping → Quick Win (within 30 days) | ₹9,999 + ₹2,501 + ₹12,499 | ₹24,999 |
+| AI Build Scoping → Custom AI build (within 30 days) | ₹9,999, then the first milestone payment minus ₹9,999, then the rest by milestone | the quoted build price |
 | USD: Audit → Solo Sprint | $499 + $251 + $749 | $1,499 |
 
-House rule: the credit comes off the **deposit** first; the go-live payment stays the same.
+House rule: the credit comes off the **deposit** (for a Custom AI build, the first milestone payment) first; the go-live payment stays the same.
 
 ---
 
@@ -156,7 +174,7 @@ House rule: the credit comes off the **deposit** first; the go-live payment stay
 
 (−25% rounded **down** to the whole rupee/dollar.)
 
-> **Decision for Hemant: does the Agency −25% apply beyond builds?** The strategy says "any of the systems above", which clearly covers the builds in the table. Decide before the first partner call (suggested default: the same −25%) for: Lead Leak Audit (₹7,499 / $374), add-ons (₹3,749 / $149 · ₹5,999 / $261 · ₹9,749 / $411 · ₹1,500 / $45 an hour), Lead Desk Care (₹7,499 / $224 a month) and Growth (₹18,749 / $599 a month). **Never discounted:** the Ask Hemant Session. **Never stacked** with founding pricing.
+> **Decision for Hemant: does the Agency −25% apply beyond builds?** The strategy says "any of the systems above", which clearly covers the builds in the table. Decide before the first partner call (suggested default: the same −25%) for: Lead Leak Audit and AI Build Scoping (₹7,499 / $374 each), add-ons (₹3,749 / $149 · ₹5,999 / $261 · ₹9,749 / $411 · ₹1,500 / $45 an hour), Lead Desk Care (₹7,499 / $224 a month) and Growth (₹18,749 / $599 a month). **Never discounted:** the Ask Hemant Session. **Never stacked** with founding pricing.
 
 **Partner terms to write into the agreement:** the agency is the client (signs, pays, owns the end-client relationship) · end-client accounts still in the **end client's** name · same scope, out-of-scope list and timelines · anonymised case-study rights · the agency handles first-line client contact unless agreed otherwise · payment 50/50 per project.
 
@@ -167,9 +185,9 @@ House rule: the credit comes off the **deposit** first; the go-live payment stay
 - **When:** from **Mon 18 Jan 2027**, **only if at least 3 documented results exist** (measured, consented case data per [`08-case-study-template-and-consent.md`](./08-case-study-template-and-consent.md)).
 - **New prices:** Lead Leak Audit **₹14,999 / $699**; Speed-to-Lead Sprint (Solo) **₹44,999 / $1,999**.
 - **Announce:** **Mon 4 Jan 2027** (a real deadline, so honest scarcity). Say what changes and that proposals already sent keep their price for their 7-day validity.
-- **Not specified:** the other offers (Team, Clinic Sprint, retainers, Quick Win, add-ons, Session) stay at launch prices unless you decide otherwise. **Decision for Hemant:** whether the Clinic Sprint follows the Solo Sprint (it's the same price today).
+- **Not specified:** the other offers (Team, Clinic Sprint, retainers, Quick Win, add-ons, Session) stay at launch prices unless you decide otherwise. **Decision for Hemant:** whether the Clinic Sprint follows the Solo Sprint, and whether the AI Build Scoping follows the Lead Leak Audit (each is the same price today).
 - **If fewer than 3 documented results by Mon 4 Jan:** don't announce. Re-check monthly; announce 2 weeks ahead whenever it's true.
-- **Update on the day:** [`website/pricing/index.html`](../website/pricing/index.html) (incl. its JSON-LD), [`website/index.html`](../website/index.html), this file, the WhatsApp catalogue, the Razorpay Audit page amount. Agency partner prices follow the new list automatically.
+- **Update on the day:** [`website/pricing/index.html`](../website/pricing/index.html) (incl. its JSON-LD), [`website/index.html`](../website/index.html), this file, the WhatsApp catalogue, the Razorpay Audit page amount, and the kit's prices in [`lead-magnet/src/kit.html`](../lead-magnet/src/kit.html) (then `node lead-magnet/render.mjs` and redeploy). Agency partner prices follow the new list automatically.
 
 ---
 
@@ -192,8 +210,8 @@ If more than **8 Fit Calls a week**, or a **show rate below 70%**, or **3+ docum
 | Client | Offer | Method | Fee *(absorbed)* |
 |---|---|---|---|
 | India | Session, Audit, founding deposit | Razorpay **Payment Pages** (reusable): `{{RAZORPAY_SESSION_LINK}}`, `{{RAZORPAY_AUDIT_LINK}}`, `{{RAZORPAY_FOUNDING_LINK}}` | 2% + GST |
-| India | Sprint/Team/Quick Win deposits and balances, retainers | Razorpay **Payment Link** per client, named with the proposal number, expiring with the proposal | 2% + GST |
-| Abroad | Audit, Sprints, retainers, founding | **Skydo** USD invoice (main); Wise Business (backup) | Skydo $19 flat under $2,000; $29 for $2,001–10,000 |
+| India | AI Build Scoping; Sprint/Team/Quick Win deposits and balances; Custom AI milestones; retainers | Razorpay **Payment Link** per client, named with the proposal number (Scoping: "AI Build Scoping – [Client]"), expiring with the proposal | 2% + GST |
+| Abroad | Audit, AI Build Scoping, Sprints, Custom AI milestones, retainers, founding | **Skydo** USD invoice (main); Wise Business (backup) | Skydo $19 flat under $2,000; $29 for $2,001–10,000 |
 | Abroad | $99 Session only | **PayPal** `{{PAYPAL_SESSION_LINK}}` | ~4.4% + $0.30 + conversion |
 | Anyone | — | **Not Stripe** (invite-only for new Indian accounts) | — |
 

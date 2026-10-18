@@ -58,6 +58,17 @@ The strategy brief says "10-page PDF". It is 13 pages because every page keeps b
    It also crops the PDF MediaBox to exactly 810×1012.5 pt. Chromium rounds paper size up to 0.01 in, which would otherwise leave a 0.7 px white strip.
 4. Read every `pages/page-NN.png` before publishing. QA catches layout problems, not wrong words.
 
+### When the founding program closes (or prices change)
+
+Page 13 carries the founding offer, but the kit PDF doesn't switch itself off the way the website does. The box sits between `<!-- FOUNDING-BOX START -->` and `<!-- FOUNDING-BOX END -->` in `src/kit.html`, and a ready-made Lead Leak Audit box (₹9,999 / $499) waits, commented out, right below it.
+
+1. **When:** Mon 30 Nov 2026 at 23:59 IST, or as soon as the 3rd founding slot is signed, whichever comes first.
+2. **Swap:** delete everything from `FOUNDING-BOX START` to `FOUNDING-BOX END`, then remove the first line (`<!-- AUDIT-BOX …`) and the last line (`AUDIT-BOX END -->`) of the comment around the Audit box.
+3. **Re-render:** `node lead-magnet/render.mjs` (it also replaces `website/kit/lead-leak-kit.pdf`), read `pages/page-13.png`, then redeploy the site.
+4. **Also:** update the page-13 row in the page map above, and switch the FOUNDING auto-DM to its closed text ([`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.3).
+
+**When prices rise (Mon 18 Jan 2027, only if it goes ahead):** change the Audit price in that box to the new one (₹14,999 / $699 in the strategy), check page 13 for any other price, and re-render.
+
 Prefer Canva? Import the PNGs as a starting point, but `src/kit.html` stays the source of truth, so reflect any wording changes there too.
 
 ## Facts and claims used (check before each re-publish)
@@ -65,7 +76,7 @@ Prefer Canva? Import the PNGs as a starting point, but `src/kit.html` stays the 
 - **Statistics (each has a source line on its page):** BYU ScholarsArchive / HBR "The Short Life of Online Sales Leads" (2011), an audit of 2,241 US firms: about 37% answered web leads within an hour and 23% never did (p.03). Planet DDS 2025 via DOCS Education: 6.9% average dental no-show rate, 12.9% cancellations (p.05). Both are labelled US data.
 - **Free-tool features:** WhatsApp Business app quick replies (`/` shortcut), labels, away and greeting messages, catalogue, short link and QR code; Meta Business Suite inbox with instant replies; Meta's Business AI in WhatsApp (launched in India in 2026). Menu paths such as Settings › Business tools › Quick replies and Inbox › Automations are as documented in Oct 2026 but were **not checked in the app**. Open each menu once and fix any label that has moved.
 - **No invented proof:** no testimonials, client names, results or follower counts. The About section says AskHemant launched in October 2026 and has no client case studies yet. The kit contains no demo visual, so no DEMO badge is needed. The cover chat is a generic illustration with no business name.
-- **Prices** match the strategy and exclude GST: Founding Client Pilot ₹14,999 / $599 for Audit + Sprint (3 slots, closes Mon 30 Nov 2026 or when full); Speed-to-Lead Sprint ₹34,999 / $1,499. The Fit Call is free, 20 minutes, at askhemant.ai/book.
+- **Prices** match the strategy and exclude GST: Founding Client Program ₹14,999 / $599 for Audit + Sprint (3 slots, closes Mon 30 Nov 2026 or when full); Speed-to-Lead Sprint ₹34,999 / $1,499. The Fit Call is free, 20 minutes, at askhemant.ai/book.
 - **Compliance:** templates 09 and 10 are marketing messages and carry a STOP opt-out line. Reminders 06 and 07 are tagged Utility. The kit tells readers to message only people who enquired, to honour every STOP, and that it is general guidance, not legal advice. The Hinglish uses gender-neutral verb forms ("hum", "kijiye", "karein") so any broker can send it.
 
 ## The Lead Leak Calculator

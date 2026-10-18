@@ -1,9 +1,9 @@
 # Fit Call Script (20 minutes)
 
 **For:** Hemant · **Event:** Cal.com *Fit Call* (`https://cal.com/askhemant/fit-call`, 20 min, free, Tue–Thu, max 6 a week) on Google Meet
-**Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §4 (offers), §5 (Fit Call script, funnel stage 7) · intake and routing: [`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) · prices: [`04-pricing-sheet.md`](./04-pricing-sheet.md) · after the call: [`03-proposal-template.md`](./03-proposal-template.md), [`07-follow-up-templates.md`](./07-follow-up-templates.md)
+**Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §4 (offers), §5 (Fit Call script, funnel stage 7) · intake and routing: [`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) · prices: [`04-pricing-sheet.md`](./04-pricing-sheet.md) · after the call: [`03-proposal-template.md`](./03-proposal-template.md), [`07-follow-up-templates.md`](./07-follow-up-templates.md) · delivering an Audit or a Scoping: [`12-audit-delivery.md`](./12-audit-delivery.md)
 
-> **The promise of the call:** a diagnosis and an honest yes or no on fit. **Hemant diagnoses but doesn't design the solution on the call** (designing is what the Audit is for). No pressure, no "today only" offers. The only deadline you may mention is the real one: founding slots close **Mon 30 Nov 2026** or when full.
+> **The promise of the call:** a diagnosis and an honest yes or no on fit. **Hemant diagnoses but doesn't design the solution on the call** (designing is what the Lead Leak Audit or the AI Build Scoping is for). No pressure, no "today only" offers. The only deadline you may mention is the real one: founding slots close **Mon 30 Nov 2026** or when full.
 >
 > Lines in quote blocks are said out loud. Hinglish lines (HI) are there for callers who switch to Hindi; Hindi first-person verbs are gendered, so adjust *karta/karti* to the form you use.
 
@@ -11,10 +11,10 @@
 
 ## 0. Before the call (10 minutes, the hour before)
 
-- [ ] **Read the intake answers** on the Cal.com booking (business type, city/market, lead sources, leads a month, reply speed, task to fix first, budget band). Check the routing in [`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) §4 was applied; if a red-route booking slipped through, still take the call, but plan to end on the Kit + Session.
+- [ ] **Read the intake answers** on the Cal.com booking (business type, city/market, lead sources, leads a month, reply speed, task to fix first, budget band). Check the routing in [`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) §4 was applied; if a red-route booking slipped through, still take the call, but plan to end on the Kit + Session. **Other business** (green-GEN)? Use the GEN diagnosis in §2.1 instead of the lead questions.
 - [ ] **Look at their public presence for 3 minutes:** Instagram, website, a portal listing. Note the lead sources you can see. **Do not send a test enquiry without their consent.**
 - [ ] **2-hour WhatsApp reminder sent** (`/confirm`): "Hi [Name], a quick reminder: our 20-min Fit Call is today at [time] IST on Google Meet: [link]. Reply 1 to confirm."
-- [ ] Open: the **call notes template** (§6), the pipeline Sheet row, your WhatsApp chat with them, the [`04-pricing-sheet.md`](./04-pricing-sheet.md) cheat-table, and the **Audit payment link** `{{RAZORPAY_AUDIT_LINK}}` (quick reply `/audit`).
+- [ ] Open: the **call notes template** (§6), the pipeline Sheet row, your WhatsApp chat with them, the [`04-pricing-sheet.md`](./04-pricing-sheet.md) cheat-table, and the **Audit payment link** `{{RAZORPAY_AUDIT_LINK}}` (quick reply `/audit`). For a GEN call, have a per-client Razorpay Payment Link for the **AI Build Scoping** (₹9,999) ready to create ([`04-pricing-sheet.md`](./04-pricing-sheet.md) §9).
 - [ ] Check **capacity**: how many Sprints are running (max 2 at once) and the earliest start date you can honestly offer.
 - [ ] Check **founding slots** left (`foundingSlotsLeft` in [`website/assets/js/config.js`](../website/assets/js/config.js)) and today's date versus Mon 30 Nov 2026.
 - [ ] Camera on, notifications off, a glass of water. Start the call 1 minute early.
@@ -51,6 +51,18 @@ Ask in this order. Write their **exact words** for the problem; they go into the
 
 **Short on time?** Questions 1, 2, 6, 8 are the minimum.
 
+### 2.1 GEN calls (Other business): diagnose the process instead
+
+For a green-GEN booking (Other business, budget ₹15K or more), or a broker or clinic who mainly wants something other than lead handling, ask these 5 instead of the 10 above. Same rules: their exact words, no designing, no tools yet.
+
+| # | Question (EN) | HI | Listen for |
+|---|---|---|---|
+| G1 | "Which process do you want automated? Walk me through it, step by step, as it runs today." | "Kaunsa process automate karna chahte hain? Aaj woh step-by-step kaise chalta hai, bataiye." | **The process.** One repetitive process of up to about 10 steps = Quick Win size. Several connected processes, or "an AI that knows our business" = Scoping |
+| G2 | "What goes in and what comes out? For example a form, an email or a PDF in; a sheet row, a reply or a report out." | "Isme input kya aata hai aur output kya nikalta hai? Jaise form, email ya PDF andar; sheet row, reply ya report bahar." | **Inputs and outputs.** Clear and repeatable = buildable now. "It depends" at every step = needs Scoping |
+| G3 | "Who uses it, inside the team and outside, and how often does it run: a day or a month?" | "Ise kaun use karta hai, team ke andar aur bahar, aur din ya mahine mein kitni baar chalta hai?" | **Users and volume.** Customers in the loop means consent and data-handling notes |
+| G4 | "Where does the data live today, and which tools do you already use? A sheet, a CRM, Zoho Books, email, WhatsApp, shared documents?" | "Data aaj kahan rehta hai, aur kaunse tools already use karte hain? Sheet, CRM, Zoho Books, email, WhatsApp, shared documents?" | **Data sources and tools.** Tools with an API or email/Sheets access vs paper and screens only. Personal or sensitive data (DPDP) |
+| G5 | "How will you know it's working: which number changes? And what budget do you have in mind for this?" | "Kaise pata chalega ki kaam kar raha hai: kaunsa number badlega? Aur iske liye budget kitna socha hai?" | **Success metric + budget.** Hours saved, turnaround time, errors, enquiries handled: **their number**. Budget band from the intake, confirmed |
+
 ---
 
 ## 3. Minute 10–15: name the leaks and recommend
@@ -74,10 +86,18 @@ HI:
 | **Not simple:** 4+ sources, a team of 3+ agents, a portal you're unsure about, a CRM already in place, or they want depth before committing | **Lead Leak Audit** ₹9,999 / $499 (100% credited to a Sprint booked within 30 days) | §4 "Audit" |
 | 3–10 agents, round-robin or by-area assignment, a CRM, manager reporting | **Audit first**, then likely the **Speed-to-Lead System (Team)** ₹79,999 / $2,999 | §4 "Audit", mention Team as the likely build |
 | In niche, about 40–500 enquiries a month, 2+ sources, OK with measured and published results, **before Mon 30 Nov 2026 with slots open** | **Founding Client Program** ₹14,999 / $599 for Audit + Solo or Clinic Sprint | §4 "Founding" |
-| Wants an internal AI assistant or an AI product | **Audit first** (Custom AI Agent / AI Product Build is scoped only after an Audit; from ₹1,50,000 / $6,000) | §4 "Audit" |
-| One repetitive workflow outside lead handling | **Quick Win Build** ₹24,999 / $999 | §4 "Quick Win" |
-| Under about 20 leads a month, budget under ₹15K, out of niche, or a "general ChatGPT on WhatsApp" bot | **Not a fit:** the free Kit + the **Ask Hemant Session** ₹1,999 / $99 | §4 "Not a fit" |
+| Wants an internal AI assistant or an AI product, or the process is too fuzzy to quote (GEN path below) | **AI Build Scoping** ₹9,999 / $499 (the Custom AI Agent / AI Product Build, from ₹1,50,000 / $6,000, is scoped in an AI Build Scoping, credited to the build) | §4 "AI Build Scoping" |
+| One repetitive workflow outside lead handling (GEN path below) | **Quick Win Build** ₹24,999 / $999 | §4 "Quick Win" |
+| Budget under ₹15K; a real-estate or clinic business with under about 20 leads a month; or a "general ChatGPT on WhatsApp" bot | **Not a fit:** the free Kit + the **Ask Hemant Session** ₹1,999 / $99 | §4 "Not a fit" |
 | Wants bulk or cold WhatsApp blasting | **Decline** | §4 "Decline" |
+
+### 3.3 The GEN decision path (after §2.1)
+
+| If… | Recommend | Say |
+|---|---|---|
+| **One process**, up to about 10 steps, clear inputs and outputs (G1–G2), tools with an API or email/Sheets access (G4), a success metric (G5), budget ₹15K or more | **Quick Win Build** ₹24,999 / $999, proposal within 24 hours | §4 "Quick Win" |
+| An internal AI assistant on their SOPs and documents, an AI product, several connected processes, inputs and outputs that change case by case, or personal or sensitive data | **AI Build Scoping** ₹9,999 / $499, 5 working days, 100% credited to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days. If the build is likely to be a Custom AI Agent / AI Product Build and their budget band is under ₹1L, say plainly that it starts from ₹1,50,000 / $6,000 before offering the Scoping | §4 "AI Build Scoping" |
+| Budget under ₹15K; no clear owner or success metric for the process; a general-purpose chatbot on WhatsApp; or work outside AI and automation | **Not a fit:** the free Kit + the **Ask Hemant Session** ₹1,999 / $99 (or decline) | §4 "Not a fit" |
 
 ---
 
@@ -109,14 +129,25 @@ HI:
 
 Rules: offer it only to people who meet the criteria in [`10-founding-client-program.md`](./10-founding-client-program.md) §4. **Don't send `{{RAZORPAY_FOUNDING_LINK}}` until the agreement is signed.**
 
+### AI Build Scoping (send the payment link the same day)
+> "My recommendation is an AI Build Scoping before anything gets built. It's ₹9,999 [or $499], done in 5 working days. You fill a short pre-scoping form and we do a 60-minute workshop. You get a use-case spec: the process, the inputs and outputs, who uses it, the data sources and the success metric. Plus an architecture sketch, data-handling and risk notes, a milestone plan with acceptance criteria, and a fixed quote, with a 20-minute recorded walkthrough and a 30-minute review call. If you go ahead with the build within 30 days, the full ₹9,999 is credited. Shall I send the payment link on WhatsApp?"
+
+HI:
+> "Meri recommendation hai ki kuch banane se pehle AI Build Scoping karein. ₹9,999, 5 working days mein. Aap ek chhota pre-scoping form bharte hain, aur 60 minute ka workshop hota hai. Aapko milega use-case spec: process, input aur output, kaun use karega, data sources aur success metric. Saath mein architecture sketch, data-handling aur risk notes, acceptance criteria ke saath milestone plan, aur fixed quote, 20 minute ke recorded walkthrough aur 30 minute ki review call ke saath. 30 din mein build lete hain toh poore ₹9,999 credit. Payment link WhatsApp par bhej doon?"
+
+**If yes, send on WhatsApp the same day** (India: a per-client Razorpay Payment Link for ₹9,999; abroad: a Skydo invoice for $499):
+> Here's the AI Build Scoping payment link (₹9,999, 100% credited to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days): [Razorpay payment link]. Price excludes GST. As soon as it's through, I'll send the pre-scoping form and the workshop booking link (within 1 working day).
+
+Delivery, day by day: [`12-audit-delivery.md`](./12-audit-delivery.md) Part B.
+
 ### Quick Win
 > "That's a single workflow, so it's a Quick Win Build: ₹24,999 [$999], 7 to 10 working days, with documentation, a handover video and a 14-day bug-fix window. I'll confirm the exact steps in a one-page proposal by [tomorrow]."
 
 ### Not a fit
-> "Honestly, a full system isn't the right fit yet, [because you get under about 20 leads a month / because it's outside what I build]. Two things that will help: the free Lead Leak Kit covers the quick fixes with tools you already have, and if you want an hour of focused help, the Ask Hemant Session is ₹1,999 [$99], with the recording and a written action list within 24 hours. And if you build with me within 14 days, the fee is credited."
+> "Honestly, a full system isn't the right fit yet, [because you get under about 20 leads a month / because a build starts above your budget / because it's outside what I build]. Two things that will help: the free Lead Leak Kit covers the quick fixes with tools you already have, and if you want 45 minutes of focused help, the Ask Hemant Session is ₹1,999 [$99], with the recording and a written action list within 24 hours. And if you build with me within 14 days, the fee is credited."
 
 HI:
-> "Seedhi baat: abhi full system sahi fit nahi hai, [kyunki mahine mein 20 se kam leads hain / kyunki yeh mere kaam ke bahar hai]. Do cheezein kaam aayengi: free Lead Leak Kit aapke existing tools se quick fixes deta hai, aur ek ghante ki focused help chahiye toh Ask Hemant Session ₹1,999 ka hai, recording aur 24 ghante mein written action list ke saath. 14 din mein build karte hain toh fees credit."
+> "Seedhi baat: abhi full system sahi fit nahi hai, [kyunki mahine mein 20 se kam leads hain / kyunki build aapke budget se upar shuru hota hai / kyunki yeh mere kaam ke bahar hai]. Do cheezein kaam aayengi: free Lead Leak Kit aapke existing tools se quick fixes deta hai, aur 45 minute ki focused help chahiye toh Ask Hemant Session ₹1,999 ka hai, recording aur 24 ghante mein written action list ke saath. 14 din mein build karte hain toh fees credit."
 
 Then send `/notfit` or `/session` on WhatsApp.
 
@@ -144,6 +175,7 @@ Then send `/notfit` or `/session` on WhatsApp.
 
 ```
 Fit Call · [Name] · [Business] · [date, time IST] · lane: RE / CL / GEN · market: India / UAE / other
+GEN only (§2.1):      process: [ ] · in → out: [ ] · users / runs a month: [ ] · data & tools: [ ] · success metric: [ ] · budget: [ ]
 Sources & volume:     [source: n/month] [source: n/month] ...  Total ≈ [n]/month
 Who replies / speed:  [who] · [typical first-reply time] · after hours: [what happens]
 After first reply:    [qualification? booking? reminders? follow-up after day 2?]
@@ -153,7 +185,7 @@ Tried already:        [tools]
 Decision-maker(s):    [who] · wanted by: [date]
 The problem, in their words: "[exact quote]"
 Leak 1: [ ]   Leak 2: [ ]
-Recommendation:       Audit / Solo Sprint / Clinic Sprint / Team (after Audit) / Founding / Quick Win / Session / not a fit
+Recommendation:       Audit / Solo Sprint / Clinic Sprint / Team (after Audit) / Founding / Quick Win / AI Build Scoping / Session / not a fit
 Next step agreed:     [payment link sent? proposal by (date/time)? founding terms by (date/time)?]
 NRI after-hours angle mentioned?  yes / no
 ```
@@ -167,8 +199,8 @@ NRI after-hours angle mentioned?  yes / no
 - [ ] WhatsApp label: Showed / Proposal / Won.
 - [ ] Send the **recap** ([`07-follow-up-templates.md`](./07-follow-up-templates.md) §1): the 2 leaks in their words, the recommendation, the next step.
 
-**If the Audit link was sent**
-- [ ] Payment received? → send the pre-audit form and the hidden **Audit Workshop** link (`https://cal.com/askhemant/audit-workshop`) **within 1 working day**, and log the receipt ([`09-invoicing-and-tax-notes-india.md`](./09-invoicing-and-tax-notes-india.md)).
+**If the Audit or AI Build Scoping link was sent**
+- [ ] Payment received? → send the pre-audit form (or the pre-scoping form) and the hidden **Audit Workshop** link (`https://cal.com/askhemant/audit-workshop`) **within 1 working day**, and log the receipt ([`09-invoicing-and-tax-notes-india.md`](./09-invoicing-and-tax-notes-india.md)). Then follow the day-by-day plan in [`12-audit-delivery.md`](./12-audit-delivery.md).
 - [ ] Not paid by the next morning → one gentle reminder (07 §8), then wait.
 
 **If a proposal is due**

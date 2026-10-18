@@ -4,11 +4,15 @@
 
 This guide takes you from "nothing bought" to "live, tested site" in about 90 minutes. Hostinger menu names change from time to time; steps marked *(UI path unverified)* come from general knowledge, so look for the nearest match in hPanel.
 
-> **Before paying for anything:** run the 5-minute availability check in [`docs/01-brand-and-domain.md`](../docs/01-brand-and-domain.md) §6 (Instagram handle, Hostinger domain search, WHOIS, Google, trademarks).
+> **Before paying for anything:** run the 5-minute availability check in [`docs/01-brand-and-domain.md`](../docs/01-brand-and-domain.md) §6 (Instagram handle, Hostinger domain search, WHOIS, Google, trademarks). Claim **`cal.com/askhemant`** in the same 5 minutes, so the booking links on the site point at your account.
+
+> **Lean path:** launching on askhemant.com only, without buying askhemant.ai yet? Read [Lean path: launching on askhemant.com first](#lean-path-launching-on-askhemantcom-first) before §1. It changes §1–§4 and skips §7.
+
+> **Never deploy with hPanel → Advanced → Git.** It publishes the whole repository, including `docs/` and `sales/`. Deploy by uploading the **contents** of `website/` (including `.htaccess`) to `public_html` with File Manager, or with the GitHub Action over FTP (§6).
 
 ---
 
-## 1. Buy the domain and hosting (Mon 19 Oct)
+## 1. Buy the domain and hosting (Sun 18 Oct, day 0)
 
 1. On **hostinger.com/in**, buy **Premium Web Hosting** (48 months gives the lowest monthly rate; 12 months costs less cash now).
 2. During onboarding, or later in hPanel → **Domains**, claim the **free domain: `askhemant.com`**.
@@ -85,22 +89,22 @@ Everything in `config.js` is visible to visitors, which is fine for these public
 
 ### Account settings that go with the tokens
 
-- **Cal.com:** username `askhemant`; event types *Fit Call* (20 min, public, slug `fit-call`) and *Ask Hemant Session* (45 min, slug `ask-hemant-session`). Add the 7 intake questions from `sales/02-cal-com-intake-form.md`.
+- **Cal.com:** username `askhemant`, claimed during the 5-minute name check (Sun 18 Oct). Before the site goes live and P01 posts (**Mon 19 Oct, 15:00 IST**), a minimal public *Fit Call* event must exist (20 min, slug `fit-call`), or the `/book/` calendar shows Cal.com's "not found" page. The 7 intake questions from `sales/02-cal-com-intake-form.md` and the hidden events can follow on **Tue 20 Oct**: *Ask Hemant Session* (45 min, slug `ask-hemant-session`, booked after payment) and *Client call* (30 min, slug `client-call`, for active clients).
 - **Tally calculator form:** 4 fields (first name, WhatsApp number, business type, leads a month) plus a **separate, unticked** marketing-consent checkbox. Add hidden fields `utm_source`, `utm_medium`, `utm_campaign`, `source`: the site passes them in automatically.
 - **Web3Forms:** in the dashboard, restrict the key to the `askhemant.ai` domain if offered. After launch, submit a test without JavaScript once to confirm the redirect back to `https://askhemant.ai/#message-sent` works on your plan.
 - **GA4:** set **data retention to 14 months** (the privacy notice says so) and mark `kit_submit`, `book_click`, `whatsapp_click`, `pay_click` (plus `book_complete`, `contact_submit`, `kit_download`) as key events.
 - **Razorpay:** its website check usually looks for terms, privacy, refund/cancellation and contact information. `/terms/` (section 9) and `/privacy/` cover these; confirm the refund defaults in section 9 first.
-- **Recorded walkthroughs:** the Audit includes a "20-minute recorded walkthrough". Loom's free plan reportedly caps recordings at 5 minutes, so use Loom's paid plan, or record with OBS or your phone and share the video unlisted via YouTube or Google Drive.
+- **Recorded walkthroughs:** the Audit and the AI Build Scoping include a "20-minute recorded walkthrough", and the builds a "recorded handover". The public copy never promises Loom, so any tool works. Loom's free plan reportedly caps recordings at 5 minutes, so use Loom's paid plan, or record with OBS or your phone and share the video unlisted via YouTube or Google Drive.
 
 ### Decisions for Hemant (the site shows a default until you decide)
 
 - **Decision for Hemant: does the Agency −25% apply beyond builds?** `/pricing/#agency` promises −25% on builds only (the Sprints, the Team system, the Quick Win Build and Custom AI builds) and says Audits and retainers for partner clients are set in the partner agreement. If you extend the discount, update that box and `sales/04-pricing-sheet.md` §5 together.
-- **Decision for Hemant: does the Clinic Sprint price also rise on Mon 18 Jan 2027?** The site doesn't mention the price rise. Only if 3 documented results exist: announce on Mon 4 Jan 2027, and on 18 Jan change the Audit to ₹14,999 / $699 and the Solo Sprint to ₹44,999 / $1,999 on `/pricing/` (cards and JSON-LD) and `/` (step cards, price cards, founding "List" line). The Clinic Sprint stays ₹34,999 / $1,499 unless you decide it follows.
+- **Decision for Hemant: does the Clinic Sprint price also rise on Mon 18 Jan 2027?** The site doesn't mention the price rise. Only if 3 documented results exist: announce on Mon 4 Jan 2027, and on 18 Jan change the Audit to ₹14,999 / $699 and the Solo Sprint to ₹44,999 / $1,999 on `/pricing/` (cards and JSON-LD) and `/` (step cards, price cards, founding "List" line). Update the kit's last page too (`lead-magnet/src/kit.html`, then `node lead-magnet/render.mjs`). The Clinic Sprint stays ₹34,999 / $1,499 unless you decide it follows. The AI Build Scoping is priced the same as the Audit; decide whether it follows too.
 - **Decision for Hemant: Quick Win Build payment terms.** Shown as the default, 50% to start and 50% at go-live (₹12,500 + ₹12,499 / $500 + $499), on `/pricing/`, `/terms/` §4 and the home FAQ. Change all three if you decide otherwise.
 
 ## 6. Upload the site
 
-Pick **one** method.
+Pick **one** of the two methods below. **Never use hPanel → Advanced → Git** (see the end of this section).
 
 ### Option A: hPanel File Manager (simplest, manual)
 
@@ -128,7 +132,7 @@ The workflow is `.github/workflows/deploy-website.yml`. It deploys only `website
 
 **Important with Option B:** the repo is the source of truth. If you edit `config.js` in File Manager, the next deploy overwrites it with the repo version, so commit config changes to the repo.
 
-**Why not hPanel → Advanced → Git?** Hostinger's Git deploy publishes the whole repository root, which would put `docs/`, `sales/` and everything else on the public site. Use it only if the website ever moves to its own repository.
+**Why never hPanel → Advanced → Git?** Hostinger's Git deploy publishes the whole repository root, which would put `docs/`, `sales/` (prices you negotiate, agreement drafts) and everything else on the public site. Upload the contents of `website/` with Option A, or let Option B do it. Reconsider Git deploy only if the website ever moves to its own repository.
 
 ## 7. Redirect askhemant.com to askhemant.ai
 
@@ -175,7 +179,33 @@ Run this in a private browser window, on your phone and on a laptop.
 - Edit the HTML files directly; there is no build step. Shared parts (header, footer) repeat on every page, so change all 8 HTML files together.
 - After changing `assets/css/*.css` or `assets/js/site.js`, bump the `?v=20261018` value in every page's `<head>` so browsers fetch the new file (they cache CSS/JS for 30 days). `config.js` is never cached long, so it needs no version bump.
 - When you change the privacy notice or terms, update the "Last updated" date on the page and `lastmod` in `sitemap.xml`.
+- **When the founding program closes** (Mon 30 Nov 2026, 23:59 IST, or as soon as the 3rd slot is signed): the site switches itself to "closed" (set `foundingSlotsLeft` to `0` if a 3rd signing closes it early), but the kit PDF doesn't. Swap the `FOUNDING-BOX` on the kit's last page for the Lead Leak Audit box (`lead-magnet/README.md`, "When the founding program closes"), run `node lead-magnet/render.mjs`, redeploy, and switch the FOUNDING auto-DM to the closed text (`instagram/07-dm-automation-playbook.md` §2.3).
 - Planned pages from the strategy (`/demos` in week 2, `/clinics` in week 3, `/case-studies` in month 3): copy an existing page folder, change its title, description, canonical URL and content, then add it to `sitemap.xml` and the nav/footer.
+
+## Lean path: launching on askhemant.com first
+
+Use this if you'd rather not pay for askhemant.ai yet (about ₹16.7–18.5K for the 2-year minimum, an estimate) or it isn't available. You launch on **askhemant.com**, the free domain that comes with Premium hosting, and can move to askhemant.ai later without breaking a link.
+
+1. **§1:** buy Premium Web Hosting and claim the free **askhemant.com**. Skip buying askhemant.ai. Still click the registrant verification link straight away.
+2. **Switch the repo to askhemant.com** (from the repo root, Node 18+):
+   ```bash
+   node tools/switch-domain.mjs askhemant.com           # dry run: lists every file and how many changes
+   node tools/switch-domain.mjs askhemant.com --write   # applies them
+   ```
+   - It replaces `askhemant.ai` (so `hello@askhemant.ai` too) with `askhemant.com` across `website/`, `lead-magnet/src/`, `instagram/` (the Markdown files and `carousels.json`), `tools/render/data/` and `templates/`, `sales/`, `automations/` and `docs/03-accounts-setup-guide.md`.
+   - It comments out the askhemant.com → askhemant.ai redirect in `website/.htaccess` (the block between `# BEGIN SECOND-DOMAIN-REDIRECT` and `# END SECOND-DOMAIN-REDIRECT`), which would otherwise send the site to itself.
+   - It never touches `docs/00-strategy.md`, `docs/01-brand-and-domain.md`, `docs/research/`, `README.md` or this guide (they record the decision), or the Instagram backup handle `@askhemant.ai`. It lists the lines it left alone on purpose; read them.
+3. **Re-render everything that has the domain drawn in:**
+   ```bash
+   node lead-magnet/render.mjs                                                # kit PDF + pages, and website/kit/lead-leak-kit.pdf
+   node tools/render/render-carousels.mjs && node tools/render/render-assets.mjs   # Instagram graphics
+   python3 lead-magnet/src/build_calculator.py                                # calculator .xlsx (needs openpyxl)
+   ```
+   `website/assets/img/og-image.png` (the link preview image) also shows askhemant.ai and has no source file in the repo: replace it with a 1200×630 version that shows askhemant.com before you share links.
+4. **§2–§6 and §8, with askhemant.com wherever they say askhemant.ai:** askhemant.com is the website's main domain (§2); SSL for `askhemant.com` and `www.askhemant.com` (§3); the mailbox is **hello@askhemant.com** (§4); the Web3Forms key, Cal.com, GA4, Clarity, Search Console and Razorpay's website field all use askhemant.com. **Skip §7.** In the §8 checklist, `http://www.askhemant.com` should land on `https://askhemant.com/`.
+5. **Commit the switch** as one commit, so it's easy to undo, before deploying with Option A or B.
+
+**Moving to askhemant.ai later:** buy it, add it as the website's main domain with SSL, then `git revert` the switch commit. That puts askhemant.ai back everywhere and re-enables the `.htaccess` redirect, so every askhemant.com link (bio, kit PDFs already downloaded, printed material) 301s to askhemant.ai. If later edits make the revert conflict, keep the askhemant.ai side. Re-render (point 3), redeploy, do §7, and keep askhemant.com renewed.
 
 ## What's in this folder
 

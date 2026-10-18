@@ -1528,7 +1528,7 @@ function build06() {
     reminder_template: 'ah_call_reminder_2h',
     template_lang: 'en',
     reminder_minutes_before: 120,
-    event_labels: JSON.stringify({ 'fit-call': 'free 20-min Fit Call', 'ask-hemant-session': '45-min Ask Hemant Session', 'audit-workshop': 'Lead Leak Audit workshop', kickoff: 'kickoff call' }),
+    event_labels: JSON.stringify({ 'fit-call': 'free 20-min Fit Call', 'ask-hemant-session': '45-min Ask Hemant Session', 'audit-workshop': '60-min Audit workshop', 'audit-review': '30-min Audit review', kickoff: 'kickoff call', 'client-call': '30-min client call' }),
     stage_moving_events: 'fit-call',
     default_country_code: '91',
     require_signature: true,
@@ -1638,10 +1638,15 @@ function build06() {
     ].filter(Boolean).join(' · ');
     const lane = laneOf(intake.business_type);
     const lowBudget = /<\s*₹?\s*15|under\s*₹?\s*15|less than\s*₹?\s*15/i.test(intake.budget);
-    const offNiche = /other business/i.test(intake.business_type);
+    const nicheLane = lane === 'RE' || lane === 'CL';
     const fewLeads = /under\s*20/i.test(intake.leads_per_month);
-    // Red route, sales/02-cal-com-intake-form.md: budget under ₹15K, under 20 leads a month, or "Other business".
-    const route = b.slug === 'fit-call' && (lowBudget || offNiche || fewLeads) ? ' ROUTE: budget under ₹15K, under 20 leads a month or outside the niche: send the Kit and the Ask Hemant Session link (₹1,999 / $99) instead.' : '';
+    const otherBusiness = /other business/i.test(intake.business_type);
+    // Routing, sales/02-cal-com-intake-form.md §4. Red: budget under ₹15K, OR (real estate or clinic AND under
+    // 20 leads a month). "Other business" with a budget of ₹15K or more is green-GEN: keep the Fit Call.
+    const redWhy = [lowBudget && 'budget under ₹15K', nicheLane && fewLeads && 'real estate or clinic with under 20 leads a month'].filter(Boolean);
+    let route = '';
+    if (b.slug === 'fit-call' && redWhy.length) route = ` ROUTE (red): ${redWhy.join(' and ')}: send the Kit and the Ask Hemant Session link (₹1,999 / $99) instead (message R1).`;
+    else if (b.slug === 'fit-call' && otherBusiness && intake.budget) route = ' ROUTE (green-GEN): keep the Fit Call; likely outcome is a Quick Win Build or an AI Build Scoping.';
     const status = { created: 'confirmed', rescheduled: 'rescheduled', cancelled: 'cancelled' }[b.event];
     const what = b.event === 'cancelled'
       ? `${b.event_label} cancelled${b.cancellation_reason ? ' (' + b.cancellation_reason + ')' : ''}.`

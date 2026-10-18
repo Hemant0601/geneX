@@ -106,7 +106,7 @@ Prepared for Hemant Kumar. Research date: 2026-10-18.
 ### Uploading the site
 1. **File Manager:** hPanel → Files → File Manager → `public_html`. Upload files, or upload a zip and extract it (Astro docs for Hostinger).
 2. **FTP:** hPanel → Files → FTP Accounts, then connect with FileZilla.
-3. **Git (recommended):** hPanel → Advanced → **Git** → **Connect with GitHub**. Pick the repo, branch and deploy directory. The Hostinger GitHub App sets up **auto-deploy on push**, with the webhook managed for you. A legacy SSH-key flow works for other Git hosts, with a manual webhook (docs.hostinger.com). One third-party source says Git deploy needs Premium or above.
+3. **Git:** hPanel → Advanced → **Git** → **Connect with GitHub**. *(Not used for this repo: it would publish the whole repository, including docs/ and sales/. See website/DEPLOY-HOSTINGER.md.)* Pick the repo, branch and deploy directory. The Hostinger GitHub App sets up **auto-deploy on push**, with the webhook managed for you. A legacy SSH-key flow works for other Git hosts, with a manual webhook (docs.hostinger.com). One third-party source says Git deploy needs Premium or above.
 
 ### SSL
 - Hostinger web hosting plans advertise **free SSL**. After DNS propagates, check hPanel → Security → SSL and force HTTPS **[general knowledge, not re-verified]**.

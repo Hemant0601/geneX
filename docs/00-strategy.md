@@ -24,7 +24,7 @@
 | **Primary niche** | Real estate brokers, small brokerages and channel partners. India first; Dubai/UAE from month 2 |
 | **Secondary** | Private clinics (dental, derm/aesthetic, physio). Digital-marketing agencies as a white-label sales channel from month 2 |
 | **Flagship offer** | **Speed-to-Lead Sprint**: ₹34,999 / $1,499, live in 10 working days after access is granted |
-| **Entry points** | Free 20-min **Fit Call** (intake form required) → **Lead Leak Audit** at ₹9,999 / $499 (100% credited to a Sprint). Side door for people who don't fit: **Ask Hemant Session**, ₹1,999 / $99 |
+| **Entry points** | Free 20-min **Fit Call** (intake form required) → **Lead Leak Audit** at ₹9,999 / $499 (100% credited to a Sprint), or **AI Build Scoping** at the same price for custom automations and AI products. Side door for people who don't fit: **Ask Hemant Session**, ₹1,999 / $99 |
 | **Engine for the first paying client** | **3 Founding Client slots** at ₹14,999 / $599 for Audit + Sprint, in exchange for measured before/after data and permission to publish. Closes **Mon 30 Nov 2026** or when full |
 | **Lead magnet** | **The Lead Leak Kit**. Viewers comment **LEAKS** and receive it by DM |
 | **Content** | 3 Reels + 2 carousels + 2 trial reels a week; Stories 5+ days a week; one Saturday batch session. Mix: 60% real estate / 20% clinics / 20% general |
@@ -197,7 +197,7 @@
 **.ai or .si? Choose .ai.**
 - **.si** is Slovenia's country domain. It costs $11.99 / ₹1,169 for the first year and $16.99 / ₹1,649 a year after that ([Hostinger .si](https://www.hostinger.com/tld/si-domain)). People who hear "AI consultant" will type **.ai** and land on whoever owns it.
 - **.ai** costs $89.99–99.99 for the first year and $109.99 a year to renew, with a **2-year minimum**, so about $190–210 (about ₹16.7–18.5K) up front *(estimate)*. It is not covered by Hostinger's free-domain offer ([Hostinger .ai](https://www.hostinger.com/tld/ai-domain)).
-- **If cash is tight:** launch on askhemant.com and add the .ai after the first payment, accepting the risk that someone else registers it first.
+- **If cash is tight:** launch on askhemant.com and add the .ai after the first payment, accepting the risk that someone else registers it first. How: `node tools/switch-domain.mjs askhemant.com` (a dry run; `--write` applies it), then re-render, per [`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md#lean-path-launching-on-askhemantcom-first) "Lean path".
 
 Full comparison, buying steps, handle steps, colours, fonts and voice: **[`01-brand-and-domain.md`](./01-brand-and-domain.md)**.
 
@@ -220,8 +220,8 @@ Full comparison, buying steps, handle steps, colours, fonts and voice: **[`01-br
 | 0 | **Lead Leak Kit** (lead magnet) | A PDF covering the 7 leaks, 10 WhatsApp templates, a qualification script and a speed self-test. Bonus: the Lead Leak Calculator (§7) | Instant | Free | Free | — |
 | 1 | **Fit Call** | A 20-minute diagnosis and an honest yes or no on fit. Hemant diagnoses but doesn't design the solution on the call | Tue–Thu slots, **max 6 a week** | **Free** (intake form required) | **Free** | — |
 | 1b | **Ask Hemant Session** (side door) | A 45-minute call on any AI or automation question. The recording plus a written action list within 24 hours. **100% credited** to an Audit or build booked within 14 days | Within 48 hours | **₹1,999** | **$99** | 100% upfront |
-| 2 | **Lead Leak Audit** | A pre-audit form and 60-minute workshop. Timed test enquiries through up to 3 of the client's own channels (with consent). Current and proposed lead-flow map. **Leak Report** (each leak, its evidence, the fix and the effort). ROI worksheet using **the client's own numbers**. System blueprint with a **fixed quote**. 20-minute Loom plus a 30-minute review call. **100% credited** to a Sprint booked within 30 days | 5 working days | **₹9,999** | **$499** | 100% upfront |
-| 3a | **Speed-to-Lead Sprint (Solo)** | Capture from **up to 3 sources**: Meta lead ads, website form, Instagram DMs, and portal alerts where the portal allows. **Instant WhatsApp first reply** on the official platform. **AI qualifier scoped to the business**, in English or Hinglish (budget, BHK/type, locality, timeline, loan or cash, self-use or investment). Hot/warm/cold tags. **Handover rules**: a hot lead triggers a WhatsApp alert to the agent. **Site-visit booking** with reminders 24 hours and 2 hours before, plus a Maps pin. **30-day follow-up** of 6–8 messages, with opt-out. Log in Google Sheets or the existing CRM. 8 am daily digest to the owner. Up to 10 Meta-approved templates. Loom handover and a 1-page SOP. **14-day bug-fix warranty** | **10 working days** after access is granted | **₹34,999** | **$1,499** | 50% to start, 50% at go-live |
+| 2 | **Lead Leak Audit** | A pre-audit form and 60-minute workshop. Timed test enquiries through up to 3 of the client's own channels (with consent). Current and proposed lead-flow map. **Leak Report** (each leak, its evidence, the fix and the effort). ROI worksheet using **the client's own numbers**. System blueprint with a **fixed quote**. 20-minute recorded walkthrough plus a 30-minute review call. **100% credited** to a Sprint booked within 30 days | 5 working days | **₹9,999** | **$499** | 100% upfront |
+| 3a | **Speed-to-Lead Sprint (Solo)** | Capture from **up to 3 sources**: Meta lead ads, website form, Instagram DMs, and portal alerts where the portal allows. **Instant WhatsApp first reply** on the official platform. **AI qualifier scoped to the business**, in English or Hinglish (budget, BHK/type, locality, timeline, loan or cash, self-use or investment). Hot/warm/cold tags. **Handover rules**: a hot lead triggers a WhatsApp alert to the agent. **Site-visit booking** with reminders 24 hours and 2 hours before, plus a Maps pin. **30-day follow-up** of 6–8 messages, with opt-out. Log in Google Sheets or the existing CRM. 8 am daily digest to the owner. Up to 10 Meta-approved templates. Recorded handover and a 1-page SOP. **14-day bug-fix warranty** | **10 working days** after access is granted | **₹34,999** | **$1,499** | 50% to start, 50% at go-live |
 | 3b | **Speed-to-Lead System (Team)** | Everything in 3a, plus **up to 6 sources and 10 agents**. Round-robin or by-area assignment. CRM integration (Zoho, HubSpot, or any current CRM with an API). Manager dashboard (Sheets or Looker Studio). Missed-call text-back if the phone provider supports webhooks. Weekly owner report. 2 team training sessions. **30-day warranty** | 15 working days | **₹79,999** | **$2,999** | 50/50 |
 | 3c | **Missed-Call & No-Show Recovery Sprint** (clinics) | Missed call → WhatsApp text-back → booking link or bot → reminders 24 hours and 2 hours before → post-visit review request → recall reminders. DPDP-aware consent capture. Minimal health data. 14-day warranty | 10 working days | **₹34,999** | **$1,499** | 50/50 |
 | 4a | **Lead Desk Care** (retainer) | Monitoring and error alerts. Fixes within 1 working day. 2 small changes a month. Monthly prompt tuning based on real conversations. 1-page monthly report (response time, leads handled, bookings, no-shows). WhatsApp support during IST business hours | Monthly, 30 days' notice to cancel | **₹9,999/mo** | **$299/mo** | Monthly in advance |
@@ -231,8 +231,9 @@ Full comparison, buying steps, handle steps, colours, fonts and voice: **[`01-br
 
 | Offer | What the client gets | Timeline | India | International |
 |---|---|---|---|---|
-| **Quick Win Build** | One workflow of up to about 10 steps, for any business: for example form → CRM → WhatsApp/email follow-up, or invoice PDF → AI extraction → Sheet or Zoho Books. Includes documentation, a Loom handover and a 14-day bug-fix window | 7–10 working days | **₹24,999** | **$999** |
-| **Custom AI Agent / AI Product Build** | A GPT- or Claude-powered assistant trained on company SOPs and documents, or a first version of an AI-powered product. **Only scoped after an Audit** | 4–8 weeks | **from ₹1,50,000** | **from $6,000** |
+| **Quick Win Build** | One workflow of up to about 10 steps, for any business: for example form → CRM → WhatsApp/email follow-up, or invoice PDF → AI extraction → Sheet or Zoho Books. Includes documentation, a recorded handover and a 14-day bug-fix window | 7–10 working days | **₹24,999** | **$999** |
+| **AI Build Scoping** (the Audit's variant for custom automations and AI products) | A pre-scoping form and 60-minute workshop. **Use-case spec** (the process, inputs and outputs, users, data sources, success metric). Architecture sketch. Data-handling and risk notes (DPDP-minded). Milestone plan with acceptance criteria. **Fixed quote**. 20-minute recorded walkthrough plus a 30-minute review call. **100% credited** to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days. 100% upfront | 5 working days | **₹9,999** | **$499** |
+| **Custom AI Agent / AI Product Build** | A GPT- or Claude-powered assistant trained on company SOPs and documents, or a first version of an AI-powered product. **Scoped in an AI Build Scoping (₹9,999 / $499, credited to the build)** | 4–8 weeks | **from ₹1,50,000** | **from $6,000** |
 | **Add-ons** | Extra lead source: ₹4,999 / $199. Google review-request flow: ₹7,999 / $349. Listing-to-content kit (AI captions and reel scripts from listing details): ₹12,999 / $549. Out-of-scope change requests: ₹2,000 / $60 an hour | 3–7 days | — | — |
 | **Agency Partner** (from month 2) | Any of the systems above, built under the agency's brand. The agency owns the client. Rights to publish an anonymised case study are written into the partner agreement | Per project | **List price −25%** | **List price −25%** |
 
@@ -257,7 +258,7 @@ Full comparison, buying steps, handle steps, colours, fonts and voice: **[`01-br
   5. Current reply speed
   6. The task to fix first
   7. Budget band: <₹15K / ₹15–40K / ₹40K–1L / ₹1L+, with USD equivalents
-- **Routing:** anyone under ₹15K, or outside the niche, gets the Kit and the **₹1,999 / $99 Ask Hemant Session** link instead.
+- **Routing:** a budget under ₹15K, **or** a real-estate or clinic business with under 20 leads a month, gets the Kit and the **₹1,999 / $99 Ask Hemant Session** link instead of a Fit Call. Any other business with a budget of ₹15K or more keeps the Fit Call; the likely outcome is a Quick Win Build or an AI Build Scoping.
 - **When to change the rule:** if any of these is true by day 60:
   - more than 8 Fit Calls a week, or
   - a show rate below 70%, or
@@ -306,7 +307,7 @@ askhemant.ai/book (Cal.com Fit Call + intake form) ──► reminders ──►
 | 2. Auto-DM | The comment triggers one private reply | **Meta Business Suite → Inbox → Automations → Comment to Message** (free) in month 1. Keywords `LEAKS, Leaks, leaks, LEAK, leak` and `PRICE, Price, price, PRICES, prices` (matching is reportedly exact and case-sensitive, with up to 5 keywords per automation; unverified). **Upgrade to ManyChat Essential** (about $14–17 a month, 250 contacts) once more than 25 people a month comment, because ManyChat Free stops at 25 contacts since 2 Mar 2026 ([ManyChat](https://manychat.com/blog/manychat-pricing-explained/)) | The DM script is below | Comments → replies to the question |
 | 3. Human reply | Hemant replies personally **within Meta's 24-hour window** with one concrete idea, then offers the Fit Call | Instagram inbox | One private reply per comment, sent within 7 days. Follow-ups only within 24 hours of the user's reply ([Meta](https://developers.facebook.com/docs/instagram-platform/private-replies/)). Every CTA says "check your message requests" | Qualified conversations |
 | 4. Kit page | The PDF opens with no gate. The bonus calculator asks for 4 fields | **Tally** form → **n8n** webhook → Google Sheet + a WhatsApp alert to Hemant + a WhatsApp welcome for people who opted in | Fields: first name, WhatsApp number, business type (a dropdown matching the lanes), leads a month. A **separate, unticked** marketing-consent box (DPDP) | Kit sign-ups by business type; Hemant's own median reply time |
-| 5. Book | The booking page, with the intake questions from §4 | **Cal.com Free** embedded at askhemant.ai/book ([Costbench](https://costbench.com/software/scheduling/cal-com/free-plan/)) | Event types: *Fit Call 20m* (public); *Ask Hemant Session 45m*, *Audit Workshop 60m* and *Kickoff 45m* (hidden links shared after payment; hidden events are unverified, so send links by hand if needed). Slots: Tue–Thu 11:00–13:00 and 16:00–18:00 IST, plus 2 evening slots 19:30–21:00 IST for the UK and US East Coast | Calls booked |
+| 5. Book | The booking page, with the intake questions from §4 | **Cal.com Free** embedded at askhemant.ai/book ([Costbench](https://costbench.com/software/scheduling/cal-com/free-plan/)) | Event types: *Fit Call 20m* (public); *Ask Hemant Session 45m*, *Audit Workshop 60m*, *Kickoff 45m* and *Client call 30m* (hidden links shared after payment, or with active clients only; hidden events are unverified, so send links by hand if needed). Slots: Tue–Thu 11:00–13:00 and 16:00–18:00 IST, plus 2 evening slots 19:30–21:00 IST for the UK and US East Coast | Calls booked |
 | 6. Remind | Confirmation plus reminders | Cal.com email reminders + a WhatsApp Business app message 2 hours before | "Reply 1 to confirm" | Show rate |
 | 7. Call | The 20-minute Fit Call (script below) | Google Meet | The payment link is sent on WhatsApp during the call when the next step is an Audit | Call → Audit or proposal |
 | 8. Proposal | A 1-page proposal with 2 options (Sprint, or Sprint + Care), plus a 3-minute Loom. Valid for 7 days | Google Docs → PDF + **Loom** | The problem in their words, the outcome, scope and an **out-of-scope list**, milestones, price, running-cost estimate, terms | Proposal → paid |
@@ -378,7 +379,7 @@ Have a CA or lawyer review the template once.
 - **Quality:** a human reviews the first 100 AI conversations in every pilot.
 
 ### Website (askhemant.ai)
-- **Hosting:** static HTML on **Hostinger Premium**, deployed through hPanel → Advanced → Git → Connect with GitHub ([Hostinger docs](https://docs.hostinger.com/websites/git)). Force HTTPS.
+- **Hosting:** static HTML on **Hostinger Premium**. Deploy by uploading the **contents** of `website/` (including `.htaccess`) to `public_html` with File Manager, or with the GitHub Action over FTP ([`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md) §6). **Never use hPanel → Advanced → Git:** it publishes the whole repo, including `docs/` and `sales/`. Force HTTPS.
 - **Launch pages (6):**
   - `/` (home)
   - `/pricing` (every price published)
@@ -556,27 +557,24 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
 
 ## 9. 90-day plan (Mon 19 Oct 2026 – Sat 16 Jan 2027)
 
-### Week 1 (19–25 Oct): set up the offer and the machine
-- **Mon:**
-  - Run the 5-minute domain and handle check.
-  - Buy askhemant.ai (2 years), Hostinger Premium and askhemant.com (the free domain).
-  - Claim @askhemant on Instagram, Threads, YouTube and a Facebook Page, plus a LinkedIn profile.
-  - Verify the Hostinger registrant email.
-  - **Start Razorpay and Skydo KYC.**
-- **Tue–Wed:**
-  - Site v1 with the 6 pages, the hello@ mailbox, GA4, Clarity and forced HTTPS.
-  - Cal.com event types and intake form.
-  - Tally kit and onboarding forms.
+### Day 0 (Sun 18 Oct): check, claim and buy
+- Run the 5-minute domain, handle and Cal.com username check ([`01-brand-and-domain.md`](./01-brand-and-domain.md) §6).
+- Buy askhemant.ai (2 years), Hostinger Premium and askhemant.com (the free domain). On the lean path, askhemant.com only (§5 "Launch budget").
+- Claim @askhemant on Instagram, Threads, YouTube and a Facebook Page, plus a LinkedIn profile, and `cal.com/askhemant`.
+- Verify the Hostinger registrant email.
+
+### Week 1 (19–25 Oct): set up the machine while P01–P05 go out
+- **Setup runs in parallel with posting.** P01–P05 go out from **Mon 19 Oct (15:00 IST)**. P02 and P03 are pinned on 20–21 Oct, and P06 replaces P01 as pin #3 on Mon 26 Oct. The day-by-day order is in [`02-launch-checklist.md`](./02-launch-checklist.md), which wins on dates.
+- **Live before P01 (Mon, before 15:00):** site v1 with the kit page, the hello@ mailbox and forced HTTPS; a minimal public Fit Call event (20 min) on Cal.com; Comment to Message for LEAKS, **tested from a second account**.
+- **During the week:**
+  - **Start Razorpay and Skydo KYC** (Mon).
+  - Cal.com intake questions and hidden events; the PRICE automation; the KIT DM keyword for Stories and Lives.
+  - GA4 and Clarity; the Tally kit and onboarding forms; the Lead Leak Calculator.
   - WhatsApp Business app with a catalogue of the packages.
-- **Thu:**
-  - Instagram: Creator account, name field, bio, 5 UTM links, Highlight covers.
-  - Canva templates: carousel, cover, and the DEMO badge.
-  - Comment to Message for LEAKS and PRICE, **tested from a second account**.
-- **Fri:**
-  - Lead Leak Kit v1 and the calculator.
-  - VPS with n8n, and own-funnel v1 (Tally/Cal.com → Sheet → WhatsApp/email alert).
+  - Instagram: name field, bio, 5 UTM links, contact buttons, Highlight covers (the Creator switch happens on day 0).
+  - VPS with n8n, the DEMO speed-to-lead workflow, and own-funnel v1 (Tally/Cal.com → Sheet → WhatsApp/email alert).
 - **Sat:**
-  - Batch session: 8 Reels and the 3 pinned posts.
+  - Batch session: P06–P10 and their trial-reel hooks.
   - Send Field Test #1 (20 real-estate enquiries).
 - **Sun:**
   - Offer sheet, proposal template, pilot agreement and access checklist.
@@ -586,8 +584,8 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
 
 ### Week 2 (26 Oct – 1 Nov): public launch and founding slots
 - **Content:**
-  - Publish and pin the 3 cornerstone posts on Mon.
-  - The full cadence: 3 Reels, 2 carousels, 2 trial reels and daily Stories. Include the founding Reel.
+  - Mon 26 Oct: post the founding Reel (P06) and pin it as #3 in place of P01 (P02 and P03 are already pinned).
+  - The full cadence: 3 Reels, 2 carousels, 2 trial reels and daily Stories.
 - **Outreach:**
   - Announce to Hemant's own network through WhatsApp Status, a LinkedIn post and **one-to-one messages only** (no blasts).
   - **10 personal messages a day** to warm contacts who know brokers or clinic owners.
@@ -620,7 +618,7 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
 ### Month 2 (16 Nov – 15 Dec): deliver, convert, add channels
 - **Delivery and sales:**
   - Deliver founding Sprints #1–3 (no more than 2 at once).
-  - **Close the founding offer on Mon 30 Nov.** From 1 Dec, sell only full-price Audits and Sprints.
+  - **Close the founding offer on Mon 30 Nov** (or when the 3rd slot is signed). From 1 Dec, sell only full-price Audits and Sprints. Swap the founding box on the kit's last page for a Lead Leak Audit box, re-render and redeploy, and switch the FOUNDING auto-DM to the closed text ([`02-launch-checklist.md`](./02-launch-checklist.md) week 7).
   - Convert founding clients to Lead Desk Care when their warranty ends.
 - **Lead magnets:** launch the CLINIC magnet.
 - **Channels:**
@@ -631,7 +629,7 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
   - Dubai content twice a week.
   - Field Test #3 in Dubai, in English.
 - **Agencies:** contact 10 agencies that run Meta ads for brokers or clinics, one to one on LinkedIn, with the Agency Partner offer.
-- **Day-45 check (Thu 3 Dec):** count qualified conversations and kit sign-ups by lane, and shift content towards the leading lane.
+- **Day-46 check (Thu 3 Dec):** count qualified conversations and kit sign-ups by lane, and shift content towards the leading lane.
 - **KPIs:** 40 posts · 100 comments · 35 qualified conversations · 12 Fit Calls · 3 founding clients sold · 2 full-price Audits · 1 full-price Sprint · 1 retainer · ₹60K–1L collected.
 
 ### Month 3 (16 Dec – 16 Jan): proof, niche commitment, price step
@@ -702,7 +700,7 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
 | Instagram spam or DM-automation blocks | Action blocks; DMs not delivered | Follow Meta's private-reply rules. No cold mass DMs. Pitch only after a real exchange. Tell people to "check your message requests" |
 | A new account grows slowly | Under 150 followers at day 30 | About half of calls come from direct outreach. Revenue doesn't depend on followers. Trial reels, collabs, LinkedIn and Shorts cross-posting |
 | Attracting learners instead of buyers | Most sign-ups are freelancers or students | Hooks in owner language. Business type and budget questions on the forms. Do-it-yourselfers go to the paid Session, not free calls. No n8n JSON in the lead magnet |
-| Real estate is the wrong niche | One lane gets no response by day 45 | Niche-neutral brand and domain. 60/20/20 mix. Lane tags. The day-60 decision rule. Clinics next |
+| Real estate is the wrong niche | One lane gets no response by the day-46 check (Thu 3 Dec) | Niche-neutral brand and domain. 60/20/20 mix. Lane tags. The day-60 decision rule. Clinics next |
 | Portal leads can't be captured reliably | No API; delayed alert emails | Confirm every source in the Audit before quoting. "Within a minute" counts only from when the lead reaches the system |
 | Weak AI quality in Hinglish | Wrong or awkward replies | Human review of the first 100 conversations. Handover when confidence is low. No voice AI at launch |
 | Underpricing and scope creep | Projects run 2x over the estimate | Fixed scope plus an out-of-scope list. A change-request rate. 50% upfront. No more than 2 Sprints at once. Price step at day 90 |
@@ -792,7 +790,7 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
 **Tools, payments and legal:**
 - [Hostinger .ai](https://www.hostinger.com/tld/ai-domain)
 - [Hostinger .si](https://www.hostinger.com/tld/si-domain)
-- [Hostinger Git deploy](https://docs.hostinger.com/websites/git)
+- [Hostinger Git deploy](https://docs.hostinger.com/websites/git) (not used here: it would publish the whole repo)
 - [Cal.com free plan (Costbench)](https://costbench.com/software/scheduling/cal-com/free-plan/)
 - [Razorpay fees](https://razorpay.com/blog/razorpay-payment-gateway-pricing-explained/)
 - [Skydo for consultants](https://www.skydo.com/receive-international-payments-in-india/consultant)

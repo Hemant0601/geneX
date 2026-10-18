@@ -120,9 +120,9 @@ Payment: Skydo [account details] · Purpose code P0802.
 | Situation | Tool | How | Fees *(absorbed by Hemant)* |
 |---|---|---|---|
 | India: Session ₹1,999, Audit ₹9,999, founding deposit ₹7,500 | **Razorpay Payment Pages** (reusable) | `{{RAZORPAY_SESSION_LINK}}`, `{{RAZORPAY_AUDIT_LINK}}`, `{{RAZORPAY_FOUNDING_LINK}}` (founding: only after a signed agreement). Setup: [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §14 | **2% + 18% GST** on the fee ([Razorpay](https://razorpay.com/blog/razorpay-payment-gateway-pricing-explained/)) |
-| India: Sprint deposits/balances, Quick Win, retainers | **Razorpay Payment Link** per client | Name it with the client and proposal number; expire it with the proposal (7 days) | 2% + GST |
+| India: AI Build Scoping ₹9,999, Sprint deposits/balances, Quick Win, Custom AI milestones, retainers | **Razorpay Payment Link** per client | Name it with the client and proposal number; expire it with the proposal (7 days) | 2% + GST |
 | A foreign client paying by card through Razorpay | Razorpay international cards | Needs separate activation **[not re-verified]** | **3% + GST** (effective ~3.54%, plus FX) |
-| Abroad: Audit $499, Sprints, retainers, founding $599 | **Skydo** invoice (main) | §5.1 | **$19 flat under $2,000**; $29 for $2,001–10,000; 0.3% above $10,000; no FX markup; **free FIRA** (Skydo's own claims) |
+| Abroad: Audit or AI Build Scoping $499, Sprints, Custom AI milestones, retainers, founding $599 | **Skydo** invoice (main) | §5.1 | **$19 flat under $2,000**; $29 for $2,001–10,000; 0.3% above $10,000; no FX markup; **free FIRA** (Skydo's own claims) |
 | Abroad, if Skydo can't serve the client | **Wise Business** (backup) | Local USD/GBP/EUR/AUD details; confirm in the app that Indian **business** accounts can receive | Receiving a USD SWIFT wire up to ~$6.11 (WorldFirst comparison, Apr 2026) |
 | Abroad: $99 Session only | **PayPal** | `{{PAYPAL_SESSION_LINK}}` | ~**4.4% + $0.30**, plus conversion |
 | Anything | **Not Stripe** | Invite-only for new Indian accounts ([Stripe](https://support.stripe.com/questions/stripe-accounts-are-invite-only-in-india)) | — |

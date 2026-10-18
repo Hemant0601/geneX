@@ -95,6 +95,7 @@ Hemant typed ".si". That is almost certainly a slip for ".ai", since the s and a
 - **Buy askhemant.ai as the main domain and askhemant.com as a redirect. Skip .si and .co.**
 - Add **.in** only if Indian ads become a channel.
 - **If cash is tight:** launch on askhemant.com (free in year 1 with Premium) and buy the .ai once the first payment comes in, accepting the risk that someone registers it first.
+  - **How:** run `node tools/switch-domain.mjs askhemant.com` (a dry run; add `--write` to apply), then re-render the kit and graphics, as described in [`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md#lean-path-launching-on-askhemantcom-first) "Lean path".
 - **If Hemant really did want .si** (for example, for an EU angle): that's open question 1 in the strategy file. It is still not recommended as the main domain.
 
 ### The cart *(estimate)*
@@ -148,7 +149,8 @@ Menu labels change. Steps marked *(UI path unverified)* come from general knowle
 15. hPanel → **Emails**: create **hello@askhemant.ai**.
     - Check that the SPF, DKIM and DMARC DNS records exist. They are usually added automatically when the domain uses Hostinger nameservers (general knowledge).
     - Send a test message to a Gmail address and make sure it doesn't land in spam.
-16. Deploy the site: hPanel → **Advanced → Git → Connect with GitHub** to auto-deploy on every push ([Hostinger Git docs](https://docs.hostinger.com/websites/git)).
+16. Deploy the site: upload the **contents** of `website/` (including the hidden `.htaccess`) to `public_html` with hPanel → **File Manager**, or let the **GitHub Action over FTP** do it on every push ([`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md) §6).
+    - **Never use hPanel → Advanced → Git** for this repo: it publishes the whole repository, including `docs/` and `sales/`.
 17. **Final check:** open `http://askhemant.com` in a private window. It should land on `https://askhemant.ai` with a padlock.
 
 ---
@@ -191,14 +193,15 @@ Menu labels change. Steps marked *(UI path unverified)* come from general knowle
 
 ---
 
-## 6. The 5-minute check before paying (Day 1, Mon 19 Oct)
+## 6. The 5-minute check before paying (day 0, Sun 18 Oct)
 
 1. **Instagram:** Edit profile → Username → `askhemant`, `askhemant.ai`, `hemantautomates`.
 2. **Hostinger:** domain search for `askhemant.ai`, `askhemant.com`, `hemantautomates.com`. Make sure none is marked "premium".
 3. **WHOIS:** [lookup.icann.org](https://lookup.icann.org) for the .com and .ai.
 4. **Google:** search `"askhemant"` and `"ask hemant" AI` in quotes, and look for any AI or software business using the name.
 5. **Trademarks:** IP India public search and USPTO, Classes 35 and 42.
-6. **Then, the same day:** claim the handle → buy the domains → verify the Hostinger email.
+6. **Cal.com:** sign up and claim the username **`askhemant`** (`cal.com/askhemant`). The site's booking page already points to it; if it's taken, change `calUsername` in [`website/assets/js/config.js`](../website/assets/js/config.js).
+7. **Then, the same day:** claim the handle → buy the domains → verify the Hostinger email.
 
 ---
 
@@ -327,7 +330,7 @@ Menu labels change. Steps marked *(UI path unverified)* come from general knowle
 - [DomainOffer .co](https://domainoffer.net/tld/co/hostinger)
 - [Wikipedia: .ai](https://en.wikipedia.org/wiki/.ai)
 - [NameSilo: .ai rules](https://www.namesilo.com/blog/en/domain-name-search/ai-domain-registry-rules-pricing-and-renewals)
-- [Hostinger Git deploy](https://docs.hostinger.com/websites/git)
+- [Hostinger Git deploy](https://docs.hostinger.com/websites/git) (not used here: it would publish the whole repo)
 
 **Instagram:**
 - [Outfy: handle rules](https://www.outfy.com/blog/instagram-character-limit/)

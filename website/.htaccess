@@ -8,14 +8,18 @@ ErrorDocument 404 /404.html
 AddDefaultCharset utf-8
 
 # ---------------------------------------------------------------
-# Redirects: HTTPS, www -> apex, askhemant.com -> askhemant.ai (all 301)
+# Redirects (all 301): the second domain -> the main one, www -> apex, HTTPS
 # ---------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # askhemant.com / www.askhemant.com (if parked or aliased on this hosting)
+  # BEGIN SECOND-DOMAIN-REDIRECT
+  # askhemant.com / www.askhemant.com -> askhemant.ai (if parked or aliased on this hosting).
+  # tools/switch-domain.mjs comments this block out on the lean path (launching on
+  # askhemant.com first), because it would then redirect the site to itself.
   RewriteCond %{HTTP_HOST} ^(www\.)?askhemant\.com$ [NC]
   RewriteRule ^ https://askhemant.ai%{REQUEST_URI} [L,R=301]
+  # END SECOND-DOMAIN-REDIRECT
 
   # www.askhemant.ai -> askhemant.ai
   RewriteCond %{HTTP_HOST} ^www\.askhemant\.ai$ [NC]

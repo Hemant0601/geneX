@@ -320,7 +320,7 @@ Muhurat times vary by city, and a few calendars put Govardhan Puja on 10 Nov and
 | 5 | **Speed-to-Lead Sprint (Solo) ₹34,999 / $1,499**, live in 10 working days after access: up to 3 sources, instant WhatsApp reply, AI qualifier, site-visit booking + reminders, 30-day follow-up, lead log, 8 am digest. **Clinics:** Missed-Call & No-Show Recovery Sprint, same price |
 | 6 | **Team System ₹79,999 / $2,999**, 15 working days: up to 6 sources and 10 agents, round-robin, CRM integration, manager dashboard |
 | 7 | **After go-live:** Lead Desk Care ₹9,999 / $299 a month · Lead Desk Growth ₹24,999 / $799 a month (3-month minimum) |
-| 8 | **Beyond leads:** Quick Win Build ₹24,999 / $999 (one workflow, about 10 steps) · Custom AI Agent / AI Product from ₹1,50,000 / $6,000 (scoped only after an Audit) |
+| 8 | **Beyond leads:** Quick Win Build ₹24,999 / $999 (one workflow, about 10 steps) · Custom AI Agent / AI Product from ₹1,50,000 / $6,000 (scoped in an AI Build Scoping, ₹9,999 / $499, credited to the build) |
 | 9 | **Running costs are yours, on your own accounts.** Example: 300 leads × 3 follow-ups ≈ 900 marketing messages ≈ ₹775 a month in Meta fees *(estimate, at about ₹0.86 per marketing message per a reseller's rate card)*, plus your WhatsApp provider plan and AI usage. Source line in Slate: "Meta per-message pricing since 1 Jul 2025 · rate: MyOperator · check Meta's live rate card" |
 | 10 | Indigo CTA: "Comment **PRICE** and I'll DM you the full page. Free Fit Call: askhemant.ai/book." Small line: "Founding offer: Audit + Sprint ₹14,999 / $599, 3 slots, closes Mon 30 Nov 2026 or when full." |
 
@@ -611,7 +611,7 @@ Strategy §9 week 4. Fill in `content-tracker.csv` first, then answer each quest
    - **Keep the 2 best topics and drop the weakest format** (for example, if carousels trail on saves and sends, swap one carousel a week for a Reel).
 2. **Lanes:**
    - Kit sign-ups and Fit Calls by lane (RE / CL / GEN), from the business-type field.
-   - This is the first read for the day-45 check (Thu 3 Dec) and the day-60 niche decision (Thu 17 Dec).
+   - This is the first read for the day-46 check (Thu 3 Dec) and the day-60 niche decision (Thu 17 Dec).
 3. **Automation:**
    - Stay on Meta's native Comment to Message, move to ManyChat Essential (once more than 25 commenters a month), or build your own n8n Instagram flow?
    - Write down the commenter count that drove the decision.
@@ -672,7 +672,7 @@ Strategy §9 week 4. Fill in `content-tracker.csv` first, then answer each quest
 | # | Content |
 |---|---|
 | 1 | The hook |
-| 2 | **What it is:** Lead Leak Audit + Speed-to-Lead Sprint (or the clinic Sprint) for **₹14,999 / $599** instead of ₹34,999 / $1,499. Same scope, nothing cut. Excl. GST |
+| 2 | **What it is:** Lead Leak Audit + Speed-to-Lead Sprint (or the Missed-Call & No-Show Recovery Sprint) for **₹14,999 / $599** instead of ₹34,999 / $1,499. Same scope, nothing cut. Excl. GST |
 | 3 | **Why it's cheaper:** "AskHemant launched on 19 Oct 2026 and has no case studies yet. You get a lower price. I get measured numbers I can publish." |
 | 4 | **Who it's for:** brokers, small brokerages and channel partners in India (at most 1 Dubai broker), or a private dental, derm or physio clinic · roughly 40–500 enquiries a month from 2+ sources · someone answers WhatsApp by hand today |
 | 5 | **Who it's not for:** under about 20 leads a month · you want a general ChatGPT bot on WhatsApp · bulk or cold blasts · you can't give Meta Business Manager admin access |

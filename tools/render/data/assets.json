@@ -315,16 +315,6 @@
     },
     "kitDm": [
       {
-        "file": "kit-dm-me-leaks.png",
-        "pill": "Free kit",
-        "title": "The Lead Leak Kit",
-        "sub": "7 places your enquiries go cold, and the WhatsApp fixes.",
-        "cta": "DM me LEAKS",
-        "keyword": "LEAKS",
-        "note": "It lands in your DMs. Free, no email needed.",
-        "alt": "On a post? Comment LEAKS."
-      },
-      {
         "file": "kit-dm-me-kit.png",
         "pill": "Free kit",
         "title": "The Lead Leak Kit",
@@ -333,7 +323,18 @@
         "keyword": "KIT",
         "note": "It lands in your DMs. Free, no email needed.",
         "alt": "On a post? Comment LEAKS.",
-        "_use": "Fallback only: if Business Suite will not take LEAKS as a DM keyword (07-dm-automation-playbook.md §2.4)."
+        "_use": "Default Story and Live CTA. KIT is the DM keyword (a Custom keywords DM automation: KIT, Kit, kit; 07-dm-automation-playbook.md §2.4). LEAKS stays a comment keyword."
+      },
+      {
+        "file": "kit-dm-me-leaks.png",
+        "pill": "Free kit",
+        "title": "The Lead Leak Kit",
+        "sub": "7 places your enquiries go cold, and the WhatsApp fixes.",
+        "cta": "DM me LEAKS",
+        "keyword": "LEAKS",
+        "note": "It lands in your DMs. Free, no email needed.",
+        "alt": "On a post? Comment LEAKS.",
+        "_use": "Optional alternative graphic only, not the default. LEAKS is a comment keyword, so a DM that says LEAKS gets no auto-reply: answer it by hand with the /kit saved reply (07-dm-automation-playbook.md §8)."
       }
     ],
     "kitComment": {

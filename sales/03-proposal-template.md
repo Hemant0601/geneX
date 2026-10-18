@@ -1,7 +1,7 @@
 # Proposal Template (1 page) + 3-minute Loom Script
 
-**For:** Hemant · **When:** within **24 hours** of the Fit Call (or the Audit Review) · **Valid:** **7 days** · **Tools:** Google Docs → PDF + Loom (free plan: 5-minute videos, reported) ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §17)
-**Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §4 (offers, running costs) and §5 (stage 8: "the problem in their words, the outcome, scope and an out-of-scope list, milestones, price, running-cost estimate, terms"); prices and splits: [`04-pricing-sheet.md`](./04-pricing-sheet.md); legal terms: [`05-consulting-agreement-template.md`](./05-consulting-agreement-template.md)
+**For:** Hemant · **When:** within **24 hours** of the Fit Call (or the Audit Review / Scoping review) · **Valid:** **7 days** · **Tools:** Google Docs → PDF + Loom (free plan: 5-minute videos, reported) ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §17)
+**Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §4 (offers, running costs) and §5 (stage 8: "the problem in their words, the outcome, scope and an out-of-scope list, milestones, price, running-cost estimate, terms"); prices and splits: [`04-pricing-sheet.md`](./04-pricing-sheet.md); legal terms: [`05-consulting-agreement-template.md`](./05-consulting-agreement-template.md); Audit and Scoping deliverables that feed a proposal: [`12-audit-delivery.md`](./12-audit-delivery.md)
 
 **How to use:**
 1. Copy everything between the two `✂` lines into a new Google Doc. Keep it to **one page** (A4, 10–11 pt Inter or Arial, narrow margins). Delete every `[instruction]`.
@@ -31,7 +31,7 @@ Every new lead from **[sources]** gets a WhatsApp reply **designed to go out wit
 
 | | **Option A: Speed-to-Lead Sprint (Solo)** | **Option B: Sprint + Lead Desk Care** |
 |---|---|---|
-| What's included | Capture from up to 3 sources: **[source 1], [source 2], [source 3]** · instant WhatsApp first reply on the official platform · AI qualifier scoped to your business, in [English / Hinglish] (budget, BHK/type, locality, timeline, loan or cash, self-use or investment) · hot/warm/cold tags · hot-lead WhatsApp alert to **[agent names]** · site-visit booking with reminders 24 h and 2 h before + Maps pin · 30-day follow-up (6–8 messages, with opt-out) · lead log in **[Google Sheets / your CRM]** · 8 am daily digest · up to 10 Meta-approved templates · Loom handover + 1-page SOP · 14-day bug-fix warranty | Everything in A, **plus Lead Desk Care from the day the warranty ends:** monitoring and error alerts · fixes within 1 working day · 2 small changes a month · monthly prompt tuning on real conversations · 1-page monthly report (response time, leads handled, bookings, no-shows) · WhatsApp support in IST business hours |
+| What's included | Capture from up to 3 sources: **[source 1], [source 2], [source 3]** · instant WhatsApp first reply on the official platform · AI qualifier scoped to your business, in [English / Hinglish] (budget, BHK/type, locality, timeline, loan or cash, self-use or investment) · hot/warm/cold tags · hot-lead WhatsApp alert to **[agent names]** · site-visit booking with reminders 24 h and 2 h before + Maps pin · 30-day follow-up (6–8 messages, with opt-out) · lead log in **[Google Sheets / your CRM]** · 8 am daily digest · up to 10 Meta-approved templates · recorded handover + 1-page SOP · 14-day bug-fix warranty | Everything in A, **plus Lead Desk Care from the day the warranty ends:** monitoring and error alerts · fixes within 1 working day · 2 small changes a month · monthly prompt tuning on real conversations · 1-page monthly report (response time, leads handled, bookings, no-shows) · WhatsApp support in IST business hours |
 | Price (excl. GST) | **₹34,999** [or **$1,499**] | **₹34,999** [$1,499] + **₹9,999/month** [$299/month] |
 | Payment | 50% to start (**₹17,500** [$750]), 50% at go-live (**₹17,499** [$749]) | As A; Care monthly in advance from [warranty end date], 30 days' notice to cancel |
 | [If they paid for an Audit or Session] | Credit applied: **−₹[9,999 / 1,999]**, so you pay **₹[balance]** | Same credit |
@@ -45,7 +45,7 @@ Every new lead from **[sources]** gets a WhatsApp reply **designed to go out wit
 | Day 0 | Agreement signed + 50% deposit | Sign, pay, fill the onboarding form | Kickoff call booked |
 | Day 1 | Access checklist complete → clock starts | Admin/partner access, WhatsApp provider account **in your name** | Start Meta business verification + submit templates the same day |
 | Day 5 | Demo on test leads | 30-min review, feedback in 1 working day | Show the full flow working |
-| Day 10 | **Go-live** + remaining 50% | Approve go-live | Loom handover + 1-page SOP |
+| Day 10 | **Go-live** + remaining 50% | Approve go-live | Recorded handover + 1-page SOP |
 | Go-live + 14 days | Warranty ends | — | [Option B: Care starts] |
 
 **On-time promise:** if the Sprint isn't live within 10 working days of full access, your first month of Lead Desk Care is free. Delays from approvals or access you control pause the clock.
@@ -77,24 +77,27 @@ Reply "**A**" or "**B**" on WhatsApp or email → I send the agreement for e-sig
 ## 2. Scope blocks for other offers (swap into box 3)
 
 **Missed-Call & No-Show Recovery Sprint (clinics)** · ₹34,999 / $1,499 · 10 working days · 50/50 (₹17,500 + ₹17,499 / $750 + $749)
-> Missed call → WhatsApp text-back → booking link or booking bot → reminders 24 h and 2 h before → post-visit review request → recall reminders · DPDP-aware consent capture with minimal health data (appointment type only; no clinical notes) · lead and appointment log · up to 10 Meta-approved templates · Loom handover + SOP · 14-day bug-fix warranty. **Not included:** AI replies to medical questions (they go to your team) · practice-management software licences · running costs.
+> Missed call → WhatsApp text-back → booking link or booking bot → reminders 24 h and 2 h before → post-visit review request → recall reminders · DPDP-aware consent capture with minimal health data (appointment type only; no clinical notes) · lead and appointment log · up to 10 Meta-approved templates · recorded handover + SOP · 14-day bug-fix warranty. **Not included:** AI replies to medical questions (they go to your team) · practice-management software licences · running costs.
 Option B = + Lead Desk Care ₹9,999/month (from warranty end).
 
 **Speed-to-Lead System (Team)** · ₹79,999 / $2,999 · 15 working days · 50/50 (₹40,000 + ₹39,999 / $1,500 + $1,499)
 > Everything in the Solo Sprint, plus up to 6 sources and 10 agents · round-robin or by-area assignment · CRM integration ([Zoho / HubSpot / your CRM with an API]) · manager dashboard (Sheets or Looker Studio) · missed-call text-back if your phone provider supports webhooks · weekly owner report · 2 team training sessions · 30-day warranty. **Not included:** CRM licences · more than 6 sources or 10 agents (quoted separately) · running costs.
 Milestones: demo day 8, go-live day 15 *(suggested split for a 15-day build)*. Option B = + Lead Desk Care, or Lead Desk Growth ₹24,999 / $799 a month (3-month minimum) for teams that want one new automation a month.
 
-**Founding Client Pilot** · ₹14,999 / $599 for **Lead Leak Audit + Solo Sprint** (or + Clinic Sprint) · 50/50 (₹7,500 + ₹7,499 / $300 + $299)
+**Founding Client Pilot** · ₹14,999 / $599 for **Lead Leak Audit + Solo Sprint** (or + Missed-Call & No-Show Recovery Sprint) · 50/50 (₹7,500 + ₹7,499 / $300 + $299)
 > Same scope as the full-price Audit and Sprint; nothing cut. Add: "Baseline measured during the build; measured again 30 days after go-live; I review the first 100 AI conversations; publication terms in the agreement's founding schedule." Replace Option B with: "After the warranty: Lead Desk Care at ₹9,999 / $299 a month (optional)." Valid until **[date + 7 days, and no later than Mon 30 Nov 2026]**. Terms: [`10-founding-client-program.md`](./10-founding-client-program.md).
 
 **Quick Win Build** · ₹24,999 / $999 · 7–10 working days · 50/50 (₹12,500 + ₹12,499 / $500 + $499; the default until Hemant decides the Quick Win terms, [`04-pricing-sheet.md`](./04-pricing-sheet.md) §1)
-> One workflow of up to about 10 steps: **[trigger] → [step] → [step] → [output]** · documentation · Loom handover · 14-day bug-fix window. **Not included:** workflows beyond about 10 steps (quoted separately) · software licences and API usage.
+> One workflow of up to about 10 steps: **[trigger] → [step] → [step] → [output]** · documentation · recorded handover · 14-day bug-fix window. **Not included:** workflows beyond about 10 steps (quoted separately) · software licences and API usage.
 Option B = + the relevant add-on, or none (one option is fine for a Quick Win).
 
 **Lead Leak Audit** (if a written proposal is wanted before paying) · ₹9,999 / $499 · 5 working days · 100% upfront · 100% credited to a Sprint booked within 30 days.
 > Pre-audit form · 60-minute workshop · timed test enquiries through up to 3 of your channels (with your consent) · current and proposed lead-flow map · Leak Report (each leak, evidence, fix, effort) · ROI worksheet using your own numbers · system blueprint with a fixed quote · 20-minute recorded walkthrough + 30-minute review call.
 
-**Custom AI Agent / AI Product Build** · from ₹1,50,000 / from $6,000 · 4–8 weeks · **only after an Audit**. Use a longer proposal with milestones and acceptance criteria from the Audit; this one-page template is not enough.
+**AI Build Scoping** (the Audit variant for Quick Win and Custom AI builds, if a written proposal is wanted before paying) · ₹9,999 / $499 · 5 working days · 100% upfront · 100% credited to a Quick Win Build or a Custom AI Agent / AI Product Build booked within 30 days.
+> Pre-scoping form + 60-minute workshop · use-case spec (the process, inputs and outputs, users, data sources, success metric) · architecture sketch · data-handling and risk notes (DPDP-minded) · milestone plan with acceptance criteria · fixed quote · 20-minute recorded walkthrough + 30-minute review call.
+
+**Custom AI Agent / AI Product Build** · from ₹1,50,000 / from $6,000 · 4–8 weeks · scoped in an AI Build Scoping (₹9,999 / $499, credited to the build). The one-page template is not enough: use the multi-milestone proposal in §5.
 
 **Agency Partner (from 16 Nov 2026):** list price −25% (see [`04-pricing-sheet.md`](./04-pricing-sheet.md) §5). Address the proposal to the agency; the end client is named in box 1 only with the agency's OK.
 
@@ -132,3 +135,76 @@ Record with the proposal PDF on screen and your camera bubble on. Speak, don't r
 - 2:50: "Theek lage toh bas A ya B reply kijiye, main agreement bhej dunga. Proposal [date] tak valid hai. Koi sawaal ho toh message kijiye. Thanks, [Name]."
 
 **Don't:** show a real client's leads or chats, show prices other than theirs, or say "this offer ends…" (only the 7-day validity and the real founding close date are deadlines).
+
+---
+
+## 5. Custom AI Agent / AI Product Build: the multi-milestone proposal
+
+**When:** within 24 hours of the AI Build Scoping review call ([`12-audit-delivery.md`](./12-audit-delivery.md) Part B). **Valid:** 7 days. Every number comes from the scoping pack: the use-case spec, the architecture sketch, the data-handling and risk notes and the milestone plan. Two or three pages is fine. The agreement ([`05-consulting-agreement-template.md`](./05-consulting-agreement-template.md)) takes box 2 as Schedule A and box 3 as Schedule B.
+
+✂ ─────────────────────────────── copy from here ───────────────────────────────
+
+**AskHemant** · *No lead left on read.*
+**Proposal AH-P-2026-[NNN]** · **[Build name, e.g. "SOP assistant for the support desk"]** for **[Client legal name]** · prepared for **[Contact name]** · **[date]** · **valid until [date + 7 days]**
+Hemant Kumar · hello@askhemant.ai · WhatsApp +{{WHATSAPP_NUMBER}} · askhemant.ai
+Based on your AI Build Scoping, delivered on **[date]** (use-case spec v[n], attached).
+
+**1. The problem and the success metric, in your words**
+> "[Exact quote from the workshop]"
+
+Success metric (use-case spec): **[metric]**. Today: **[baseline, and how it was measured]**. Target: **[target]**. This is a target we measure together, not a promise.
+
+**2. What I'll build**
+[2–4 lines: who uses it, what goes in, what comes out, which systems it connects to.] It runs on your accounts, as in the architecture sketch (attached).
+**Not included (out of scope):** [from the spec, e.g. clean-up of existing records · integration with [system] · a mobile app · training a model on your data · AI answers to [medical / legal / financial] questions without a person checking · running costs (box 5)].
+
+**3. Milestones, acceptance criteria and payments** (weeks from Full Access · total **₹[ ]** [or **$[ ]**], excl. GST)
+
+| # | Milestone | What you get | Acceptance criteria (tested together) | Week | Payment |
+|---|---|---|---|---|---|
+| M0 | Agreement signed + first payment | Kickoff and access checklist | — | 0 | **50%**: ₹[ ] (less the ₹9,999 [$499] Scoping credit: ₹[ ]) |
+| M1 | Foundations | Accounts set up in your name, data sources connected, [documents loaded / data pipeline], an agreed **test set of [n] real cases** | Every source in the spec connected; you sign off the test set | [1–2] | — |
+| M2 | Working version on test data | A demo on the agreed test set | **[x] of [n]** test cases right [with the source shown, where that applies]; it hands over to a person when unsure; no personal data outside the systems in the risk notes | [3–4] | **[20%]**: ₹[ ] |
+| M3 | Pilot with **[n]** of your users | **[5]** working days of real use, one feedback round, fixes | **[metric]** measured on real use; no open defect that blocks the main task | [5–6] | — |
+| M4 | Go-live + handover | Recorded handover, SOP, admin guide, list of accounts and access | The M2 and M3 criteria still met on live use; you approve go-live in writing | [6–8] | **[30%]**: ₹[ ] |
+| — | Warranty | Defects in what I built fixed free | — | [30] days from go-live | — |
+
+Each milestone is accepted the way agreement clause 2.4 sets out: you have 3 working days to report anything that misses its criteria; I fix those items and we re-test only those. The next milestone starts once the current one is accepted. *[Keep at least 50% before work starts; spread the rest across the milestones.]*
+
+**4. Change control**
+- Anything outside box 2 or the acceptance criteria is a change. Ask in writing (email or WhatsApp); within 2 working days I reply with the hours, the price (₹2,000 / $60 an hour, excl. GST) and the effect on the dates. Work on it starts only after your written OK.
+- A change that alters a milestone or its acceptance criteria goes into a signed change note, and the table in box 3 is updated.
+- Wording and prompt tweaks inside the agreed scope during the pilot are included.
+
+**5. Running costs: paid by you, on your accounts** *(estimate, from the test runs)*
+
+| Item | How it's billed | Your estimate / month |
+|---|---|---|
+| AI model usage (**[OpenAI / Anthropic]**, your account) | Usage-based | [runs a month] × ~₹[ ] a run ≈ **₹[ ]** |
+| Hosting (**[n8n on your VPS / n8n Cloud / other]**) | Monthly | **₹[ ]** |
+| [Document or vector store, if any] | Monthly or usage-based | **₹[ ]** |
+| [WhatsApp messages, if it uses WhatsApp] | Per message, by Meta | **₹[ ]** |
+| [Other licences: CRM, OCR, email] | Provider's price | **₹[ ]** |
+| **Total** | before GST | **≈ ₹[ ] / month** |
+
+*AI usage depends on how much it's used and on the model; I'll show you the real numbers after the first month.*
+
+**6. Your IP and your data**
+- Everything is built on your accounts. On full payment, the deliverables made for you (workflows, prompts written for your business, configuration and documents) are yours. I keep my general templates and know-how, and you get a licence to use the parts of them inside your build (agreement clause 7).
+- Your data stays in your accounts wherever possible, kept to the minimum needed. I act as your data processor under a written clause (agreement clause 12 and Schedule D, filled from the risk notes), and I delete my copies within 30 days of the end. [Only if the chosen provider's API terms say so: "Your data is not used to train the provider's models."]
+- AI output can be wrong: **[who]** reviews **[what]** before **[it reaches a customer / it is filed]** for the first **[n]** weeks.
+
+**7. Terms (summary; the signed agreement governs)**
+Prices exclude GST · at least 50% before work starts, the rest by milestone (box 3) · no guaranteed results: we measure the success metric together · the warranty covers defects in what I built, not third-party outages or model changes · liability capped at fees paid · **this proposal is valid until [date + 7 days]**.
+
+**8. To go ahead**
+Reply "**Go**" on WhatsApp or email → I send the agreement for e-signature, with box 2 as Schedule A and box 3 as Schedule B → first payment → kickoff. Earliest start: **[date]**.
+
+✂ ─────────────────────────────── copy to here ─────────────────────────────────
+
+**Extra checks for a multi-milestone proposal** (on top of §3):
+- [ ] Every acceptance criterion is testable: a number, a yes/no, or a named test set.
+- [ ] The payments add up to the total, and at least 50% is due before work starts.
+- [ ] The Scoping credit (₹9,999 / $499) is applied if the build is booked within 30 days of the scoping pack.
+- [ ] The success metric and baseline match the use-case spec; nothing in the proposal promises the target.
+- [ ] The running-cost box uses numbers from the test runs, marked *estimate*.

@@ -74,8 +74,8 @@ The consent-based version of the field test (strategy §8).
 **Rules:** only after they say yes; never book a fake visit; use the channel they normally get enquiries on; the result goes only to them.
 
 **Speed Check result:**
-- **EN:** Hi [Name], here's your Speed Check: I enquired on [listing] at [time] on [day]; the first reply came after [X]. Here's a 2-minute video of how it could have been answered within a minute: [Loom]. If you'd like the same for your real leads, here's a free 20-min Fit Call: askhemant.ai/book. If not, the video's yours.
-- **HI:** Hi [Name], aapka Speed Check: maine [listing] par [day] ko [time] enquiry bheji; pehla reply [X] baad aaya. Yeh 2 minute ka video dekhiye ki woh ek minute mein kaise answer ho sakti thi: [Loom]. Apni asli leads ke liye yahi chahiye toh free 20-min Fit Call: askhemant.ai/book. Nahi toh video aapka hai.
+- **EN:** Hi [Name], here's your Speed Check: I enquired on [listing] at [time] on [day]; the first reply came after [X]. Here's a 2-minute video of how it could have been answered within a minute: [video link]. If you'd like the same for your real leads, here's a free 20-min Fit Call: askhemant.ai/book. If not, the video's yours.
+- **HI:** Hi [Name], aapka Speed Check: maine [listing] par [day] ko [time] enquiry bheji; pehla reply [X] baad aaya. Yeh 2 minute ka video dekhiye ki woh ek minute mein kaise answer ho sakti thi: [video link]. Apni asli leads ke liye yahi chahiye toh free 20-min Fit Call: askhemant.ai/book. Nahi toh video aapka hai.
 
 ### O5. Clinic owner you know personally (T4)
 - **EN:** Hi Dr [Name], [personal line: "Hemant here, I've been coming to you for [years/treatment]"]. I've started building WhatsApp systems for clinics: when a call is missed during a procedure or lunch, the patient gets a WhatsApp text-back with a booking link, then reminders 24 hours and 2 hours before. Would you be open to counting how many calls go unanswered on one busy day? I'd love to show you what the fix looks like, if it's useful.
@@ -123,6 +123,11 @@ Reply in the same place they engaged (a comment reply, or the DM thread they ope
 | Any | "Not now" | "When would be a better time?" → note the date → **one** message on that date |
 | Any | "No thanks" | "Totally fine, thanks for letting me know." Mark "no". Never again |
 | Any | An intro | Thank the friend the same day; message the referral within 24 hours (O10) |
+
+**Where to send people who show interest** (the Fit Call routing in [`02-cal-com-intake-form.md`](./02-cal-com-intake-form.md) §4):
+- **Brokers and clinics** with about 20 leads a month or more and a budget of ₹15K or more → the free Fit Call (askhemant.ai/book).
+- **Any other business** with a budget of ₹15K or more (a contact who wants a workflow or an AI tool for something other than leads) → the free Fit Call too; the likely outcome is a Quick Win Build or an AI Build Scoping.
+- **A budget under ₹15K**, or a broker or clinic with under 20 leads a month → the free kit (askhemant.ai/kit) and the ₹1,999 / $99 Ask Hemant Session, not a Fit Call.
 
 ---
 

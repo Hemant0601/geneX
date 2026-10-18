@@ -20,7 +20,7 @@ Six importable n8n workflows. **01, 05 and 06 run Hemant's own funnel**, which i
 | `demo/` | Fictional test payloads, `send-demo-lead.sh`, a DEMO lead form for filming, and the fake-data note |
 | `tools/build-workflows.mjs` | Generates the six JSON files and the sheet headers (the AI prompt is copied from `prompts/`) |
 | `tools/validate-workflows.mjs` | Static checks: JSON, node ids and names, connections, node types, references, Code syntax, secrets |
-| `tools/test-code-nodes.mjs` | 41 unit tests that run the shipped Code-node code against the demo payloads and synthetic sheet rows |
+| `tools/test-code-nodes.mjs` | 42 unit tests that run the shipped Code-node code against the demo payloads and synthetic sheet rows |
 
 ## Architecture
 
@@ -111,9 +111,9 @@ Create two spreadsheets in the Google account that n8n signs in with ([section 4
   - Fields are matched by **label**, so keep words like "first name", "WhatsApp", "business", "leads" and "tips" in the labels. The business type maps to a lane by its words: real estate / broker / channel partner / developer → RE; clinic / dental / skin / aesthetic / physio → CL; anything else → GEN.
 - **Cal.com:** Settings › Developer › Webhooks. Subscriber URL `https://n8n.askhemant.ai/webhook/askhemant/calcom`; triggers **Booking created / rescheduled / cancelled**; Secret = env `CALCOM_WEBHOOK_SECRET` (checked against `X-Cal-Signature-256`).
   - Use the booking questions in [`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md). Workflow 06 reads them by label: business, city or market, where leads come from, leads a month, first-reply speed, what to fix, budget, WhatsApp.
-  - Workflow 06 sends a WhatsApp **confirmation** as well as the 2-hour reminder, so the WhatsApp question's help text must say so. `sales/02-cal-com-intake-form.md` Q8 currently says "For the 2-hour reminder only"; change it in Cal.com to: "We'll send your booking confirmation and a 2-hour reminder on WhatsApp. I won't add you to any list."
-  - Red-route bookings (budget under ₹15K, under 20 leads a month, or "Other business") get a ROUTE note in `notes`, so you can send the Kit and the Ask Hemant Session link instead.
-  - Event slugs `fit-call` and `ask-hemant-session` are labelled in Config `event_labels`.
+  - Workflow 06 sends a WhatsApp **confirmation** as well as the 2-hour reminder, so the WhatsApp question's help text must say so. Use the Q8 help text from `sales/02-cal-com-intake-form.md` word for word: "We'll send your booking confirmation and a 2-hour reminder on WhatsApp. I won't add you to any list."
+  - **Routing notes** (Fit Call bookings only, rule in `sales/02-cal-com-intake-form.md` §4): **red** = budget under ₹15K, **or** a real-estate or clinic business with under 20 leads a month. Those get a `ROUTE (red)` note in `notes`, so you can cancel with message R1 and send the Kit and the Ask Hemant Session link instead. "Other business" with a budget of ₹15K or more is **green-GEN**: no red note, but a `ROUTE (green-GEN)` note saying to keep the call (the likely outcome is a Quick Win Build or an AI Build Scoping).
+  - Event slugs `fit-call`, `ask-hemant-session`, `audit-workshop`, `audit-review`, `kickoff` and `client-call` (30 min) are labelled in Config `event_labels`.
   - The strategy notes that webhooks on Cal.com's free plan are **unverified**. If they aren't available, enter bookings in the Pipeline by hand.
 
 ### n8n credentials to create (names exactly as below)
@@ -172,7 +172,7 @@ date,source,keyword,lane,business_type,stage,value,lead_id,first_name,whatsapp,e
 | `lead_received_at`, `first_reply_sent_at`, `seconds_to_reply` | 01 | when n8n received the form → when WhatsApp accepted the welcome. Your own speed-to-lead number for the Build Log |
 | `temperature` | 01, 06 | ICP fit from the form: `hot` = real estate or clinic with ≥40 leads a month, `warm` ≥20, else `cold`. It is a fit score, not buying intent |
 | `booking_*`, `booked_at`, `reminder_sent_at` | 06 | Cal.com slug, uid, start (IST), `confirmed / rescheduled / cancelled` |
-| `notes` | 01, 06 | appended, never overwritten: intake answers, routing note for budgets under ₹15K |
+| `notes` | 01, 06 | appended, never overwritten: intake answers, and on Fit Call bookings a `ROUTE (red)` note (budget under ₹15K, or real estate / clinic under 20 leads a month) or a `ROUTE (green-GEN)` note ("Other business", budget ₹15K or more) |
 
 **When someone replies STOP on your number.** Replies to the AskHemant number land in your WhatsApp Business app (coexistence), not in a workflow, so recording an opt-out is your job, the same day: set that person's `marketing_consent` to `stopped` and add "STOP <date>" to `notes`. Workflow 06 then sends them no WhatsApp confirmation or reminder (the booking still lands in the Pipeline, with a note), and workflow 01 keeps `stopped` unless they tick the consent box on the kit form again. Don't WhatsApp them again unless they write to you first. Workflow 03 (DEMO) handles STOP by itself.
 
@@ -291,7 +291,7 @@ Workflows 01, 03 (POST) and 06 expect signed requests. Use the script with the s
 ```bash
 node automations/tools/build-workflows.mjs      # regenerate the JSON + sheets/*.csv (prompt from prompts/)
 node automations/tools/validate-workflows.mjs   # structure, references, Code syntax, secret scan
-node automations/tools/test-code-nodes.mjs      # 41 unit tests on the shipped Code-node code
+node automations/tools/test-code-nodes.mjs      # 42 unit tests on the shipped Code-node code
 ```
 
 If you edit a workflow inside n8n, export it (⋯ › Download) over the JSON here, and stop regenerating that file. Still run `validate-workflows.mjs` on the export before committing.
@@ -306,8 +306,8 @@ If you edit a workflow inside n8n, export it (⋯ › Download) over the JSON he
    - **Mock checks:** the mock verified every outgoing request's shape (template parameters, Messages API body, no `temperature`, user-first/user-last turns).
    - **Both execution modes:** the full set passed in n8n's legacy Code sandbox and again with **task runners on** (the n8n 2.x mode, with `N8N_BLOCK_ENV_ACCESS_IN_NODE=false`). In both, signatures were verified against the raw body.
    - **Digest:** workflow 05 ran through `n8n execute`, with its Sheets read swapped for fictional rows in a test-only copy.
-4. **Unit:** 41 tests on the Code nodes with synthetic Sheet rows, including the template-consistency check against `whatsapp-templates.json`, the keyword mapping, a hand-recorded STOP, repeat and late WhatsApp deliveries, fenced-JSON parsing and one Graph API version across all six Config nodes.
-5. **Re-run after review** (same day, Graph API default now `v26.0`): validator and unit tests pass; all six files import with `n8n import:workflow` into a fresh n8n 1.123.85 user folder; the live set above passed again in both execution modes, with every WhatsApp call going to `/v26.0/…/messages`, a signed but 25-hour-old WhatsApp delivery getting no AI call and no free-form reply, and the Wait node resuming at its scheduled time (UTC-correct).
+4. **Unit:** 42 tests on the Code nodes with synthetic Sheet rows, including the Fit Call routing notes (red vs green-GEN), the template-consistency check against `whatsapp-templates.json`, the keyword mapping, a hand-recorded STOP, repeat and late WhatsApp deliveries, fenced-JSON parsing and one Graph API version across all six Config nodes.
+5. **Re-run after review** (same day, Graph API default now `v26.0`): validator and unit tests pass; all six files import with `n8n import:workflow` into a fresh n8n 1.123.85 user folder; the live set above passed again in both execution modes, with every WhatsApp call going to `/v26.0/…/messages`, a signed but 25-hour-old WhatsApp delivery getting no AI call and no free-form reply, and the Wait node resuming at its scheduled time (UTC-correct). After the Fit Call routing change (red = budget under ₹15K, or real estate / clinic under 20 leads; "Other business" with ₹15K+ is green-GEN), the validator and all 42 unit tests pass again and workflow 06 imports with `n8n import:workflow` into a fresh n8n 1.123.85 user folder.
 6. **Not run live:** the Google Sheets nodes. There was no Google account in the build environment, so every Sheets node errored on the missing credential, and the flows carried on as designed. Their parameters follow n8n's Google Sheets v4.5 node source; check that the first real rows land correctly.
 
 ## 9. Known limits and things to check

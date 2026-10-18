@@ -122,7 +122,7 @@ Poll (Mon, Thu), question box (Tue, Sun), behind the scenes (Wed), /book link st
 
 ### 5.1 Calls and proposals
 - **Fit Call:** free, 20 minutes, intake form required, Tue–Thu only, **max 6 a week**. Script: [`sales/01-fit-call-script.md`](../sales/01-fit-call-script.md). Minute 0–2 frame, 2–10 diagnose, 10–15 name the 1–2 biggest leaks and recommend, 15–20 price and timeline.
-- **Routing:** under ₹15K budget or outside the niche → the Kit and the **₹1,999 / $99 Ask Hemant Session** instead ([`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md)).
+- **Routing:** a budget under ₹15K, or a real-estate or clinic business with under 20 leads a month → the Kit and the **₹1,999 / $99 Ask Hemant Session** instead of a Fit Call. Any other business with a budget of ₹15K or more keeps the Fit Call; the likely outcome is a Quick Win Build or an AI Build Scoping ([`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md)).
 - **Same day:** when the next step is an Audit, send the Audit payment link on WhatsApp **during the call**.
 - **Within 24 hours:** otherwise, a 1-page proposal with 2 options (Sprint, or Sprint + Care), a 3-minute Loom, the out-of-scope list, the running-cost estimate, and 7-day validity ([`sales/03-proposal-template.md`](../sales/03-proposal-template.md)). Follow-ups: [`sales/07-follow-up-templates.md`](../sales/07-follow-up-templates.md).
 - **Show-rate protection:** a WhatsApp reminder 2 hours before every call ("Reply 1 to confirm"), on top of Cal.com's emails.
@@ -172,7 +172,7 @@ Poll (Mon, Thu), question box (Tue, Sun), behind the scenes (Wed), /book link st
 | Reach, non-follower reach % | Accounts reached in the week; share who don't follow you | track | track | track |
 | Average watch time, sends, saves | From Insights, per Reel and weekly totals. **Sends matter most** for reaching non-followers | track | track | track |
 | Profile visits, link taps | Insights profile activity; GA4 sessions with `utm_source=ig` | track | track | track |
-| Keyword comments | Comments containing LEAKS / PRICE / FOUNDING / CLINIC (CLINIC from month 2), each person once per post; LEAKS or KIT sent as a DM from a Story or Live counts too | 30 | 100 | 200 |
+| Keyword comments | Comments containing LEAKS / PRICE / FOUNDING / CLINIC (CLINIC from month 2), each person once per post; a KIT DM from a Story or Live counts too | 30 | 100 | 200 |
 | DM replies | Commenters who answered the auto-DM question (planning rate 35%) | track | track | track |
 | Kit sign-ups by lane | Tally calculator submissions, split RE / CL / GEN by the business-type field | track | track | track |
 | Qualified conversations (by lane) | A two-way conversation with an in-niche owner or decision-maker who has a real lead flow and has shared what they sell and where leads come from | 10 | 35 | 70 |
@@ -202,7 +202,7 @@ Poll (Mon, Thu), question box (Tue, Sun), behind the scenes (Wed), /book link st
 6. **Followers under 150?** Don't panic: revenue doesn't depend on followers. Keep the 10 daily messages; lean on trial reels, the first collab, LinkedIn and Shorts.
 7. Book the first collab for month 2.
 
-### 7.2 Day-45 check (Thu 3 Dec, 30 minutes)
+### 7.2 Day-46 check (Thu 3 Dec, 30 minutes)
 Count qualified conversations and kit sign-ups **by lane**. Shift next week's content towards the leading lane (e.g. 3 RE → 2 RE + 2 CL if clinics lead). Dubai: content twice a week in month 2.
 
 ### 7.3 Day-60 niche decision (Thu 17 Dec, 60 minutes)
@@ -225,7 +225,7 @@ then either **shorten the Fit Call to 15 minutes**, or **make the Audit (₹9,99
 
 ### 7.5 Price rise (count Sun 3 Jan; announce Mon 4 Jan; effective Mon 18 Jan 2027)
 - **Condition:** at least **3 documented results** (definition in §6.2). Count them on **Sun 3 Jan**.
-- **If met:** announce on **Mon 4 Jan 2027**; new prices from **Mon 18 Jan 2027**: **Audit ₹14,999 / $699; Solo Sprint ₹44,999 / $1,999**. Proposals already sent keep their price for their 7-day validity. The deadline is real, so this is honest scarcity.
+- **If met:** announce on **Mon 4 Jan 2027**; new prices from **Mon 18 Jan 2027**: **Audit ₹14,999 / $699; Solo Sprint ₹44,999 / $1,999**. Proposals already sent keep their price for their 7-day validity. The deadline is real, so this is honest scarcity. On 18 Jan, also update the Audit box on the kit's last page ([`lead-magnet/src/kit.html`](../lead-magnet/src/kit.html)), re-render with `node lead-magnet/render.mjs` and redeploy ([`02-launch-checklist.md`](./02-launch-checklist.md) week 13).
 - **If not met:** no announcement; prices stay; re-check at the day-90 review and monthly after that.
 - **Decision for Hemant:** the strategy names only the Audit and the Solo Sprint. Decide before Mon 4 Jan whether the Clinic Sprint (₹34,999 / $1,499 today, the same as the Solo Sprint) also rises on 18 Jan 2027; until then it stays at its launch price ([`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md) §6).
 
@@ -238,7 +238,7 @@ then either **shorten the Fit Call to 15 minutes**, or **make the Audit (₹9,99
 ### 7.7 Standing rules
 | Trigger | Action |
 |---|---|
-| Founding slots: 3 signed, or **Mon 30 Nov 2026 23:59 IST** | Program closed; from Tue 1 Dec sell only full-price Audits and Sprints; update bio link 5 and pinned post #3 |
+| Founding slots: 3 signed, or **Mon 30 Nov 2026 23:59 IST** | Program closed; from Tue 1 Dec (or the day the 3rd slot is signed) sell only full-price Audits and Sprints; update bio link 5 and pinned post #3; replace the `FOUNDING-BOX` on the kit's last page ([`lead-magnet/src/kit.html`](../lead-magnet/src/kit.html)) with the Lead Leak Audit box (₹9,999 / $499), re-render with `node lead-magnet/render.mjs` and redeploy; switch the FOUNDING auto-DM to the closed text ([`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.3) |
 | A Sprint's warranty ends (day 24) | Offer Lead Desk Care (₹9,999/mo / $299/mo) |
 | More than 25 commenters a month | Move from Meta's native automation to ManyChat Essential (or your own n8n flow) |
 | About 300 followers | Start the broadcast channel: one post a week |

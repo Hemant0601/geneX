@@ -23,7 +23,7 @@
 7. [Meta Business Suite, business portfolio and Comment to Message](#7-meta-business-suite-business-portfolio-and-comment-to-message)
 8. [WhatsApp Business app](#8-whatsapp-business-app)
 9. [Cal.com](#9-calcom)
-10. [Tally (kit form, onboarding form)](#10-tally)
+10. [Tally (kit form, onboarding form, pre-audit and pre-scoping forms)](#10-tally)
 11. [Web3Forms](#11-web3forms)
 12. [GA4, Microsoft Clarity and Search Console](#12-ga4-microsoft-clarity-and-search-console)
 13. [WhatsApp Cloud API for your own automations](#13-whatsapp-cloud-api-for-your-own-automations)
@@ -298,10 +298,11 @@ Reported limits, **not verified here**: up to 5 keywords per automation; exact, 
    | Speed-to-Lead Sprint (Solo) | ₹34,999 | Up to 3 lead sources, instant WhatsApp first reply, AI qualifier, visit booking + reminders, 30-day follow-up; live in 10 working days after access |
    | Speed-to-Lead System (Team) | ₹79,999 | Up to 6 sources and 10 agents, assignment, CRM, manager dashboard; 15 working days |
    | Missed-Call & No-Show Recovery Sprint | ₹34,999 | For clinics: missed call → WhatsApp text-back, booking, reminders, review and recall; 10 working days |
+   | AI Build Scoping | ₹9,999 | For custom automations and AI products: use-case spec, architecture sketch, data and risk notes, milestone plan, fixed quote; 5 working days; 100% credited to a Quick Win or Custom AI build booked within 30 days |
    | Quick Win Build | ₹24,999 | One workflow of up to about 10 steps; 7–10 working days |
    | Lead Desk Care | ₹9,999/month | Monitoring, fixes within 1 working day, 2 small changes a month, monthly report |
    | Lead Desk Growth | ₹24,999/month | Care + 1 new automation a month; 3-month minimum |
-   | Custom AI Agent / AI Product Build | From ₹1,50,000 | Scoped only after an Audit; 4–8 weeks |
+   | Custom AI Agent / AI Product Build | From ₹1,50,000 | Scoped in an AI Build Scoping (₹9,999, credited to the build); 4–8 weeks |
 
    Collections: *Start here* (Kit, Fit Call, Session) · *Audit & Sprints* · *Retainers* · *Other builds*.
 5. **Quick replies** (Business tools → Quick replies; type `/` in a chat). Minimum set below; fuller texts may live in [`automations/whatsapp-templates.md`](../automations/whatsapp-templates.md) and [`sales/07-follow-up-templates.md`](../sales/07-follow-up-templates.md):
@@ -311,7 +312,7 @@ Reported limits, **not verified here**: up to 5 keywords per automation; exact, 
    - `/audit` — "Here's the Lead Leak Audit payment link (₹9,999, 100% credited to a Sprint booked within 30 days): {{RAZORPAY_AUDIT_LINK}}"
    - `/session` — "Here's the Ask Hemant Session link (45 min, ₹1,999): {{RAZORPAY_SESSION_LINK}}. Outside India: {{PAYPAL_SESSION_LINK}} ($99)."
    - `/confirm` — "Hi [Name], a quick reminder: our 20-min Fit Call is today at [time] IST on Google Meet: [link]. Reply 1 to confirm."
-   - `/notfit` — "Thanks for the detail. Honestly, a full system isn't the right fit yet. The free kit covers the quick fixes (askhemant.ai/kit), and if you'd like an hour of focused help, the Ask Hemant Session is ₹1,999 / $99: askhemant.ai/book."
+   - `/notfit` — "Thanks for the detail. Honestly, a full system isn't the right fit yet. The free kit covers the quick fixes (askhemant.ai/kit), and if you'd like 45 minutes of focused help, the Ask Hemant Session is ₹1,999 / $99: askhemant.ai/book."
 6. **Labels** (matching the pipeline stages): New · Replied · Call booked · Showed · Proposal · Won · Lost, plus lane labels **RE · CL · GEN**, plus Founding and Client. (The app's label limit is reported as 20 *(unverified)*.)
 7. **Greeting message** (to new contacts):
    > Hi, this is Hemant from AskHemant. Thanks for messaging. Tell me what you sell and where your leads come from, and I'll reply personally within 4 working hours. Free Lead Leak Kit: askhemant.ai/kit
@@ -327,6 +328,7 @@ Reported limits, **not verified here**: up to 5 keywords per automation; exact, 
 **Why:** the free, gated Fit Call booking (embedded at askhemant.ai/book), plus hidden events for paid work.
 **Cost:** ₹0 (Cal.com Free: unlimited event types, 1 user, Cal.com branding shown ([Costbench](https://costbench.com/software/scheduling/cal-com/free-plan/))).
 **Produces:** no token; the username `askhemant` and slugs are already in `config.js`.
+**When:** claim the username on **Sun 18 Oct** (day 0, part of the 5-minute check in [`01-brand-and-domain.md`](./01-brand-and-domain.md) §6). Steps 1–4, step 6's "Fit Calls" schedule and a minimal public **Fit Call** (20 min, slug `fit-call`, 6-a-week cap) must be live **before the site goes live and P01 posts (Mon 19 Oct, 15:00 IST)**, because the site's Book buttons and bio link 1 point to it. The intake questions, the evening slots, the "Paid work" schedule and the hidden events follow on **Tue 20 Oct**.
 
 1. **Sign up** at cal.com with your Google account (or hello@) → username **`askhemant`** (if taken, change `calUsername` in `config.js`). 2FA ON (Settings → Security).
 2. **General:** timezone **Asia/Kolkata**; time format 12-hour or 24-hour (your choice); week starts Monday.
@@ -342,12 +344,13 @@ Reported limits, **not verified here**: up to 5 keywords per automation; exact, 
    |---|---|---|---|---|---|
    | **Fit Call** | `fit-call` | 20 min | **Public** | Fit Calls | Limit to **6 bookings per week** (Limits tab *(unverified)*); minimum notice 12 hours (time to read the intake); 10-min buffer after; book up to 21 days ahead; Google Meet; the **7 intake questions** from [`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md) (business type, city or market, lead sources, leads a month, current reply speed, the task to fix first, budget band <₹15K / ₹15–40K / ₹40K–1L / ₹1L+ with USD equivalents), all required, plus the booker's WhatsApp number |
    | **Ask Hemant Session** | `ask-hemant-session` | 45 min | Hidden (link sent after payment) | Paid work | Minimum notice 4 hours; question "What do you want to ask?" |
-   | **Audit Workshop** | `audit-workshop` | 60 min | Hidden | Paid work | Sent after the ₹9,999 / $499 Audit payment |
+   | **Audit Workshop** | `audit-workshop` | 60 min | Hidden | Paid work | Sent after the ₹9,999 / $499 payment for a Lead Leak Audit or an AI Build Scoping (both use this event) |
    | **Kickoff** | `kickoff` | 45 min | Hidden | Paid work | Sent after the deposit and signed agreement |
-   | Audit Review (optional) | `audit-review` | 30 min | Hidden | Paid work | The Audit's 30-minute review call |
+   | Audit Review (optional) | `audit-review` | 30 min | Hidden | Paid work | The 30-minute review call of a Lead Leak Audit or an AI Build Scoping |
+   | **Client call** | `client-call` | 30 min | Hidden (active clients only) | Paid work | The day-5 demo, go-live training, team trainings, the Growth optimisation call and the founding feedback interview |
 
    Hidden event types were not verified ([`research/tooling-and-ops.md`](./research/tooling-and-ops.md) §2). If "hidden" isn't available, keep those events out of your public profile by sending their links by hand.
-   **Fit Call description:** "A 20-minute diagnosis of your lead flow and an honest yes or no on fit. Free. I'll only pitch if it's a fit." **Routing:** anyone under ₹15K or outside the niche gets the Kit and the Session link instead (template `/notfit` in §8; full rule in [`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md)).
+   **Fit Call description:** "A 20-minute diagnosis and an honest yes or no on fit. Free. If your budget is under ₹15K, I'll point you to the free kit and the paid Ask Hemant Session instead." **Routing:** a budget under ₹15K, or a real-estate or clinic business with under 20 leads a month, gets the Kit and the Session link instead of a Fit Call (template `/notfit` in §8). Any other business with a budget of ₹15K or more keeps the Fit Call; the likely outcome is a Quick Win Build or an AI Build Scoping. Full rule: [`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md).
 8. **Reminders:** the booking confirmation email is standard. A 24-hour email reminder through **Workflows** may need a paid plan *(unverified)*. The **2-hour WhatsApp reminder** ("Reply 1 to confirm") is sent by hand from the WhatsApp Business app (`/confirm`).
 9. **Webhooks → n8n** (Settings → Developer → Webhooks; triggers: booking created, rescheduled, cancelled). Webhooks on the free plan are unverified; if missing, add booking rows to the Sheet by hand.
 10. **Test:** book a Fit Call through `askhemant.ai/book/?utm_source=test&utm_medium=check`, check the UTM and answers on the booking, then cancel.
@@ -356,7 +359,7 @@ Reported limits, **not verified here**: up to 5 keywords per automation; exact, 
 
 ## 10. Tally
 
-**Why:** the kit bonus form (the calculator gate, which also feeds the day-60 niche data) and the client onboarding form.
+**Why:** the kit bonus form (the calculator gate, which also feeds the day-60 niche data), the client onboarding form, and the pre-audit and pre-scoping forms for paid Audits and Scopings.
 **Cost:** ₹0 (unlimited forms and submissions under fair use; Tally branding on free).
 **Produces:** `{{TALLY_KIT_FORM_ID}}`.
 
@@ -384,6 +387,12 @@ Matches [`website/kit/index.html`](../website/kit/index.html) ("four quick field
 Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onboarding-checklist.md): legal business name, GSTIN (optional), billing address, main contact and WhatsApp, lead sources with monthly volumes, the client's **Meta business portfolio ID** (so they can add you as a partner), the WhatsApp number to use for the API (owned by the client, in the client's name), preferred WhatsApp provider (BSP) if any, CRM, booking calendar, agents who get hot-lead alerts, business hours, FAQ/price-list document, and (founding clients) measurement and publication consent.
 - **Never collect passwords or OTPs.** Access is granted by partner invites and admin roles.
 - File uploads on Tally's free plan are unverified; if missing, ask for a shared Drive folder instead.
+
+### 10.3 Pre-audit and pre-scoping forms
+Build both as **Tally forms** before the first paid Audit or Scoping; the client gets the link within 1 working day of paying, with the Audit Workshop link.
+- **"Lead Leak Audit: pre-audit form"** (about 10 minutes): the exact fields, including the per-channel consent to timed test enquiries, are in [`sales/12-audit-delivery.md`](../sales/12-audit-delivery.md) §A1.
+- **"AI Build Scoping: pre-scoping form"** (about 15 minutes, with 2–3 sample files): the exact fields are in [`sales/12-audit-delivery.md`](../sales/12-audit-delivery.md) §B1.
+- Same rules as §10.2: **never collect passwords or OTPs**, and ask clients to remove their customers' names and numbers from samples. Answers go to your private client folder, not the pipeline Sheet.
 
 ---
 
@@ -536,7 +545,7 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
 **Alternative:** your own n8n Instagram flow (a portfolio demo), if Meta's developer access for your account is practical *(unverified)*.
 
 1. Connect @askhemant (requires "Allow access to messages", §5; a linked Facebook Page has historically been required *(unverified)*).
-2. Rebuild **LEAKS**, **PRICE**, **FOUNDING** (until the close; then the closed text) and, from month 2, **CLINIC** as comment triggers, plus the LEAKS (or KIT) DM keyword, with exactly the same DM texts as §7.2.
+2. Rebuild **LEAKS**, **PRICE**, **FOUNDING** (until the close; then the closed text) and, from month 2, **CLINIC** as comment triggers, plus the KIT DM keyword (Stories and Lives), with exactly the same DM texts as §7.2.
 3. **Turn off the matching Meta Business Suite automations** so nobody gets two DMs.
 4. Send new contacts to the pipeline Sheet (ManyChat → webhook → n8n, or ManyChat's Sheets integration *(plan availability unverified)*).
 5. Same rules: one private reply per comment within 7 days; follow-ups only within 24 hours of the person's reply; no broadcasts to people who didn't ask.

@@ -49,7 +49,8 @@ if (args.stopwatch) {
       const f = v === 'closed' ? 'founding-closed.png' : `founding-slots-${v}-of-3.png`;
       add('stories', `stories/${f}`, 'renderStory', ['founding', { ...S.founding, variant: v }]);
     }
-    // one frame per DM keyword: LEAKS is the default, KIT the fallback (07-dm-automation-playbook.md §2.4)
+    // one frame per kitDm entry: KIT is the default Story/Live DM keyword (07-dm-automation-playbook.md §2.4);
+    // "DM me LEAKS" is an optional alternative only, since LEAKS is a comment keyword
     for (const k of [].concat(S.kitDm)) add('stories', `stories/${k.file || 'kit-dm-me-kit.png'}`, 'renderStory', ['kitDm', k]);
     add('stories', 'stories/kit-comment-leaks.png', 'renderStory', ['kitComment', S.kitComment]);
   }
