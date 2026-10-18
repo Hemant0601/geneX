@@ -10,7 +10,7 @@ Everything needed to launch **AskHemant**: Hemant Kumar's AI + automation consul
 | Tagline | **No lead left on read.** | |
 | Who it's for | Real-estate brokers and channel partners (India first, then UAE), then private clinics. Agencies as a white-label channel. General SMBs for Quick Win and custom AI/product builds | [`docs/00-strategy.md`](docs/00-strategy.md) §2 |
 | Flagship offer | **Speed-to-Lead Sprint**: ₹34,999 / $1,499, live in 10 working days | §4 |
-| Entry points | Free 20-min **Fit Call** → **Lead Leak Audit** ₹9,999 / $499. Side door: **Ask Hemant Session** ₹1,999 / $99 | §4 |
+| Entry points | Free 20-min **Fit Call** → **Lead Leak Audit** ₹9,999 / $499 (or **AI Build Scoping**, same price, for custom automations and AI products). Side door: **Ask Hemant Session** ₹1,999 / $99 | §4 |
 | First clients | **3 Founding Client slots** at ₹14,999 / $599, in exchange for measured results and permission to publish. Closes Mon 30 Nov 2026 | [`sales/10-founding-client-program.md`](sales/10-founding-client-program.md) |
 | Lead magnet | **The Lead Leak Kit**: a 13-page PDF. People comment **LEAKS** and get it by DM | [`lead-magnet/`](lead-magnet/) |
 
@@ -23,7 +23,7 @@ Everything needed to launch **AskHemant**: Hemant Kumar's AI + automation consul
 1. **Check and buy the name.** Run the 5-minute check, then buy askhemant.ai and Hostinger Premium. → [`docs/01-brand-and-domain.md`](docs/01-brand-and-domain.md), [`docs/03-accounts-setup-guide.md`](docs/03-accounts-setup-guide.md)
 2. **Claim @askhemant**, switch it to a Creator account, and link a Facebook Page so comment automation works. → [`instagram/01-profile-setup.md`](instagram/01-profile-setup.md)
 3. **Create the accounts:** Cal.com (username `askhemant`), WhatsApp Business app, Tally, Web3Forms, Razorpay, GA4 and Clarity. Each one gives you a value to paste into the site or the automations. → [`docs/03-accounts-setup-guide.md`](docs/03-accounts-setup-guide.md) §1 lists every value
-4. **Fill in the site config.** Paste your values into [`website/assets/js/config.js`](website/assets/js/config.js); anything left blank hides itself. Then deploy. → [`website/DEPLOY-HOSTINGER.md`](website/DEPLOY-HOSTINGER.md)
+4. **Fill in the site config and upload the site.** Paste your values into [`website/assets/js/config.js`](website/assets/js/config.js) (plus the Web3Forms key in the hidden field of `website/index.html`). Values you haven't filled in hide their buttons. The Cal.com username `askhemant` is already filled in, so create that account before you deploy. Upload the *contents* of `website/` with File Manager or the GitHub Action. **Don't use hPanel's Git deploy**: it would publish the whole repo, including `docs/` and `sales/`. → [`website/DEPLOY-HOSTINGER.md`](website/DEPLOY-HOSTINGER.md)
 5. **Turn on the LEAKS auto-DM** (Meta Business Suite in month 1, ManyChat later). → [`instagram/07-dm-automation-playbook.md`](instagram/07-dm-automation-playbook.md)
 6. **Start n8n** on a Hostinger VPS and import the workflows. The demos you'll film for Reels run on these. → [`automations/README.md`](automations/README.md)
 7. **Post P01 on Mon 19 Oct at 15:00 IST,** then follow the schedule. → [`instagram/02-launch-posts.md`](instagram/02-launch-posts.md), [`instagram/03-content-calendar-30-days.md`](instagram/03-content-calendar-30-days.md)
@@ -56,10 +56,20 @@ automations/   Six importable n8n workflows: kit signup → pipeline, DEMO speed
 
 ## Editing things later
 
-- **Prices or offer details:** change the source in [`docs/00-strategy.md`](docs/00-strategy.md) §4, then update [`website/pricing/index.html`](website/pricing/index.html), [`sales/04-pricing-sheet.md`](sales/04-pricing-sheet.md) and `instagram/carousels.json`.
+- **Prices or offer details:** change the source in [`docs/00-strategy.md`](docs/00-strategy.md) §4. Then update:
+  - `website/pricing/index.html` (cards and JSON-LD)
+  - `website/index.html` (step cards, price cards, FAQ, the founding "List" line)
+  - `website/founding/index.html`
+  - [`sales/04-pricing-sheet.md`](sales/04-pricing-sheet.md)
+  - `instagram/carousels.json`, then re-render
+  - `lead-magnet/src/kit.html`, then re-render
+  - the WhatsApp catalogue and the Razorpay payment-page amounts
+
+  Finally, run `grep -rn '34,999' .` (with the old price) to catch anything missed.
 - **Carousel text:** edit [`instagram/carousels.json`](instagram/carousels.json), then run `node tools/render/render-carousels.mjs`. → [`tools/render/README.md`](tools/render/README.md)
 - **Lead magnet:** edit `lead-magnet/src/kit.html`, then run `node lead-magnet/render.mjs` (it also updates the website copy of the PDF).
-- **Links and IDs on the site:** only in [`website/assets/js/config.js`](website/assets/js/config.js).
+- **Links and IDs on the site:** in [`website/assets/js/config.js`](website/assets/js/config.js), plus the Web3Forms key in the hidden field of `website/index.html`.
+- **Launching on askhemant.com first (lean budget):** run `node tools/switch-domain.mjs askhemant.com` to preview the changes, then add `--write` to apply them. It swaps the domain everywhere and turns off the .com→.ai redirect. Re-render afterwards. → [`website/DEPLOY-HOSTINGER.md`](website/DEPLOY-HOSTINGER.md)
 
 ## Needs your input or a professional
 
