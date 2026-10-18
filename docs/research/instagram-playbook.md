@@ -1,6 +1,6 @@
 # Instagram Growth Playbook for an AI Automation Consultant (late 2025 to 2026)
 
-Prepared for: Hemant Kumar (they/them), solo AI automation consultant
+Prepared for: Hemant Kumar, solo AI automation consultant
 Research date: 2026-10-18
 Scope: Growing a B2B / service-business Instagram account from zero and turning followers into booked consultations.
 

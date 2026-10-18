@@ -1,6 +1,6 @@
 # AskHemant: Final Launch Strategy
 
-**For:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026 · **Plan window:** Mon 19 Oct 2026 to Sat 16 Jan 2027 (90 days)
+**For:** Hemant Kumar · **Written:** Sun 18 Oct 2026 · **Plan window:** Mon 19 Oct 2026 to Sat 16 Jan 2027 (90 days)
 **What this is:** the final plan. It combines three competing launch strategies with five research files. The brand, domain and visual identity details are in [`01-brand-and-domain.md`](./01-brand-and-domain.md).
 
 > **How to read this**
@@ -499,7 +499,7 @@ The cadence follows Buffer's 3–5 feed posts a week ([Buffer](https://buffer.co
 |---|---|
 | **Title** | **The Lead Leak Kit: 7 places your enquiries go cold, and the WhatsApp fixes** |
 | **Promise** | "In 10 minutes, find where your enquiries go cold and fix the biggest leak this week. No new software needed." |
-| **Format** | A 10-page mobile PDF made in Canva, with 1080×1350 pages so they double as carousel slides. Bonus: the **Lead Leak Calculator** (a Google Sheet, "make a copy") |
+| **Format** | A 13-page mobile PDF (built from HTML in `lead-magnet/`; the plan originally said 10 pages in Canva), with 1080×1350 pages so they double as carousel slides. Bonus: the **Lead Leak Calculator** (a Google Sheet, "make a copy") |
 | **Comment keyword** | **LEAKS** (set up `LEAKS, Leaks, leaks, LEAK, leak`). Secondary keywords: **PRICE** (price list), **CLINIC** (from month 2) |
 
 **What's inside:**

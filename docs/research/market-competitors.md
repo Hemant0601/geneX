@@ -1,6 +1,6 @@
 # Market & Competitor Research: Solo AI-Automation Consultants on Instagram (2025-2026)
 
-Prepared for: Hemant Kumar (they/them) · Research date: 2026-10-18
+Prepared for: Hemant Kumar · Research date: 2026-10-18
 
 **Assumptions:** Hemant is a solo consultant based in India, wants Indian SMB clients and remote international clients (US/UK/AU/UAE), is launching on a small budget, and has no audience or public case studies yet.
 

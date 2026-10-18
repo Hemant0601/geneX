@@ -1,6 +1,6 @@
 # AskHemant: Brand, Domain and Identity
 
-**For:** Hemant Kumar (they/them) · **Written:** 18 Oct 2026 · **Companion to:** [`00-strategy.md`](./00-strategy.md)
+**For:** Hemant Kumar · **Written:** 18 Oct 2026 · **Companion to:** [`00-strategy.md`](./00-strategy.md)
 
 > **Availability has not been checked.**
 > - WHOIS, RDAP, Hostinger's live search and Instagram's username check were all blocked from this environment.
