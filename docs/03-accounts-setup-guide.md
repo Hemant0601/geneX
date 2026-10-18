@@ -1,6 +1,6 @@
 # AskHemant: Accounts Setup Guide
 
-**For:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026 · **When:** mostly Sun 18 – Sun 25 Oct (see [`02-launch-checklist.md`](./02-launch-checklist.md))
+**For:** Hemant Kumar · **Written:** Sun 18 Oct 2026 · **When:** mostly Sun 18 – Sun 25 Oct (see [`02-launch-checklist.md`](./02-launch-checklist.md))
 **Sources:** the tool stack in [`brand-brief.json`](./brand-brief.json) `toolStack`, [`00-strategy.md`](./00-strategy.md) §5, [`research/tooling-and-ops.md`](./research/tooling-and-ops.md), [`research/instagram-playbook.md`](./research/instagram-playbook.md), [`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md).
 
 > **How to read this**

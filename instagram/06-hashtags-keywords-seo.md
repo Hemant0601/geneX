@@ -1,6 +1,6 @@
 # Hashtags, Keywords and Instagram SEO
 
-**Account:** @askhemant · **Owner:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026
+**Account:** @askhemant · **Owner:** Hemant Kumar · **Written:** Sun 18 Oct 2026
 **Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §6 ("Search", "Hashtags"); [`docs/research/instagram-playbook.md`](../docs/research/instagram-playbook.md) §5–6.
 **Used by:** [`03-content-calendar-30-days.md`](./03-content-calendar-30-days.md) and [`04-reel-scripts.md`](./04-reel-scripts.md). They name hashtag sets by code (RE-1, CL-2 …); the sets are defined in §5.
 

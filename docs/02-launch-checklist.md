@@ -1,6 +1,6 @@
 # AskHemant: Launch Checklist (Sun 18 Oct 2026 → Sat 16 Jan 2027)
 
-**For:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026 · **Plan window:** day 1 = Mon 19 Oct 2026, day 90 = Sat 16 Jan 2027
+**For:** Hemant Kumar · **Written:** Sun 18 Oct 2026 · **Plan window:** day 1 = Mon 19 Oct 2026, day 90 = Sat 16 Jan 2027
 **Companion files:** [`00-strategy.md`](./00-strategy.md) (the why), [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) (the how, account by account), [`04-weekly-operating-system.md`](./04-weekly-operating-system.md) (the weekly rhythm), [`kpi-scorecard.csv`](./kpi-scorecard.csv) (the numbers)
 
 > **How to use this file**

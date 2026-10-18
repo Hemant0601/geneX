@@ -1,6 +1,6 @@
 # Launch posts: P01–P10 and trial reels T01–T04
 
-**For:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026 · **Covers:** Mon 19 Oct – Sun 1 Nov 2026 (launch weeks 1 and 2)
+**For:** Hemant Kumar · **Written:** Sun 18 Oct 2026 · **Covers:** Mon 19 Oct – Sun 1 Nov 2026 (launch weeks 1 and 2)
 **Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) (§4 offers and prices, §5 funnel and DM scripts, §6 content system, §8 proof rules) and [`docs/01-brand-and-domain.md`](../docs/01-brand-and-domain.md) (§7 visual identity, §8 voice).
 **Related files:** carousel slide spec for the graphics builder → [`carousels.json`](./carousels.json) · profile and automations → [`01-profile-setup.md`](./01-profile-setup.md) · DM flows → [`07-dm-automation-playbook.md`](./07-dm-automation-playbook.md) · rendered graphics → [`graphics/`](./graphics/) · tracking → [`content-tracker.csv`](./content-tracker.csv) · demo workflows → [`automations/demo/`](../automations/demo/) · posts from Mon 2 Nov (P11 onward) → [`03-content-calendar-30-days.md`](./03-content-calendar-30-days.md).
 

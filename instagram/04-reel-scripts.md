@@ -1,6 +1,6 @@
 # Reel Script Bank: R01–R20, 40 Extra Hooks, Production Checklist
 
-**Account:** @askhemant · **Owner:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026
+**Account:** @askhemant · **Owner:** Hemant Kumar · **Written:** Sun 18 Oct 2026
 **How to use it:**
 - These 20 scripts are swap-ins and the source for weeks 5–8. The 30-day calendar ([`03-content-calendar-30-days.md`](./03-content-calendar-30-days.md)) already carries beat sheets for P11–P23.
 - When a script goes into the calendar, give it the next post ID (P24, P25 …) and add a row to [`content-tracker.csv`](./content-tracker.csv).

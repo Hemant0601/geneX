@@ -1,6 +1,6 @@
 # 30-Day Content Calendar: Mon 19 Oct to Wed 18 Nov 2026
 
-**Account:** @askhemant · **Owner:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026
+**Account:** @askhemant · **Owner:** Hemant Kumar · **Written:** Sun 18 Oct 2026
 **Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §6 (content system) and §9 (90-day plan), and [`docs/01-brand-and-domain.md`](../docs/01-brand-and-domain.md) §8 (voice).
 **Companion files:**
 - [`02-launch-posts.md`](./02-launch-posts.md) and [`carousels.json`](./carousels.json) hold the full copy for P01–P10 and T01–T04. This file only schedules them.

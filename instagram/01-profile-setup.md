@@ -1,6 +1,6 @@
 # Instagram profile setup: @askhemant
 
-**For:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026 · **Do it:** Sun 18 Oct evening, or Mon 19 Oct before 13:00 IST. P01 goes live at 15:00 IST on Mon 19 Oct, so the profile and the LEAKS automation must be working before then.
+**For:** Hemant Kumar · **Written:** Sun 18 Oct 2026 · **Do it:** Sun 18 Oct evening, or Mon 19 Oct before 13:00 IST. P01 goes live at 15:00 IST on Mon 19 Oct, so the profile and the LEAKS automation must be working before then.
 
 **Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §5 (profile copy, DM scripts) and [`docs/01-brand-and-domain.md`](../docs/01-brand-and-domain.md) §5 (handle steps). Posts are in [`02-launch-posts.md`](./02-launch-posts.md). The full DM flows are in [`07-dm-automation-playbook.md`](./07-dm-automation-playbook.md).
 
@@ -57,7 +57,7 @@ Whichever handle you get, keep **AskHemant** as the brand on the site, in the na
 
 **Path:** Settings → *Account type and tools* → **Switch to professional account** → **Creator** *(UI path unverified)*.
 - **Category:** "Entrepreneur". If the label looks odd on the profile, turn off *Display category label*.
-- **Pronouns (optional, your choice):** Edit profile → Pronouns → `they/them`. You can show them to followers only or to everyone.
+- **Pronouns (optional, your choice):** Edit profile → Pronouns lets you add pronouns if you want, shown to followers only or to everyone. Leaving it blank is fine.
 
 **Why Creator, not Business:**
 - **AskHemant is a personal brand.** Creator is the account type built for a person rather than a shop ([NapoleonCat](https://napoleoncat.com/blog/instagram-creator-vs-business-account/)).

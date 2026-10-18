@@ -1,6 +1,6 @@
 # AskHemant: Weekly Operating System
 
-**For:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026 · **Applies:** every week from Mon 19 Oct 2026 to the day-90 review on Sat 16 Jan 2027
+**For:** Hemant Kumar · **Written:** Sun 18 Oct 2026 · **Applies:** every week from Mon 19 Oct 2026 to the day-90 review on Sat 16 Jan 2027
 **Built from:** [`00-strategy.md`](./00-strategy.md) §5 (delivery rules, Fit Call), §6 (content system and cadence), §9 (KPIs and decision dates). Dated one-off tasks live in [`02-launch-checklist.md`](./02-launch-checklist.md); the numbers live in [`kpi-scorecard.csv`](./kpi-scorecard.csv).
 
 > **The week in one line:** one Saturday build becomes 3 Reels + 2 trial hooks + 2 carousels; every day has 40 minutes of replies, comments and 10 personal messages; Tue–Thu hold the Fit Calls; Sunday is the 30-minute scorecard. Never fewer than 3 feed posts a week.

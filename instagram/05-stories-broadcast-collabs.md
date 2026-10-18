@@ -1,6 +1,6 @@
 # Stories, Ask Hemant Sunday, Highlights, Broadcast Channel, Collabs, Lives and Cross-posting
 
-**Account:** @askhemant · **Owner:** Hemant Kumar (they/them) · **Written:** Sun 18 Oct 2026
+**Account:** @askhemant · **Owner:** Hemant Kumar · **Written:** Sun 18 Oct 2026
 **Source of truth:** [`docs/00-strategy.md`](../docs/00-strategy.md) §5 (profile, DM rules), §6 (cadence, month-2 channels), §8 (proof rules); [`docs/research/instagram-playbook.md`](../docs/research/instagram-playbook.md) §2, §9, §10.
 **Day-by-day use:** [`03-content-calendar-30-days.md`](./03-content-calendar-30-days.md) names each day's Stories focus. This file is the system behind it.
 
