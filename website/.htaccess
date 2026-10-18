@@ -1,0 +1,130 @@
+# askhemant.ai: Apache / LiteSpeed config for Hostinger shared hosting.
+# Upload this file to public_html/ together with the site (it starts with a dot,
+# so turn on "Show hidden files" in hPanel File Manager to see it).
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+AddDefaultCharset utf-8
+
+# ---------------------------------------------------------------
+# Redirects: HTTPS, www -> apex, askhemant.com -> askhemant.ai (all 301)
+# ---------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # askhemant.com / www.askhemant.com (if parked or aliased on this hosting)
+  RewriteCond %{HTTP_HOST} ^(www\.)?askhemant\.com$ [NC]
+  RewriteRule ^ https://askhemant.ai%{REQUEST_URI} [L,R=301]
+
+  # www.askhemant.ai -> askhemant.ai
+  RewriteCond %{HTTP_HOST} ^www\.askhemant\.ai$ [NC]
+  RewriteRule ^ https://askhemant.ai%{REQUEST_URI} [L,R=301]
+
+  # Force HTTPS (also works behind Hostinger's proxy/CDN)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Old or guessed URLs without the folder slash: /pricing -> /pricing/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+
+  # Never serve the deploy notes if they were uploaded by mistake
+  RewriteRule ^DEPLOY-HOSTINGER\.md$ - [F,L,NC]
+</IfModule>
+
+# Block dotfiles (except .well-known for SSL validation) and markdown notes
+<IfModule mod_rewrite.c>
+  RewriteRule (^|/)\.(?!well-known/) - [F,L]
+</IfModule>
+<FilesMatch "\.(md|sh|yml|yaml|bak|log)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+
+# ---------------------------------------------------------------
+# MIME types
+# ---------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+  AddType image/x-icon .ico
+  AddType application/javascript .js
+  AddCharset utf-8 .html .css .js .json .webmanifest .xml .txt .svg
+</IfModule>
+
+# ---------------------------------------------------------------
+# Compression
+# ---------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml application/manifest+json
+  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+</IfModule>
+
+# ---------------------------------------------------------------
+# Caching
+#   /assets fonts + images: 1 year. CSS/JS: 30 days (HTML links them with ?v=,
+#   so bump the ?v= value in every page when you change them).
+#   config.js and HTML: always revalidate, so edits show up straight away.
+# ---------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 10 minutes"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType application/pdf "access plus 1 day"
+  ExpiresByType application/manifest+json "access plus 1 day"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|png|jpe?g|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "^config\.js$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt|webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.pdf$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
+  # Fonts are loaded with crossorigin; allow same-site use
+  <FilesMatch "\.woff2$">
+    Header set Access-Control-Allow-Origin "https://askhemant.ai"
+  </FilesMatch>
+
+  # -------------------------------------------------------------
+  # Security headers
+  # -------------------------------------------------------------
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+  Header unset X-Powered-By
+
+  # HSTS: enable ONLY after https://askhemant.ai works with a valid SSL
+  # certificate on every subdomain you use (start with a short max-age).
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Content-Security-Policy: deliberately NOT enabled, because a wrong policy
+  # silently breaks the Cal.com calendar, the Tally form, Web3Forms, GA4 and
+  # Clarity. If you add one, test every page first in report-only mode, e.g.:
+  # Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://app.cal.com https://tally.so https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://app.cal.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.web3forms.com https://app.cal.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms; frame-src https://app.cal.com https://cal.com https://tally.so https://www.youtube-nocookie.com https://player.vimeo.com; form-action 'self' https://api.web3forms.com; frame-ancestors 'self'; base-uri 'self'"
+  # Note: each page has one small inline <script> in <head> (sets the currency
+  # before first paint); a strict CSP would need its hash instead of 'unsafe-inline'.
+</IfModule>

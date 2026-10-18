@@ -1,0 +1,6 @@
+# askhemant.ai
+User-agent: *
+Allow: /
+Disallow: /DEPLOY-HOSTINGER.md
+
+Sitemap: https://askhemant.ai/sitemap.xml

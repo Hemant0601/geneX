@@ -1,0 +1,80 @@
+# Deploys ./website/ to Hostinger over FTP.
+# Setup: website/DEPLOY-HOSTINGER.md, section 6, option B.
+# Secrets (Settings → Secrets and variables → Actions): FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+# Optional repository variables: FTP_SERVER_DIR (default public_html/), FTP_PROTOCOL (default ftp; ftps if supported).
+name: Deploy website to Hostinger
+
+on:
+  workflow_dispatch:
+    inputs:
+      server_dir:
+        description: "Remote folder to deploy into (must end with /)"
+        required: false
+        default: "public_html/"
+      dry_run:
+        description: "Dry run: list changes without uploading"
+        type: boolean
+        required: false
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "website/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-website
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: FTP deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check FTP secrets
+        id: secrets
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ -z "$FTP_SERVER" ] || [ -z "$FTP_USERNAME" ] || [ -z "$FTP_PASSWORD" ]; then
+            echo "::notice title=Deploy skipped::FTP_SERVER, FTP_USERNAME and FTP_PASSWORD are not all set as repository secrets. Add them (see website/DEPLOY-HOSTINGER.md) to enable deploys. Nothing was uploaded."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out repository
+        if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4
+
+      - name: Sanity-check the site folder
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          test -f website/index.html || { echo "::error::website/index.html not found"; exit 1; }
+          test -f website/.htaccess || echo "::warning::website/.htaccess not found; HTTPS/redirect rules will be missing"
+          if grep -q "{{" website/assets/js/config.js; then
+            echo "::notice title=Config not complete::Some {{TOKENS}} in website/assets/js/config.js are still unset. The site hides or falls back for those features."
+          fi
+
+      - name: Deploy over FTP
+        if: steps.secrets.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
+          local-dir: ./website/
+          server-dir: ${{ inputs.server_dir || vars.FTP_SERVER_DIR || 'public_html/' }}
+          dry-run: ${{ inputs.dry_run == true }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+            DEPLOY-HOSTINGER.md
