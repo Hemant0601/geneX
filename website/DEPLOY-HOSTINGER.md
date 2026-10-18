@@ -90,6 +90,13 @@ Everything in `config.js` is visible to visitors, which is fine for these public
 - **Web3Forms:** in the dashboard, restrict the key to the `askhemant.ai` domain if offered. After launch, submit a test without JavaScript once to confirm the redirect back to `https://askhemant.ai/#message-sent` works on your plan.
 - **GA4:** set **data retention to 14 months** (the privacy notice says so) and mark `kit_submit`, `book_click`, `whatsapp_click`, `pay_click` (plus `book_complete`, `contact_submit`, `kit_download`) as key events.
 - **Razorpay:** its website check usually looks for terms, privacy, refund/cancellation and contact information. `/terms/` (section 9) and `/privacy/` cover these; confirm the refund defaults in section 9 first.
+- **Recorded walkthroughs:** the Audit includes a "20-minute recorded walkthrough". Loom's free plan reportedly caps recordings at 5 minutes, so use Loom's paid plan, or record with OBS or your phone and share the video unlisted via YouTube or Google Drive.
+
+### Decisions for Hemant (the site shows a default until you decide)
+
+- **Decision for Hemant: does the Agency −25% apply beyond builds?** `/pricing/#agency` promises −25% on builds only (the Sprints, the Team system, the Quick Win Build and Custom AI builds) and says Audits and retainers for partner clients are set in the partner agreement. If you extend the discount, update that box and `sales/04-pricing-sheet.md` §5 together.
+- **Decision for Hemant: does the Clinic Sprint price also rise on Mon 18 Jan 2027?** The site doesn't mention the price rise. Only if 3 documented results exist: announce on Mon 4 Jan 2027, and on 18 Jan change the Audit to ₹14,999 / $699 and the Solo Sprint to ₹44,999 / $1,999 on `/pricing/` (cards and JSON-LD) and `/` (step cards, price cards, founding "List" line). The Clinic Sprint stays ₹34,999 / $1,499 unless you decide it follows.
+- **Decision for Hemant: Quick Win Build payment terms.** Shown as the default, 50% to start and 50% at go-live (₹12,500 + ₹12,499 / $500 + $499), on `/pricing/`, `/terms/` §4 and the home FAQ. Change all three if you decide otherwise.
 
 ## 6. Upload the site
 

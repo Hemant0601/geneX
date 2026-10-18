@@ -56,7 +56,7 @@ Cal.com already asks for **name** and **email**. Add these, in this order, all *
 | 5 | **How fast does a new lead usually get its first reply today?** | Select | `Within 5 minutes` · `Within an hour` · `Same day` · `Next day or later` · `Honestly, I don't know` | "I don't know" is a useful answer |
 | 6 | **What's the one thing you'd fix first?** | Long text | — | e.g. "night-time portal leads", "follow-ups", "no-shows". Applying for a founding slot? Write "founding" here |
 | 7 | **What budget do you have in mind for this?** | Select | `Under ₹15K (under about $170)` · `₹15–40K (about $170–450)` · `₹40K–1L (about $450–1,150)` · `₹1L+ (about $1,150+)` | All my prices are published at askhemant.ai/pricing. USD figures use ₹88 = $1 |
-| 8 | **Your WhatsApp number** | Phone | — | For the 2-hour reminder only. I won't add you to any list |
+| 8 | **Your WhatsApp number** | Phone | — | We'll send your booking confirmation and a 2-hour reminder on WhatsApp. I won't add you to any list |
 | 9 | Anything else I should know? | Long text, optional | — | — |
 
 Privacy line under the form (Cal.com description or the /book page): *"Your answers go to Cal.com and to Hemant's private pipeline sheet, only to prepare for the call. Privacy notice: askhemant.ai/privacy."*

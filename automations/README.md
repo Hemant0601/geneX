@@ -20,7 +20,7 @@ Six importable n8n workflows. **01, 05 and 06 run Hemant's own funnel**, which i
 | `demo/` | Fictional test payloads, `send-demo-lead.sh`, a DEMO lead form for filming, and the fake-data note |
 | `tools/build-workflows.mjs` | Generates the six JSON files and the sheet headers (the AI prompt is copied from `prompts/`) |
 | `tools/validate-workflows.mjs` | Static checks: JSON, node ids and names, connections, node types, references, Code syntax, secrets |
-| `tools/test-code-nodes.mjs` | 35 unit tests that run the shipped Code-node code against the demo payloads and synthetic sheet rows |
+| `tools/test-code-nodes.mjs` | 41 unit tests that run the shipped Code-node code against the demo payloads and synthetic sheet rows |
 
 ## Architecture
 
@@ -59,7 +59,7 @@ Cloud API (graph.facebook.com). AI: Anthropic API (demo only). Secrets: n8n cred
   - API tokens live in n8n credentials.
   - Webhook signing secrets are environment variables, read only inside Code nodes and never written to output.
   - Non-secret settings sit in each workflow's **Config** node as `{{PLACEHOLDER}}` tokens.
-- **Code decides, not the model.** In workflow 03, opt-outs, paused chats, numbers outside the safety list, duplicate deliveries, handover, the agent alert (once per lead) and the fallback reply are all handled in code. The AI only words the reply and extracts fields.
+- **Code decides, not the model.** In workflow 03, opt-outs, paused chats, numbers outside the safety list, duplicate deliveries (message ids already logged), late deliveries outside the 24-hour window, handover, the agent alert (once per lead) and the fallback reply are all handled in code. The AI only words the reply and extracts fields.
 - **Fail safe for demos.** Demo workflows message only numbers on the `allowed_recipients` safety list (`{{DEMO_TEST_NUMBERS}}`). An unfilled list means nobody gets a message.
 - **Signed webhooks.** Tally, Cal.com and Meta requests are HMAC-checked against the raw body. A missing or wrong signature stops the run with a clear error in n8n's execution list.
 - **Non-Code nodes read only `$json` or `$('Config')`.** In our end-to-end test on n8n 1.123, `$('Some Code node')` inside a Respond, Set or other non-Code node resolved to nothing, so small Code nodes carry context forward instead. `validate-workflows.mjs` enforces this.
@@ -70,6 +70,7 @@ Menu names below are as Hostinger and n8n described them in Oct 2026 and were **
 
 1. **VPS:** buy a **KVM 2** with the **n8n** application template (strategy §5 budget). Note the server IP.
 2. **Domain:** in Hostinger DNS for askhemant.ai, add an **A record** `n8n` → the VPS IP. Use `https://n8n.askhemant.ai` everywhere below (or the default `srvNNNN.hstgr.cloud` hostname, if you keep it).
+   - The template's reverse proxy (Traefik) and `WEBHOOK_URL` still point at the `srvNNNN.hstgr.cloud` name, so the new name won't load or get a certificate until you change them. Follow Hostinger's "[Changing the domain for n8n on VPS](https://www.hostinger.com/support/11927159-changing-the-domain-for-n8n-on-vps-at-hostinger/)": wait for DNS to propagate, set the domain in the stack's `.env` (`TRAEFIK_HOST` in the current template), fix the `WEBHOOK_URL` line and the Traefik `Host(...)` rule in `docker-compose.yml` if they add a prefix, then `docker compose down && docker compose up -d`. Variable names differ between template versions, so read `.env` and `docker-compose.yml` first.
 3. **Environment:** SSH in (`ssh root@<ip>`), then run `docker compose ls` to find the compose file of the n8n stack. Add the variables in [section 3](#3-environment-variables) to the n8n service's `environment:` (or its `.env`), then `docker compose up -d`.
 4. **First login:** open `https://n8n.askhemant.ai`, create the owner account (use hello@askhemant.ai), and turn on 2FA.
 5. **Version:** Settings › About shows the n8n version. These files use node versions that exist in n8n 1.x and 2.x. On **2.x**, `N8N_BLOCK_ENV_ACCESS_IN_NODE=false` is required for the signature checks, and "Activate" is called **Publish**.
@@ -110,7 +111,7 @@ Create two spreadsheets in the Google account that n8n signs in with ([section 4
   - Fields are matched by **label**, so keep words like "first name", "WhatsApp", "business", "leads" and "tips" in the labels. The business type maps to a lane by its words: real estate / broker / channel partner / developer → RE; clinic / dental / skin / aesthetic / physio → CL; anything else → GEN.
 - **Cal.com:** Settings › Developer › Webhooks. Subscriber URL `https://n8n.askhemant.ai/webhook/askhemant/calcom`; triggers **Booking created / rescheduled / cancelled**; Secret = env `CALCOM_WEBHOOK_SECRET` (checked against `X-Cal-Signature-256`).
   - Use the booking questions in [`sales/02-cal-com-intake-form.md`](../sales/02-cal-com-intake-form.md). Workflow 06 reads them by label: business, city or market, where leads come from, leads a month, first-reply speed, what to fix, budget, WhatsApp.
-  - Add this line to the WhatsApp question: "We'll send your booking confirmation and a reminder on WhatsApp."
+  - Workflow 06 sends a WhatsApp **confirmation** as well as the 2-hour reminder, so the WhatsApp question's help text must say so. `sales/02-cal-com-intake-form.md` Q8 currently says "For the 2-hour reminder only"; change it in Cal.com to: "We'll send your booking confirmation and a 2-hour reminder on WhatsApp. I won't add you to any list."
   - Red-route bookings (budget under ₹15K, under 20 leads a month, or "Other business") get a ROUTE note in `notes`, so you can send the Kit and the Ask Hemant Session link instead.
   - Event slugs `fit-call` and `ask-hemant-session` are labelled in Config `event_labels`.
   - The strategy notes that webhooks on Cal.com's free plan are **unverified**. If they aren't available, enter bookings in the Pipeline by hand.
@@ -163,15 +164,17 @@ date,source,keyword,lane,business_type,stage,value,lead_id,first_name,whatsapp,e
 |---|---|---|
 | `date` | 01, 06 | first contact, `YYYY-MM-DD` IST |
 | `source` | 01, 06 | UTM, e.g. `ig / dm / leaks`, or `direct`, `cal.com` |
-| `keyword` | 01 | `LEAKS`, `PRICE`, `CLINIC` (from `utm_campaign` or a `keyword` hidden field) |
+| `keyword` | 01 | `LEAKS`, `PRICE`, `FOUNDING`, `CLINIC`, or `KIT` (the Stories/Lives DM keyword, `utm_campaign=story` or `kit`), from `utm_campaign` or a `keyword` hidden field. Until the clinic playbook exists, CLINIC sends the same kit |
 | `lane` | 01, 06 | `RE` / `CL` / `GEN`, from business type: the day-60 niche decision runs on this |
 | `stage` | 01 (New), 06 (Call booked), **you** | `New → Replied → Call booked → Showed → Proposal → Won / Lost`. The workflows only ever move a lead forward from New/Replied; everything later is yours |
 | `value` | you | deal value in INR, excluding GST |
-| `marketing_consent`, `consent_at` | 01 | `yes` / `no` and when: the DPDP record of the unticked box |
+| `marketing_consent`, `consent_at` | 01, **you** | `yes` / `no` and when: the DPDP record of the unticked box. Set it to `stopped` by hand when someone replies STOP (below) |
 | `lead_received_at`, `first_reply_sent_at`, `seconds_to_reply` | 01 | when n8n received the form → when WhatsApp accepted the welcome. Your own speed-to-lead number for the Build Log |
 | `temperature` | 01, 06 | ICP fit from the form: `hot` = real estate or clinic with ≥40 leads a month, `warm` ≥20, else `cold`. It is a fit score, not buying intent |
 | `booking_*`, `booked_at`, `reminder_sent_at` | 06 | Cal.com slug, uid, start (IST), `confirmed / rescheduled / cancelled` |
 | `notes` | 01, 06 | appended, never overwritten: intake answers, routing note for budgets under ₹15K |
+
+**When someone replies STOP on your number.** Replies to the AskHemant number land in your WhatsApp Business app (coexistence), not in a workflow, so recording an opt-out is your job, the same day: set that person's `marketing_consent` to `stopped` and add "STOP <date>" to `notes`. Workflow 06 then sends them no WhatsApp confirmation or reminder (the booking still lands in the Pipeline, with a note), and workflow 01 keeps `stopped` unless they tick the consent box on the kit form again. Don't WhatsApp them again unless they write to you first. Workflow 03 (DEMO) handles STOP by itself.
 
 ### Spreadsheet 2: "AskHemant DEMO Lab (fictional data)" (ID → `{{DEMO_SHEET_ID}}`)
 
@@ -188,11 +191,11 @@ Keep demo data in its own spreadsheet, never in the Pipeline. `bot_paused = yes`
 | Token | Workflows | Value |
 |---|---|---|
 | `{{GOOGLE_SHEET_ID}}` | 01, 05, 06 | ID of "AskHemant Pipeline" (the part between `/d/` and `/edit` in its URL) |
-| `{{WA_PHONE_NUMBER_ID}}` | 01, 05, 06 | Cloud API phone number ID of your business number ({{WHATSAPP_NUMBER}}) |
+| `{{WA_PHONE_NUMBER_ID}}` | 01, 05, 06 | Cloud API **phone number ID** (not the number) of your business number, from Meta App › WhatsApp › API Setup ([`docs/03`](../docs/03-accounts-setup-guide.md) §13). `{{WHATSAPP_NUMBER}}` in this README is the shared token for that business number itself; no workflow contains it |
 | `{{ALERT_WHATSAPP_NUMBER}}` | 01, 05 (digest), 03 (agent alert in the demo) | Your personal WhatsApp in E.164, e.g. `+9198XXXXXXXX`, different from the sending number |
 | `{{CALCULATOR_COPY_URL}}` | 01 | Upload `lead-magnet/lead-leak-calculator.xlsx` to Google Sheets, share it as "Anyone with the link: Viewer", and use `https://docs.google.com/spreadsheets/d/<ID>/copy` |
 | `{{DEMO_SHEET_ID}}` | 02, 03, 04 | ID of the DEMO lab spreadsheet |
-| `{{DEMO_WA_PHONE_NUMBER_ID}}` | 02, 03, 04 | Phone number ID of Meta's test number |
+| `{{DEMO_WA_PHONE_NUMBER_ID}}` | 02, 03, 04 | Phone number ID of Meta's test number (same API Setup page) |
 | `{{DEMO_TEST_NUMBERS}}` | 02, 03, 04 | Comma-separated E.164 numbers allowed to receive demo messages (your own phones) |
 
 Either edit the Config node in each workflow after import, or fill everything in one pass and import the filled copies. Keep the filled copies **outside this repo**: the IDs aren't secrets, but they are private.
@@ -208,7 +211,7 @@ for f in 0*.json; do
       -e 's/{{DEMO_WA_PHONE_NUMBER_ID}}/PASTE_TEST_NUMBER_ID/g' \
       -e 's/{{DEMO_TEST_NUMBERS}}/+9198XXXXXXXX,+9197XXXXXXXX/g' "$f" > ~/askhemant-n8n/"$f"
 done
-grep -l '{{' ~/askhemant-n8n/*.json   # should print nothing
+grep -lE '\{\{(GOOGLE_SHEET_ID|WA_PHONE_NUMBER_ID|ALERT_WHATSAPP_NUMBER|CALCULATOR_COPY_URL|DEMO_[A-Z_]+)\}\}' ~/askhemant-n8n/*.json   # should print nothing
 ```
 
 Then import:
@@ -223,7 +226,7 @@ Other Config values you may want to change:
 - 02 / 03: `business_name`, `business_profile`, `agent_name`, `site_visit_booking_link`. Create a hidden Cal.com event `demo-site-visit` labelled DEMO, or point the link elsewhere.
 - 04: `booking_link` (`demo-clinic-slot`) and `dedupe_minutes`.
 - 06: `reminder_minutes_before`, `event_labels`.
-- All: `wa_graph_version`.
+- All: `wa_graph_version`, the Graph API version in the WhatsApp URLs (default `v26.0`, the newest in Meta's changelog on 18 Oct 2026). Meta keeps each version for about two years after the next one ships, and quietly serves calls to an expired version with the oldest live one. Once a quarter, check the [versions table](https://developers.facebook.com/docs/graph-api/changelog/versions); to move, change `wa_graph_version` in a DEMO workflow's Config node, run the demo tests, then change it in all six (or change `WA_DEFAULTS` in `tools/build-workflows.mjs`, rebuild and re-import).
 
 ## 6. Test with curl
 
@@ -266,7 +269,7 @@ Workflows 01, 03 (POST) and 06 expect signed requests. Use the script with the s
 
 ## 7. Film the stopwatch demo (P03 "Watch the timer", P10 clinic)
 
-1. **Set up:** workflows 02 and 03 active on the DEMO test number; your phone in `{{DEMO_TEST_NUMBERS}}` and in Meta's test recipients; templates approved; a fresh `Demo_Leads` row state (delete old rows for your number).
+1. **Set up:** workflows 02 and 03 active on the DEMO test number; your phone in `{{DEMO_TEST_NUMBERS}}` and in Meta's test recipients; your second phone (`{{ALERT_WHATSAPP_NUMBER}}`, which gets the agent alert) in Meta's test recipients too; templates approved; a fresh `Demo_Leads` row state (delete old rows for your number).
 2. **Scene (OBS):**
    - Left: `demo/skyline-demo-form.html?hook=https://n8n.askhemant.ai/webhook/demo/skyline/lead`, in a phone-sized browser window.
    - Right: your phone's screen, mirrored (scrcpy for Android, QuickTime for iPhone), with WhatsApp open.
@@ -288,7 +291,7 @@ Workflows 01, 03 (POST) and 06 expect signed requests. Use the script with the s
 ```bash
 node automations/tools/build-workflows.mjs      # regenerate the JSON + sheets/*.csv (prompt from prompts/)
 node automations/tools/validate-workflows.mjs   # structure, references, Code syntax, secret scan
-node automations/tools/test-code-nodes.mjs      # 35 unit tests on the shipped Code-node code
+node automations/tools/test-code-nodes.mjs      # 41 unit tests on the shipped Code-node code
 ```
 
 If you edit a workflow inside n8n, export it (⋯ › Download) over the JSON here, and stop regenerating that file. Still run `validate-workflows.mjs` on the export before committing.
@@ -303,16 +306,17 @@ If you edit a workflow inside n8n, export it (⋯ › Download) over the JSON he
    - **Mock checks:** the mock verified every outgoing request's shape (template parameters, Messages API body, no `temperature`, user-first/user-last turns).
    - **Both execution modes:** the full set passed in n8n's legacy Code sandbox and again with **task runners on** (the n8n 2.x mode, with `N8N_BLOCK_ENV_ACCESS_IN_NODE=false`). In both, signatures were verified against the raw body.
    - **Digest:** workflow 05 ran through `n8n execute`, with its Sheets read swapped for fictional rows in a test-only copy.
-4. **Unit:** 35 tests on the Code nodes with synthetic Sheet rows, including the template-consistency check against `whatsapp-templates.json`.
-5. **Not run live:** the Google Sheets nodes. There was no Google account in the build environment, so every Sheets node errored on the missing credential, and the flows carried on as designed. Their parameters follow n8n's Google Sheets v4.5 node source; check that the first real rows land correctly.
+4. **Unit:** 41 tests on the Code nodes with synthetic Sheet rows, including the template-consistency check against `whatsapp-templates.json`, the keyword mapping, a hand-recorded STOP, repeat and late WhatsApp deliveries, fenced-JSON parsing and one Graph API version across all six Config nodes.
+5. **Re-run after review** (same day, Graph API default now `v26.0`): validator and unit tests pass; all six files import with `n8n import:workflow` into a fresh n8n 1.123.85 user folder; the live set above passed again in both execution modes, with every WhatsApp call going to `/v26.0/…/messages`, a signed but 25-hour-old WhatsApp delivery getting no AI call and no free-form reply, and the Wait node resuming at its scheduled time (UTC-correct).
+6. **Not run live:** the Google Sheets nodes. There was no Google account in the build environment, so every Sheets node errored on the missing credential, and the flows carried on as designed. Their parameters follow n8n's Google Sheets v4.5 node source; check that the first real rows land correctly.
 
 ## 9. Known limits and things to check
 
-- **Graph API version.** Config uses `v21.0`, and Meta's v26.0 announcement says **v21.0 is removed on 21 Jan 2027**. Change `wa_graph_version` (latest: `v26.0`, Jul 2026) in all six Config nodes before then. Test on the demo first.
+- **Graph API version.** Config uses `v26.0` (released 29 Jul 2026, the newest in Meta's changelog on 18 Oct 2026; its end date is not announced yet). Older copies of these files used `v21.0`, which Meta's versions table removes on **21 Jan 2027**: if you imported one, change `wa_graph_version` in all six Config nodes before then (section 5 has the steps). The template-submission command in `whatsapp-templates.md` uses the same version.
 - **Coexistence** (WhatsApp Business app and API on one number) and Meta's test-number recipient limit are as Meta described them; check before you depend on them.
 - **Raw Meta lead-ads webhooks** carry only a `leadgen_id`. Workflow 02 accepts leads already fetched from the Graph API or relayed with their fields. The fetch step is Sprint work.
 - **Delivery and read receipts** are ignored. `first_reply_sent_at` is when the Cloud API **accepted** the message, and the phone shows delivery a moment later.
-- **Google Sheets as the database** suits demo and solo volumes. Two messages from one lead within a second or two can race on `history_json`. For client volumes, move the log to the client's CRM.
+- **Google Sheets as the database** suits demo and solo volumes. Two messages from one lead within a second or two can race on `history_json`, and so can two copies of one webhook delivered at the same moment (the message-id check only sees ids already written to the Sheet). For client volumes, move the log to the client's CRM.
 - **The AI qualifier** only words replies and extracts fields. It quotes no prices or availability (prompt rules), and code applies the safety rules. Review the first 100 conversations in `Demo_Conversations` before any client go-live.
 - **Privacy.**
   - The DEMO lab holds only fictional leads and your own test phones.

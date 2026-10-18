@@ -16,7 +16,7 @@ The DEMO templates are generic on purpose (the business name is `{{3}}` or `{{1}
 - **Opt-in first.** Business-initiated messages (every template here) go only to people who opted in to WhatsApp messages from that business. Workflow 01 checks the separate, unticked consent box; workflow 02 checks `whatsapp_opt_in` on the form; workflow 06 messages people who gave a WhatsApp number on a booking form that says confirmations and reminders come by WhatsApp. Add that sentence to the Cal.com booking question.
 - **24-hour window.** Free-form text is allowed only within 24 hours of the person's last message to you. Outside the window, only an approved template can start the chat. Workflow 03 replies with free text because it always answers a message that just arrived.
 - **Category.** *Utility* = tied to something the person asked for or booked (delivery of the calculator, a booking confirmation, a reminder, an internal alert). *Marketing* = anything promotional, including re-engagement. Meta reviews the category and **can change it** (for example, it may decide `lead_first_reply` is marketing). Check the category after approval, because the price differs: about ₹0.13 per utility message and ₹0.86 per marketing message in India, per one reseller ([MyOperator](https://support.myoperator.com/portal/en/kb/articles/whatsapp-has-shifted-to-per-message-pricing-effective-july-1-2025-based-on-message-categories-and-your-recipient-s-country-in-india-there-are-three-paid-categories)). Confirm on Meta's live rate card ([Meta pricing](https://developers.facebook.com/docs/whatsapp/pricing)).
-- **Opt-out.** Every marketing template ends with "Reply STOP to opt out". Workflow 03 treats STOP, unsubscribe and *band karo* as an opt-out without asking the AI. Honour every STOP everywhere, and never message an opted-out number again.
+- **Opt-out.** Every marketing template ends with "Reply STOP to opt out". Workflow 03 treats STOP, unsubscribe and *band karo* as an opt-out without asking the AI. On the AskHemant number, replies arrive in the WhatsApp Business app, so record a STOP by hand: set `marketing_consent` to `stopped` in the Pipeline, and workflows 01 and 06 then leave that number alone (README §4). Honour every STOP everywhere, and never message an opted-out number again.
 - **Format** (also checked by `tools/test-code-nodes.mjs`):
   - Template names use only lowercase letters, digits and underscores.
   - Variables run `{{1}}`, `{{2}}`… in order.
@@ -104,11 +104,12 @@ The speed-to-lead first reply. When the lead taps a button, the 24-hour window o
 | Body (en) | Hi, this is {{1}}. Sorry we missed your call, we were with a patient. How can we help? Reply here, or book a slot online: {{2}}<br><br>You can also call us back on this number. |
 | Body (hi) | Namaste, yeh {{1}} hai. Maaf kijiye, aapka call miss ho gaya, us waqt treatment chal raha tha. Kaise madad karein? Yahin reply kijiye, ya online slot book kijiye: {{2}}<br><br>Aap isi number par call back bhi kar sakte hain. |
 | Variables | {{1}} clinic name (demo: "SmileCare Dental (DEMO)") · {{2}} booking link |
+| Sample values | SmileCare Dental (DEMO) · https://cal.com/askhemant/demo-clinic-slot |
 | Opt-in | A phone call is not WhatsApp opt-in by itself. For a real clinic, the IVR greeting should say "If we miss your call, we'll send you a WhatsApp message from [clinic]", and the clinic should check Meta's current opt-in policy. Never put symptoms or treatment details in this message |
 
 ## Prepared for client builds (not sent by workflows 01–06)
 
-They are the Lead Leak Kit's templates 05–10 (pages 9–10 of the kit), made ready for Meta approval for the Sprint's visit booking and 30-day follow-up.
+They are the Lead Leak Kit's templates 06–10 (pages 9–10 of the kit), made ready for Meta approval for the Sprint's visit booking and 30-day follow-up. Kit template 05 (the visit offer) needs no approval: it is sent as a normal reply inside the 24-hour window.
 
 | Name | Category | Body (en) | Buttons |
 |---|---|---|---|
@@ -117,9 +118,9 @@ They are the Lead Leak Kit's templates 05–10 (pages 9–10 of the kit), made r
 | `visit_no_show_rescue` | Utility | We missed you at {{1}} today. No problem! Shall I book a new slot, or send a video tour first? | Book a new slot · Send a video tour |
 | `lead_day7_revival` | **Marketing** | Hi {{1}}, still looking in {{2}}? {{3}} new options in your budget came up this week. Want the details?<br><br>Reply STOP to opt out. | Send details · Stop messages |
 | `lead_day30_checkin` | **Marketing** | Hi {{1}}, it's a month since your {{2}} enquiry. Are you still planning to buy, or shall I close it for now?<br><br>Reply STOP to opt out. | Still looking · Close it · Stop messages |
-| `ah_kit_day2_followup` (AskHemant account) | **Marketing** | Hi {{1}}, did you try the 10 pm test from the Lead Leak Kit? Reply with the time your first reply took and I'll tell you the first leak I'd fix.<br><br>Reply STOP to opt out. | — |
+| `ah_kit_day2_followup` (AskHemant account) | **Marketing** | Hi {{1}}, did you try the 10 pm self-test from the Lead Leak Kit? Reply with the time your first reply took and I'll tell you the first leak I'd fix.<br><br>Reply STOP to opt out. | — |
 
-Send `lead_day7_revival` only when the new options are real. Marketing templates to Indian numbers can also be held back by Meta's per-person limits on marketing messages, so never build a funnel step that depends on one arriving.
+Their sample values are in `whatsapp-templates.json`. Send `lead_day7_revival` only when the new options are real. Marketing templates to Indian numbers can also be held back by Meta's per-person limits on marketing messages, so never build a funnel step that depends on one arriving.
 
 ## Submit with the API
 
@@ -128,12 +129,13 @@ Use a **system user token** from Meta Business Settings, with `whatsapp_business
 ```bash
 export WA_TOKEN='paste-the-system-user-token'   # never commit this
 export WABA_ID='your WhatsApp Business Account ID'
+export WA_GRAPH_VERSION=v26.0   # the Graph API version set in the workflows' Config node (wa_graph_version)
 # Submit every AskHemant-account template (use "demo" and the DEMO WABA_ID for the others):
 node -e '
 const t = require("./automations/whatsapp-templates.json").templates.filter((x) => x.account === process.argv[1]);
 for (const { name, language, category, components } of t) console.log(JSON.stringify({ name, language, category, components }));
 ' askhemant | while read -r tpl; do
-  curl -sS -X POST "https://graph.facebook.com/v21.0/$WABA_ID/message_templates" \
+  curl -sS -X POST "https://graph.facebook.com/$WA_GRAPH_VERSION/$WABA_ID/message_templates" \
     -H "Authorization: Bearer $WA_TOKEN" -H 'Content-Type: application/json' -d "$tpl"; echo
 done
 ```

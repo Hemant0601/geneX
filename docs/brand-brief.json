@@ -75,7 +75,7 @@
       "priceUSD": "Free",
       "timeline": "Instant via auto-DM",
       "deliverables": [
-        "10-page mobile PDF covering the 7 places enquiries go cold",
+        "13-page mobile PDF covering the 7 places enquiries go cold",
         "10 WhatsApp templates in English and Hinglish",
         "6-question qualification script",
         "The 10 pm self-test",
@@ -244,7 +244,7 @@
   "leadMagnet": {
     "title": "The Lead Leak Kit: 7 places your enquiries go cold, and the WhatsApp fixes",
     "promise": "In 10 minutes, find where your enquiries go cold and fix the biggest leak this week. No new software needed.",
-    "format": "A 10-page mobile PDF made in Canva (1080×1350 pages that double as carousel slides): the 7 leaks, 10 copy-paste WhatsApp templates in English and Hinglish, a 6-question qualification script, the 10 pm self-test and a 'free tools first' page. The PDF is ungated in the auto-DM. Bonus: the Lead Leak Calculator (Google Sheet, owner's own numbers), behind a 4-field Tally form at askhemant.ai/kit that feeds n8n → Sheet → WhatsApp welcome. That flow is case study #0 and supplies the business-type data for the niche decision. Clinic version in month 2: the Missed-Call Recovery Playbook (keyword CLINIC).",
+    "format": "A 13-page mobile PDF made in Canva (1080×1350 pages that double as carousel slides): the 7 leaks, 10 copy-paste WhatsApp templates in English and Hinglish, a 6-question qualification script, the 10 pm self-test and a 'free tools first' page. The PDF is ungated in the auto-DM. Bonus: the Lead Leak Calculator (Google Sheet, owner's own numbers), behind a 4-field Tally form at askhemant.ai/kit that feeds n8n → Sheet → WhatsApp welcome. That flow is case study #0 and supplies the business-type data for the niche decision. Clinic version in month 2: the Missed-Call Recovery Playbook (keyword CLINIC).",
     "commentKeyword": "LEAKS"
   },
   "primaryCTA": "Comment LEAKS for the free Lead Leak Kit (it arrives by auto-DM; check your message requests). Bio link 1 is askhemant.ai/book for a free 20-minute Fit Call.",

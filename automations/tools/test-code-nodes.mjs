@@ -143,6 +143,23 @@ await test('01 normalise: no consent → no welcome; local number → E.164; cli
   eq([l.marketing_consent, l.send_welcome, l.whatsapp, l.lane, l.temperature], ['no', false, '+919800000001', 'CL', 'warm'], 'no-consent lead');
   ok(/no WhatsApp consent/.test(l.welcome_skip_reason), 'reason');
 });
+await test('01 normalise: utm_campaign maps to the keywords FOUNDING and KIT (story / kit)', async () => {
+  for (const [campaign, kw] of [['founding', 'FOUNDING'], ['story', 'KIT'], ['kit', 'KIT'], ['price', 'PRICE'], ['clinic', 'CLINIC'], ['faq', '']]) {
+    const body = JSON.parse(tallyRaw);
+    body.data.fields.find((x) => x.key === 'question_utm_campaign').value = campaign;
+    const [l] = await run('01', 'Verify + normalise', tallyItem(configOf(wfs['01'], { require_signature: false }), JSON.stringify(body), ''));
+    eq(l.keyword, kw, campaign);
+  }
+});
+await test('01 build row: a STOP recorded by hand survives a re-submission without consent', async () => {
+  const body = JSON.parse(tallyRaw);
+  body.data.fields.find((x) => x.key === 'question_consent').value = [];
+  body.data.fields.find((x) => x.key === 'question_consent_opt_yes').value = false;
+  const [lead] = await run('01', 'Verify + normalise', tallyItem(configOf(wfs['01'], { require_signature: false }), JSON.stringify(body), ''));
+  const existing = { row_number: 3, lead_id: 'AH-STOP', whatsapp: '+919800000001', stage: 'Replied', marketing_consent: 'stopped', notes: '' };
+  const [row] = await run('01', 'Build pipeline row', { input: [existing], outputs: { 'Verify + normalise': [lead] } });
+  ok(!('marketing_consent' in row) && !('consent_at' in row), 'stopped is not overwritten by "no"');
+});
 await test('01 build row: new lead gets every Pipeline column, stage New, honest seconds_to_reply', async () => {
   const [lead] = await run('01', 'Verify + normalise', tallyItem(configOf(wfs['01'])));
   const stamp = { ...lead, welcome_ok: true, welcome_status: 'accepted', welcome_message_id: 'wamid.X', welcome_sent_ms: lead.lead_received_ms + 2340 };
@@ -251,6 +268,19 @@ await test('03 build request: duplicate delivery, opt-out, paused chat and STOP 
   const [stop] = await extract('STOP');
   eq((await run('03', 'Build Claude request', { input: [historyRow()], outputs: { ...o, 'Verify + extract message': [stop] } }))[0].route, 'stop', 'stop');
 });
+await test('03 build request: repeat delivery found in history_json ids is skipped; a late delivery gets no free-form reply', async () => {
+  const [msg] = await extract('hello again');
+  const o = { Config: [cfg03], 'Verify + extract message': [msg] };
+  const hist = JSON.parse(historyRow().history_json).concat([{ role: 'user', text: 'hello again', ids: msg.message_ids }, { role: 'assistant', text: 'Hi!' }]);
+  eq((await run('03', 'Build Claude request', { input: [historyRow({ last_inbound_id: 'wamid.NEWER', history_json: JSON.stringify(hist) })], outputs: o })).length, 0, 'older retry skipped');
+  const old = { ...msg, sent_ms: Date.now() - 25 * 3600000 };
+  const [r] = await run('03', 'Build Claude request', { input: [historyRow()], outputs: { ...o, 'Verify + extract message': [old] } });
+  eq([r.route, r.window_closed], ['silent', true], 'outside 24 h window');
+  const [stopOld] = await extract('STOP');
+  const req = (await run('03', 'Build Claude request', { input: [historyRow()], outputs: { ...o, 'Verify + extract message': [{ ...stopOld, sent_ms: Date.now() - 25 * 3600000 }] } }))[0];
+  const d = (await run('03', 'Parse AI reply + decide', { input: [req], outputs: { Config: [cfg03], 'Build Claude request': [req] } }))[0];
+  eq([d.send_reply, d.row.opted_out], [false, 'yes'], 'late STOP: opted out, no text sent');
+});
 function aiResponse(obj, stop = 'end_turn') {
   return { statusCode: 200, body: { stop_reason: stop, content: [{ type: 'thinking', thinking: '', signature: 's' }, ...(obj ? [{ type: 'text', text: JSON.stringify(obj) }] : [])] } };
 }
@@ -282,6 +312,15 @@ await test('03 parse: refusal, HTTP 500 and bad JSON fall back to a person', asy
     const d = await parse(r);
     ok(d.ai_error && d.alert && /will reply here shortly/.test(d.reply_payload.text.body) && d.row.handover_reason === 'ai_error', 'fallback for ' + JSON.stringify(r).slice(0, 40));
   }
+});
+await test('03 parse: JSON wrapped in a code fence is still read; an empty text block falls back to a person', async () => {
+  const fenced = { statusCode: 200, body: { stop_reason: 'end_turn', content: [{ type: 'text', text: 'Here you go:\n```json\n' + JSON.stringify(baseAi) + '\n```' }] } };
+  const d = await parse(fenced);
+  eq([d.ai_error, d.row.locality, d.alert], ['', 'Baner', false], 'fenced JSON parsed');
+  const e = await parse({ statusCode: 200, body: { stop_reason: 'end_turn', content: [{ type: 'thinking', thinking: '' }] } });
+  eq([e.ai_error, e.row.handover_reason], ['no text block', 'ai_error'], 'no text block');
+  const h = JSON.parse(d.row.history_json);
+  ok(Array.isArray(h[h.length - 2].ids) && h[h.length - 2].ids.length, 'inbound message ids saved in history_json');
 });
 await test('03 parse: STOP sends one confirmation and opts out; new lead gets every column', async () => {
   const d = await parse(null, historyRow(), 'STOP');
@@ -398,6 +437,11 @@ await test('06 match: red route (budget under ₹15K, under 20 leads, Other busi
   const { row } = await match([]);
   ok(!/ROUTE:/.test(row.notes), 'a fit lead gets no routing note');
 });
+await test('06 match: a lead who replied STOP (marketing_consent = stopped) gets no WhatsApp confirmation or reminder', async () => {
+  const { row, decision } = await match([{ lead_id: 'AH-9', email: 'meera.test@example.com', stage: 'New', marketing_consent: 'stopped', notes: '' }]);
+  eq([row.stage, decision.send_confirmation, decision.schedule_reminder], ['Call booked', false, false], 'no WhatsApp');
+  ok(/replied STOP/.test(row.notes), 'note explains why');
+});
 await test('06 still booked?: sends only when uid, start and status still match', async () => {
   const { decision } = await match([{ lead_id: 'AH-1', email: 'meera.test@example.com', stage: 'New' }]);
   const live = { lead_id: 'AH-1', booking_uid: decision.booking_uid, booking_start: decision.booking_start, booking_status: 'confirmed', reminder_sent_at: '' };
@@ -406,6 +450,15 @@ await test('06 still booked?: sends only when uid, start and status still match'
   eq(r.reminder_payload.template.name, 'ah_call_reminder_2h', 'reminder');
   eq((await run('06', 'Still booked?', { input: [{ ...live, booking_status: 'cancelled' }], outputs: o })).length, 0, 'cancelled');
   eq((await run('06', 'Still booked?', { input: [{ ...live, booking_uid: 'other' }], outputs: o })).length, 0, 'rescheduled');
+  eq((await run('06', 'Still booked?', { input: [{ ...live, marketing_consent: 'stopped' }], outputs: o })).length, 0, 'STOP while waiting');
+});
+
+/* -------------------------------------------------- config */
+await test('config: every workflow uses one Graph API version, newer than v21.0 (removed 21 Jan 2027)', async () => {
+  const versions = Object.values(wfs).map((wf) => configOf(wf).wa_graph_version);
+  eq(new Set(versions).size, 1, 'same version everywhere');
+  const m = /^v(\d+)\.0$/.exec(versions[0]);
+  ok(m && Number(m[1]) >= 22, `version ${versions[0]}`);
 });
 
 /* -------------------------------------------------- templates */

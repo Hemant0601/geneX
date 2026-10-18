@@ -49,7 +49,7 @@
       "account": "askhemant", "used_by": [],
       "name": "ah_kit_day2_followup", "language": "en", "category": "MARKETING",
       "components": [
-        { "type": "BODY", "text": "Hi {{1}}, did you try the 10 pm test from the Lead Leak Kit? Reply with the time your first reply took and I'll tell you the first leak I'd fix.\n\nReply STOP to opt out.", "example": { "body_text": [["Meera"]] } },
+        { "type": "BODY", "text": "Hi {{1}}, did you try the 10 pm self-test from the Lead Leak Kit? Reply with the time your first reply took and I'll tell you the first leak I'd fix.\n\nReply STOP to opt out.", "example": { "body_text": [["Meera"]] } },
         { "type": "FOOTER", "text": "AskHemant · askhemant.ai" }
       ]
     },

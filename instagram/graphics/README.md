@@ -66,7 +66,7 @@ Upload the PNG as a Story background, then add the live sticker on top in the In
 | `founding-slots-3-of-3.png`, `-2-of-3`, `-1-of-3` | From Mon 26 Oct (and every Sunday until 30 Nov): founding status | **Link** sticker to `askhemant.ai/founding?utm_source=ig&utm_medium=story&utm_campaign=founding` over the white pill; a countdown sticker to Mon 30 Nov is optional |
 | `founding-slots-0-of-3.png` | If all 3 slots are taken before 30 Nov | Link sticker to `/pricing` |
 | `founding-closed.png` | From Tue 1 Dec 2026 | Link sticker to `/pricing` |
-| `kit-dm-me-leaks.png` | Kit promo (e.g. Thu, with the kit link). Stories can't take comments, so the CTA is **DM me LEAKS** ([`07-dm-automation-playbook.md`](../07-dm-automation-playbook.md) §2.4). **`kit-dm-me-kit.png`** ("DM me KIT") is the fallback: post it instead only if Business Suite won't take LEAKS as a DM keyword and you set up KIT | Link sticker to `askhemant.ai/kit?utm_source=ig&utm_medium=story&utm_campaign=kit` if you prefer a tap |
+| `kit-dm-me-kit.png` | Kit promo (e.g. Thu, with the kit link). Stories can't take comments, so the CTA is **DM me KIT**, the DM keyword for Stories and Lives ([`07-dm-automation-playbook.md`](../07-dm-automation-playbook.md) §2.4). `kit-dm-me-leaks.png` ("DM me LEAKS") is an optional alternative, only if you also add LEAKS as a DM keyword | Link sticker to `askhemant.ai/kit?utm_source=ig&utm_medium=story&utm_campaign=kit` if you prefer a tap |
 | `kit-comment-leaks.png` | When you share a post whose CTA is LEAKS (P01, P03, P04, P05, P08, P09, P10) | Post sticker on the panel |
 
 **Post only the founding frame that is true today.** A slot count that isn't real, in either direction, breaks the no-fake-scarcity rule. Update the Pricing highlight the same day the count changes.
@@ -98,13 +98,13 @@ Times are IST, from [`02-launch-posts.md`](../02-launch-posts.md) (which owns th
 | **Mon 19 Oct** | P01 Reel 15:00 → `P01-cover.png` | `new-post-P01.png` | Create **Start Here**, **Pricing**, **FAQ** with highlights 01, 02, 05. Edit: `end-card-leaks.png`, `lower-third-hemant.png` |
 | **Tue 20 Oct** | P02 carousel 15:00 → `carousels/P02/` (pin #1) · T01 trial 18:00 → `T01-cover.png` | `new-post-P02.png` | — |
 | **Wed 21 Oct** | P03 Reel 15:00 → `P03-cover.png` (pin #2) | `new-post-P03.png` | Create **Demos** (`highlight-03-demos.png`). Edit: `frame-demo-badge.png`, stopwatch, labels, `end-card-leaks.png` |
-| **Thu 22 Oct** | P04 carousel 15:00 → `carousels/P04/` · T02 trial 18:00 → `T02-cover.png` | `new-post-P04.png` or `kit-comment-leaks.png`, plus `kit-dm-me-leaks.png` (or the KIT fallback) | — |
+| **Thu 22 Oct** | P04 carousel 15:00 → `carousels/P04/` · T02 trial 18:00 → `T02-cover.png` | `new-post-P04.png` or `kit-comment-leaks.png`, plus `kit-dm-me-kit.png` | — |
 | **Fri 23 Oct** | P05 Reel **19:30** → `P05-cover.png` | `new-post-P05.png` | Edit: `end-card-leaks.png` |
 | **Sun 25 Oct** | — | `ask-hemant-sunday-question.png` (10:00), `ask-hemant-sunday-answer.png` (17:00–19:00) | — |
 | **Mon 26 Oct** | P06 Reel 15:00 → `P06-cover.png` (pin #3) | `new-post-P06.png`, `founding-slots-3-of-3.png` | Edit: `end-card-founding.png`. Add the founding frame to **Pricing** |
 | **Tue 27 Oct** | P07 carousel 15:00 → `carousels/P07/` · T03 trial 18:00 → `T03-cover.png` | `new-post-P07.png` | — |
 | **Wed 28 Oct** | P08 Reel 15:00 → `P08-cover.png` | `new-post-P08.png` | Create **Build Log** (`highlight-04-build-log.png`) |
-| **Thu 29 Oct** | P09 carousel 15:00 → `carousels/P09/` · T04 trial 18:00 → `T04-cover.png` | `new-post-P09.png`, `kit-dm-me-leaks.png` (or the KIT fallback) | — |
+| **Thu 29 Oct** | P09 carousel 15:00 → `carousels/P09/` · T04 trial 18:00 → `T04-cover.png` | `new-post-P09.png`, `kit-dm-me-kit.png` | — |
 | **Fri 30 Oct** | P10 Reel 15:00 → `P10-cover.png` | `new-post-P10.png` | Edit: `frame-demo-badge.png`, stopwatch, `end-card-leaks.png` |
 | **Sun 1 Nov** | — | Ask Hemant Sunday frames + `founding-slots-N-of-3.png` (the true N) | — |
 

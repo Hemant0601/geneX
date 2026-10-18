@@ -433,7 +433,15 @@ function withConst(js, name, value) {
   return js.split(name).join(JSON.stringify(value));
 }
 
-const WA_DEFAULTS = { wa_api_base: 'https://graph.facebook.com', wa_graph_version: 'v21.0' };
+/**
+ * WhatsApp Cloud API base and Graph API version, copied into every workflow's Config node.
+ * v26.0 (29 Jul 2026) is the newest version in Meta's changelog on 18 Oct 2026; v21.0 is removed
+ * on 21 Jan 2027. Meta keeps each version for about 2 years after the NEXT one ships, and calls
+ * to an expired version are silently served by the oldest live one. To move versions: check
+ * developers.facebook.com/docs/graph-api/changelog/versions, change it here, rebuild, and test
+ * on the DEMO workflows first (or edit wa_graph_version in each Config node after import).
+ */
+const WA_DEFAULTS = { wa_api_base: 'https://graph.facebook.com', wa_graph_version: 'v26.0' };
 
 /* ================================================================== */
 /* 01  Kit sign-up → Pipeline (case study #0)                         */
@@ -508,11 +516,15 @@ function build01() {
     const consent = !!consentText && !/^(no|false|0)$/.test(consentText);
 
     const utm = { source: hidden('utm_source'), medium: hidden('utm_medium'), campaign: hidden('utm_campaign'), content: hidden('utm_content') };
+    // Comment keywords LEAKS / PRICE / FOUNDING / CLINIC; the DM keyword KIT (Stories, Lives) sends
+    // utm_campaign=story, and the Story link sticker sends utm_campaign=kit (instagram/07 §2.4).
     let keyword = hidden('keyword').toUpperCase();
     if (!keyword) {
       if (/leak/i.test(utm.campaign)) keyword = 'LEAKS';
       else if (/price/i.test(utm.campaign)) keyword = 'PRICE';
+      else if (/founding/i.test(utm.campaign)) keyword = 'FOUNDING';
       else if (/clinic/i.test(utm.campaign)) keyword = 'CLINIC';
+      else if (/^(story|kit)$/i.test(utm.campaign)) keyword = 'KIT';
     }
     const lane = laneOf(businessType);
     const min = leadsMin(leadsPerMonth);
@@ -600,6 +612,11 @@ function build01() {
         updated_at: istIso(now),
         notes: (found.notes ? found.notes + ' | ' : '') + 'Re-submitted: ' + note,
       };
+      // A STOP recorded by hand (marketing_consent = stopped) stays until the person ticks the box again.
+      if (/^stop/i.test(String(found.marketing_consent || '').trim()) && lead.marketing_consent !== 'yes') {
+        delete row.marketing_consent;
+        delete row.consent_at;
+      }
       if (!found.first_name && lead.first_name) row.first_name = lead.first_name;
       if (!found.first_reply_sent_at && sentAt) { row.first_reply_sent_at = sentAt; row.seconds_to_reply = secs; }
     } else {
@@ -887,7 +904,7 @@ function build03() {
     ai_api_base: 'https://api.anthropic.com',
     ai_model: 'claude-haiku-5-5',
     ai_effort: 'low',
-    ai_max_tokens: 2048,
+    ai_max_tokens: 4096,
     prompt_version: PROMPT_VERSION,
     default_country_code: '91',
     require_signature: true,
@@ -948,6 +965,7 @@ function build03() {
         non_text: nonText,
         received_at: istIso(now),
         sent_at: last.timestamp ? istIso(new Date(Number(last.timestamp) * 1000)) : '',
+        sent_ms: last.timestamp ? Number(last.timestamp) * 1000 : 0,
         signature_check: sig.status,
       },
     }];
@@ -986,6 +1004,11 @@ function build03() {
     let history = [];
     try { history = JSON.parse(lead.history_json || '[]'); } catch (e) { history = []; }
     if (!Array.isArray(history)) history = [];
+    // Meta retries webhooks for days: skip a delivery whose message ids are already in the chat history.
+    const seen = new Set(history.flatMap((h) => (h && Array.isArray(h.ids) ? h.ids : [])).map(String));
+    if (msg.message_ids.length && msg.message_ids.every((id) => seen.has(String(id)))) return [];
+    // Free-form text is allowed only within 24 hours of the lead's message (23.5 h keeps a margin).
+    const windowClosed = !!msg.sent_ms && Date.now() - msg.sent_ms > 23.5 * 3600000;
 
     const allow = allowedSet(cfg.allowed_recipients, cfg.default_country_code);
     const isStop = /^\s*(stop|stop all|unsubscribe|opt[\s-]?out|band karo|bandh karo|mat bhejo|no more messages)\s*[.!]*\s*$/i.test(msg.text);
@@ -993,7 +1016,8 @@ function build03() {
     let note = '';
     if (!(allow.any || allow.set.has(msg.wa_e164))) return []; // DEMO safety list: ignore and store nothing
     if (String(lead.opted_out).toLowerCase() === 'yes') { route = 'silent'; note = 'lead opted out earlier'; }
-    else if (isStop) { route = 'stop'; }
+    else if (isStop) { route = 'stop'; if (windowClosed) note = 'STOP recorded; no confirmation sent: outside the 24-hour window'; }
+    else if (windowClosed) { route = 'silent'; note = 'late delivery, outside the 24-hour window: no free-form reply; answer with a template or by hand'; }
     else if (String(lead.bot_paused).toLowerCase() === 'yes') { route = 'silent'; note = 'assistant paused after handover: an agent is handling this chat'; }
 
     const known = FIELDS.map((k) => `${k}: ${lead[k] ? String(lead[k]) : '""'}`).join('; ');
@@ -1022,7 +1046,7 @@ function build03() {
 
     const anthropicBody = {
       model: cfg.ai_model,
-      max_tokens: Number(cfg.ai_max_tokens) || 2048,
+      max_tokens: Number(cfg.ai_max_tokens) || 4096,
       system: [
         { type: 'text', text: __QUALIFIER_PROMPT__, cache_control: { type: 'ephemeral' } },
         { type: 'text', text: context },
@@ -1030,16 +1054,16 @@ function build03() {
       messages,
       output_config: { effort: cfg.ai_effort || 'low', format: { type: 'json_schema', schema: __QUALIFIER_SCHEMA__ } },
     };
-    return [{ json: { route, note, msg, lead, history, anthropic_body: anthropicBody } }];
+    return [{ json: { route, note, window_closed: windowClosed, msg, lead, history, anthropic_body: anthropicBody } }];
   };
   const BREQ = codeNode(wf, 'Build Claude request', [1100, 400],
     withConst(withConst(code(buildRequest, [istIso, istDate, toE164, missingConfig, allowedSet, newId]), '__QUALIFIER_PROMPT__', QUALIFIER_PROMPT), '__QUALIFIER_SCHEMA__', QUALIFIER_SCHEMA),
-    { notes: `System prompt ${PROMPT_VERSION}. Source of truth: automations/prompts/real-estate-qualifier.md. Opt-outs, paused chats and numbers outside the DEMO safety list never reach the model.` });
+    { notes: `System prompt ${PROMPT_VERSION}. Source of truth: automations/prompts/real-estate-qualifier.md. Opt-outs, paused chats, numbers outside the DEMO safety list, repeat deliveries (message ids already in history_json) and late deliveries outside the 24-hour window never reach the model.` });
   const IFAI = ifTrue(wf, 'Needs AI?', [1320, 400], "$json.route === 'ai'");
   const AI = httpJson(wf, 'Claude: qualify lead', [1540, 300], {
     url: "={{ $('Config').first().json.ai_api_base + '/v1/messages' }}",
     credentials: CRED.anthropic, timeout: 45000,
-    headers: [{ name: 'anthropic-version', value: '2023-06-01' }],
+    headers: [{ name: 'anthropic-version', value: '2023-06-01' }, { name: 'content-type', value: 'application/json' }],
     body: '={{ JSON.stringify($json.anthropic_body) }}',
     notes: 'Anthropic Messages API. Credential: Header Auth, name x-api-key. Structured output (JSON schema) so the reply is always parseable.',
   });
@@ -1062,9 +1086,16 @@ function build03() {
       else if (b.stop_reason === 'refusal') aiError = 'refusal';
       else if (b.stop_reason === 'max_tokens') aiError = 'max_tokens';
       else {
-        const t = (b.content || []).find((c) => c.type === 'text');
-        try { ai = JSON.parse(t.text); } catch (e) { aiError = 'unparseable JSON'; }
-        if (ai && (typeof ai.reply !== 'string' || typeof ai.fields !== 'object')) { ai = null; aiError = 'JSON missing fields'; }
+        // Structured output makes the first text block strict JSON. If the model id in Config is ever
+        // switched to one without it, accept JSON wrapped in prose or a code fence, else fall back.
+        const t = (b.content || []).find((c) => c && c.type === 'text' && typeof c.text === 'string');
+        const raw = t ? t.text.trim() : '';
+        const tryParse = (s) => { try { return JSON.parse(s); } catch (e) { return null; } };
+        ai = raw ? tryParse(raw) : null;
+        if (!ai && raw) { const m = raw.match(/\{[\s\S]*\}/); ai = m ? tryParse(m[0]) : null; }
+        if (!raw) aiError = 'no text block';
+        else if (!ai) aiError = 'unparseable JSON';
+        if (ai && (typeof ai !== 'object' || Array.isArray(ai) || typeof ai.reply !== 'string' || !ai.fields || typeof ai.fields !== 'object')) { ai = null; aiError = 'JSON missing fields'; }
       }
     }
 
@@ -1101,6 +1132,7 @@ function build03() {
       handover = true;
       reason = 'ai_error';
     }
+    if (req.window_closed) reply = ''; // outside the 24-hour window: record, never send free-form text
 
     upd.temperature = temperature;
     if (handover) {
@@ -1115,7 +1147,7 @@ function build03() {
     const alert = handover && !lead.agent_alerted_at && !!cfg.agent_whatsapp_number && !String(cfg.agent_whatsapp_number).includes('{{');
     if (alert) upd.agent_alerted_at = istIso(now);
 
-    const hist = history.concat([{ role: 'user', text: msg.text, at: msg.received_at }]);
+    const hist = history.concat([{ role: 'user', text: msg.text, at: msg.received_at, ids: msg.message_ids }]);
     if (reply) hist.push({ role: 'assistant', text: reply, at: istIso(now) });
     upd.history_json = JSON.stringify(hist.slice(-30));
 
@@ -1443,7 +1475,7 @@ function build05() {
     const names = hot.map((r) => String(r.first_name || r.lead_name || '').split(/\s+/)[0]).filter(Boolean).slice(0, 3);
     const bookings = rows.filter((r) => dayOf(r.booked_at) === yesterday).length;
     const visitRequests = rows.filter((r) => dayOf(r.visit_requested_at) === yesterday).length;
-    const waiting = leads.filter((r) => !r.first_reply_sent_at && String(r.marketing_consent || '').toLowerCase() !== 'no' && String(r.opted_out || '').toLowerCase() !== 'yes').length;
+    const waiting = leads.filter((r) => !r.first_reply_sent_at && !/^(no|stop)/i.test(String(r.marketing_consent || '').trim()) && String(r.opted_out || '').toLowerCase() !== 'yes').length;
     const lanes = {};
     for (const r of leads) if (r.lane) lanes[r.lane] = (lanes[r.lane] || 0) + 1;
     const laneText = Object.keys(lanes).length ? ' (' + Object.entries(lanes).map(([k, v]) => `${k} ${v}`).join(', ') + ')' : '';
@@ -1550,7 +1582,7 @@ function build06() {
       lead_sources: ans(/source|come from/i, /utm/i),
       leads_per_month: ans(/leads?.*(month|mo\b)|how many/i),
       reply_speed: ans(/reply|respond|speed/i),
-      fix_first: ans(/fix|automate/i),
+      fix_first: ans(/fix|automate/i, /budget/i),
       budget: ans(/budget/i),
     };
     const start = p.startTime ? new Date(p.startTime) : null;
@@ -1650,7 +1682,10 @@ function build06() {
     const startMs = b.start_iso ? new Date(b.start_iso).getTime() : NaN;
     const reminderMs = startMs - minutes * 60000;
     const active = b.event === 'created' || b.event === 'rescheduled';
-    const canMessage = active && !!b.whatsapp;
+    // marketing_consent = stopped: the person replied STOP on WhatsApp (recorded by hand). No WhatsApp at all.
+    const stopped = !!found && /^stop/i.test(String(found.marketing_consent || '').trim());
+    if (stopped && active && b.whatsapp) row.notes += ' WhatsApp confirmation and reminder not sent: this person replied STOP (marketing_consent = stopped).';
+    const canMessage = active && !!b.whatsapp && !stopped;
     const decision = {
       event: b.event,
       lead_id: row.lead_id,
@@ -1708,7 +1743,8 @@ function build06() {
     const active = ['confirmed', 'rescheduled'].includes(String(r.booking_status || '').toLowerCase());
     const same = String(r.booking_uid || '') === d.booking_uid && String(r.booking_start || '') === d.booking_start;
     const future = new Date(d.start_iso).getTime() > Date.now();
-    if (!active || !same || !future || r.reminder_sent_at) return [];
+    const stopped = /^stop/i.test(String(r.marketing_consent || '').trim());
+    if (!active || !same || !future || stopped || r.reminder_sent_at) return [];
     return [{ json: { lead_id: d.lead_id, reminder_payload: waTemplate(d.whatsapp, cfg.reminder_template, cfg.template_lang, [d.first_name || 'there', d.event_label, d.when_label]) } }];
   };
   const SO = codeNode(wf, 'Still booked?', [3080, 100], code(stillOn, [cleanParam, waTemplate]),

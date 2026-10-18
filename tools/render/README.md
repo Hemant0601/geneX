@@ -100,7 +100,7 @@ Optional fields on any slide: `"demo": true` (or on the carousel, for every slid
 | `stories.askHemantSunday` / `askHemantSundayAnswer` | the Sunday question box and answer background | Change the prompt line or the answer time |
 | `stories.newPost[]` | `stories/new-post*.png` | Add a teaser frame per post: `file`, `format` (`post` or `reel`), `label`, `line`, `demo` |
 | `stories.founding` | `stories/founding-slots-N-of-3.png`, `founding-closed.png` | `variants` lists what to render (3, 2, 1, 0, "closed") |
-| `stories.kitDm[]` / `kitComment` | `kit-dm-me-leaks.png` ("DM me LEAKS", the default), `kit-dm-me-kit.png` ("DM me KIT", the fallback if Business Suite won't take LEAKS as a DM keyword) and `kit-comment-leaks.png` | Each `kitDm` entry names its `file`, `cta` and `keyword` |
+| `stories.kitDm[]` / `kitComment` | `kit-dm-me-kit.png` ("DM me KIT", the Story/Live default), `kit-dm-me-leaks.png` ("DM me LEAKS", optional alternative) and `kit-comment-leaks.png` | Each `kitDm` entry names its `file`, `cta` and `keyword` |
 | `overlays` | badge, stopwatch pills, labels, lower third, end cards | `stopwatchTimes`, `labels`, `lowerThird`, `endCards[]` |
 
 ## 6. Files here

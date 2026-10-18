@@ -123,7 +123,9 @@ The model's JSON is a suggestion. The **Parse AI reply + decide** node applies t
 |---|---|
 | The lead's message is `STOP`, `unsubscribe`, `band karo` and similar | Never calls the model. Sends one fixed confirmation, sets `opted_out = yes`, and stays silent from then on |
 | `bot_paused = yes` on the lead's row (after a handover) | Never calls the model and sends nothing. Logs the message so the agent sees it. An agent clears the cell to switch the assistant back on |
-| HTTP error, refusal (`stop_reason: "refusal"`), `max_tokens`, or JSON that doesn't parse | Sends a fixed "an agent will reply here shortly" line, hands over with reason `ai_error`, and alerts the agent |
+| HTTP error or timeout (45 s), refusal (`stop_reason: "refusal"`), `max_tokens`, no text block, or JSON that doesn't parse (even after pulling a `{…}` object out of any text around it) | Sends a fixed "an agent will reply here shortly" line, hands over with reason `ai_error`, and alerts the agent |
+| Meta re-delivers a message (its id is already in `history_json` or `last_inbound_id`) | Does nothing: no model call, no reply, no new log row |
+| The message is more than 23.5 hours old when it arrives (a late webhook retry) | Never calls the model and sends no free-form text, because the 24-hour window has closed. Logs it for the agent; a STOP is still recorded |
 | `handover = true`, `wants_site_visit = true` or `temperature = hot` | Pauses the assistant for this lead and sends the agent the hot-lead alert template, once per lead (`agent_alerted_at`) |
 | Empty or over-long `reply` | Falls back to the fixed handover line, or trims to 900 characters |
 | Field values | New non-empty values overwrite the saved ones; an empty value never erases a saved one |
