@@ -14,7 +14,7 @@
 ## 0. The system on one screen
 
 ```
-Post CTA: "Comment LEAKS"     Story/Live CTA: "DM me LEAKS"     Profile: FAQ buttons
+Post CTA: "Comment LEAKS"     Story/Live CTA: "DM me KIT"       Profile: FAQ buttons
         │                                  │                              │
         ▼                                  ▼                              ▼
 Comment to Message (auto)        Custom keyword reply (auto)      FAQ answer (auto)
@@ -36,11 +36,11 @@ Comment to Message (auto)        Custom keyword reply (auto)      FAQ answer (au
 |---|---|---|---|---|
 | **LEAKS** | `LEAKS`, `Leaks`, `leaks`, `LEAK`, `leak` | The Lead Leak Kit (ungated) + 1 question | **Mon 19 Oct, before 15:00 IST** | P01, P03, P04, P05, P08, P09, P10 and trial reels T01, T02, T04 |
 | **PRICE** | `PRICE`, `Price`, `price`, `PRICES`, `prices` | The full price list + 1 question | **Tue 20 Oct, before 15:00 IST** | P02, and anyone asking about price |
-| **FOUNDING** | `FOUNDING`, `Founding`, `founding` | Founding-client details + 1 question | **Mon 26 Oct, before 15:00 IST** | P06, T03 |
-| **CLINIC** *(month 2)* | `CLINIC`, `Clinic`, `clinic`, `CLINICS`, `clinics` | Clinic kit (later: the Missed-Call Recovery Playbook) + 1 question | When the clinic magnet is ready (month 2, from 16 Nov) | Clinic posts from month 2 |
-| **LEAKS in DMs** *(DM keyword; fallback KIT)* | `LEAKS`, `Leaks`, `leaks` (fallback `KIT`, `Kit`, `kit`) | Same as LEAKS | Thu 22 Oct (with the Stories setup) | Story CTAs and Lives: "DM me LEAKS" ([`05-stories-broadcast-collabs.md`](./05-stories-broadcast-collabs.md) §6) |
+| **FOUNDING** | `FOUNDING`, `Founding`, `founding` | Founding-client details + 1 question | **Mon 26 Oct, before 15:00 IST** | P06, T03, P22 |
+| **CLINIC** *(month 2)* | `CLINIC`, `Clinic`, `clinic`, `CLINICS`, `clinics` | The same Lead Leak Kit (it has the clinic lines) + a clinic question, until the Missed-Call Recovery Playbook exists; then only the link changes | **From Mon 16 Nov** (month 2) | Clinic posts from month 2 |
+| **KIT** *(DM keyword, not a comment keyword)* | `KIT`, `Kit`, `kit` | Same as LEAKS, with `utm_campaign=story` | Thu 22 Oct (with the Stories setup) | Story CTAs and Lives: "DM me KIT" ([`05-stories-broadcast-collabs.md`](./05-stories-broadcast-collabs.md) §6, `graphics/stories/kit-dm-me-kit.png`) |
 
-FOUNDING is an addition to the strategy's keyword list (made in [`02-launch-posts.md`](./02-launch-posts.md)). KIT is a fallback only: Meta reportedly lets each keyword sit in one automation, so `LEAKS` may not be usable for both comments and DMs (§2.4).
+FOUNDING is an addition to the strategy's keyword list (made in [`02-launch-posts.md`](./02-launch-posts.md)), used by P06, T03 and P22. KIT is the DM keyword for Stories and Lives: Meta reportedly lets each keyword sit in only one automation, and `LEAKS` is already in Comment to Message (§2.4). If someone DMs "LEAKS" anyway, send the `kit` saved reply by hand.
 
 **Your service level:** personal reply **within 4 working hours** (strategy §5 funnel), and **never later than 24 hours** after the person's last message. Working hours = Mon–Sat 10:00–19:00 IST (the WhatsApp Business hours in [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §8).
 
@@ -138,13 +138,12 @@ Checked by web search on Sun 18 Oct 2026 (third-party guides quoting Meta's help
 
 (If it closed on the date rather than by filling up, replace "all 3 slots are taken" with "it closed on Mon 30 Nov 2026".)
 
-### 2.4 LEAKS (or KIT) as a DM keyword for Stories and Lives (custom keywords)
+### 2.4 KIT as a DM keyword for Stories and Lives (custom keywords)
 
-Stories can't take comments, and private replies to Live comments must go out during the broadcast, so Story and Live CTAs say **"DM me LEAKS"** ([`05-stories-broadcast-collabs.md`](./05-stories-broadcast-collabs.md) §6).
+Stories can't take comments, and private replies to Live comments must go out during the broadcast, so Story and Live CTAs say **"DM me KIT"** ([`05-stories-broadcast-collabs.md`](./05-stories-broadcast-collabs.md) §6; the Story frame is `graphics/stories/kit-dm-me-kit.png`).
 
 1. Inbox → Automations → **Create** → template **Custom keywords** (replies to DMs that contain a keyword).
-2. Channel: Instagram. Keywords: `LEAKS` · `Leaks` · `leaks` (plus `KIT` · `Kit` if there's room).
-   - **If Business Suite refuses** because LEAKS already lives in the Comment to Message automation (each keyword reportedly fits in only one automation), use `KIT` · `Kit` · `kit` instead, and change Story and Live CTAs to **"DM me KIT"**. Tell the owner of [`05-stories-broadcast-collabs.md`](./05-stories-broadcast-collabs.md) to swap the word too.
+2. Channel: Instagram. Keywords: `KIT` · `Kit` · `kit`. Don't add `LEAKS` here: it already lives in the Comment to Message automation, and each keyword reportedly fits in only one automation *(unverified)*.
 3. Message: the same text as LEAKS (§2.2), with `utm_campaign=story` instead of `leaks`:
    > Here's your Lead Leak Kit → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=story. Quick question so I can point you to the right fix: what do you sell, and where do most of your leads come from (portals, Meta ads, Instagram, referrals)?
 4. Expect the reply after **about 15 minutes** if you haven't answered first (reported). If you're online, just send the `/kit` saved reply (§8) yourself.
@@ -176,7 +175,7 @@ Hinglish versions to send by hand when someone taps an FAQ and writes in Hinglis
   - **HI (for your saved replies):** Message ke liye shukriya. Abhi offline hoon; agli working morning (Mon–Sat, IST) personally reply milega. Prices: askhemant.ai/pricing · Free 20-min Fit Call: askhemant.ai/book
 - **Instant reply: OFF** at launch. It can fire on top of a keyword DM and make the thread feel robotic. Your personal reply is the product.
 - **Saved replies** (Instagram app → Settings → *Business tools and controls* or *Creator tools and controls* → **Saved replies** *(path unverified)*): add the shortcuts in §8 (on Instagram you type the shortcut word, e.g. `kit`, and tap the suggestion; WhatsApp uses `/kit`).
-- **Labels** in the Business Suite inbox *(feature location unverified)*: `kw-LEAKS` · `kw-PRICE` · `kw-FOUNDING` · `kw-CLINIC` · `story` · `AHS` (Ask Hemant Sunday) · `lane-RE` · `lane-CL` · `lane-GEN` · `replied` · `call-booked` · `not-fit` · `founding-applicant`. Mirror them in the pipeline Sheet (§9).
+- **Labels** in the Business Suite inbox *(feature location unverified)*: `kw-LEAKS` · `kw-PRICE` · `kw-FOUNDING` · `kw-CLINIC` · `kw-KIT` · `story` · `AHS` (Ask Hemant Sunday) · `lane-RE` · `lane-CL` · `lane-GEN` · `replied` · `call-booked` · `not-fit` · `founding-applicant`. Mirror them in the pipeline Sheet (§9).
 
 ### 2.7 Test protocol (before every post that uses a keyword)
 
@@ -235,7 +234,7 @@ Use the second account (not following @askhemant), on mobile data rather than of
     - Button: `Send me the kit`
 11. **After the button:** Message 2 = the LEAKS DM (§4.1), then a **User Input / wait for reply** step that saves the answer to `lead_source`, then the branching in §4.1 (quick-reply buttons are optional; free text is fine).
 12. **Actions on every path:** add tag `kw_leaks`, set `first_keyword = LEAKS`, and when the person answers: tag `answered_q`, **assign the conversation to Hemant** in Live Chat, and **pause automation for this contact** so you take over by hand.
-13. **Publish → test** exactly as §2.7. Then repeat for **PRICE**, **FOUNDING**, **CLINIC**, and a **DM keyword** trigger and a **Story reply** trigger for `LEAKS` (and `KIT`, if you used the fallback).
+13. **Publish → test** exactly as §2.7. Then repeat for **PRICE**, **FOUNDING**, **CLINIC**, and a **DM keyword** trigger and a **Story reply** trigger for `KIT`.
 14. **Ice breakers:** if you set FAQs in ManyChat (*Settings → Instagram* or the Conversation Starters area *(unverified)*), they replace the ones from §2.5: use the same 4.
 15. **Logging:** ManyChat's Google Sheets integration and External Request (webhook to n8n) were reported as higher-plan features *(unverified)*. On Essential, add each person who answered to the pipeline Sheet by hand during your daily DM block, or export contacts weekly. Don't pay for Pro just for this.
 16. Known issue: a Sep 2026 community thread reports keyword triggers with **0 runs** even on a fresh flow ([ManyChat community](https://community.manychat.com/general-q-a-43/keyword-automation-not-triggering-at-all-instagram-comments-dm-0-runs-even-on-a-fresh-flow-10781)). If that happens: deactivate any older automation on the same keyword, re-test from a non-following account, and reply by hand meanwhile.
@@ -256,7 +255,7 @@ The automation's only jobs are to deliver the promised link and ask one question
 
 ### 4.1 LEAKS (the main flow)
 
-**Trigger:** comment `LEAKS` / `Leaks` / `leaks` / `LEAK` / `leak` on any post, or the same word sent as a DM or story reply (or `KIT`, if you used the fallback).
+**Trigger:** comment `LEAKS` / `Leaks` / `leaks` / `LEAK` / `leak` on any post, or `KIT` / `Kit` / `kit` sent as a DM or story reply (§2.4).
 
 **Public comment replies (rotate; by hand in month 1, automatic in ManyChat):**
 
@@ -312,12 +311,14 @@ Never put a link in a public reply (it isn't clickable) and never reply with the
 - **HI:** Thanks [Name]. Clinics mein pehla leak aksar yeh hota hai: procedure ya lunch ke time missed calls, aur phir bina reminder ke no-shows. Quick test: pichhle Tuesday kitni calls unanswered gayin, gin lijiye. Chahen toh free 20-min call par appointment flow map kar dete hain: askhemant.ai/book. Pitch tabhi, jab fit ho.
 
 **D. Agency** (Agency Partner opens from month 2, 16 Nov 2026, at list price −25%)
+
+> **Decision for Hemant:** the strategy applies −25% to "any of the systems above, built under the agency's brand". Decide whether it also covers Audits, Lead Desk retainers and Sessions; until then, quote the discount on builds only.
 - **EN:** Thanks [Name]. Makes sense: you bring the leads, and the leak is usually what happens after the form. I'm opening an Agency Partner option from mid-November: any of my systems, built under your brand, at 25% off list. Is there one client of yours where slow replies are hurting results right now?
 - **HI:** Thanks [Name]. Samajh gaya: leads aap laate hain, aur leak aksar form ke baad hota hai. Mid-November se Agency Partner option khul raha hai: mere systems aapke brand ke under, list price se 25% kam. Kya aapka koi ek client hai jahan abhi slow replies results kharab kar rahe hain?
 
 **E. Other business**
-- **EN:** Thanks [Name]. The kit is written for property and clinic enquiries, but the 10 pm test works for any business that gets leads. My builds focus on real estate and clinics; for anything else, the best start is a 45-min Ask Hemant Session (₹1,999 / $99, 100% credited if we build within 14 days): askhemant.ai/pricing. What's the one task you'd automate first?
-- **HI:** Thanks [Name]. Kit property aur clinic enquiries ke liye likha hai, par 10 pm test har business par chalta hai jahan leads aati hain. Mere builds real estate aur clinics par focused hain; baaki businesses ke liye best start hai 45-min Ask Hemant Session (₹1,999, 14 din mein build karein toh poora credit): askhemant.ai/pricing. Aap sabse pehle kaunsa kaam automate karna chahenge?
+- **EN:** Thanks [Name]. The kit is written for property and clinic enquiries, but the 10 pm test works for any business that gets leads. My builds focus on real estate and clinics; for anything else, the best start is a 45-min Ask Hemant Session (₹1,999 / $99 excl. GST, 100% credited to an Audit or build booked within 14 days): askhemant.ai/pricing. What's the one task you'd automate first?
+- **HI:** Thanks [Name]. Kit property aur clinic enquiries ke liye likha hai, par 10 pm test har business par chalta hai jahan leads aati hain. Mere builds real estate aur clinics par focused hain; baaki businesses ke liye best start hai 45-min Ask Hemant Session (₹1,999, GST alag; 14 din mein Audit ya build book karein toh poora credit): askhemant.ai/pricing. Aap sabse pehle kaunsa kaam automate karna chahenge?
 
 **F. Learner / builder**
 - **EN:** Love that. The kit is aimed at business owners, but the lead-flow ideas still apply. I share my own builds every Wednesday (Build Log). If you ever want 1:1 help on a specific build, that's the 45-min Ask Hemant Session: askhemant.ai/pricing. Good luck with it!
@@ -325,7 +326,7 @@ Never put a link in a public reply (it isn't clickable) and never reply with the
 
 **Human handover:** every branch is a human reply. The automation stops after the first DM (month 1 by design; month 2 by "pause automation", §3.3).
 
-**Tagging:** label `kw-LEAKS` + lane + `replied` in the inbox; add a row to the Leads tab (§9).
+**Tagging:** label `kw-LEAKS` + lane + `replied` in the inbox; add a row to the `Pipeline` tab (§9).
 
 ### 4.2 PRICE
 
@@ -348,7 +349,7 @@ Never put a link in a public reply (it isn't clickable) and never reply with the
 
 | They say… | Next message (EN) | HI |
 |---|---|---|
-| A clear task ("reply to portal leads", "follow-ups") | Good one to start with. That's the core of the Speed-to-Lead Sprint (₹34,999 / $1,499, live in 10 working days after access). Where do those leads come from today, and roughly how many a month? | Achha starting point hai. Yahi Speed-to-Lead Sprint ka core hai (₹34,999, access ke baad 10 working days mein live). Abhi yeh leads kahan se aati hain, aur mahine mein lagbhag kitni? |
+| A clear task ("reply to portal leads", "follow-ups") | Good one to start with. That's the core of the Speed-to-Lead Sprint (₹34,999 / $1,499 excl. GST, live in 10 working days after access). Where do those leads come from today, and roughly how many a month? | Achha starting point hai. Yahi Speed-to-Lead Sprint ka core hai (₹34,999, GST alag; access ke baad 10 working days mein live). Abhi yeh leads kahan se aati hain, aur mahine mein lagbhag kitni? |
 | "Too expensive" | Objection reply §7.1 | §7.1 |
 | "Meta's AI is free" | §7.2 | §7.2 |
 | Gives source + volume (≥ about 20 leads a month) | Thanks. At [volume] a month from [source], the first leak I'd check is [after-hours replies / no follow-up after day 2]. Want me to map it on a free 20-min call? askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=price. I'll only pitch if it's a fit. | Thanks. [Source] se mahine ki [volume] leads mein pehle [raat ke replies / day 2 ke baad follow-up] check karte hain. Free 20-min call par map kar dein? askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=price. Pitch tabhi, jab fit ho. |
@@ -381,15 +382,15 @@ Only say "X slots left" publicly if it's true at that moment (check `foundingSlo
 | In niche (broker/channel partner/Dubai broker/clinic), about 40–500 enquiries a month, 2+ sources | That sounds like a strong fit. Next step is a free 20-min Fit Call so we both check it properly: askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=founding. Write "founding" in the "task to fix first" box. If it fits on both sides, I'll send the written terms within 24 hours. | Yeh strong fit lag raha hai. Agla step free 20-min Fit Call hai, taaki dono taraf se theek se check ho: askhemant.ai/book?utm_source=ig&utm_medium=dm&utm_campaign=founding. "Task to fix first" box mein "founding" likh dijiye. Dono taraf fit hua toh 24 ghante mein written terms bhej dunga. |
 | In niche but under about 20 enquiries a month | Thanks for the honesty. Under about 20 enquiries a month there's too little data to measure a before/after, so the founding slot wouldn't be fair on you. The free kit fixes the basics without new software: askhemant.ai/kit. When volume grows, message me. | Honest jawab ke liye thanks. Mahine mein 20 se kam enquiries par before/after measure karne layak data nahi banta, toh founding slot aapke saath fair nahi hoga. Free kit bina naye software ke basics theek kar deta hai: askhemant.ai/kit. Volume badhe toh message kijiye. |
 | Out of niche | Personal reply E (§4.1) | E |
-| "Can I get this price without being published?" | Fair question. The price is low *because* of the published, measured results, so I can't separate them. Anonymised is the default, though: your name is only shown if you say yes in writing. Full price, with no publication, is ₹34,999 / $1,499 for the Sprint. | Sahi sawaal. Price kam isi liye hai kyunki results measure karke publish hote hain, toh dono alag nahi ho sakte. Haan, default anonymised hai: aapka naam tabhi dikhega jab aap likh kar haan kahein. Bina publication ke full price Sprint ₹34,999 hai. |
+| "Can I get this price without being published?" | Fair question. The price is low *because* of the published, measured results, so I can't separate them. Anonymised is the default, though: your name is only shown if you say yes in writing. Full price, with no publication, is ₹34,999 / $1,499 for the Sprint (excl. GST). | Sahi sawaal. Price kam isi liye hai kyunki results measure karke publish hote hain, toh dono alag nahi ho sakte. Haan, default anonymised hai: aapka naam tabhi dikhega jab aap likh kar haan kahein. Bina publication ke full price Sprint ₹34,999 hai (GST alag). |
 
 **After close:** switch the DM to the closed text in §2.3; public reply: "The founding program has closed. Full prices are in your DMs." / "Founding program band ho gaya hai. Full prices DM mein hain."
 
-**Tagging:** `kw-FOUNDING` + `founding-applicant` once they book; Leads tab `keyword = FOUNDING`.
+**Tagging:** `kw-FOUNDING` + `founding-applicant` once they book; `Pipeline` tab `keyword = FOUNDING`.
 
 ### 4.4 CLINIC (month 2, from 16 Nov 2026)
 
-The clinic magnet (*The Missed-Call Recovery Playbook*, strategy §7) isn't written yet. Until it is, the CLINIC DM sends the Lead Leak Kit, which already has clinic lines (missed-call first reply, reminders, no-show rescue). **When the playbook is published, change only the link.**
+The clinic magnet (*The Missed-Call Recovery Playbook*, strategy §7) isn't written yet. The CLINIC automation still goes live from Mon 16 Nov: until the playbook exists, it sends the **same Lead Leak Kit**, which already has clinic lines (the missed-call first reply on page 7, clinic questions on page 8, reminders on page 9, the lunch-hour callback test on page 11). **When the playbook is published, change only the link and the first sentence.**
 
 **Trigger:** comment `CLINIC` / `Clinic` / `clinic` / `CLINICS` / `clinics` (5 keywords). New automation in Business Suite (or ManyChat), same steps as §2.2.
 
@@ -402,8 +403,8 @@ The clinic magnet (*The Missed-Call Recovery Playbook*, strategy §7) isn't writ
 | 3 | Done. Start with the missed-call count test. | Ho gaya. Pehle missed calls gin kar dekhiye. |
 
 **Private DM:**
-- **EN:** Here's the clinic version of my kit, with the missed-call text-back and reminder templates → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=clinic. Quick question so I can point you to the right fix: what kind of clinic do you run, and roughly how many calls do you miss in a busy week?
-- **HI:** Yeh raha mere kit ka clinic version, missed-call text-back aur reminder templates ke saath → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=clinic. Ek chhota sa sawaal: aapka clinic kis type ka hai, aur busy hafte mein lagbhag kitni calls miss hoti hain?
+- **EN:** Here's my Lead Leak Kit. The clinic lines (missed-call text-back on page 7, reminders on page 9) are marked "Clinic" → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=clinic. Quick question so I can point you to the right fix: what kind of clinic do you run, and roughly how many calls do you miss in a busy week?
+- **HI:** Yeh raha mera Lead Leak Kit. Clinic waali lines (page 7 pe missed-call text-back, page 9 pe reminders) "Clinic" se marked hain → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=clinic. Ek chhota sa sawaal: aapka clinic kis type ka hai, aur busy hafte mein lagbhag kitni calls miss hoti hain?
 
 **Branching:**
 
@@ -428,7 +429,7 @@ A story reply is a DM the person chose to send, so the 24-hour window is open. R
 | Poll ("How fast do you reply after 9 pm?") | "Next morning, honestly" | Honest answer, thank you. That's the most common one. The 10 pm test in the kit shows what that costs you: want the link? | Honest jawab, thanks. Sabse common yahi hai. Kit ka 10 pm test dikhata hai iska kitna nuksaan hota hai: link bhejoon? |
 | Question box ("What would you automate first?") | A task | Good one. [One concrete idea for that task]. If you want, I'll go deeper on a free 20-min call: askhemant.ai/book | Achha sawaal. [Us task ke liye ek concrete idea]. Chahen toh free 20-min call par detail mein dekhte hain: askhemant.ai/book |
 | Behind the scenes / Build Log | "How did you do this?" | Comment → Meta auto-DM → Tally form → n8n → Google Sheet → WhatsApp. I'm building it in public every Wednesday. What are you trying to connect? | Comment → Meta auto-DM → Tally form → n8n → Google Sheet → WhatsApp. Har Wednesday public mein bana raha hoon. Aap kya connect karna chahte hain? |
-| "DM me LEAKS" | `LEAKS` | The DM keyword automation (§2.4) or `/kit` | `/kit` HI |
+| "DM me KIT" | `KIT` (or `LEAKS`) | The KIT DM keyword automation (§2.4); for `LEAKS` or anything else, the `kit` saved reply | `kit` HI |
 | Story mention (they tagged @askhemant) | — | Thank you for the mention, [Name]! That made my day. | Mention ke liye bahut thanks, [Name]! |
 
 **Never DM poll voters, question-box viewers or story viewers who didn't write to you.**
@@ -480,7 +481,7 @@ Opt-in by joining; one post a week; never DM people to "join my channel". Channe
 
 **"Not now"** → §7.4.
 
-**UTM per source:** `utm_source=ig&utm_medium=dm&utm_campaign=` `leaks` · `price` · `founding` · `clinic` · `story` · `ahs` · `faq`. They let GA4 and the Leads tab show which keyword produced each booking.
+**UTM per source:** `utm_source=ig&utm_medium=dm&utm_campaign=` `leaks` · `price` · `founding` · `clinic` · `story` · `ahs` · `faq`. They let GA4 and the `Pipeline` tab show which keyword produced each booking.
 
 ---
 
@@ -489,9 +490,9 @@ Opt-in by joining; one post a week; never DM people to "join my channel". Channe
 Reply once, warmly, with a fact, then hand the decision back. Never argue twice.
 
 ### 7.1 Price ("too expensive", "thoda kam karo", "budget nahi hai")
-- **EN:** Fair. Two honest options: the free kit fixes the basics with tools you already have (askhemant.ai/kit), and the Lead Leak Audit (₹9,999 / $499) shows exactly what's leaking before you spend more, with the full fee credited if you build within 30 days. I don't discount the build itself, because the price is the same for everyone and published. If one recovered deal covers it, it's worth a look; if not, the kit is the right step for now.
-- **HI:** Bilkul samajh sakta hoon. Do honest options: free kit aapke paas jo tools hain unhi se basics theek kar deta hai (askhemant.ai/kit), aur Lead Leak Audit (₹9,999) zyada kharch karne se pehle dikha deta hai ki exactly kya leak ho raha hai; 30 din mein build karein toh poori fees credit. Build par discount nahi deta, kyunki price sab ke liye same hai aur published hai. Agar ek deal bachne se cost nikal aati hai toh dekhne layak hai; nahi toh abhi kit hi sahi step hai.
-- *If they're eligible and slots are open (before Mon 30 Nov):* add "There's also a founding price, ₹14,999 / $599, for 3 businesses that agree to measured, published results: askhemant.ai/founding." / "3 businesses ke liye founding price bhi hai, ₹14,999, measured aur published results ke badle: askhemant.ai/founding."
+- **EN:** Fair. Two honest options: the free kit fixes the basics with tools you already have (askhemant.ai/kit), and the Lead Leak Audit (₹9,999 / $499 excl. GST) shows exactly what's leaking before you spend more, with the full fee credited if you build within 30 days. I don't discount the build itself, because the price is the same for everyone and published. If one recovered deal covers it, it's worth a look; if not, the kit is the right step for now.
+- **HI:** Bilkul samajh sakta hoon. Do honest options: free kit aapke paas jo tools hain unhi se basics theek kar deta hai (askhemant.ai/kit), aur Lead Leak Audit (₹9,999, GST alag) zyada kharch karne se pehle dikha deta hai ki exactly kya leak ho raha hai; 30 din mein build karein toh poori fees credit. Build par discount nahi deta, kyunki price sab ke liye same hai aur published hai. Agar ek deal bachne se cost nikal aati hai toh dekhne layak hai; nahi toh abhi kit hi sahi step hai.
+- *If they're eligible and slots are open (before Mon 30 Nov):* add "There's also a founding price, ₹14,999 / $599 excl. GST, for 3 businesses that agree to measured, published results: askhemant.ai/founding." / "3 businesses ke liye founding price bhi hai, ₹14,999 (GST alag), measured aur published results ke badle: askhemant.ai/founding."
 
 ### 7.2 "Meta's WhatsApp AI is free now. Why pay you?"
 - **EN:** Fair question. Meta's free WhatsApp AI is great for FAQs, and if that's all you need, use it. What it doesn't do is pull in your portal and Meta-form leads, ask your qualifying questions, alert the right agent, book the visit on your calendar and follow up on day 7. That's the part I build, on your own accounts.
@@ -532,14 +533,14 @@ Add these as Instagram **saved replies** (shortcut → text). The WhatsApp Busin
 | `price` | My full price list, all prices published: askhemant.ai/pricing (prices exclude GST). What's the one thing you'd automate first? | Poori price list, saare prices published: askhemant.ai/pricing (GST alag). Sabse pehle aap kya automate karna chahenge? |
 | `book` | Happy to map your lead flow on a free 20-min Fit Call: askhemant.ai/book. I'll only pitch if it's a fit. | Free 20-min Fit Call par aapka lead flow map kar dete hain: askhemant.ai/book. Pitch tabhi, jab fit ho. |
 | `founding` | Founding details: askhemant.ai/founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. What do you sell, and roughly how many enquiries a month? | Founding details: askhemant.ai/founding. 3 slots, ₹14,999 / $599 (GST alag), Mon 30 Nov 2026 tak ya slots bharne tak. Aap kya bechte hain, aur mahine mein kitni enquiries? |
-| `session` | The Ask Hemant Session is 45 minutes on any AI or automation question, with the recording and a written action list within 24 hours: ₹1,999 → {{RAZORPAY_SESSION_LINK}} · outside India $99 → {{PAYPAL_SESSION_LINK}}. 100% credited to an Audit or build booked within 14 days. | Ask Hemant Session: kisi bhi AI ya automation sawaal par 45 minute, recording aur 24 ghante mein written action list: ₹1,999 → {{RAZORPAY_SESSION_LINK}} · India ke bahar $99 → {{PAYPAL_SESSION_LINK}}. 14 din mein Audit ya build book karein toh poora credit. |
-| `notfit` | Thanks for the detail. Honestly, a full system isn't the right fit yet. The free kit covers the quick fixes (askhemant.ai/kit), and if you'd like an hour of focused help, the Ask Hemant Session is ₹1,999 / $99: askhemant.ai/pricing. | Details ke liye thanks. Seedhi baat: abhi full system sahi fit nahi hai. Free kit quick fixes cover karta hai (askhemant.ai/kit), aur focused help chahiye toh Ask Hemant Session ₹1,999 ka hai: askhemant.ai/pricing. |
+| `session` | The Ask Hemant Session is 45 minutes on any AI or automation question, with the recording and a written action list within 24 hours: ₹1,999 excl. GST → {{RAZORPAY_SESSION_LINK}} · outside India $99 → {{PAYPAL_SESSION_LINK}}. 100% credited to an Audit or build booked within 14 days. | Ask Hemant Session: kisi bhi AI ya automation sawaal par 45 minute, recording aur 24 ghante mein written action list: ₹1,999 (GST alag) → {{RAZORPAY_SESSION_LINK}} · India ke bahar $99 → {{PAYPAL_SESSION_LINK}}. 14 din mein Audit ya build book karein toh poora credit. |
+| `notfit` | Thanks for the detail. Honestly, a full system isn't the right fit yet. The free kit covers the quick fixes (askhemant.ai/kit), and if you'd like an hour of focused help, the Ask Hemant Session is ₹1,999 / $99 (excl. GST): askhemant.ai/pricing. | Details ke liye thanks. Seedhi baat: abhi full system sahi fit nahi hai. Free kit quick fixes cover karta hai (askhemant.ai/kit), aur focused help chahiye toh Ask Hemant Session ₹1,999 (GST alag) ka hai: askhemant.ai/pricing. |
 | `meta` | §7.2 EN | §7.2 HI |
 | `details` | §7.3 EN | §7.3 HI |
 | `later` | §7.4 EN | §7.4 HI |
 | `requests` | If you don't follow me yet, my DM lands in your message requests. Check there. | Agar aap mujhe follow nahi karte, toh mera DM message requests mein milega. Wahan check kijiye. |
 | `timeline` | Live in 10 working days after access is granted (the clock starts when the access checklist is done). Day 5 you see a demo; day 10 it goes live. If I miss it, your first month of Lead Desk Care is free. | Access milne ke baad 10 working days mein live (checklist poori hone par clock shuru). Day 5 demo, day 10 live. Late hua toh pehla mahina Lead Desk Care free. |
-| `breaks` | Every build has a 14-day bug-fix warranty (30 days on the Team system). After that, Lead Desk Care (₹9,999/mo / $299/mo) covers monitoring and fixes within 1 working day. | Har build ke saath 14 din ki bug-fix warranty (Team system par 30 din). Uske baad Lead Desk Care (₹9,999/mahina) monitoring aur 1 working day mein fixes cover karta hai. |
+| `breaks` | Every build has a 14-day bug-fix warranty (30 days on the Team system). After that, Lead Desk Care (₹9,999/mo / $299/mo, excl. GST) covers monitoring and fixes within 1 working day. | Har build ke saath 14 din ki bug-fix warranty (Team system par 30 din). Uske baad Lead Desk Care (₹9,999/mahina, GST alag) monitoring aur 1 working day mein fixes cover karta hai. |
 | `privacy` | Your data stays on your own accounts. I act as your data processor under a written clause and remove my access when we finish. Privacy notice: askhemant.ai/privacy | Data aapke apne accounts par rehta hai. Main written clause ke under data processor hoon, aur kaam khatam hone par access hata deta hoon. Privacy notice: askhemant.ai/privacy |
 | `agency` | From mid-November: any of my systems, built under your agency's brand, at list price −25%. You own the client. Email hello@askhemant.ai to talk it through. | Mid-November se: mere systems aapki agency ke brand ke under, list price se 25% kam. Client aapka. Baat karne ke liye hello@askhemant.ai par email kijiye. |
 
@@ -547,7 +548,7 @@ Add these as Instagram **saved replies** (shortcut → text). The WhatsApp Busin
 
 ## 9. Tracking
 
-**Pipeline Sheet → the leads tab** ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §20 calls it "Leads"; the n8n workflows in [`automations/`](../automations/) write to a tab named `Pipeline`, so use whatever [`automations/README.md`](../automations/README.md) says). The workflows use these headers, so type DM rows into the same columns: `date` · `source` (the UTM source, `ig`) · `keyword` · `lane` · `business_type` · `stage` (New → Replied → Call booked → Showed → Proposal → Won/Lost) · `value` · `lead_id` · `first_name` · `whatsapp` (only if they gave it) · `notes` (put "next: [date]" here for agreed check-backs). Leave the automation columns (`lead_received_at`, `first_reply_sent_at`, booking fields…) empty.
+**Pipeline Sheet → the `Pipeline` tab** (the tab the n8n workflows in [`automations/`](../automations/) write to; [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §20, header row in [`automations/README.md`](../automations/README.md)). The workflows use these headers, so type DM rows into the same columns: `date` · `source` (the UTM source, `ig`) · `keyword` · `lane` · `business_type` · `stage` (New → Replied → Call booked → Showed → Proposal → Won/Lost) · `value` · `lead_id` · `first_name` · `whatsapp` (only if they gave it) · `notes` (put "next: [date]" here for agreed check-backs). Leave the automation columns (`lead_received_at`, `first_reply_sent_at`, booking fields…) empty.
 
 - Add a row when a person **answers** the DM question (stage "Replied"). Commenters who never answer stay as a count only.
 - **Qualified conversation** (the KPI): a business owner or decision-maker **in the niche** (broker, channel partner, Dubai broker, clinic, or an agency with such clients) who answered and described a real lead-handling problem.
@@ -557,8 +558,8 @@ Add these as Instagram **saved replies** (shortcut → text). The WhatsApp Busin
 | Metric | Planning rate *(estimate)* | Where from |
 |---|---|---|
 | Keyword comments, by keyword | — | Count on each post |
-| Commenters who answer the DM question | 35% | Leads tab rows ÷ comments |
-| Answered → call booked | 15% (a vendor claims 15–22%; unverified) | Leads tab stage |
+| Commenters who answer the DM question | 35% | `Pipeline` tab rows ÷ comments |
+| Answered → call booked | 15% (a vendor claims 15–22%; unverified) | `Pipeline` tab stage |
 | Your median personal reply time | target ≤ 4 working hours | Note the times on 10 replies a week |
 | DM test pass rate | 100% | §2.7 log |
 
@@ -572,11 +573,11 @@ Replace the planning rates with your real ones after the day-28 review.
 |---|---|
 | **Mon 19 Oct, before 15:00 IST** | LEAKS automation live and tested (§2.2, §2.7). Away message on. Saved replies `kit`, `price`, `book`, `requests`, `notfit` added |
 | **Tue 20 Oct, before 15:00** | PRICE live and tested |
-| **Thu 22 Oct** | LEAKS DM keyword, or the KIT fallback (§2.4) and the 4 FAQs (§2.5). All saved replies in §8. Labels created |
+| **Thu 22 Oct** | KIT DM keyword (§2.4) and the 4 FAQs (§2.5). All saved replies in §8. Labels created |
 | **Mon 26 Oct, before 15:00** | FOUNDING live and tested |
 | **Daily** | DM block inside the 40-minute engagement slot: Requests folder → keyword replies → personal replies → Sheet rows |
 | **Sun 15 Nov (day 28)** | Decide: stay native / ManyChat Essential / n8n (§3.1) |
-| **Month 2 (from 16 Nov)** | CLINIC automation when the clinic magnet is ready (§4.4). Agency replies point to the partner offer |
+| **Month 2 (from Mon 16 Nov)** | CLINIC automation live, sending the kit until the Missed-Call Recovery Playbook exists (§4.4). Agency replies point to the partner offer |
 | **Mon 30 Nov, 23:59 IST** (or when the 3rd slot is signed) | Switch FOUNDING to the closed text (§2.3); hide the founding catalogue item; update `foundingSlotsLeft` |
 
 ---

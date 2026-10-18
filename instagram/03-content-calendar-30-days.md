@@ -54,6 +54,8 @@
 | **PRICE** | Comment keyword that sends askhemant.ai/pricing |
 | **book** | CTA to askhemant.ai/book (free 20-min Fit Call) |
 | **FOUNDING** | Comment keyword that sends the founding details by auto-DM (`FOUNDING, Founding, founding`, added in `02-launch-posts.md`), pointing to askhemant.ai/founding (3 slots, ₹14,999 / $599, closes Mon 30 Nov 2026 or when full) |
+| **CLINIC** | Comment keyword from Mon 16 Nov (month 2). Until the Missed-Call Recovery Playbook exists it sends the same Lead Leak Kit (`07-dm-automation-playbook.md` §4.4) |
+| **KIT** | DM keyword for Stories and Lives, which can't take comment keywords: "DM me KIT" (`07-dm-automation-playbook.md` §2.4) |
 | `[__]` | A real number to fill in from Insights, the pipeline Sheet or `content-tracker.csv`. **Never estimate, never round up.** If it's zero, publish zero |
 
 **CTA wording, every time:** "Comment LEAKS and I'll DM you the Lead Leak Kit. Check your message requests."
@@ -76,7 +78,7 @@
 | Day | Date | Feed | Trial reel | Stories focus | CTA |
 |---|---|---|---|---|---|
 | 1 | Mon 19 Oct | **P01** Reel: intro, "I build AI + WhatsApp systems so no lead waits" | — | Poll: lead sources | LEAKS |
-| 2 | Tue 20 Oct | **P02** Carousel: who I help, how I work, my prices (**pin #1**) | **T01** (P01 hook B) | Question box | PRICE |
+| 2 | Tue 20 Oct | **P02** Carousel: who I help, how I work, my prices (**pin #1**) | **T01** (P01 hook B) | Question box | PRICE (T01: LEAKS) |
 | 3 | Wed 21 Oct | **P03** Reel: "Watch the timer", Skyline Realty – DEMO (**pin #2**) | — | Behind the scenes: the stopwatch | LEAKS |
 | 4 | Thu 22 Oct | **P04** Carousel: 7 places your enquiries go cold | **T02** (P03 hook B) | Poll + kit link | LEAKS |
 | 5 | Fri 23 Oct | **P05** Reel: #AutomateKaro, the 10 pm test · 19:30 | — | /book sticker + 21:55 "10 pm test" nudge | LEAKS |
@@ -90,7 +92,7 @@
 | 13 | Sat 31 Oct | — **Double batch** (banks Diwali week) | — | Weekly recap | — |
 | 14 | Sun 1 Nov | — Ask Hemant Sunday · **Scorecard #2** | — | Question box | — |
 | 15 | Mon 2 Nov | **P11** Reel: "Festive enquiries are coming in. Who's replying?" (DEMO) | — | Poll: festive enquiries | LEAKS |
-| 16 | Tue 3 Nov | **P12** Carousel: my full 2026 price list | **T05** (P11 hook B) | Question box | PRICE |
+| 16 | Tue 3 Nov | **P12** Carousel: my full 2026 price list | **T05** (P11 hook B) | Question box | PRICE (T05: LEAKS) |
 | 17 | Wed 4 Nov | **P13** Reel: Field Test #1 results, 20 enquiries in {{CITY}} | — | BTS: the (blurred) log | LEAKS |
 | 18 | Thu 5 Nov | **P14** Carousel: Build Log #2, every number after 2 weeks | **T06** (P13 hook B) | Poll | LEAKS |
 | 19 | Fri 6 Nov | **P15** Reel: #AutomateKaro Dhanteras away message · 12:00, scheduled | — | Light: greeting only | LEAKS |
@@ -104,7 +106,7 @@
 | 27 | Sat 14 Nov | — Batch session | — | Weekly recap | — |
 | 28 | Sun 15 Nov | — Ask Hemant Sunday · **Day-28 review** | — | Question box | — |
 | 29 | Mon 16 Nov | **P21** Reel: clinic review request + 6-month recall (DEMO) | — | Poll | LEAKS (CLINIC if live) |
-| 30 | Tue 17 Nov | **P22** Carousel: founding slots close Mon 30 Nov, [N] of 3 open | **T08** (P21 hook B) | Countdown sticker | FOUNDING |
+| 30 | Tue 17 Nov | **P22** Carousel: founding slots close Mon 30 Nov, [N] of 3 open | **T08** (P21 hook B) | Countdown sticker | FOUNDING (T08: LEAKS) |
 | 31 | Wed 18 Nov | **P23** Reel: Build Log #4, month 1 real numbers | — | BTS: the scorecard | LEAKS |
 
 **Totals:** 23 feed posts (14 Reels, 9 carousels) and 8 trial reels. By day 30 (Tue 17 Nov) that's 22 feed posts and 8 trial reels, against the strategy §9 day-30 input targets of 20 and 6, even with Diwali taken out.
@@ -152,7 +154,7 @@
 - **Stories:**
   1. Poll: "Have you ever timed your own reply to a new enquiry?" *Yes / Never*.
   2. Link sticker → `askhemant.ai/kit` ("Free Lead Leak Kit").
-  3. "Comment LEAKS on today's post and it lands in your DMs."
+  3. "Comment LEAKS on today's post and it lands in your DMs. Check your message requests."
 - **Engagement:** first hour after P04, reply to every LEAKS commenter's DM answer **personally** (script in strategy §5). 10 comments on real-estate marketers' posts.
 - **Personal messages (10).**
 
@@ -196,7 +198,7 @@
   1. **Countdown sticker** "Founding slots close", set to Mon 30 Nov 2026, 23:59 IST. The deadline is real, so this is honest scarcity.
   2. Link sticker → `askhemant.ai/founding`.
   3. "Slot status: 3 of 3 open." Update this **only** when a slot is actually signed and 50% paid.
-- **Field Test #1:** the 48-hour window closes tonight for the morning batch (Tue for the evening batch). Lock the log.
+- **Field Test #1:** the 48-hour window closes today: about 11:00 for the morning batch and 21:30 for the evening batch (both were sent Sat 24 Oct). Lock the log after 21:30.
 - **Personal messages (10):** warm contacts who know brokers or clinic owners. Mention the founding offer in one line, with the /founding link.
 
 ### Tue 27 Oct · Day 9
@@ -204,7 +206,7 @@
 - **Trial reel, 18:00:** **T03**, P06 with hook B.
 - **Stories:** quiz sticker: "What does a 10-working-day WhatsApp lead system cost?" Options ₹9,999 / **₹34,999** / ₹79,999. Then reveal: "₹34,999 / $1,499, excl. GST. Here's why I publish it." Link to P07.
 - **Field Test #1 disclosures:** send each of the 20 businesses the disclosure message (strategy §8) over Tue–Wed.
-  - Record **one** 2-minute screen video (DEMO-labelled) showing how an enquiry could be answered within a minute. Personalise only the first line of each message.
+  - Record **one** 2-minute screen video (DEMO-labelled) showing how an enquiry could be answered within a minute (the design target). Personalise only the first line of each message.
   - No names are ever published.
 - **Personal messages (10).**
 
@@ -212,7 +214,7 @@
 - **Feed, 15:00:** **P08** Reel: Build Log #1, automating my own Instagram funnel (comment → DM → form → n8n → Sheet → WhatsApp). CTA **LEAKS**: "the DM is the demo".
 - **Stories:**
   1. Screen recording of the n8n run that fires when someone fills the kit form, with names blurred.
-  2. "Comment LEAKS on today's Reel and you'll see the DM arrive in real time."
+  2. "Comment LEAKS on today's Reel and you'll see the DM arrive in real time. Check your message requests."
   3. Poll: "Want to see the whole build, step by step?" *Yes / Just the result*.
 - **Engagement:** comment on 10 broker posts. Reply to every DM answer within 4 working hours.
 
@@ -261,7 +263,7 @@ Diwali week (6–10 Nov) gets no batch session, so today covers two weeks. Plan 
 | Mon 9 Nov | Govardhan Puja |
 | Tue 10 Nov | Bhai Dooj |
 
-Muhurat times vary by city.
+Muhurat times vary by city, and a few calendars put Govardhan Puja on 10 Nov and Bhai Dooj on 11 Nov; check your local panchang.
 
 **Diwali-week rules:**
 - **The first half of the week is for selling.** Tue–Thu (3–5 Nov) are normal Fit Call days, so send proposals within 24 hours. Strategy §9 targets the first Founding Client signed and 50% paid around day 21 (Sun 8 Nov). Expect it to slip into week 4, because brokers are busy and B2B replies slow down.
@@ -346,7 +348,7 @@ Muhurat times vary by city.
 | 3–9 s | **Method card:** "Small informal test · n=20 · sent Sat 24 Oct (10 around 11 am, 10 around 9:30 pm) · WhatsApp numbers on listings, Instagram DMs, website forms · no portal forms · no fake visits booked · timed for 48 hours · every business got a disclosure afterwards · no names" |
 | 9–22 s | **Results, one counter per beat:** replied within 5 min [__]/20 → within 1 hour [__]/20 → within 24 hours [__]/20 → no reply in 48 hours [__]/20 → median first reply [__]. Then: asked any qualifying question [__]/20 · offered a site visit [__]/20 · morning batch vs night batch median: [__] vs [__] |
 | 22–32 s | Hemant to camera: "Ye kisi ko shame karne ke liye nahi hai. Sabko disclosure bheja hai." ("This isn't to shame anyone. Everyone got a disclosure.") Then the one honest takeaway **the data supports** (see below) |
-| 32–38 s | "Comment LEAKS. Page 11 has the 10 pm test, so you can check your own number." |
+| 32–38 s | "Comment LEAKS. Page 11 has the 10 pm test, so you can check your own number. Check your message requests." |
 
 **Honesty rules for P13**
 - Use the real counts. If fewer than 20 went out, use the real n everywhere.
@@ -382,7 +384,7 @@ Muhurat times vary by city.
 | 6 | **Sales:** Fit Calls booked [__] · held [__] · Ask Hemant Sessions sold [__] · founding slots filled [__] of 3 |
 | 7 | **What broke, and the fix:** one real issue from the log, for example DMs landing in Message Requests, a delayed auto-DM, or a form field people skipped. Only list what actually happened |
 | 8 | **What I'm testing next:** Friday 19:30 vs 15:00 · hook A vs hook B on trial reels · [one funnel change] |
-| 9 | Indigo CTA: "Comment LEAKS. You get the Lead Leak Kit, and you can watch my funnel work from the inside." |
+| 9 | Indigo CTA: "Comment LEAKS. You get the Lead Leak Kit, and you can watch my funnel work from the inside. Check your message requests." |
 
 | | |
 |---|---|
@@ -406,7 +408,7 @@ Muhurat times vary by city.
 | 0–3 s | Your own diya or puja B-roll (real, from your home) and a phone buzzing with "Price?" |
 | 3–11 s | **Free fix, 2 minutes:** WhatsApp Business app › away message. Show the text: "Happy Dhanteras! I'm with family today and will call you tomorrow before 11 am. Share your budget and preferred area here and I'll come prepared." On screen: "Free · do it today" |
 | 11–17 s | **What a system adds (DEMO clip):** it replies, asks budget + BHK, offers weekend visit slots, and alerts you only if the lead is hot |
-| 17–23 s | Hemant: "Puja aapki. Reply system ka. #AutomateKaro" ("Your puja. The system's reply.") On screen: "Comment LEAKS → the away-message setup is on page 12 of the Lead Leak Kit." |
+| 17–23 s | Hemant: "Puja aapki. Reply system ka. #AutomateKaro" ("Your puja. The system's reply.") On screen: "Comment LEAKS → the away-message setup is on page 12 of the Lead Leak Kit. Check your message requests." |
 
 | | |
 |---|---|
@@ -451,7 +453,7 @@ Muhurat times vary by city.
 | 3–10 s | "**24 hours before**" label. WhatsApp utility template: "Hi Anjali, a quick reminder: your appointment at SmileCare Dental is tomorrow, Tue 11:00 am. Reply 1 to confirm or 2 to reschedule." Anjali taps 1. The sheet row flips to "Confirmed" (Replied Green) |
 | 10–16 s | "**2 hours before**": "See you at 11:00! Here's the map pin: [link]." |
 | 16–22 s | A second patient replies **2** and gets 3 open slots from the booking link. They pick Thu 4 pm, and the front desk sees the change, with no phone call needed |
-| 22–28 s | Hemant: "Reminders don't make no-shows zero. They give patients an easy way to tell you before the slot is wasted." CTA on screen: "Comment LEAKS → clinic templates inside." |
+| 22–28 s | Hemant: "Reminders don't make no-shows zero. They give patients an easy way to tell you before the slot is wasted." CTA on screen: "Comment LEAKS → clinic templates inside. Check your message requests." |
 
 | | |
 |---|---|
@@ -486,7 +488,7 @@ Muhurat times vary by city.
 | 7 | **6. Cold WhatsApp blasts to bought lists.** No opt-in means no consent, and that's how numbers get flagged. Message only people who enquired |
 | 8 | **7. Trusting the AI's "hot lead" score from day 1.** In every pilot, I read the first 100 AI conversations myself before anyone relies on the tags |
 | 9 | **What I *do* automate:** the first reply, the qualifying questions, the booking, the reminders, the follow-up and the log. The boring, fast, repeatable part |
-| 10 | Indigo CTA: "Save this for the day someone pitches you a 'fully automated' business. Comment LEAKS for the Lead Leak Kit." |
+| 10 | Indigo CTA: "Save this for the day someone pitches you a 'fully automated' business. Comment LEAKS for the Lead Leak Kit. Check your message requests." |
 
 | | |
 |---|---|
@@ -499,7 +501,7 @@ Muhurat times vary by city.
 - **Stories, post-Diwali revival series (3 frames):**
   1. "Festive enquiries you never answered aren't dead."
   2. Template 09 (day-7 revival) from page 10 of the Kit, as a screenshot-able card.
-  3. "Comment LEAKS on any post for all 10 templates."
+  3. "Comment LEAKS on any post for all 10 templates. Check your message requests."
 
 | | |
 |---|---|
@@ -552,11 +554,11 @@ Muhurat times vary by city.
 | 6 | **Step 3:** your leak = missed calls a week × 4 × the share nobody called back. "Your numbers only. I won't guess them for you." |
 | 7 | **Free fix today:** at 2:15 pm, send every missed caller this WhatsApp: "Sorry we missed your call, we were with a patient. How can we help? Reply here or book a slot: [link]" (template 01, clinic version, page 7 of the Lead Leak Kit) |
 | 8 | **System fix (SmileCare Dental – DEMO visual, badge on):** missed call → WhatsApp text-back (within a minute as the design target) → booking link → reminders 24 h and 2 h before. "Needs a phone line or provider that supports call webhooks. I check that in the Audit." |
-| 9 | Indigo CTA: "Send this to your front desk. Comment LEAKS for the clinic templates." |
+| 9 | Indigo CTA: "Send this to your front desk. Comment LEAKS for the clinic templates. Check your message requests." |
 
 | | |
 |---|---|
-| **CTA** | LEAKS (CLINIC from month 2, only once the Missed-Call Recovery Playbook and its automation are live) |
+| **CTA** | LEAKS (CLINIC only from Mon 16 Nov, month 2; until the Missed-Call Recovery Playbook exists, CLINIC sends the same kit) |
 | **Caption first line** | Missed calls at your dental clinic: a 5-day lunch-hour test you can run yourself, plus the free WhatsApp fix. |
 | **Hashtags** | Set CL-2 |
 | **Alt text (slide 5)** | "Blank 5-day tally card for counting a clinic's missed lunch-hour calls, call-backs and bookings." |
@@ -585,7 +587,7 @@ Muhurat times vary by city.
 | 3–12 s | First reply: "Hi Sara, thanks for your enquiry about the 1-bed in Dubai Marina! Are you buying or renting, and what budget should I work with?" Sara: "Buying, investment, around AED 1.6M, off-plan is fine." |
 | 12–18 s | "Would you like an in-person viewing or a video call with our agent? Sat 11:00 or Sat 16:00." Sara picks Sat 11:00. **The timer stops at the real recorded time** |
 | 18–25 s | 08:00, the agent's WhatsApp digest: "Overnight: 3 new leads. 1 HOT: Sara · 1 BR Marina · ~AED 1.6M · investment · viewing Sat 11:00." |
-| 25–33 s | Hemant to camera: "Dubai is an hour and a half behind India, so I build and support during your working day. It all runs on your own WhatsApp Business account." On screen: "Comment LEAKS · prices in USD: askhemant.ai/pricing" |
+| 25–33 s | Hemant to camera: "Dubai is an hour and a half behind India, so I build and support during your working day. It all runs on your own WhatsApp Business account." On screen: "Comment LEAKS · check your message requests" · small: "USD prices: askhemant.ai/pricing" |
 
 | | |
 |---|---|
@@ -626,7 +628,7 @@ Strategy §9 week 4. Fill in `content-tracker.csv` first, then answer each quest
 - Collab outreach starts.
 - Every Reel is cross-posted to LinkedIn and YouTube Shorts.
 - A broadcast channel opens once you reach about 300 followers.
-- The CLINIC keyword goes live only if the Missed-Call Recovery Playbook exists.
+- The CLINIC keyword can go live from today. Until the Missed-Call Recovery Playbook exists it sends the same Lead Leak Kit (`07-dm-automation-playbook.md` §4.4); when the playbook is published, only the link changes.
 
 **Founding close:** Mon 30 Nov 2026, 13 days from Tue 17 Nov.
 
@@ -647,11 +649,11 @@ Strategy §9 week 4. Fill in `content-tracker.csv` first, then answer each quest
 | 3–11 s | "**2 hours after the visit**": "Thanks for visiting SmileCare Dental today, Anjali! Would you leave us a Google review? [link] If anything wasn't right, reply here and we'll call you." Every patient gets the same message, with no filtering out unhappy ones |
 | 11–19 s | "**6 months later**", a marketing template with opt-out: "Hi Anjali, it's been 6 months since your cleaning at SmileCare Dental. Shall we book your check-up? Reply 1 for this week, 2 for next week. Reply STOP to opt out." |
 | 19–24 s | The recall list in the sheet: due dates and statuses, all fictional |
-| 24–30 s | Footnote card: "Consent captured at booking · no treatment details in messages · official WhatsApp Business Platform only". CTA: "Comment LEAKS." |
+| 24–30 s | Footnote card: "Consent captured at booking · no treatment details in messages · official WhatsApp Business Platform only". CTA: "Comment LEAKS. Check your message requests." (or CLINIC, if that automation is live) |
 
 | | |
 |---|---|
-| **CTA** | LEAKS (CLINIC if the playbook is live) |
+| **CTA** | LEAKS (or CLINIC, if that automation is live; it sends the same kit) |
 | **Caption first line** | Patient recall and Google review requests on WhatsApp for dental clinics: the 2 messages after every visit (DEMO – fictional clinic). |
 | **Hashtags** | Set CL-3 |
 | **Check before posting** | Google's current review policy. Ask every patient the same way and never only the happy ones; this wasn't researched, so read the policy page once |
@@ -701,7 +703,7 @@ Strategy §9 week 4. Fill in `content-tracker.csv` first, then answer each quest
 | 3–20 s | Number cards: feed posts 23 · trial reels 8 · accounts reached [__] · followers [__] · keyword comments [__] · DM conversations [__] · kit sign-ups [__] (real estate [__] / clinic [__] / other [__]) · Fit Calls held [__] · proposals [__] · founding clients signed [__] of 3 · cash collected ₹[__] (**optional**; include it only if you're comfortable) |
 | 20–30 s | **Target vs actual:** "My day-30 targets were 20 posts, 30 keyword comments and 5 Fit Calls. I got [__], [__] and [__]." |
 | 30–40 s | "What worked: [best post and why]. What didn't: [weakest format]. What I'm changing: [one decision from the Day-28 review]." |
-| 40–45 s | CTA: "Comment LEAKS and get the Lead Leak Kit. You'll be part of next month's numbers, anonymised." |
+| 40–45 s | CTA: "Comment LEAKS and get the Lead Leak Kit. You'll be part of next month's numbers, anonymised. Check your message requests." |
 
 | | |
 |---|---|

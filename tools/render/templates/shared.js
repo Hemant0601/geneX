@@ -90,7 +90,11 @@
     let t = String(text ?? '').replace(/ → /g, ' →\u00A0'); // in headings the arrow starts the next line, never ends one
     const m = t.match(/^(.*\S)\s+(\S+)\s+(\S+)$/);
     if (m && (m[2] + m[3]).length <= 11 && !/[→×≈]/.test(m[2])) t = `${m[1]} ${m[2]}\u00A0${m[3]}`;
-    return AH.rich(t, highlight, true);
+    // the arrow is an inline-block icon and browsers may break after it despite the no-break space
+    // ("Missed call →" / " booked"), so wrap it together with the next word, even a highlighted one
+    return AH.rich(t, highlight, true).replace(
+      /(<span class="g g-arrow">.*?<\/svg><\/span>)\u00A0((?:<mark>)?[^\s<\u00A0]+(?:<\/mark>)?)/g,
+      '<span class="nw">$1\u00A0$2</span>');
   };
 
   AH.warnings = [];

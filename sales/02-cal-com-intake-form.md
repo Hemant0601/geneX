@@ -55,13 +55,13 @@ Cal.com already asks for **name** and **email**. Add these, in this order, all *
 | 4 | **Roughly how many leads or enquiries do you get a month?** | Select | `Under 20` · `20–40` · `40–100` · `100–500` · `500+` | A rough range is fine (same ranges as the kit form) |
 | 5 | **How fast does a new lead usually get its first reply today?** | Select | `Within 5 minutes` · `Within an hour` · `Same day` · `Next day or later` · `Honestly, I don't know` | "I don't know" is a useful answer |
 | 6 | **What's the one thing you'd fix first?** | Long text | — | e.g. "night-time portal leads", "follow-ups", "no-shows". Applying for a founding slot? Write "founding" here |
-| 7 | **What budget do you have in mind for fixing it?** | Select | `Under ₹15K (under about $170)` · `₹15–40K (about $170–450)` · `₹40K–1L (about $450–1,150)` · `₹1L+ (about $1,150+)` | All my prices are published at askhemant.ai/pricing. USD figures use ₹88 = $1 |
+| 7 | **What budget do you have in mind for this?** | Select | `Under ₹15K (under about $170)` · `₹15–40K (about $170–450)` · `₹40K–1L (about $450–1,150)` · `₹1L+ (about $1,150+)` | All my prices are published at askhemant.ai/pricing. USD figures use ₹88 = $1 |
 | 8 | **Your WhatsApp number** | Phone | — | For the 2-hour reminder only. I won't add you to any list |
 | 9 | Anything else I should know? | Long text, optional | — | — |
 
 Privacy line under the form (Cal.com description or the /book page): *"Your answers go to Cal.com and to Hemant's private pipeline sheet, only to prepare for the call. Privacy notice: askhemant.ai/privacy."*
 
-**Why these exact questions:** they are the 7 gate questions in strategy §4 (business type, city or market, lead sources, leads a month, reply speed, task to fix first, budget band), plus the number for the WhatsApp reminder (strategy §5 stage 6). Q1's options map to the lanes: real estate → **RE**, clinic → **CL**, agency / other → **GEN**.
+**Why these exact questions:** they are the 7 gate questions in strategy §4 (business type, city or market, lead sources, leads a month, reply speed, task to fix first, budget band), plus the number for the WhatsApp reminder (strategy §5 stage 6). Q1's options map to the lanes: real estate → **RE**, clinic → **CL**, agency / other → **GEN**. Keep the label words as written: workflow 06 finds each answer by its label (business, city or market, where leads come from, leads a month, reply, fix, budget, WhatsApp), so don't put "fix" in the budget question or "budget" anywhere else ([`automations/README.md`](../automations/README.md) "Tally and Cal.com").
 
 ---
 
@@ -133,7 +133,7 @@ The 12-hour minimum notice gives you time to triage. Open each new booking and g
 
 ## 6. Into the pipeline Sheet
 
-Each booking becomes a row in the **Calls** tab (booking date, call date, showed y/n, outcome, next step) and moves the Leads row to **Call booked** ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §20). Cal.com webhooks → n8n on the free plan are unverified; if they're missing, add rows by hand after triage. Copy Q1 (lane), Q3, Q4 and Q7 into the row: they feed the **day-60 niche decision** (strategy §9).
+Each booking lands on the lead's row in the **Pipeline** tab (workflow 06 matches it by WhatsApp number or email, or adds a new row): stage → **Call booked**, plus the `booking_*` columns, and the intake answers appended to `notes` ([`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §20, [`automations/README.md`](../automations/README.md) §4). After the call, set `stage` to Showed / Proposal / Won / Lost by hand. Cal.com webhooks → n8n on the free plan are unverified; if they're missing, fill the same row by hand after triage. Copy Q1 (lane), Q3, Q4 and Q7 into the row: they feed the **day-60 niche decision** (strategy §9).
 
 ---
 

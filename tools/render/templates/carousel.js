@@ -12,7 +12,8 @@
    - stat: the highlight is shown huge; a % highlight also gets a 0–100 bar.
    - cta: "Comment WORD" shows a comment pill with WORD; an askhemant.ai/... URL shows a link pill
      (and a leading "askhemant.ai/... ." sentence is not repeated in the body).
-   Optional per-slide fields the JSON may add: demo (true), bg (paper|ink|indigo), marker, source. */
+   Optional per-slide fields the JSON may add: demo (true), bg (paper|ink|indigo), marker, source,
+   maxHeading (px cap on the heading size, to keep a series of slides at one size). */
 (function () {
   const AH = window.AH;
   const { rich, esc, icon } = AH;
@@ -224,6 +225,12 @@
         </footer>
       </div>`;
     document.body.innerHTML = html;
+    // optional cap on the heading size, so a series of slides (Leak 01, 02, 03) shares one size
+    if (slide.maxHeading) {
+      const root = document.getElementById('slide');
+      const cur = parseFloat(getComputedStyle(root).getPropertyValue('--h'));
+      root.style.setProperty('--h', Math.min(cur, Number(slide.maxHeading)) + 'px');
+    }
     return { fit: built.fit, grow: built.grow || [] };
   };
 

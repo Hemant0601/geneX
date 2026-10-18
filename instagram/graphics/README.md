@@ -4,7 +4,7 @@ Every PNG here is rendered from text by [`tools/render/`](../../tools/render/). 
 
 Brand system: Signal Indigo `#4338CA`, Lead Amber `#FFB020` (never as text on light backgrounds), Ink `#0B1020`, Paper `#F7F5F0`; Space Grotesk headings, Inter body, JetBrains Mono for times, prices and counters. Source: [`brand/tokens.css`](../../brand/tokens.css), [`docs/01-brand-and-domain.md`](../../docs/01-brand-and-domain.md) §7.
 
-**98 files:** 36 carousel slides · 6 highlight covers · 10 Reel covers + 10 title overlays · 21 Story frames · 15 overlays and end cards.
+**99 files:** 36 carousel slides · 6 highlight covers · 10 Reel covers + 10 title overlays · 22 Story frames · 15 overlays and end cards.
 
 ---
 
@@ -32,13 +32,13 @@ Upload as the custom cover (**Edit cover → Add from camera roll**). The title 
 | `P03-cover.png` | Wed 21 Oct · "Watch the timer." · Skyline Realty · **DEMO** · pin #2 | Ink |
 | `T02-cover.png` | Thu 22 Oct · trial reel of P03 · **DEMO** | Ink |
 | `P05-cover.png` | Fri 23 Oct · "The 10 pm test" · #AutomateKaro | Paper |
-| `P06-cover.png` | Mon 26 Oct · "3 founding clients" · pin #3 | Indigo |
+| `P06-cover.png` | Mon 26 Oct · "3 founding clients" · pin #3. The three rings are numbered 01–03, not "OPEN", because a pinned cover stays up after slots fill; the live count goes in the founding Story frames | Indigo |
 | `T03-cover.png` | Tue 27 Oct · trial reel of P06 · "₹14,999 instead of ₹34,999" | Indigo |
 | `P08-cover.png` | Wed 28 Oct · "Build Log #1" | Ink |
 | `T04-cover.png` | Thu 29 Oct · trial reel of P08 · "My own funnel. Real numbers." | Paper |
 | `P10-cover.png` | Fri 30 Oct · "Missed call → booked" · SmileCare Dental · **DEMO** | Ink |
 
-The backgrounds alternate so the grid reads as a pattern: P10 Ink · P09 Paper · P08 Ink / P07 Paper · P06 Indigo · P05 Paper / P04 Paper · P03 Ink · P02 Paper / P01 Indigo.
+On the grid, the three pinned posts (P02 Paper · P03 Ink · P06 Indigo) sit in the top row; below them, newest first: P10 Ink · P09 Paper · P08 Ink / P07 Paper · P05 Paper · P04 Paper / P01 Indigo. Trial reels (T01–T04) go to non-followers and don't sit in this sequence.
 
 **`reel-covers/title-overlays/<id>-title.png`** (transparent, 1080 × 1920): the same title on Ink boxes, for putting over a real frame of you from the video (brand rule: real photos only). In Edits or Canva, put the frame underneath and this PNG on top, then export at 1080 × 1920 and use that as the cover. Demo titles keep their DEMO badge.
 
@@ -66,7 +66,7 @@ Upload the PNG as a Story background, then add the live sticker on top in the In
 | `founding-slots-3-of-3.png`, `-2-of-3`, `-1-of-3` | From Mon 26 Oct (and every Sunday until 30 Nov): founding status | **Link** sticker to `askhemant.ai/founding?utm_source=ig&utm_medium=story&utm_campaign=founding` over the white pill; a countdown sticker to Mon 30 Nov is optional |
 | `founding-slots-0-of-3.png` | If all 3 slots are taken before 30 Nov | Link sticker to `/pricing` |
 | `founding-closed.png` | From Tue 1 Dec 2026 | Link sticker to `/pricing` |
-| `kit-dm-me-kit.png` | Kit promo (e.g. Thu, with the kit link). Stories can't take comments, so the CTA is **DM me KIT** ([`07-dm-automation-playbook.md`](../07-dm-automation-playbook.md) §2.4) | Link sticker to `askhemant.ai/kit?utm_source=ig&utm_medium=story&utm_campaign=kit` if you prefer a tap |
+| `kit-dm-me-leaks.png` | Kit promo (e.g. Thu, with the kit link). Stories can't take comments, so the CTA is **DM me LEAKS** ([`07-dm-automation-playbook.md`](../07-dm-automation-playbook.md) §2.4). **`kit-dm-me-kit.png`** ("DM me KIT") is the fallback: post it instead only if Business Suite won't take LEAKS as a DM keyword and you set up KIT | Link sticker to `askhemant.ai/kit?utm_source=ig&utm_medium=story&utm_campaign=kit` if you prefer a tap |
 | `kit-comment-leaks.png` | When you share a post whose CTA is LEAKS (P01, P03, P04, P05, P08, P09, P10) | Post sticker on the panel |
 
 **Post only the founding frame that is true today.** A slot count that isn't real, in either direction, breaks the no-fake-scarcity rule. Update the Pricing highlight the same day the count changes.
@@ -98,13 +98,13 @@ Times are IST, from [`02-launch-posts.md`](../02-launch-posts.md) (which owns th
 | **Mon 19 Oct** | P01 Reel 15:00 → `P01-cover.png` | `new-post-P01.png` | Create **Start Here**, **Pricing**, **FAQ** with highlights 01, 02, 05. Edit: `end-card-leaks.png`, `lower-third-hemant.png` |
 | **Tue 20 Oct** | P02 carousel 15:00 → `carousels/P02/` (pin #1) · T01 trial 18:00 → `T01-cover.png` | `new-post-P02.png` | — |
 | **Wed 21 Oct** | P03 Reel 15:00 → `P03-cover.png` (pin #2) | `new-post-P03.png` | Create **Demos** (`highlight-03-demos.png`). Edit: `frame-demo-badge.png`, stopwatch, labels, `end-card-leaks.png` |
-| **Thu 22 Oct** | P04 carousel 15:00 → `carousels/P04/` · T02 trial 18:00 → `T02-cover.png` | `new-post-P04.png` or `kit-comment-leaks.png`, plus `kit-dm-me-kit.png` | — |
+| **Thu 22 Oct** | P04 carousel 15:00 → `carousels/P04/` · T02 trial 18:00 → `T02-cover.png` | `new-post-P04.png` or `kit-comment-leaks.png`, plus `kit-dm-me-leaks.png` (or the KIT fallback) | — |
 | **Fri 23 Oct** | P05 Reel **19:30** → `P05-cover.png` | `new-post-P05.png` | Edit: `end-card-leaks.png` |
 | **Sun 25 Oct** | — | `ask-hemant-sunday-question.png` (10:00), `ask-hemant-sunday-answer.png` (17:00–19:00) | — |
 | **Mon 26 Oct** | P06 Reel 15:00 → `P06-cover.png` (pin #3) | `new-post-P06.png`, `founding-slots-3-of-3.png` | Edit: `end-card-founding.png`. Add the founding frame to **Pricing** |
 | **Tue 27 Oct** | P07 carousel 15:00 → `carousels/P07/` · T03 trial 18:00 → `T03-cover.png` | `new-post-P07.png` | — |
 | **Wed 28 Oct** | P08 Reel 15:00 → `P08-cover.png` | `new-post-P08.png` | Create **Build Log** (`highlight-04-build-log.png`) |
-| **Thu 29 Oct** | P09 carousel 15:00 → `carousels/P09/` · T04 trial 18:00 → `T04-cover.png` | `new-post-P09.png`, `kit-dm-me-kit.png` | — |
+| **Thu 29 Oct** | P09 carousel 15:00 → `carousels/P09/` · T04 trial 18:00 → `T04-cover.png` | `new-post-P09.png`, `kit-dm-me-leaks.png` (or the KIT fallback) | — |
 | **Fri 30 Oct** | P10 Reel 15:00 → `P10-cover.png` | `new-post-P10.png` | Edit: `frame-demo-badge.png`, stopwatch, `end-card-leaks.png` |
 | **Sun 1 Nov** | — | Ask Hemant Sunday frames + `founding-slots-N-of-3.png` (the true N) | — |
 

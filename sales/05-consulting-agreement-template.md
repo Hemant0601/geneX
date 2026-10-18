@@ -35,9 +35,9 @@
 
 ### 4. Fees and payment
 4.1 Fees are in Schedule B, in **[INR / USD]**, and **exclude GST**. [If registered: GST is added at the applicable rate.] [If export: "Supply meant for export under LUT without payment of IGST" where the conditions for zero-rating are met.] **[LAWYER/CA: confirm wording]**
-4.2 **Payment terms:** builds: **50% to start, 50% at go-live**; Lead Leak Audit and Ask Hemant Session: 100% upfront; retainers: monthly in advance (Schedule F).
+4.2 **Payment terms:** builds (Sprints, the Team system and, unless Schedule B says otherwise, the Quick Win Build): **50% to start, 50% at go-live**; Lead Leak Audit and Ask Hemant Session: 100% upfront; retainers: monthly in advance (Schedule F).
 4.3 Payment methods: in India, Razorpay payment link; outside India, Skydo or Wise Business invoice. Invoices are payable within **7 days**.
-4.4 **Credits:** an Ask Hemant Session fee is credited to an Audit or build booked within 14 days; a Lead Leak Audit fee is credited to a build booked within 30 days of the Leak Report. Credits equal the amount actually paid.
+4.4 **Credits:** an Ask Hemant Session fee is credited to an Audit or build booked within 14 days; a Lead Leak Audit fee is credited to a Sprint (Solo, Clinic or Team) booked within 30 days of the Leak Report. Credits equal the amount actually paid.
 4.5 **Late payment.** If a payment is more than 7 days overdue, I may pause work until it is paid; timelines move by the length of the pause. The Loom handover and SOP are delivered, and ownership passes under clause 7, on payment of the go-live instalment.
 4.6 Each party bears its own bank and payment-processor fees.
 

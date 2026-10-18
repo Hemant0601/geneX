@@ -46,7 +46,9 @@
       case 'clock':
         return `<div class="device"><span class="clock-pill">${moon}${rich(dv.time)}</span></div>`;
       case 'slots':
-        return `<div class="device"><div class="slots">${Array.from({ length: dv.total }, (_, i) => `<span class="slot ${i < dv.open ? '' : 'taken'}" data-small>${i < dv.open ? 'OPEN' : 'TAKEN'}</span>`).join('')}</div></div>`;
+        // `labels` (e.g. ["01","02","03"]) shows neutral slot numbers instead of OPEN/TAKEN: use it on any
+        // graphic that stays up after the count changes (a pinned Reel cover), so it never shows a stale count
+        return `<div class="device"><div class="slots">${Array.from({ length: dv.total }, (_, i) => `<span class="slot ${dv.labels || i < dv.open ? '' : 'taken'}" data-small>${dv.labels ? esc(dv.labels[i] ?? '') : i < dv.open ? 'OPEN' : 'TAKEN'}</span>`).join('')}</div></div>`;
       case 'flow':
       {
         const per = Math.ceil(dv.steps.length / Math.ceil(dv.steps.length / 3));

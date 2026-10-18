@@ -27,7 +27,7 @@
 | 3c | **Missed-Call & No-Show Recovery Sprint** | **₹34,999** | **$1,499** | 50/50 | ₹17,500 / ₹17,499 · $750 / $749 | 10 working days | 14 days |
 | 4a | **Lead Desk Care** | **₹9,999/mo** | **$299/mo** | Monthly in advance | — | 30 days' notice to cancel | — |
 | 4b | **Lead Desk Growth** | **₹24,999/mo** | **$799/mo** | Monthly in advance | — | 3-month minimum | — |
-| Q | **Quick Win Build** | **₹24,999** | **$999** | 50/50 *(house default; the strategy doesn't specify)* | ₹12,500 / ₹12,499 · $500 / $499 | 7–10 working days | 14-day bug-fix window |
+| Q | **Quick Win Build** | **₹24,999** | **$999** | 50/50 *(default; **Decision for Hemant**, below)* | ₹12,500 / ₹12,499 · $500 / $499 | 7–10 working days | 14-day bug-fix window |
 | C | **Custom AI Agent / AI Product Build** | **from ₹1,50,000** | **from $6,000** | At least 50% upfront; rest by milestones set in the Audit | — | 4–8 weeks | Set in the Audit |
 | + | Extra lead source | ₹4,999 | $199 | With the build | — | 3–7 days | As build |
 | + | Google review-request flow | ₹7,999 | $349 | With the build | — | 3–7 days | As build |
@@ -35,6 +35,8 @@
 | + | Out-of-scope change requests | ₹2,000/hour | $60/hour | Agreed in writing first; invoiced monthly or at go-live | — | — | — |
 
 Split rule: 50% rounded **up** to the nearest rupee/dollar at the start, the rest at go-live (so the total is exact). Matches the Razorpay setup in [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §14.
+
+> **Decision for Hemant: Quick Win Build payment terms.** The strategy gives no terms for the Quick Win. This file, the proposal template and the agreement use **50/50 (₹12,500 + ₹12,499 · $500 + $499) as the default**; the alternative is 100% upfront, as for the Audit. Decide before the first Quick Win proposal and change all three files together.
 
 ---
 
@@ -58,7 +60,7 @@ Split rule: 50% rounded **up** to the nearest rupee/dollar at the start, the res
 - **Upsell path:** → Quick Win Build (non-niche) · → Audit (niche) · → Kit for DIY.
 
 ### 2. Lead Leak Audit
-- **Scope:** pre-audit form · 60-minute workshop · timed test enquiries through **up to 3** of the client's own channels (with consent) · current and proposed lead-flow map · **Leak Report** (each leak, evidence, fix, effort) · ROI worksheet using **the client's own numbers** · system blueprint with a **fixed quote** · 20-minute walkthrough video + 30-minute review call.
+- **Scope:** pre-audit form · 60-minute workshop · timed test enquiries through **up to 3** of the client's own channels (with consent) · current and proposed lead-flow map · **Leak Report** (each leak, evidence, fix, effort) · ROI worksheet using **the client's own numbers** · system blueprint with a **fixed quote** · 20-minute recorded walkthrough + 30-minute review call. (Loom's free plan reportedly caps recordings at 5 minutes: use Loom's paid plan, or an OBS/phone recording shared unlisted via YouTube or Google Drive.)
 - **Not included:** the build · invented ROI.
 - **Timeline:** 5 working days from the workshop.
 - **Terms:** 100% upfront (`{{RAZORPAY_AUDIT_LINK}}`; abroad a Skydo invoice for $499). Full refund if cancelled before the workshop; after it, not refundable but still credited (website terms §9).
@@ -154,7 +156,7 @@ House rule: the credit comes off the **deposit** first; the go-live payment stay
 
 (−25% rounded **down** to the whole rupee/dollar.)
 
-**Not specified in the strategy; decide before the first partner call** (suggested default: the same −25%): Lead Leak Audit (₹7,499 / $374), add-ons (₹3,749 / $149 · ₹5,999 / $261 · ₹9,749 / $411 · ₹1,500 / $45 an hour), Lead Desk Care (₹7,499 / $224 a month) and Growth (₹18,749 / $599 a month). **Never discounted:** the Ask Hemant Session. **Never stacked** with founding pricing.
+> **Decision for Hemant: does the Agency −25% apply beyond builds?** The strategy says "any of the systems above", which clearly covers the builds in the table. Decide before the first partner call (suggested default: the same −25%) for: Lead Leak Audit (₹7,499 / $374), add-ons (₹3,749 / $149 · ₹5,999 / $261 · ₹9,749 / $411 · ₹1,500 / $45 an hour), Lead Desk Care (₹7,499 / $224 a month) and Growth (₹18,749 / $599 a month). **Never discounted:** the Ask Hemant Session. **Never stacked** with founding pricing.
 
 **Partner terms to write into the agreement:** the agency is the client (signs, pays, owns the end-client relationship) · end-client accounts still in the **end client's** name · same scope, out-of-scope list and timelines · anonymised case-study rights · the agency handles first-line client contact unless agreed otherwise · payment 50/50 per project.
 

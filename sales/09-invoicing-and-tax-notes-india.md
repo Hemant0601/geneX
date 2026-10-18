@@ -22,7 +22,7 @@
 | **Threshold** | Registration becomes compulsory once **aggregate turnover passes ₹20 lakh in a financial year** for services (**₹10 lakh** in special-category states) |
 | **Exports count** | **Export receipts count toward that turnover** ([Skydo](https://www.skydo.com/blog/gst-for-freelancers)) |
 | **Below the threshold** | Inter-state and export service suppliers don't have to register (Notification 10/2017-IGST) |
-| **Exception: OIDAR** | Online, automated digital services sold to overseas consumers can force registration at any turnover. Custom consulting is generally **not** OIDAR; selling **templates or SaaS** may be. Ask the CA before selling any template pack (strategy §9 day-90 note) |
+| **Possible exception: OIDAR** | The research says online, automated digital services (OIDAR) can force registration at any turnover **[not re-verified]**; whether that applies to an Indian seller with overseas buyers is exactly the question for the CA. Custom consulting is generally **not** OIDAR; selling **templates or SaaS** may be. Ask before selling any template pack (strategy §9 day-90 note) |
 | **Rate** | 18% on consulting/IT services; 0% for exports under LUT ([Tally Solutions](https://tallysolutions.com/gst/gst-software-saas-exports-international-clients/) says the 18% figure is in CBIC's schedules) |
 
 **Context:** at launch prices, ₹20 lakh is about 57 Solo Sprints, so the threshold is unlikely in the 90-day plan (day-90 target: ₹1.2–2.0 lakh collected). **Track cumulative receipts monthly** (domestic + export) in the scorecard, and start registration well before the line (house suggestion: at about ₹15 lakh).

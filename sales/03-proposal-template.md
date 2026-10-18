@@ -87,12 +87,12 @@ Milestones: demo day 8, go-live day 15 *(suggested split for a 15-day build)*. O
 **Founding Client Pilot** · ₹14,999 / $599 for **Lead Leak Audit + Solo Sprint** (or + Clinic Sprint) · 50/50 (₹7,500 + ₹7,499 / $300 + $299)
 > Same scope as the full-price Audit and Sprint; nothing cut. Add: "Baseline measured during the build; measured again 30 days after go-live; I review the first 100 AI conversations; publication terms in the agreement's founding schedule." Replace Option B with: "After the warranty: Lead Desk Care at ₹9,999 / $299 a month (optional)." Valid until **[date + 7 days, and no later than Mon 30 Nov 2026]**. Terms: [`10-founding-client-program.md`](./10-founding-client-program.md).
 
-**Quick Win Build** · ₹24,999 / $999 · 7–10 working days · 50/50 (₹12,500 + ₹12,499 / $500 + $499)
+**Quick Win Build** · ₹24,999 / $999 · 7–10 working days · 50/50 (₹12,500 + ₹12,499 / $500 + $499; the default until Hemant decides the Quick Win terms, [`04-pricing-sheet.md`](./04-pricing-sheet.md) §1)
 > One workflow of up to about 10 steps: **[trigger] → [step] → [step] → [output]** · documentation · Loom handover · 14-day bug-fix window. **Not included:** workflows beyond about 10 steps (quoted separately) · software licences and API usage.
 Option B = + the relevant add-on, or none (one option is fine for a Quick Win).
 
 **Lead Leak Audit** (if a written proposal is wanted before paying) · ₹9,999 / $499 · 5 working days · 100% upfront · 100% credited to a Sprint booked within 30 days.
-> Pre-audit form · 60-minute workshop · timed test enquiries through up to 3 of your channels (with your consent) · current and proposed lead-flow map · Leak Report (each leak, evidence, fix, effort) · ROI worksheet using your own numbers · system blueprint with a fixed quote · 20-minute walkthrough video + 30-minute review call.
+> Pre-audit form · 60-minute workshop · timed test enquiries through up to 3 of your channels (with your consent) · current and proposed lead-flow map · Leak Report (each leak, evidence, fix, effort) · ROI worksheet using your own numbers · system blueprint with a fixed quote · 20-minute recorded walkthrough + 30-minute review call.
 
 **Custom AI Agent / AI Product Build** · from ₹1,50,000 / from $6,000 · 4–8 weeks · **only after an Audit**. Use a longer proposal with milestones and acceptance criteria from the Audit; this one-page template is not enough.
 

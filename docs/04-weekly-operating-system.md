@@ -172,7 +172,7 @@ Poll (Mon, Thu), question box (Tue, Sun), behind the scenes (Wed), /book link st
 | Reach, non-follower reach % | Accounts reached in the week; share who don't follow you | track | track | track |
 | Average watch time, sends, saves | From Insights, per Reel and weekly totals. **Sends matter most** for reaching non-followers | track | track | track |
 | Profile visits, link taps | Insights profile activity; GA4 sessions with `utm_source=ig` | track | track | track |
-| Keyword comments | Comments containing LEAKS / PRICE / CLINIC (each person once per post) | 30 | 100 | 200 |
+| Keyword comments | Comments containing LEAKS / PRICE / FOUNDING / CLINIC (CLINIC from month 2), each person once per post; LEAKS or KIT sent as a DM from a Story or Live counts too | 30 | 100 | 200 |
 | DM replies | Commenters who answered the auto-DM question (planning rate 35%) | track | track | track |
 | Kit sign-ups by lane | Tally calculator submissions, split RE / CL / GEN by the business-type field | track | track | track |
 | Qualified conversations (by lane) | A two-way conversation with an in-niche owner or decision-maker who has a real lead flow and has shared what they sell and where leads come from | 10 | 35 | 70 |
@@ -213,7 +213,7 @@ Use the lane columns of the scorecard (qualified conversations RE / CL / GEN, ki
 | One lane has **at least 2× the qualified conversations of the next lane**, **or** has produced the **first paid non-pilot deal** | **Commit:** rewrite the Instagram bio and name field, the site headline ([`website/index.html`](../website/index.html)) and pinned post #3; give that lane **80% of content** |
 | Nothing converts | **Switch to clinics** rather than going broader |
 | The data is unclear | **Stay on real estate** |
-| In every case | Agencies remain a resale (white-label) channel at list price −25% |
+| In every case | Agencies remain a resale (white-label) channel at list price −25% on builds (**Decision for Hemant:** whether it also applies to the Audit, add-ons and retainers; [`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md) §5) |
 
 ### 7.4 The Fit Call switch rule (check weekly; decide by day 60)
 If **any** of these is true by day 60:
@@ -227,6 +227,7 @@ then either **shorten the Fit Call to 15 minutes**, or **make the Audit (₹9,99
 - **Condition:** at least **3 documented results** (definition in §6.2). Count them on **Sun 3 Jan**.
 - **If met:** announce on **Mon 4 Jan 2027**; new prices from **Mon 18 Jan 2027**: **Audit ₹14,999 / $699; Solo Sprint ₹44,999 / $1,999**. Proposals already sent keep their price for their 7-day validity. The deadline is real, so this is honest scarcity.
 - **If not met:** no announcement; prices stay; re-check at the day-90 review and monthly after that.
+- **Decision for Hemant:** the strategy names only the Audit and the Solo Sprint. Decide before Mon 4 Jan whether the Clinic Sprint (₹34,999 / $1,499 today, the same as the Solo Sprint) also rises on 18 Jan 2027; until then it stays at its launch price ([`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md) §6).
 
 ### 7.6 Day-90 review (Sat 16 Jan 2027, 2 hours)
 1. Score the day-90 column; write what worked, what didn't, and why.

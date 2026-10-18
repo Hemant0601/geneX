@@ -104,7 +104,7 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 | Time (IST) | Step |
 |---|---|
 | **10:00** | Post the question box on Indigo, with the wordmark. Rotate the prompts: "Ask Hemant: what should you automate first?" · "Ask me anything about WhatsApp for your business" · "What's one task you'd never want to do again?" · "Is your idea automatable? Ask." |
-| 10:00–17:00 | Questions come in. Copy each one, **without the name**, into the "AHS questions" tab of the pipeline Sheet: date · question · lane (RE/CL/GEN) · answered (y/n) · became content (post ID) |
+| 10:00–17:00 | Questions come in. Copy each one, **without the name**, into an "AHS questions" tab (add it to the pipeline Sheet once; [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §20 doesn't create it): date · question · lane (RE/CL/GEN) · answered (y/n) · became content (post ID) |
 | **17:00–19:00** | Answer **5–10** questions as Stories, one per frame. Use text on Ink, a 15-second talking head, or a 20-second screen recording |
 | 19:00–19:30 | **Scorecard** (calendar). The best question of the week goes into the Reel bank. Write "AHS" in the tracker notes when it ships |
 | Next day | DM anyone whose question needs a private answer. Their question opens the 24-hour window |
@@ -115,7 +115,7 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 - **No medical, legal, tax or financial advice.** Point people to a doctor, a lawyer or a CA. The same goes for GST questions, beyond "talk to a CA".
 - **No result promises.** "Within a minute" is a design target. Never say "you'll get more sales".
 - **Every price exact and excl. GST.** If a price comes up, link `/pricing` instead of rounding.
-- **One or two answers a week may end** with "Comment LEAKS on any post for the kit" or the `/book` sticker. The rest just answer.
+- **One or two answers a week may end** with "Comment LEAKS on any post for the kit (check your message requests)" or the `/book` sticker. The rest just answer.
 
 ### 2.3 From question to content
 - **Every week:** at least 1 question becomes a Reel (P5 Straight Talk, Friday slot), a carousel slide or an FAQ highlight frame.
@@ -130,7 +130,7 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 | Highlight | Add over the next 30 days (with the calendar date) | Remove or replace when |
 |---|---|---|
 | **Start Here** | Share of P01 (Mon 19 Oct). After the day-60 niche decision (Thu 17 Dec), rewrite frame 2 for the winning lane | Bio or offer changes |
-| **Pricing** | Shares of P02 (Tue 20 Oct), P07 (Tue 27 Oct), P12 (Tue 3 Nov) and the running-cost example (₹775/month, marked as an estimate). Founding frame: "₹14,999 / $599 · [N] of 3 open · closes Mon 30 Nov 2026" | **The same day** any price or slot count changes. After 30 Nov, replace the founding frame with "The founding program closed on Mon 30 Nov 2026" or remove it. The price-rise frames go up on Mon 4 Jan 2027, effective Mon 18 Jan 2027, and only if 3 documented results exist |
+| **Pricing** | Shares of P02 (Tue 20 Oct), P07 (Tue 27 Oct), P12 (Tue 3 Nov) and the running-cost example (₹775/month, marked as an estimate). Founding frame: "₹14,999 / $599 · [N] of 3 open · closes Mon 30 Nov 2026" | **The same day** any price or slot count changes. After 30 Nov, replace the founding frame with "The founding program closed on Mon 30 Nov 2026" or remove it. The price-rise frames go up on Mon 4 Jan 2027, effective Mon 18 Jan 2027, and only if 3 documented results exist (new prices per strategy §4: Audit ₹14,999 / $699, Solo Sprint ₹44,999 / $1,999). **Decision for Hemant:** does the Clinic Sprint (₹34,999 / $1,499) rise too? The strategy doesn't say, so don't post a clinic price-rise frame until you decide |
 | **Demos** | P03, P10, then P11 (Mon 2 Nov), P16 (Mon 9 Nov), P20 (Fri 13 Nov) and P21 (Mon 16 Nov). **Every frame keeps the DEMO badge**; re-check it after any crop. Add a `/demos` link sticker once the page exists | A demo is rebuilt or retired |
 | **Build Log** | P08 (Wed 28 Oct), P14 (Thu 5 Nov), P18 (Wed 11 Nov), P23 (Wed 18 Nov), plus one real-numbers frame each Sunday, even when the numbers are small or zero | Never delete old numbers. Keep the latest 8 weeks plus the month-1 summary |
 | **FAQ** | The best Ask Hemant Sunday answer each week (§2.3), plus P17 "7 things I would NOT automate" (Tue 10 Nov) | An answer goes out of date: Meta's AI features, WhatsApp pricing, a timeline |
@@ -203,6 +203,8 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 | **Dental / clinic marketing agencies and clinic consultants** | They fill the calendar; missed calls and no-shows waste it | "You fill the chairs. I stop them emptying at lunch and through no-shows." | A joint Live: "The missed-call math for clinics" (the lunch-hour test, P19) |
 | **Dubai real-estate creators who teach agents** (English) | The month-2 Dubai push | "Leads at 11 pm, viewing booked by 8 am" | A collab Reel built on R06 or P20 |
 
+> **Decision for Hemant:** the strategy prices Agency Partner work at **list price −25%** for "any of the systems above, built under the agency's brand". Decide whether the −25% also applies beyond builds (Audits, Lead Desk retainers, Sessions) before quoting an agency anything but a build.
+
 **Fit criteria:**
 - Their audience is **owners and agents, not would-be agency builders**.
 - Real comments on recent posts.
@@ -223,7 +225,7 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 
 **T1: Real-estate trainer / brokers' coach**
 > Hi [Name], I've been following your posts on [specific topic, e.g. handling "just send details" buyers]. The [specific post] one was spot on.
-> I build WhatsApp systems for brokers that reply to new enquiries within a minute and book the site visit. Your training is about what to say; my work makes sure someone says it before the lead goes cold.
+> I build WhatsApp systems for brokers that reply to new enquiries (my design target is within a minute) and book the site visit. Your training is about what to say; my work makes sure someone says it before the lead goes cold.
 > Idea: one collab Reel, "the 3 replies to send in the first 10 minutes". You give the script, I show it running live (clearly labelled as a demo). Your audience gets a free template kit. No cost, no catch. Open to it?
 
 **T2: Real-estate performance marketer / Meta-ads agency**
@@ -273,11 +275,11 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 | Min | Segment |
 |---|---|
 | T-3 days | Announce with a **countdown sticker** for the Live time and a **question sticker** ("What should I answer live?"). One reminder Story the morning of. For Live #1, the countdown sticker is for the Live; the founding countdown sticker (30 Nov) stays separate |
-| T-30 min | Test audio and light. Second phone ready with the DEMO WhatsApp. Turn on the **DM keyword automation for LEAKS** (Meta's Custom Keywords for DMs). Private replies to *Live comments* must go out while you're still live ([Meta docs](https://developers.facebook.com/docs/instagram-platform/private-replies/)), so during Lives ask people to **DM** you the word |
+| T-30 min | Test audio and light. Second phone ready with the DEMO WhatsApp. Check the **DM keyword automation for KIT** is on (Meta's Custom Keywords for DMs, [`07-dm-automation-playbook.md`](./07-dm-automation-playbook.md) §2.4). Private replies to *Live comments* must go out while you're still live ([Meta docs](https://developers.facebook.com/docs/instagram-platform/private-replies/)), so during Lives ask people to **DM you KIT** |
 | 0–5 | Welcome, who this is for, today's plan. Repeat it at minute 10 for latecomers |
 | 5–20 | **Live build:** one small piece, for example the first-reply message and its qualifying questions, built on screen (DEMO). Read the timer aloud |
 | 20–40 | **Q&A:** pre-submitted questions first, then live ones. Same answer rules as Ask Hemant Sunday (§2.2) |
-| 40–45 | One CTA: "DM me LEAKS for the kit", or, for Live #1, "Founding closes Mon 30 Nov at 23:59 IST: askhemant.ai/founding" (show the URL on screen) |
+| 40–45 | One CTA: "DM me KIT for the Lead Leak Kit", or, for Live #1, "Founding closes Mon 30 Nov at 23:59 IST: askhemant.ai/founding" (show the URL on screen) |
 | After | Save the replay (share it as a Reel if the app offers that). Cut **2–3 Reels** from the best answers (new post IDs in the tracker; tag "Live" in notes). Questions go to the FAQ highlight |
 
 **Guests:** Instagram Live can bring a guest on screen (check how many in the app). Use this for collab Lives. Agree topics first and **never take a guest's claims on air as your own results**.
@@ -296,11 +298,11 @@ The name is the CTA ("Ask Hemant"), and Sunday has no feed post (strategy §6). 
 
 **Rules:**
 1. **Change the CTA.** "Comment LEAKS" only works on Instagram, where the automation lives. Use:
-   - LinkedIn: "Get the free Lead Leak Kit: askhemant.ai/kit?utm_source=linkedin&utm_medium=social&utm_campaign=<post_id>"
-   - YouTube: say the URL on the end card ("askhemant dot ai slash kit"). Links in Shorts descriptions and comments have reportedly not been clickable since 2023; check the current behaviour. Put askhemant.ai in the channel's profile links.
+   - LinkedIn: "Get the free Lead Leak Kit: askhemant.ai/kit?utm_source=li&utm_medium=social&utm_campaign=<post_id>"
+   - YouTube: say the URL on the end card ("askhemant dot ai slash kit"); the description link is `askhemant.ai/kit?utm_source=yt&utm_medium=shorts`. Links in Shorts descriptions and comments have reportedly not been clickable since 2023; check the current behaviour. Put askhemant.ai in the channel's profile links.
 2. **Same labels, same sources.** DEMO badges are burned into the master, so they travel with it. Repeat "(DEMO – fictional business)" in every platform's text.
 3. **Music:** Instagram-library music doesn't carry over. Cross-post the voice-only master, and add music only from YouTube's own library if needed.
 4. **Timing:** the day after the Instagram post. LinkedIn on weekday mornings IST (to test), Shorts any time.
 5. **Language:** LinkedIn and Dubai-facing Shorts in English. Hinglish Reels can go to Shorts as they are, with their English burned-in subtitles.
-6. **Tracking:** UTM `utm_source=linkedin|youtube|facebook|threads`. Note views per platform in the tracker's `notes` column, for example `XP: LI 340 / YT 1.2K`, and review them monthly. Instagram metrics stay in their own columns.
+6. **Tracking:** UTM `utm_source=li|yt|facebook|threads` (the `li` and `yt` tags match [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §21–22). Note views per platform in the tracker's `notes` column, for example `XP: LI 340 / YT 1.2K`, and review them monthly. Instagram metrics stay in their own columns.
 7. **Originality:** these are your own originals, so cross-posting is fine. Never upload other creators' clips to any platform.

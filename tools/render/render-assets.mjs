@@ -49,7 +49,8 @@ if (args.stopwatch) {
       const f = v === 'closed' ? 'founding-closed.png' : `founding-slots-${v}-of-3.png`;
       add('stories', `stories/${f}`, 'renderStory', ['founding', { ...S.founding, variant: v }]);
     }
-    add('stories', 'stories/kit-dm-me-kit.png', 'renderStory', ['kitDm', S.kitDm]);
+    // one frame per DM keyword: LEAKS is the default, KIT the fallback (07-dm-automation-playbook.md §2.4)
+    for (const k of [].concat(S.kitDm)) add('stories', `stories/${k.file || 'kit-dm-me-kit.png'}`, 'renderStory', ['kitDm', k]);
     add('stories', 'stories/kit-comment-leaks.png', 'renderStory', ['kitComment', S.kitComment]);
   }
   if (want('overlays')) {

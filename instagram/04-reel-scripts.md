@@ -74,7 +74,7 @@ Each table reads: **Time · Visual (screen recording / B-roll) · Spoken · On-s
 | 3–8 s | OBS screen recording of the n8n canvas at 1.25× zoom: email trigger → extract name, phone, project → WhatsApp. The stopwatch starts when the email arrives | "Ye system email padhta hai, lead nikaalta hai, aur WhatsApp pe reply bhejta hai." (This system reads the email, pulls out the lead and replies on WhatsApp.) | Alert email → lead pulled out → WhatsApp |
 | 8–18 s | Phone mirror: the WhatsApp first reply lands: "Hi Kavya, thanks for your enquiry about Skyline Heights 3 BHK! May I ask 2 quick questions so I send the right options?" Timer stops | "Timer dekho." (Watch the timer.) | Timer: [real recorded time] |
 | 18–24 s | Google Sheet: a new row with Source = Portal · Status New → Replied (green) | "Aur lead sheet mein log ho gayi, source ke saath." (And the lead's logged in the sheet, with its source.) | Logged · source: portal |
-| 24–30 s | Hemant to camera at the desk | "Ek sach: kuch portals alert email der se bhejte hain. Timer tab start hota hai jab lead system tak pahunchti hai. Comment LEAKS." (One honest note: some portals send the alert late. The timer starts when the lead reaches the system. Comment LEAKS.) | Comment LEAKS → free Lead Leak Kit |
+| 24–30 s | Hemant to camera at the desk | "Ek sach: kuch portals alert email der se bhejte hain. Timer tab start hota hai jab lead system tak pahunchti hai. Comment LEAKS." (One honest note: some portals send the alert late. The timer starts when the lead reaches the system. Comment LEAKS.) | Comment LEAKS → free Lead Leak Kit · check your message requests |
 
 - **Caption first line:** Portal leads to WhatsApp automatically: how a property portal alert email becomes a WhatsApp reply (DEMO – fictional business).
 - **Caption body:** "Works where the portal sends lead alerts by email or API. I confirm every source in the Audit before quoting." Then the CTA.
@@ -88,11 +88,11 @@ Each table reads: **Time · Visual (screen recording / B-roll) · Spoken · On-s
 | 0–3 s | Instagram comment notification on a Skyline Realty – DEMO listing Reel: "price?" Clock 01:07 | "Raat 1:07 baje kisi ne aapki reel pe 'price?' likha." (At 1:07 am someone wrote "price?" on your Reel.) | **1:07 am: "price?" on your Reel. Who answers?** |
 | 3–10 s | The private-reply DM arrives: "Hi! Thanks for asking about Skyline Heights. Want the price sheet and a visit slot on WhatsApp? Tap here: wa.me/…" | "Comment pe private reply, aur WhatsApp ka rasta." (A private reply to the comment, and a path to WhatsApp.) | Comment → private reply → WhatsApp |
 | 10–18 s | WhatsApp: the lead taps through and says hi. The first reply asks for budget and BHK. Timer | "WhatsApp pe pehla reply, do sawaal ke saath." (The first reply on WhatsApp, with two questions.) | Timer: [real] |
-| 18–25 s | Hemant to camera | "Instagram pe 'price?' ek raised hand hai. Use teen din Message Requests mein mat chhodo. Comment LEAKS, aur yahi aapke saath hote dekho." (A "price?" on Instagram is a raised hand. Don't leave it in Message Requests for three days. Comment LEAKS and watch this happen to you.) | Comment LEAKS. Check your message requests |
+| 18–25 s | Hemant to camera | "Jo reel pe 'price?' likhta hai, woh interested hai. Usse teen din Message Requests mein mat chhodo. LEAKS comment karo, aur khud dekh lo kaise hota hai." (Whoever types "price?" on your Reel is interested. Don't leave them in Message Requests for three days. Comment LEAKS and see for yourself how it works.) | Comment LEAKS. Check your message requests |
 
 - **Caption first line:** Instagram DM automation for real estate: turning a 1:07 am "price?" comment into a WhatsApp conversation (DEMO – fictional business).
 - **Compliance note for the caption:** "Meta allows one private reply per comment, within 7 days. Everything after that happens only once the person replies."
-- **Trial-reel alt hook:** "Comment PRICE on this Reel. Then check your DMs." This uses the live PRICE automation as the demo.
+- **Trial-reel alt hook:** "Someone commented 'price?' at 1:07 am. Here's what they got before morning. (DEMO)" Keep LEAKS as the only CTA.
 
 ### R03 · Nobody reminded them about the site visit
 **P1 · RE · Hinglish VO · 30 s · DEMO · CTA LEAKS · Hashtags RE-2**
@@ -103,7 +103,7 @@ Each table reads: **Time · Visual (screen recording / B-roll) · Spoken · On-s
 | 3–10 s | Label "Fri 11:00 · 24 h before". The utility template: "Reply 1 to confirm or 2 to reschedule." The lead taps 1, and the sheet shows Confirmed | "24 ghante pehle: confirm ya reschedule." (24 hours before: confirm or reschedule.) | 24 h before · reply 1 or 2 |
 | 10–16 s | "Sat 09:00 · 2 h before": "See you at 11! Location: [Maps pin]." | "2 ghante pehle: location pin." (2 hours before: the location pin.) | 2 h before · Maps pin |
 | 16–24 s | A second lead doesn't show. At "Sat 11:40", template 08: "We missed you at Skyline Residency today. No problem! Shall I book a new slot, or send a video tour first?" Reply: "video tour pls" | "Aur agar nahi aaye? Rescue message." (And if they don't show? The rescue message.) | No-show? Rescue, don't chase |
-| 24–30 s | Hemant to camera | "Ye templates free hain, Kit ke page 9 aur 10 pe. System bas inhe time pe bhejta hai. Comment LEAKS." (These templates are free, on pages 9 and 10 of the Kit. The system just sends them on time. Comment LEAKS.) | Comment LEAKS → templates 05–08 |
+| 24–30 s | Hemant to camera | "Ye templates free hain, Kit ke page 9 aur 10 pe. System bas inhe time pe bhejta hai. Comment LEAKS." (These templates are free, on pages 9 and 10 of the Kit. The system just sends them on time. Comment LEAKS.) | Comment LEAKS → templates 05–08 · check your message requests |
 
 - **Caption first line:** Site visit reminders on WhatsApp for real estate brokers: the 24-hour, 2-hour and no-show messages (DEMO – fictional business).
 - **Trial-reel alt hook:** "You drove 40 minutes for a site visit. They didn't show. (DEMO)"
@@ -117,7 +117,7 @@ Each table reads: **Time · Visual (screen recording / B-roll) · Spoken · On-s
 | 3–10 s | Timeline graphic: day 0 → 1 → 3 → 7 → 14 → 30 dots (6–8 messages over 30 days) | "A system remembers every lead for 30 days. Six to eight messages, then it stops." | 30 days · 6–8 messages · then it stops |
 | 10–18 s | The day-7 marketing template: "Hi Amit, still looking in Lakeview? 2 new options in your budget came up. Want details? Reply STOP to opt out." Amit: "yes send". Sheet status goes Follow-up → Replied, and the agent gets a hot-lead alert | "Day seven. He replies, and your agent gets an alert." | Day 7 → reply → agent alerted |
 | 18–24 s | Close-up on "Reply STOP to opt out" and a sheet column "Opted out" | "Anyone who says STOP, or says they've bought, drops out of the sequence that minute." | Opt-out built in |
-| 24–28 s | Hemant to camera | "The day-7 and day-30 messages are on page 10. Comment LEAKS." | Comment LEAKS |
+| 24–28 s | Hemant to camera | "The day-7 and day-30 messages are on page 10. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Real estate lead follow-up on WhatsApp: what day 7 and day 30 look like when the system remembers (DEMO – fictional business).
 - **Trial-reel alt hook:** "Property decisions take weeks. Does your follow-up last longer than 2 days?"
@@ -131,7 +131,7 @@ Each table reads: **Time · Visual (screen recording / B-roll) · Spoken · On-s
 | 3–10 s | Freeze frame with a Leak Red overlay: the minutes ticking | "That group chat is where leads go to wait." | Group chat = waiting room |
 | 10–20 s | The lead gets its first reply straight away (timer). Round-robin: Agent 2 "Priya" gets "New lead for you: Neha · 3 BHK · ₹1.2–1.4 Cr · wants a Sunday visit. Reply OK to take it." Priya: "OK" | "With round-robin, every lead gets one owner, and the buyer gets a reply while that happens." | One lead → one owner |
 | 20–26 s | Manager dashboard (Google Sheets / Looker Studio): leads per agent and first-reply time per agent. Fictional numbers, DEMO badge | "And the owner finally sees who replied, and how fast." | Who replied · how fast |
-| 26–30 s | Hemant to camera | "Comment LEAKS for the Lead Leak Kit." | Comment LEAKS |
+| 26–30 s | Hemant to camera | "Comment LEAKS for the Lead Leak Kit." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Lead distribution for real estate teams: round-robin assignment on WhatsApp so every enquiry has one owner (DEMO – fictional business).
 - **Caption body:** "This is the Team system: up to 6 sources and 10 agents, ₹79,999 / $2,999, 15 working days (excl. GST)."
@@ -144,9 +144,9 @@ Each table reads: **Time · Visual (screen recording / B-roll) · Spoken · On-s
 |---|---|---|---|
 | 0–3 s | Two clocks: London 22:50 · Dubai 02:50. Website enquiry: "Off-plan 2 BR · payment plan?" Skyline Realty – DEMO | "It's 10:50 pm in London. Your buyer wants to talk off-plan. It's 2:50 am in Dubai." | **London buyer, 10:50 pm. Dubai broker, 2:50 am. Who replies?** |
 | 3–12 s | First reply: "Hi James, thanks for asking about the off-plan 2 BR at Skyline Creek! Cash or mortgage, what budget, and when are you hoping to complete?" Timer | "The first reply goes out while you sleep." | Timer: [real] |
-| 12–20 s | James answers. The AI offers a call "in your time": "Tomorrow 6 pm London (9 pm Dubai) or Sat 11 am London (3 pm Dubai)". James picks Saturday. Timer stops | "It books the call in his evening and your working day." | Booked in both time zones |
+| 12–20 s | James answers. The AI offers a call "in your time": "Tomorrow 2 pm London (6 pm Dubai) or Sat 11 am London (3 pm Dubai)". James picks Saturday. Timer stops | "It books the call at a time that suits London and your working day." | Booked in both time zones |
 | 20–27 s | 08:00 Dubai: the broker's WhatsApp digest: "HOT · James (UK) · off-plan 2 BR · cash · call Sat 15:00." | "At 8 am, you get one message: who's hot, and when you're talking." | 8 am digest |
-| 27–33 s | Hemant to camera | "If your buyers are abroad, their evening is your night. Comment LEAKS. USD prices are on askhemant.ai/pricing." | Comment LEAKS |
+| 27–33 s | Hemant to camera | "If your buyers are abroad, their evening is your night. Comment LEAKS. USD prices are on askhemant.ai/pricing." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Off-plan lead follow-up for Dubai brokers: an overseas enquiry at 2:50 am answered and booked for a call in both time zones (DEMO – fictional business).
 - **Check before posting:** UK clocks change in late March and late October. Re-check the London–Dubai gap on the posting date; it's 4 hours in November.
@@ -162,7 +162,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–12 s | First reply: "Hi Farhan, thanks for your interest in Skyline Residency, {{CITY}}! Is this for self-use or investment? And since you're abroad, would a video walkthrough help?" Timer | "First reply, two questions, and an offer that suits someone abroad." | Timer: [real] |
 | 12–20 s | Farhan: "investment, video call pls, I'm in Dubai". The AI offers "Sat 10:30 am Dubai (12:00 IST) or Sun 6:30 pm Dubai (8:00 pm IST)". Farhan picks Saturday | "Slots in their time zone, and yours." | Video walkthrough booked |
 | 20–26 s | Broker's 8 am IST digest: "HOT · Farhan (Dubai) · 3 BHK · investment · video call Sat 12:00 IST." | "You wake up to a booked call, not a cold lead." | 8 am digest |
-| 26–30 s | Hemant to camera | "Indian project, Gulf buyer, two time zones. Comment LEAKS." | Comment LEAKS |
+| 26–30 s | Hemant to camera | "Indian project, Gulf buyer, two time zones. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** NRI real estate leads on WhatsApp: a 1 am IST enquiry from Dubai answered and booked for a video walkthrough (DEMO – fictional business).
 - **Trial-reel alt hook:** "Your NRI buyer's evening is your midnight. (DEMO)"
@@ -175,7 +175,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 0–3 s | Instagram DM to the SmileCare Dental – DEMO account at 22:04: "How much for aligners?" | "10 pm. Someone DMs your clinic: 'How much for aligners?' Your front desk opens it at 10 am." | **10:04 pm: "How much for aligners?" Front desk opens it: 10 am.** |
 | 3–11 s | Instant reply: "Hi! Clear aligner treatment starts with a consultation (fee ₹[fictional]). The doctor confirms the final cost after a scan. Want a consultation slot? Reply 1 for this week, 2 for next week." | "It answers what it can stand behind, and books the consultation." | No made-up quotes · no medical advice |
 | 11–18 s | Patient replies 1 → booking link → Thu 6 pm → confirmation, with the 24-hour reminder scheduled. Timer stops | "Booked before they've closed the app." | Consultation booked · reminder set |
-| 18–25 s | Hemant to camera | "Your DMs are a waiting room. Somebody should be at the desk. Comment LEAKS." | Comment LEAKS |
+| 18–25 s | Hemant to camera | "Your DMs are a waiting room. Somebody should be at the desk. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Instagram DM automation for dental clinics: a 10 pm price question answered and booked as a consultation (DEMO – fictional clinic).
 - **Trial-reel alt hook:** "Your clinic's best enquiry this week arrived at 10:04 pm. (DEMO)"
@@ -188,7 +188,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 0–3 s | The 24-hour reminder. Patient "Rahul" (fictional) taps **2** | "Your patient can't make Thursday. Do they call, wait on hold, or just not turn up?" | **Can't make Thursday? Reply 2.** |
 | 3–12 s | 3 open slots arrive from the clinic's booking link. Rahul picks Sat 10:30. The calendar moves the booking, and Thu 4 pm turns green (free) | "Three open slots. One tap. The old slot opens up again." | One tap to reschedule |
 | 12–18 s | Front-desk WhatsApp note: "Rescheduled: Rahul · Thu 4 pm → Sat 10:30. Thu 4 pm is free." | "Your front desk just gets a note." | Front desk informed |
-| 18–24 s | Hemant to camera | "A free slot on Thursday beats an empty chair on Thursday. Comment LEAKS." | Comment LEAKS |
+| 18–24 s | Hemant to camera | "A free slot on Thursday beats an empty chair on Thursday. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Appointment rescheduling on WhatsApp for clinics: patients move their own slot, and the old one opens up for someone else (DEMO – fictional clinic).
 - **Trial-reel alt hook:** "The cheapest no-show fix: make rescheduling one tap. (DEMO)"
@@ -202,7 +202,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–10 s | **Wrong way** (Leak Red, struck through): "Take a painkiller and rinse with warm salt water!" Label: "What a general bot might say. Never." | "Not this. Never this." | ✗ Medical advice from a bot |
 | 10–18 s | **Right way** (Replied Green): "I'm sorry you're in pain. I'm alerting our front desk now and someone will call you shortly. If it's an emergency, please call [your emergency line] or go to the nearest hospital." The front desk gets "URGENT · call this patient now" | "It hands over to a human, straight away." | ✓ Human, immediately |
 | 18–25 s | Rules card: "pain · bleeding · swelling · medicine → human. The bot books, reminds and answers logistics. It never diagnoses." | "These words always go to a person." | The bot never diagnoses |
-| 25–30 s | Hemant to camera | "Good automation knows when to stop. Comment LEAKS." | Comment LEAKS |
+| 25–30 s | Hemant to camera | "Good automation knows when to stop. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** WhatsApp chatbot for clinics: why every message about pain or medicines goes to a human, not the bot (DEMO – fictional clinic).
 - **Caption body:** "Scoped to one clinic, on the official WhatsApp Business Platform, with minimal health data." Then the CTA.
@@ -218,7 +218,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–12 s | Number cards | "DMs that needed me personally: [__]. My median reply: [__]. Fastest: [__]. Slowest: [__], because [real reason]." | [__] DMs · median [__] |
 | 12–20 s | The sheet filtered to after-hours messages | "The ones I answered after hours: [__]. That's exactly the leak I fix for clients." | After hours: [__] |
 | 20–27 s | Hemant to camera | "What I changed: [one real change]." | The fix: [__] |
-| 27–30 s | — | "Comment LEAKS and test my reply time yourself." | Comment LEAKS · time me |
+| 27–30 s | — | "Comment LEAKS and test my reply time yourself." | Comment LEAKS · time me · check your message requests |
 
 - **Caption first line:** Build in public: I timed my own Instagram DM replies for 7 days. Here's my real median, and what I changed.
 - **Trial-reel alt hook:** "My median reply time was [__]. Here's what I changed." Only use "Not great for someone who sells speed" if that's true.
@@ -232,10 +232,10 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 0–3 s | The real WhatsApp or email alert on your phone: "workflow failed · [error]" | "My automation broke at [time]. I knew by [time]." | **It broke at [time]. I knew by [time].** |
 | 3–12 s | Screen recording of the failed run in n8n, with the error node highlighted | "Here's what failed: [real cause, in plain words]." | What broke: [__] |
 | 12–20 s | The fix: re-auth, a retry, a fallback sheet for failed rows | "The fix took [__] minutes. [__] leads were affected, and I contacted them by [when]." | Fixed · [__] leads touched |
-| 20–28 s | Hemant to camera | "Every automation breaks eventually. What matters is whether you find out in a minute or in three weeks. Comment LEAKS." | Comment LEAKS |
+| 20–28 s | Hemant to camera | "Every automation breaks eventually. What matters is whether you find out in a minute or in three weeks. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Automation monitoring, build log: my n8n workflow failed at night. Here's the alert, the fix and how many leads it touched.
-- **Caption body:** "Every system I build sends error alerts. Lead Desk Care (₹9,999 / $299 a month) is me watching them for you."
+- **Caption body:** "Every system I build sends error alerts. Lead Desk Care (₹9,999 / $299 a month, excl. GST) is me watching them for you."
 - **Trial-reel alt hook:** "Every automation breaks eventually. Here's how mine told me."
 
 ### R13 · What 300 leads cost in WhatsApp fees
@@ -248,7 +248,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–10 s | Text card with a Slate source line: "Meta: per-message pricing since 1 Jul 2025" | "1 July 2025 se Meta har template message ka charge leta hai. Customer ke message ke 24 ghante ke andar reply free hai." (Since 1 July 2025, Meta charges for every template message. Replies within 24 hours of the customer's message are free.) | Per message since 1 Jul 2025 · replies in the 24-h window: free |
 | 10–20 s | The maths, written out | "300 leads × 3 follow-up = 900 marketing messages × lagbhag ₹0.86 = lagbhag ₹775 mahina." (300 leads × 3 follow-ups = 900 marketing messages × about ₹0.86 = about ₹775 a month.) | 900 × ~₹0.86 ≈ **₹775/month** *(estimate)* · reminders (utility) ~₹0.13 each · rate: MyOperator |
 | 20–26 s | Hemant to camera | "Plus WhatsApp provider ka plan aur AI usage. Sab aapke apne account pe, aapke naam pe." (Plus the WhatsApp provider's plan and AI usage. All on your own account, in your name.) | Your accounts · billed to you directly |
-| 26–33 s | Price-list screenshot | "Comment PRICE, full price list running costs ke saath." (Comment PRICE for the full price list, with running costs.) | Comment PRICE |
+| 26–33 s | Price-list screenshot | "Comment PRICE, full price list running costs ke saath." (Comment PRICE for the full price list, with running costs.) | Comment PRICE · check your message requests |
 
 - **Caption first line:** WhatsApp Business API cost in India for real estate leads: a worked example of per-message fees for 300 leads a month (estimate).
 - **Trial-reel alt hook:** "What 300 property leads a month cost in WhatsApp fees. (Estimate, with sources)"
@@ -292,7 +292,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–10 s | Method card | "Ek enquiry, [time] pe, unke [listing WhatsApp / website form] se. Unko time nahi pata tha." (One enquiry, at [time], through their [listing WhatsApp / website form]. They didn't know when.) | 1 enquiry · [channel] · time not shared |
 | 10–18 s | Result card | "Pehla reply: [__]. Qualifying sawaal: [haan/nahi]. Visit offer: [haan/nahi]." (First reply: [__]. A qualifying question: [yes/no]. A visit offer: [yes/no].) | First reply [__] · question [✓/✗] · visit [✓/✗] |
 | 18–26 s | DEMO clip (badge on): the same enquiry answered by a system, timer showing the real time | "Phir maine dikhaya ki wahi enquiry system se kaise answer hoti." (Then I showed them how a system would answer the same enquiry.) | Same enquiry, system version (DEMO) |
-| 26–33 s | Hemant to camera | "Apne business ka free Speed Check chahiye? Comment LEAKS, aur DM mein 'speed check' likho." (Want a free Speed Check on your own business? Comment LEAKS, and write "speed check" in the DM.) | Comment LEAKS |
+| 26–33 s | Hemant to camera | "Apne business ka free Speed Check chahiye? Comment LEAKS, aur DM mein 'speed check' likho." (Want a free Speed Check on your own business? Comment LEAKS, and write "speed check" in the DM.) | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Real estate speed-to-lead check: with a broker's permission, I timed their team's first reply (anonymised).
 - **Trial-reel alt hook:** "I tested a broker's reply time. They asked me to."
@@ -307,7 +307,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–10 s | Method card | "A small informal test. Ten at lunchtime, ten in the evening. WhatsApp numbers on listings, Instagram DMs, website forms. No health details, no appointments booked. Timed for 48 hours. Every clinic got a disclosure." | n=20 · Thu 12 Nov · ~1:15 pm and ~8:30 pm · no names |
 | 10–24 s | Counters, one per beat | "Within 5 minutes: [__]. Within an hour: [__]. No reply in 48 hours: [__]. Median: [__]. Lunch batch versus evening batch: [__] versus [__]. Sent a booking link: [__]." | [__] / [__] / [__] · median [__] |
 | 24–32 s | Hemant to camera | The one honest takeaway the data supports. No shaming, and no "clinics in {{CITY}} are slow" | — |
-| 32–38 s | — | "Run the lunch-hour test on your own clinic. Comment LEAKS." | Comment LEAKS |
+| 32–38 s | — | "Run the lunch-hour test on your own clinic. Comment LEAKS." | Comment LEAKS · check your message requests |
 
 - **Caption first line:** Dental clinic response time on WhatsApp: a small informal test of 20 clinics in {{CITY}}, with the method and results (no names).
 - **Trial-reel alt hook:** "A lunchtime message to 20 clinics. Median reply: [__]."
@@ -320,7 +320,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 0–3 s | Chat: "Is this available?" → "Yes" (Leak Red, struck through). Two blue ticks, then silence | "'Is this available?' ka reply sirf 'Yes' mat bhejo." (Don't just reply "Yes" to "Is this available?") | **Don't reply "Yes" to "Is this available?"** |
 | 3–12 s | The better reply in English, with the Hinglish version on a second card: "Haan, available hai! Sahi options ke liye 2 chhote sawaal: 1) Budget range kya hai? 2) Khud ke liye ya investment?" | "Haan bolo, aur do sawaal poocho." (Say yes, and ask two questions.) | "Yes, it is! 2 quick questions so I send the right options: 1) Budget range? 2) Self-use or investment?" |
 | 12–18 s | A reply arrives in the improved chat | "Sawaal ka jawab aata hai. 'Yes' pe sirf blue tick aata hai." (A question gets an answer. A "Yes" just gets a blue tick.) | A question gets a reply |
-| 18–24 s | WhatsApp Business › Quick replies screen, saving it as /hi | "Isko quick reply bana lo: /hi. #AutomateKaro. Comment LEAKS, saare 10 templates." (Save it as a quick reply: /hi. #AutomateKaro. Comment LEAKS for all 10 templates.) | Save as /hi · Comment LEAKS |
+| 18–24 s | WhatsApp Business › Quick replies screen, saving it as /hi | "Isko quick reply bana lo: /hi. #AutomateKaro. Comment LEAKS, saare 10 templates." (Save it as a quick reply: /hi. #AutomateKaro. Comment LEAKS for all 10 templates.) | Save as /hi · Comment LEAKS · check your message requests |
 
 - **Caption first line:** WhatsApp reply templates for real estate brokers: what to send instead of "Yes" when a buyer asks "Is this available?" (English + Hinglish).
 - **Trial-reel alt hook:** "Buyer: 'Is this available?' You: 'Yes.' Buyer: …"
@@ -336,7 +336,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 13–18 s | Card 3 | "What's not included? Get the out-of-scope list in writing." | 3 · Out of scope? |
 | 18–23 s | Card 4 | "When it breaks, who gets the alert, and how fast is the fix?" | 4 · When it breaks? |
 | 23–28 s | Card 5 | "Can I see a demo that's labelled as a demo, not 'results' from clients you can't check?" | 5 · A labelled demo? |
-| 28–33 s | Price page screenshot | "My answers are public. Comment PRICE." | Comment PRICE |
+| 28–33 s | Price page screenshot | "My answers are public. Comment PRICE." | Comment PRICE · check your message requests |
 
 - **Caption first line:** How to hire an AI automation agency or consultant: 5 questions to ask before you pay anyone (including me).
 - **Trial-reel alt hook:** "If an AI agency can't answer these 5 questions, don't sign."
@@ -351,7 +351,7 @@ This tests the NRI-buyer hypothesis in strategy §2. Ask about it on Fit Calls b
 | 3–10 s | Screen: away message settings | "Ek: away message, aapke hours ke baad auto-reply." (One: an away message, an auto-reply after your hours.) | 1 · Away message |
 | 10–17 s | Screen: quick replies, saving /hi | "Do: quick reply. Pehla reply /hi pe save karo." (Two: a quick reply. Save your first reply as /hi.) | 2 · Quick reply /hi |
 | 17–23 s | Screen: labels New · Hot · Visit booked · Follow-up | "Teen: labels. Taaki koi lead neeche na doob jaaye." (Three: labels, so no lead sinks out of sight.) | 3 · Labels |
-| 23–28 s | Hemant to camera | "Free tools reply karte hain. Portal leads, sahi sawaal, day-7 follow-up nahi karte. Tab mujhe bulana. Comment LEAKS, page 12." (Free tools reply. They don't pull in portal leads, ask the right questions or follow up on day 7. That's when you call me. Comment LEAKS; it's on page 12.) | Comment LEAKS · page 12 |
+| 23–28 s | Hemant to camera | "Free tools reply karte hain. Portal leads, sahi sawaal, day-7 follow-up nahi karte. Tab mujhe bulana. Comment LEAKS, page 12." (Free tools reply. They don't pull in portal leads, ask the right questions or follow up on day 7. That's when you call me. Comment LEAKS; it's on page 12.) | Comment LEAKS · page 12 · check your message requests |
 
 - **Caption first line:** WhatsApp Business app tips for real estate brokers: 3 free settings to fix tonight, before you pay for any automation.
 - **Trial-reel alt hook:** "3 free WhatsApp settings. 10 minutes. Tonight."
@@ -388,7 +388,7 @@ Each one is a 0–3 second opener for a future Reel or trial reel. Tags are *pil
 18. "Your Gulf-based buyer wants a video walkthrough, not a phone call at 2 pm their time." *P1 · RE (NRI)*
 
 ### Clinics (8)
-19. "A patient called during your lunch break. Nobody picked up. Here's the text they get within a minute. (DEMO)" *P1 · CL*
+19. "A patient called during your lunch break. Nobody picked up. Here's the text they get within a minute. (DEMO)" *P1 · CL (DEMO; within a minute is the design target)*
 20. "Your front desk is with a patient. The phone rings. What happens next decides the booking." *P1 · CL*
 21. "When do you ask for Google reviews? Two hours after the visit is the moment I design for." *P1 · CL*
 22. "12.9% of dental appointments were cancelled in 2025 (Planet DDS, US data). Make cancelling one tap, so you hear early." *P4 · CL*
@@ -495,7 +495,7 @@ Edits is Meta's free video editor. Menu names change often, so these steps are g
 - [ ] There are no more than 5 hashtags.
 - [ ] The **LEAKS / PRICE automation covers this post.** Check whether your Comment to Message setup applies to all posts or needs choosing per post, and test it once from the second account after posting.
 - [ ] The row in `content-tracker.csv` has its date, post_id, format, pillar, lane, hook and cta_keyword filled in.
-- [ ] The words "guaranteed", "10x", "revolutionary" and "never miss a deal again" appear nowhere.
+- [ ] The words "guaranteed", "10x", "revolutionary", "game-changer" and "never miss a deal again" appear nowhere.
 
 ### 4.8 After publishing
 - **First hour:**
@@ -506,5 +506,5 @@ Edits is Meta's free video editor. Menu names change often, so these steps are g
 - **After 7 days:** update the row with final numbers, keyword comments, DMs, profile visits, link clicks (from UTM data in GA4) and follows.
 - **Cross-post the next day:**
   - The voice-only master goes to **YouTube Shorts** and **LinkedIn** as native video.
-  - Change the CTA, because comment keywords only work on Instagram. Use "Get the free Lead Leak Kit: askhemant.ai/kit?utm_source=youtube" (or `utm_source=linkedin`).
+  - Change the CTA, because comment keywords only work on Instagram. Use "Get the free Lead Leak Kit: askhemant.ai/kit?utm_source=yt&utm_medium=shorts" (or `utm_source=li&utm_medium=social` on LinkedIn), the tags used in [`docs/03-accounts-setup-guide.md`](../docs/03-accounts-setup-guide.md) §21–22.
   - Details are in `05-stories-broadcast-collabs.md` §7.

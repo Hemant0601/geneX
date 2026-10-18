@@ -100,11 +100,11 @@
 .overlay-title .title, .overlay-title .small {
   display: inline; background: rgba(11, 16, 32, 0.88); color: var(--ah-white);
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
-  padding: 0.04em 0.2em; border-radius: 0.12em; line-height: 1.22;
+  padding: 0.04em 0.2em; border-radius: 0.12em; line-height: 1.4; /* 1.4: the line boxes no longer overlap into a darker band */
 }
 .overlay-title .title mark { color: var(--ah-amber); background: none; }
 .overlay-title .small { font-size: 42px; line-height: 1.6; padding: 0.12em 0.4em; }
-.overlay-title .title-wrap { line-height: 1.22; }
+.overlay-title .title-wrap { line-height: 1.4; }
 .overlay-title .small-wrap { margin-top: 30px; }
 
 /* ================= Stories ================= */

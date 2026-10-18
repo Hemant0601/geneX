@@ -34,8 +34,8 @@ These come from the strategy's proof rules (§8) and the brand checklist (`01-br
 8. **Prices** are exactly as published, in INR and USD. Add "prices exclude GST" wherever a price appears in a caption.
 9. **Reels:**
    - Burned-in captions in Inter SemiBold, white, on an 80% Ink box, so the Reel works with the sound off.
-   - Keep text out of the top 220 px and bottom 420 px (Instagram UI); a safe-zone default, check on a phone.
-   - Covers are 1080×1920, with the title in the central 3:4 safe zone because the grid crops them.
+   - Keep text, the DEMO badge and captions inside the safe area in [`04-reel-scripts.md`](./04-reel-scripts.md) §4.2: about 270 px clear of the top and 670 px of the bottom (third-party figures; check on a phone).
+   - Covers are 1080×1920, with the title in the middle 1080×1080, which survives the grid's 3:4 crop.
    - Speak the keyword phrase in the first sentence when it fits (Instagram transcribes audio for search).
 10. **Carousels:**
     - 1080×1350 with 64 px margins. Sources go in Slate at the bottom.
@@ -87,11 +87,12 @@ Set up in Meta Business Suite → Inbox → Automations → Comment to Message (
 |---|---|---|---|---|
 | **LEAKS** | `LEAKS`, `Leaks`, `leaks`, `LEAK`, `leak` | "Here's your Lead Leak Kit → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=leaks. Quick question so I can point you to the right fix: what do you sell, and where do most of your leads come from (portals, Meta ads, Instagram, referrals)?" | P01, T01, P03, T02, P04, P05, P08, T04, P09, P10 | Mon 19 Oct, 15:00 |
 | **PRICE** | `PRICE`, `Price`, `price`, `PRICES`, `prices` | "My full price list → askhemant.ai/pricing. What's the one thing you'd automate first?" | P02 (and anyone who asks about price on any post) | Tue 20 Oct, 15:00 |
-| **FOUNDING** *(new; see note)* | `FOUNDING`, `Founding`, `founding` | "Here are the founding-client details → askhemant.ai/founding?utm_source=ig&utm_medium=dm&utm_campaign=founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. To check the fit: what do you sell, and roughly how many enquiries do you get a month?" | P06, T03 | Mon 26 Oct, 15:00 |
+| **FOUNDING** | `FOUNDING`, `Founding`, `founding` | "Here are the founding-client details → askhemant.ai/founding?utm_source=ig&utm_medium=dm&utm_campaign=founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. To check the fit: what do you sell, and roughly how many enquiries do you get a month?" | P06, T03 (later P22) | Mon 26 Oct, 15:00 |
 | *(none)* | — | P07's CTA is the booking link: askhemant.ai/book (bio link 1) | P07 | — |
 
-- **FOUNDING is an addition** to the strategy's keyword list (LEAKS, PRICE, and CLINIC from month 2). If you'd rather not run a third automation, reply to FOUNDING comments by hand within 4 working hours.
-- **CLINIC isn't used yet.** The clinic magnet arrives in month 2, so P10 uses LEAKS. The kit already includes clinic lines.
+- **FOUNDING is an addition** to the strategy's keyword list (LEAKS, PRICE, and CLINIC from month 2), used by P06, T03 and P22. If the automation fails its test, reply to FOUNDING comments by hand within 4 working hours.
+- **CLINIC isn't used yet.** It goes live in month 2 (from Mon 16 Nov) and sends the same Lead Leak Kit until the Missed-Call Recovery Playbook exists, so P10 uses LEAKS. The kit already includes clinic lines.
+- **Stories and Lives can't take comment keywords.** Their CTA is "DM me KIT" (a DM keyword automation, [`07-dm-automation-playbook.md`](./07-dm-automation-playbook.md) §2.4).
 - **After every auto-DM:** when someone answers the question, reply personally inside the 24-hour window, using the script in strategy §5 / the DM playbook. Pitch the Fit Call only after a real exchange.
 
 ---
@@ -105,7 +106,7 @@ Week 1 goes live before the first Saturday batch session, so the week-1 Reels ar
 | **Sun 18 Oct (today) / Mon 19 Oct morning** | P01 (face cam + B-roll), T01 hook B, P05 (face cam; shoot the evening look, see P05) | Clip-on mic; the Skyline Realty demo for P01's B-roll (if it isn't running yet, use the website and kit screens instead, and no demo clips) |
 | **Tue 20 Oct** | P03 + T02 hook. Screen-record the Skyline Realty demo running live | The Skyline Realty speed-to-lead workflow in [`automations/demo/`](../automations/demo/) running on n8n with a WhatsApp test number; a second phone as the "agent". **Fallback:** if the demo isn't running by Tue 20 Oct evening, swap P03 and P05 (P05 on Wed 21 Oct at 15:00, P03 on Fri 23 Oct at 15:00) |
 | **Graphics builder** | P02, P04, P07, P09 slides from [`carousels.json`](./carousels.json); covers for every Reel and trial reel (titles below) | `tools/render/`; output in [`graphics/carousels/`](./graphics/carousels/) and [`graphics/reel-covers/`](./graphics/reel-covers/) |
-| **Sat 24 Oct (batch)** | P06 + T03 hook, P08 + T04 hook, P10 (SmileCare Dental demo). Pull week-1 numbers for P08 from the Sheet | Your own funnel live (Tally → n8n → Sheet → WhatsApp); the SmileCare missed-call demo in `automations/demo/`. **Fallback for P08:** if the funnel isn't finished, film what *is* running and say what's next and what broke. That's still an honest build log |
+| **Sat 24 Oct (batch)** | P06 + T03 hook, P08 + T04 hook, P10 (SmileCare Dental demo). Record P08's numbers beat (0:27–0:35) last, after Scorecard #1 on Sun 25 Oct, so it covers the full week | Your own funnel live (Tally → n8n → Sheet → WhatsApp); the SmileCare missed-call demo in `automations/demo/`. **Fallback for P08:** if the funnel isn't finished, film what *is* running and say what's next and what broke. That's still an honest build log |
 | **Sat 31 Oct (batch)** | Week-3 posts (P11 onward) per the content calendar | — |
 
 ---
@@ -119,7 +120,7 @@ Week 1 goes live before the first Saturday batch session, so the week-1 Reels ar
 | **Date / time** | Mon 19 Oct 2026, **15:00 IST** |
 | **Format / length** | Reel, 9:16, **34 s**. English voiceover |
 | **Lane / pillar** | **RE** (mentions clinics) · Straight Talk, cornerstone intro |
-| **Goal** | Tell a cold visitor in 30 seconds who Hemant is, what they build and who it's for. Get the first LEAKS comments. Becomes the first share in the *Start Here* highlight |
+| **Goal** | Tell a cold visitor in 30 seconds who Hemant is, what the system does and who it's for. Get the first LEAKS comments. Becomes the first share in the *Start Here* highlight |
 | **Hook (0–3 s)** | Spoken: *"10:42 pm. A buyer asks, 'Is the 3BHK still available?' Who replies first?"* · On screen: **"10:42 pm: 'Is the 3BHK still available?'"** then **"Who replies first?"** |
 | **CTA** | Comment **LEAKS** → free Lead Leak Kit by DM · check your message requests |
 | **Automation** | LEAKS |
@@ -130,14 +131,14 @@ Week 1 goes live before the first Saturday batch session, so the week-1 Reels ar
 
 | Time | Spoken (exact) | On-screen text | Shot |
 |---|---|---|---|
-| 0:00–0:03 | "10:42 pm. A buyer asks, 'Is the 3BHK still available?' Who replies first?" | "10:42 pm: 'Is the 3BHK still available?'" → "Who replies first?" | Close-up of a phone: a WhatsApp enquiry lands from a fictional lead. **DEMO – fictional business** badge top-left. The amber stopwatch pill appears at 00:00 and starts |
+| 0:00–0:03 | "10:42 pm. A buyer asks, 'Is the 3BHK still available?' Who replies first?" | "10:42 pm: 'Is the 3BHK still available?'" → "Who replies first?" | Close-up of a phone: a WhatsApp enquiry lands from a fictional lead. **DEMO – fictional business** badge top-left. The amber stopwatch pill shows a static 00:00 (nothing is timed in P01, so the pill never runs) |
 | 0:03–0:08 | "Usually? Whoever's awake. I'm Hemant, and I build AI and WhatsApp systems so no lead waits." | "I'm Hemant. I build AI + WhatsApp systems so no lead waits." | Face cam at the desk, natural light, phone in hand |
 | 0:08–0:18 | "Here's what that means. Every enquiry gets a WhatsApp reply. My design target is within a minute. The AI asks your qualifying questions: budget, BHK, locality. Hot leads go straight to your phone. The site visit gets booked and reminded. And the follow-ups keep going for 30 days." | Ticks in sequence: "✓ WhatsApp reply (target: within a minute)" · "✓ Budget · BHK · locality" · "✓ Hot lead → your phone" · "✓ Visit booked + reminded" · "✓ 30-day follow-up" | 1–2 s cuts from the Skyline Realty DEMO screen recording (badge visible on every cut), alternating with face cam. If the demo isn't ready, use face cam only |
 | 0:18–0:25 | "It's for real-estate brokers and clinics, in India and the UAE. Fixed prices, published on my website. Built on your own accounts. Live in 10 working days." | "Brokers + clinics · India + UAE" · "Fixed, published prices" · "Your own accounts" · "Live in 10 working days" | Face cam → screen scroll of askhemant.ai/pricing |
 | 0:25–0:29 | "What I won't do: promise you deals. What I will do: show you the timer." | "No promises. Just the timer." | Face cam; the amber stopwatch pill slides in next to the face |
 | 0:29–0:34 | "Comment LEAKS and I'll send you my free Lead Leak Kit: the seven places enquiries go cold. Check your message requests." | "Comment LEAKS → free Lead Leak Kit" · "Check your message requests" | Face cam → end card: Indigo, AskHemant wordmark (on-dark version), "No lead left on read." |
 
-**Shot list:** (1) phone close-up of the fictional 10:42 pm enquiry (DEMO badge); (2) face cam A-roll at the desk; (3) 4–5 B-roll cuts from the Skyline Realty DEMO recording in `automations/demo/`; (4) a scroll of askhemant.ai/pricing; (5) the end card from `brand/logo/wordmark-on-dark.svg`.
+**Shot list:** (1) phone close-up of the fictional 10:42 pm enquiry (DEMO badge); (2) face cam A-roll at the desk; (3) 4–5 B-roll cuts from the Skyline Realty DEMO recording in `automations/demo/`; (4) a scroll of askhemant.ai/pricing; (5) the end card [`graphics/overlays/end-card-leaks.png`](./graphics/overlays/end-card-leaks.png) (built from `brand/logo/wordmark-on-dark.svg`), plus [`graphics/overlays/lower-third-hemant.png`](./graphics/overlays/lower-third-hemant.png) on the first face-cam shot.
 
 **Caption**
 ```
@@ -478,7 +479,7 @@ Comment LEAKS and I'll DM you the Lead Leak Kit with the full scorecard and the 
 | **Goal** | **Pinned #3.** The main route to the first paying client (strategy §4). States the offer, the price, what Hemant asks in return, who qualifies and the real deadline, so the right owners comment and the wrong ones rule themselves out |
 | **Hook (0–3 s)** | Spoken: *"I have zero case studies. So here's my offer to my first three clients."* · On screen: **"0 case studies. 3 founding slots."** |
 | **CTA** | Comment **FOUNDING** → details + how to apply by DM · check your message requests |
-| **Automation** | FOUNDING (new; see the automations table). Backup: reply by hand |
+| **Automation** | FOUNDING (see the automations table). Backup: reply by hand |
 | **Cover title** | **3 founding clients** (small line: "Closes Mon 30 Nov") |
 | **Pin** | **#3**: unpin P01, pin P06, and check the order (see `01-profile-setup.md` §10) |
 | **Scarcity check** | Real: 3 slots, closing Mon 30 Nov 2026 or when full. Before posting, check `foundingSlotsLeft` in `website/assets/js/config.js` still says 3. If any slot is signed by then, say the real number |
@@ -495,7 +496,7 @@ Comment LEAKS and I'll DM you the Lead Leak Kit with the full scorecard and the 
 | 0:35–0:40 | "If the results are weak, I'll publish them honestly, or not at all. Slots close Monday, 30 November, or when all three are taken." | "Weak results? Published honestly, or not at all." · "Closes Mon 30 Nov 2026 or when full" | Face cam; the slot counter graphic (3 of 3 open) |
 | 0:40–0:45 | "Comment FOUNDING and I'll DM you the details. Check your message requests." | "Comment FOUNDING → details by DM" · "Check your message requests" | End card (Indigo, wordmark) |
 
-**Shot list:** face-cam A-roll, two takes per line (it's the pinned offer, so it's worth a clean delivery); a screen recording of askhemant.ai/founding; the numbered-list overlay and slot-counter graphic (`tools/render/` or Edits). No client names or logos: there are none yet, and the Reel says so.
+**Shot list:** face-cam A-roll, two takes per line (it's the pinned offer, so it's worth a clean delivery); a screen recording of askhemant.ai/founding; the numbered-list overlay and slot-counter graphic (`tools/render/` or Edits); end card [`graphics/overlays/end-card-founding.png`](./graphics/overlays/end-card-founding.png). No client names or logos: there are none yet, and the Reel says so.
 
 **Caption**
 ```
@@ -503,7 +504,7 @@ AI automation for real estate brokers and clinics: I'm taking 3 founding clients
 
 Why: AskHemant is a week old and I have no client case studies. I'm not going to fake them. So three businesses get the Lead Leak Audit + the full Speed-to-Lead Sprint (or, for a clinic, the Missed-Call & No-Show Recovery Sprint) at a founding price.
 
-The price: ₹14,999 / $599. List price: ₹34,999 / $1,499 (with the Audit fee credited). That's about 57–60% off, with the same scope and nothing cut. 50% to start, 50% at go-live. Running costs stay on your own accounts. Prices exclude GST.
+The price: ₹14,999 / $599. List price: ₹34,999 / $1,499 (with the Audit fee credited). That's about 57–60% off, with the same scope and nothing cut. ₹7,500 / $300 to start, ₹7,499 / $299 at go-live. Running costs stay on your own accounts. Prices exclude GST.
 
 What I ask in return, in writing:
 1. The build period is the baseline: we measure how leads are handled today
@@ -632,7 +633,7 @@ Book a free 20-min Fit Call: link in bio (askhemant.ai/book). Messaged me instea
 | **Goal** | Proof without clients: Hemant's own funnel (comment → DM → form → n8n → Sheet → WhatsApp), working in public, with **real week-1 numbers**, however small. It's also an interactive post: viewers can trigger step 1 themselves |
 | **Hook (0–3 s)** | Spoken: *"Comment LEAKS on this video, and you'll set off the system I'm about to show you."* · On screen: **"Comment LEAKS → watch what happens"** |
 | **Labelling** | This is **not** a demo. It's Hemant's real funnel, so it says **"My real funnel · real numbers"** (no DEMO badge). Any real commenter's name, handle or number is **blurred**. The on-camera run uses Hemant's own second test account |
-| **Real numbers** | Fill the `[…]` values from the Sheet / scorecard on Sat 24 Oct (data for Mon 19 – Sun 25 Oct). Say the real number even if it's 0 |
+| **Real numbers** | Fill the `[…]` values from Scorecard #1 on Sun 25 Oct (data for Mon 19 – Sun 25 Oct), and record the numbers beat then or on Mon 26 Oct; the rest is filmed in the Sat 24 Oct batch. Say the real number even if it's 0 |
 | **CTA** | Comment **LEAKS** · check your message requests |
 | **Automation** | LEAKS (the Reel demonstrates it) |
 | **Cover title** | **Build Log #1** (small line: "my own funnel, real numbers") |
@@ -794,7 +795,7 @@ Comment LEAKS and you'll trigger step 1 yourself. Check your message requests.
 | 0:07–0:13 | "Call miss hua… aur patient ko WhatsApp pe message chala gaya." | "Text-back sent: [mm:ss from the recording]" | Same take, uncut: the patient's WhatsApp gets "Sorry we missed your call, we were with a patient. How can we help? Reply here or book a slot: [link]". **Stop the pill on this frame** |
 | 0:13–0:20 | "Patient ne link khola, kal shaam 6 baje ka slot choose kiya. Booking ho gayi." | "Slot booked: tomorrow, 6 pm" + "2× speed" label | Booking link → slot picked → confirmation message (at 2×, labelled) |
 | 0:20–0:26 | "Appointment se 24 ghante pehle aur 2 ghante pehle reminder. Visit ke baad, review request." | "Reminders: 24 h + 2 h before" · "After the visit: review request" | The n8n execution view showing the scheduled reminder and review nodes; the reminder message preview |
-| 0:26–0:31 | "Planet DDS ke 2025 data mein, dental clinics ka average no-show rate 6.9% tha. Reminders usi gap ke liye hain." | "Average dental no-show rate: 6.9%" · small source: "Planet DDS 2025, US practices, via DOCS Education" | Face cam with the statistic overlaid |
+| 0:26–0:31 | "Planet DDS ke 2025 ke US data mein, dental clinics ka average no-show rate 6.9% tha. Reminders usi gap ke liye hain." | "Average dental no-show rate: 6.9%" · small source: "Planet DDS 2025, US practices, via DOCS Education" | Face cam with the statistic overlaid |
 | 0:31–0:36 | "Comment LEAKS: kit mein clinic ke templates bhi hain. Message requests check karna." | "Comment LEAKS → free kit (clinic lines inside)" · "Check your message requests" | Face cam → end card |
 
 **Shot list:**

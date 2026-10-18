@@ -91,7 +91,7 @@ Up to 10, based on the kit's templates (`lead-magnet/` pages 7–10). Meta decid
 | 9 | Hot-lead alert | Utility | Agent |
 | 10 | 8 am daily digest | Utility | Owner |
 
-Replies inside the 24-hour customer-service window (after the lead writes back) are free-form and free; templates are only needed to *start* or *restart* a conversation. Approval times weren't researched: submit on day 1 and have a plain-text fallback (agent alert by email) ready if one is delayed.
+Every **marketing** template (5–8, and any first reply Meta files as marketing) ends with a STOP opt-out line, as the kit's templates do; STOP is honoured the same day (§4). Replies inside the 24-hour customer-service window (after the lead writes back) are free-form and free; templates are only needed to *start* or *restart* a conversation. Approval times weren't researched: submit on day 1 and have a plain-text fallback (agent alert by email) ready if one is delayed.
 
 ---
 

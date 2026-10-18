@@ -113,11 +113,16 @@
       "kicker": "Open Price Book",
       "title": "3 founding clients",
       "highlight": "3",
-      "small": "Closes Mon 30 Nov",
+      "small": "Closes Mon 30 Nov or when full",
       "device": {
         "type": "slots",
         "open": 3,
-        "total": 3
+        "total": 3,
+        "labels": [
+          "01",
+          "02",
+          "03"
+        ]
       }
     },
     {
@@ -308,15 +313,29 @@
       "closed": "The founding program closed on Mon 30 Nov 2026.",
       "closedSub": "Prices and the next step are at askhemant.ai/pricing"
     },
-    "kitDm": {
-      "pill": "Free kit",
-      "title": "The Lead Leak Kit",
-      "sub": "7 places your enquiries go cold, and the WhatsApp fixes.",
-      "cta": "DM me KIT",
-      "keyword": "KIT",
-      "note": "It lands in your DMs. Free, no email needed.",
-      "alt": "On a post? Comment LEAKS."
-    },
+    "kitDm": [
+      {
+        "file": "kit-dm-me-leaks.png",
+        "pill": "Free kit",
+        "title": "The Lead Leak Kit",
+        "sub": "7 places your enquiries go cold, and the WhatsApp fixes.",
+        "cta": "DM me LEAKS",
+        "keyword": "LEAKS",
+        "note": "It lands in your DMs. Free, no email needed.",
+        "alt": "On a post? Comment LEAKS."
+      },
+      {
+        "file": "kit-dm-me-kit.png",
+        "pill": "Free kit",
+        "title": "The Lead Leak Kit",
+        "sub": "7 places your enquiries go cold, and the WhatsApp fixes.",
+        "cta": "DM me KIT",
+        "keyword": "KIT",
+        "note": "It lands in your DMs. Free, no email needed.",
+        "alt": "On a post? Comment LEAKS.",
+        "_use": "Fallback only: if Business Suite will not take LEAKS as a DM keyword (07-dm-automation-playbook.md §2.4)."
+      }
+    ],
     "kitComment": {
       "title": "Comment LEAKS on this post",
       "keyword": "LEAKS",

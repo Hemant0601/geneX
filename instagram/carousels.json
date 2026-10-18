@@ -10,7 +10,7 @@
           "eyebrow": "Start here",
           "heading": "Who I help, how I work, and exactly what I charge",
           "highlight": "what I charge",
-          "body": "No \"DM for price\". Every number is in this post."
+          "body": "No \"DM for price\". Every main price is in this post."
         },
         {
           "layout": "statement",
@@ -82,14 +82,14 @@
         {
           "layout": "statement",
           "eyebrow": "How I build",
-          "heading": "Your accounts. Your data. No guaranteed-ROI promises.",
+          "heading": "Your accounts. Your data. No ROI promises.",
           "body": "I build on your own Meta, WhatsApp and CRM accounts. WhatsApp fees and AI usage are billed to you directly. You own the system once it's paid for."
         },
         {
           "layout": "statement",
           "eyebrow": "Honest note",
           "heading": "New brand. No case studies yet. Every demo is labelled.",
-          "body": "So I'm taking 3 founding clients at ₹14,999 / $599 in exchange for measured, publishable results. Closes Mon 30 Nov 2026 or when full."
+          "body": "So I'm taking 3 founding clients: Audit + Sprint for ₹14,999 / $599. In return, I measure the results and publish them only with your permission. Closes Mon 30 Nov 2026 or when full."
         },
         {
           "layout": "cta",
@@ -115,7 +115,7 @@
         {
           "layout": "stat",
           "eyebrow": "Why speed matters",
-          "heading": "Only about 37% answered web leads within an hour",
+          "heading": "Only about 37% of firms answered web leads within an hour",
           "highlight": "37%",
           "body": "An audit of 2,241 US firms. 23% never answered at all. No comparable India study found, so I'm running my own small tests.",
           "source": "BYU ScholarsArchive / HBR, \"The Short Life of Online Sales Leads\" (2011). US data."
@@ -124,19 +124,22 @@
           "layout": "statement",
           "eyebrow": "Leak 01",
           "heading": "After-hours enquiries",
-          "body": "A Meta-ad lead lands at 10:42 pm. You see it after breakfast. Free fix tonight: a WhatsApp Business away message that thanks them and asks one question."
+          "body": "A Meta-ad lead lands at 10:42 pm. You see it after breakfast. Free fix tonight: a WhatsApp Business away message that thanks them and asks one question.",
+          "maxHeading": 92
         },
         {
           "layout": "statement",
           "eyebrow": "Leak 02",
           "heading": "Portal leads that never reach WhatsApp",
-          "body": "99acres, MagicBricks or Housing.com alerts sit under OTP emails. You paid for that lead. Free fix: a Gmail filter that stars every portal alert."
+          "body": "99acres, MagicBricks or Housing.com alerts sit under OTP emails. You paid for that lead. Free fix: a Gmail filter that stars every portal alert.",
+          "maxHeading": 92
         },
         {
           "layout": "statement",
           "eyebrow": "Leak 03",
           "heading": "Instagram DMs stuck in Message requests",
-          "body": "\"Price?\" is a raised hand. Three days later, they've forgotten your listing. Free fix: check Message requests every evening."
+          "body": "\"Price?\" is a raised hand. Three days later, they've forgotten your listing. Free fix: check Message requests every evening.",
+          "maxHeading": 92
         },
         {
           "layout": "list",
@@ -148,7 +151,7 @@
             "06 · No follow-up after day 2",
             "07 · Leads not logged anywhere"
           ],
-          "body": "Each one has a free fix in the kit, using the WhatsApp Business app."
+          "body": "Each one has a free fix in the kit, using free tools like the WhatsApp Business app."
         },
         {
           "layout": "steps",
@@ -239,7 +242,7 @@
           "heading": "What's NOT in the ₹34,999",
           "highlight": "NOT",
           "items": [
-            "WhatsApp per-message fees (billed by Meta)",
+            "Meta's WhatsApp per-message fees",
             "Your WhatsApp provider (BSP) plan",
             "AI usage on your own API account",
             "A 4th lead source (+₹4,999 / $199)",
@@ -270,7 +273,7 @@
         {
           "layout": "statement",
           "eyebrow": "The on-time promise",
-          "heading": "Not live in 10 working days? First month of Care free.",
+          "heading": "Not live in\n10 working days? First month of Care free.",
           "body": "Counted from when your access checklist is complete. After that, Lead Desk Care is optional: ₹9,999 / $299 a month, 30 days' notice to cancel."
         },
         {
@@ -339,9 +342,9 @@
             "Do leads come from 2+ sources?",
             "Does more than one person reply?",
             "Do leads go quiet after day 2?",
-            "Do you know last month's lead count?"
+            "Is last month's lead count a guess?"
           ],
-          "body": "Mostly no: use the free AI. Mostly yes (or no count at all): you need the connected system."
+          "body": "Mostly no: use the free AI. Mostly yes: you need the connected system."
         },
         {
           "layout": "statement",

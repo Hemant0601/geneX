@@ -57,7 +57,6 @@ Whichever handle you get, keep **AskHemant** as the brand on the site, in the na
 
 **Path:** Settings → *Account type and tools* → **Switch to professional account** → **Creator** *(UI path unverified)*.
 - **Category:** "Entrepreneur". If the label looks odd on the profile, turn off *Display category label*.
-- **Pronouns (optional, your choice):** Edit profile → Pronouns lets you add pronouns if you want, shown to followers only or to everyone. Leaving it blank is fine.
 
 **Why Creator, not Business:**
 - **AskHemant is a personal brand.** Creator is the account type built for a person rather than a shop ([NapoleonCat](https://napoleoncat.com/blog/instagram-creator-vs-business-account/)).
@@ -83,11 +82,14 @@ Whichever handle you get, keep **AskHemant** as the brand on the site, in the na
 |---|---|---|---|
 | **LEAKS** | `LEAKS`, `Leaks`, `leaks`, `LEAK`, `leak` | "Here's your Lead Leak Kit → askhemant.ai/kit?utm_source=ig&utm_medium=dm&utm_campaign=leaks. Quick question so I can point you to the right fix: what do you sell, and where do most of your leads come from (portals, Meta ads, Instagram, referrals)?" | **Before P01, Mon 19 Oct 15:00 IST** |
 | **PRICE** | `PRICE`, `Price`, `price`, `PRICES`, `prices` | "My full price list → askhemant.ai/pricing. What's the one thing you'd automate first?" | **Before P02, Tue 20 Oct 15:00 IST** |
-| **FOUNDING** (proposed; see note) | `FOUNDING`, `Founding`, `founding` | "Here are the founding-client details → askhemant.ai/founding?utm_source=ig&utm_medium=dm&utm_campaign=founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. To check the fit: what do you sell, and roughly how many enquiries do you get a month?" | **Before P06, Mon 26 Oct 15:00 IST** |
+| **FOUNDING** | `FOUNDING`, `Founding`, `founding` | "Here are the founding-client details → askhemant.ai/founding?utm_source=ig&utm_medium=dm&utm_campaign=founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. To check the fit: what do you sell, and roughly how many enquiries do you get a month?" | **Before P06, Mon 26 Oct 15:00 IST** |
+| **KIT** (DM keyword, *Custom keywords* automation, not Comment to Message) | `KIT`, `Kit`, `kit` | The LEAKS text with `utm_campaign=story` ([`07-dm-automation-playbook.md`](./07-dm-automation-playbook.md) §2.4). Stories and Lives can't use comment keywords, so their CTA is **"DM me KIT"** | **Thu 22 Oct** (first kit Story frame) |
+| **CLINIC** (month 2) | `CLINIC`, `Clinic`, `clinic`, `CLINICS`, `clinics` | Until the Missed-Call Recovery Playbook exists, it sends the **same Lead Leak Kit** (it has the clinic lines); then only the link changes (07 §4.4) | **From Mon 16 Nov** |
 
 - **What's reported about these automations** (third parties quoting Meta's help pages; unverified): keywords match exactly and are case-sensitive, so every variant is listed. An automation takes up to 5 keywords, and each keyword can belong to only one automation. Setup is desktop-only. The keyword reply may wait about 15 minutes in case a human replies first.
 - **Meta's rules, which no tool can bend:** one private reply per comment, sent within 7 days. Follow-ups only after the person replies, and within 24 hours of that reply ([Meta: private replies](https://developers.facebook.com/docs/instagram-platform/private-replies/)). For non-followers, the DM lands in **Message requests**. That's why every CTA says "check your message requests".
-- **FOUNDING is new.** The strategy names only LEAKS, PRICE and (from month 2) CLINIC. The P06 founding Reel needs a keyword of its own so founding conversations don't start with the kit. If you'd rather not add a third automation, answer FOUNDING comments by hand. At 3 slots, volume will be low.
+- **FOUNDING is an addition to the strategy's list** (LEAKS, PRICE and, from month 2, CLINIC), used by P06, T03 and P22 so founding conversations don't start with the kit. If the automation fails its test, answer FOUNDING comments by hand within 4 working hours. At 3 slots, volume will be low.
+- **KIT is never a comment keyword.** LEAKS already sits in the Comment to Message automation, and each keyword reportedly fits in only one automation, so DM-based CTAs use KIT.
 - **Test before every launch post.** From a second account that does **not** follow @askhemant, comment `leaks` (lowercase) on the post. Check that (a) the DM arrives, (b) it lands in Message requests, and (c) the link opens the kit. Delete the test comment afterwards.
 - **If askhemant.ai isn't live yet** (a new domain can take a few hours to resolve): upload `website/kit/lead-leak-kit.pdf` to Google Drive (*Anyone with the link: Viewer*), put that link in the LEAKS reply, and swap back to `askhemant.ai/kit?...` as soon as the site loads. Do the same for PRICE with a Drive copy of the price list, or reply by hand.
 - **When to upgrade:** if more than 25 people a month comment, move to ManyChat Essential (about $14–17 a month), because ManyChat Free stops at 25 contacts since 2 Mar 2026 ([ManyChat](https://manychat.com/blog/manychat-pricing-explained/)). Or build the flow in n8n. Decide at the day-28 review (Sun 15 Nov).
@@ -185,7 +187,7 @@ Set the WhatsApp Business app's greeting and away messages before launch. Use te
 
 ## 9. Highlights
 
-**Covers:** 1080×1920 PNGs in [`instagram/graphics/highlights/`](./graphics/highlights/). There is one per highlight: Start Here, Pricing, Demos, Build Log, FAQ, and Results (held back); exact file names are in [`graphics/README.md`](./graphics/README.md). Each is the icon centred in the circle-safe area, on Indigo.
+**Covers:** 1080×1920 PNGs in [`instagram/graphics/highlights/`](./graphics/highlights/), one per highlight: [`highlight-01-start-here.png`](./graphics/highlights/highlight-01-start-here.png), [`highlight-02-pricing.png`](./graphics/highlights/highlight-02-pricing.png), [`highlight-03-demos.png`](./graphics/highlights/highlight-03-demos.png), [`highlight-04-build-log.png`](./graphics/highlights/highlight-04-build-log.png), [`highlight-05-faq.png`](./graphics/highlights/highlight-05-faq.png) and [`highlight-06-results.png`](./graphics/highlights/highlight-06-results.png) (held back). Each is the icon centred in the circle-safe area, on Indigo; more detail in [`graphics/README.md`](./graphics/README.md).
 
 **How to create one:** a highlight needs at least one Story. Post the first frame as a Story → tap **Highlight** → **New** → name it → **Edit cover** → pick the cover PNG from your camera roll.
 
@@ -246,8 +248,8 @@ Menu names below are *(UI path unverified)*. If one isn't where it says, use the
 - [ ] **Allow comments from: Everyone.** The LEAKS funnel depends on comments from non-followers.
 - [ ] **Hidden Words → Hide comments: On.** **Advanced comment filtering: On.**
 - [ ] **Custom words and phrases (Hidden Words → Manage custom words):** start with spam phrases only, for example `buy followers`, `promote it on`, `promo on @`, `crypto signals`, `forex`, `earn daily`, `telegram me`, `check my bio for`. Add more as spam arrives.
-- [ ] **Never hide words a buyer would use:** `LEAKS`, `leak`, `PRICE`, `price`, `cost`, `FOUNDING`, `details`, `interested`, `BHK`, `site visit`, `investment`, `WhatsApp`, `DM`. Hiding these would silently break the funnel.
-- [ ] **On each launch post, pin your own first comment** with the CTA ("Comment LEAKS ↓ and I'll DM you the kit"). Reply to every real comment within the day.
+- [ ] **Never hide words a buyer would use:** `LEAKS`, `leak`, `PRICE`, `price`, `cost`, `FOUNDING`, `KIT`, `CLINIC`, `details`, `interested`, `BHK`, `site visit`, `investment`, `WhatsApp`, `DM`. Hiding these would silently break the funnel.
+- [ ] **On each launch post, pin your own first comment** with the CTA ("Comment LEAKS ↓ and I'll DM you the kit. Check your message requests."). Reply to every real comment within the day.
 - [ ] Use **Restrict** for trolls and **Limits** if a post attracts a pile-on. Don't argue in public.
 
 ### Messages and message requests
@@ -258,7 +260,6 @@ Menu names below are *(UI path unverified)*. If one isn't where it says, use the
 - [ ] **Activity status: Off** (optional), so people don't expect an instant reply at 1 am.
 
 ### Profile hygiene
-- [ ] **Pronouns** set or left blank, your choice (step 2).
 - [ ] **Category label** shown or hidden (step 2).
 - [ ] **No follower or "results" claims** anywhere on the profile until they're measured and consented.
 
@@ -266,13 +267,13 @@ Menu names below are *(UI path unverified)*. If one isn't where it says, use the
 
 ## 12. First 60 minutes checklist
 
-Prepared copy is all in this file. Have open: this page, `brand/logo/instagram-avatar-1080.png`, the highlight covers, a second Instagram account for testing, and a laptop for Meta Business Suite.
+Prepared copy is all in this file. Have open: this page, `brand/logo/instagram-avatar-1080.png`, the highlight covers (`instagram/graphics/highlights/`), a second Instagram account for testing, and a laptop for Meta Business Suite.
 
 | Minutes | Do | Done when |
 |---|---|---|
 | **0–5** | Check `askhemant` → create the new account (§1). Fall back to @askhemant.ai, then @hemantautomates | The account exists under the best available handle |
 | **5–12** | Authenticator 2FA, backup codes saved offline, email and phone confirmed, login alerts on (§11 Security) | You can log in on a second device using the authenticator |
-| **12–15** | Switch to **Creator**, category "Entrepreneur", pronouns optional (§2) | Profile shows Professional dashboard |
+| **12–15** | Switch to **Creator**, category "Entrepreneur" (§2) | Profile shows Professional dashboard |
 | **15–22** | Name field, **Bio A**, interim avatar, 5 links, email + WhatsApp contact options (§4–§8) | All 5 links open correctly on a logged-out phone |
 | **22–35** | Facebook Page "AskHemant" → connect @askhemant in Meta Business Suite (§3) | Instagram DMs appear in the Business Suite inbox |
 | **35–45** | Create the **LEAKS** and **PRICE** Comment to Message automations, and test from the second account (§3). If askhemant.ai isn't live, use the Drive fallback | The test comment produces the DM in Message requests and the link opens the kit |
@@ -280,7 +281,7 @@ Prepared copy is all in this file. Have open: this page, `brand/logo/instagram-a
 | **50–56** | Post Story frames for **Start Here**, **Pricing** and **FAQ**, and save each as a highlight with its cover (§9) | 3 highlights visible on the profile |
 | **56–60** | Claim the handle on Threads, YouTube and LinkedIn; optional @askhemant.ai guard (§1). Screenshot the profile from a logged-out phone and check that the name, bio, link 1 and photo look right | Screenshot saved; Monday's checklist ([`docs/02-launch-checklist.md`](../docs/02-launch-checklist.md)) updated |
 
-**Gate before P01 (Mon 19 Oct, 15:00 IST):** the profile is complete, the LEAKS automation passed the second-account test, and the kit link opens (askhemant.ai or the Drive fallback). If the LEAKS DM fails, post P01 anyway but change its CTA to "DM me LEAKS" and reply by hand.
+**Gate before P01 (Mon 19 Oct, 15:00 IST):** the profile is complete, the LEAKS automation passed the second-account test, and the kit link opens (askhemant.ai or the Drive fallback). If the LEAKS DM fails, post P01 anyway but change its CTA to "DM me KIT" (the Stories/Lives keyword) and reply by hand until the automation passes.
 
 **The first 60 minutes after each post goes live:**
 - [ ] Pin your CTA comment, then reply to every comment within the hour. Replies add to the conversation and show you're responsive.

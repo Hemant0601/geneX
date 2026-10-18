@@ -8,6 +8,7 @@
 > - **Voice:** calm, practical, short. Owner language, not tech language. No hype, no pressure, no invented deadlines: the only deadlines are the proposal's **7-day validity**, credit windows, and the founding close (**Mon 30 Nov 2026**).
 > - **Never** promise results; "within a minute" is a design target. Never forward a real customer's data in these messages.
 > - **Hinglish (HI)** versions are given for the WhatsApp messages most often sent to Indian owners. First-person Hindi verbs are gendered; adjust *karta/karti* to your form.
+> - **A "no", "stop" or "not now" ends the sequence** for that person: no further follow-ups unless they write again. Log it in `notes`.
 > - Track each send in the pipeline Sheet: update `stage`, and add "next: [date]" to `notes` when a follow-up is due.
 
 **Email signature (all emails)**
@@ -108,9 +109,9 @@ askhemant.ai · hello@askhemant.ai · WhatsApp +{{WHATSAPP_NUMBER}}
 
 ### D+5: one useful point + the real validity date
 **WhatsApp**
-> Hi [Name], one thing I didn't stress enough: the 10 working days start only when access is complete, and if I'm late your first month of Lead Desk Care is free. The proposal is valid until [date, D+7]. No pressure either way.
+> Hi [Name], one thing I didn't stress enough: the 10 working days start only when access is complete, and if I'm late your first month of Lead Desk Care is free. The proposal is valid until [date, D+7]. No pressure either way: if it's a no, just tell me and I won't follow up again.
 
-> HI: Hi [Name], ek baat jo pehle zor se nahi kahi: 10 working days access poora hone ke baad shuru hote hain, aur late hua toh pehla mahina Lead Desk Care free. Proposal [date] tak valid hai. Koi pressure nahi.
+> HI: Hi [Name], ek baat jo pehle zor se nahi kahi: 10 working days access poora hone ke baad shuru hote hain, aur late hua toh pehla mahina Lead Desk Care free. Proposal [date] tak valid hai. Koi pressure nahi: mana karna ho toh bata dijiye, main dobara follow-up nahi karunga.
 
 **Email** · Subject: `[Business] proposal: valid until [date]`
 > Hi [Name],
@@ -146,7 +147,7 @@ After D+7: stage → **Lost** (reason). No more follow-ups unless they write.
 
 ### Delivered (day 5)
 **Email** · Subject: `Your Leak Report + fixed quote`
-> Hi [Name], your Lead Leak Audit is attached: the Leak Report, your lead-flow map (today and proposed), the ROI worksheet (every number in it is yours) and the fixed quote. Walkthrough video: [link]. Book the 30-minute review here: https://cal.com/askhemant/audit-review.
+> Hi [Name], your Lead Leak Audit is attached: the Leak Report, your lead-flow map (today and proposed), the ROI worksheet (every number in it is yours) and the fixed quote. Your 20-minute recorded walkthrough: [link] [Loom paid plan, or an unlisted YouTube / Google Drive video: Loom Free reportedly stops at 5 minutes]. Book the 30-minute review here: https://cal.com/askhemant/audit-review.
 >
 > The ₹9,999 is credited in full to a Sprint booked by **[date: Leak Report + 30 days]**. [signature]
 
@@ -217,7 +218,7 @@ That's it: **one** WhatsApp and **one** email. Stage → Lost (no-show) unless t
 
 ### Go-live balance (on go-live day; again after 3 working days if unpaid)
 **Email** · Subject: `[Business] is live: balance invoice`
-> Hi [Name], your system is live. The remaining 50% (₹[17,499]) is due now: [payment link / invoice attached]. Your 14-day warranty runs until **[date]**. [signature]
+> Hi [Name], your system is live. The remaining 50% (₹[17,499]) is due now: [payment link / invoice attached]. Your [14-day / Team system: 30-day] warranty runs until **[date]**. [signature]
 
 **WhatsApp (day 3, if unpaid)**
 > Hi [Name], a gentle reminder about the go-live balance (₹[17,499]): [link]. Let me know if anything's holding it up.
@@ -288,7 +289,7 @@ That's it: **one** WhatsApp and **one** email. Stage → Lost (no-show) unless t
 **Email** · Subject: `Your warranty ends on [date]: what happens next`
 > Hi [Name],
 >
-> Your 14-day warranty ends on **[date]**. Here's how the first [n] days went (measured from the log):
+> Your [14-day / Team system: 30-day] warranty ends on **[date]**. Here's how the first [n] days went (measured from the log):
 > - Leads handled: [n] · median first reply: [x] (from when the lead reached the system) · bookings: [n] · opt-outs: [n]
 > - Running costs so far: about ₹[ ] (your accounts)
 > - One thing that needed fixing: [honest note]

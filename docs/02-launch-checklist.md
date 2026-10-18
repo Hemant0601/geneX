@@ -17,7 +17,7 @@
 
 | Day | Time (IST) | ID | Format | Post | CTA keyword | Pin |
 |---|---|---|---|---|---|---|
-| Mon 19 Oct | 15:00 | **P01** | Reel | Intro: who Hemant is and what they build ("I build AI + WhatsApp systems so no lead waits") | LEAKS | Placeholder until Mon 26 Oct |
+| Mon 19 Oct | 15:00 | **P01** | Reel | Intro: who you are and what you build ("I build AI + WhatsApp systems so no lead waits") | LEAKS | Placeholder until Mon 26 Oct |
 | Tue 20 Oct | 15:00 | **P02** | Carousel | "Who I help, how I work, my prices" | PRICE | **#1** |
 | Tue 20 Oct | 18:00 | T01 | Trial reel | Hook variant B of P01 | LEAKS | |
 | Wed 21 Oct | 15:00 | **P03** | Reel | Speed-to-lead demo "Watch the timer" (Skyline Realty – DEMO) | LEAKS | **#2** |
@@ -36,7 +36,7 @@
 | Sat 31 Oct | — | — | — | Batch session #2 | — | |
 | Sun 1 Nov | — | — | Story | "Ask Hemant Sunday" question box | — | |
 
-**FOUNDING** is a keyword the Instagram plan adds to the strategy's list (LEAKS, PRICE, and CLINIC from month 2); if you'd rather not run a third automation, answer FOUNDING comments by hand within 4 working hours ([`instagram/02-launch-posts.md`](../instagram/02-launch-posts.md) "Comment-keyword automations").
+**Keywords:** **LEAKS** sends the kit and **PRICE** the price list (both from the strategy). **FOUNDING** (founding slots; used by P06, T03 and P22) is the Instagram plan's addition; if you'd rather not run a third automation, answer FOUNDING comments by hand within 4 working hours ([`instagram/02-launch-posts.md`](../instagram/02-launch-posts.md) "Comment-keyword automations"). **CLINIC** starts in month 2 and sends the same kit until the clinic playbook exists. **KIT** is the DM-keyword fallback for Story and Live CTAs ([`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.4).
 **Fallback for P03:** if the Skyline Realty demo isn't running by Tue 20 Oct evening, swap P03 and P05 (P05 on Wed 21 Oct at 15:00, P03 on Fri 23 Oct at 15:00), as planned in [`instagram/02-launch-posts.md`](../instagram/02-launch-posts.md) "Production plan".
 
 Captions, hooks and scripts: [`instagram/02-launch-posts.md`](../instagram/02-launch-posts.md), [`instagram/04-reel-scripts.md`](../instagram/04-reel-scripts.md), [`instagram/carousels.json`](../instagram/carousels.json). Rendered graphics: [`instagram/graphics/README.md`](../instagram/graphics/README.md).
@@ -133,17 +133,18 @@ About 4–5 hours. Nothing here is public yet.
 - [ ] **Post P04** (carousel, comment **LEAKS**) at 15:00. Watch the first hour of comments and reply to each one. [`instagram/02-launch-posts.md`](../instagram/02-launch-posts.md), [`lead-magnet/pages/`](../lead-magnet/pages/). (30 min)
 - [ ] **Post T02** (trial reel: P03 hook B) at 18:00. (15 min)
 - [ ] **WhatsApp Business app, part 2:** catalogue of the packages (prices exclude GST), quick replies, labels matching the pipeline stages, short link. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §8, [`automations/whatsapp-templates.md`](../automations/whatsapp-templates.md). (45 min)
+- [ ] **DM keyword for Stories and Lives:** `LEAKS` as a DM keyword, or the **KIT** fallback (`KIT, Kit, kit`) if Business Suite won't let LEAKS sit in a second automation; Story CTAs then say "DM me KIT". [`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.4. (20 min)
 - [ ] **Tally onboarding form** (access checklist, no passwords). [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §10.2, [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onboarding-checklist.md). (30 min)
 - [ ] Start personal messages: 5 today (people who engaged with P01–P03, closest warm contacts). [`sales/11-warm-outreach-playbook.md`](../sales/11-warm-outreach-playbook.md). (15 min)
 - [ ] **Edit P05** (face cam filmed on Sun) with its cover and schedule it for Fri 19:30. [`instagram/04-reel-scripts.md`](../instagram/04-reel-scripts.md). (45 min)
 
 ### Fri 23 Oct (day 5) — own funnel v1, payment links (about 5 hours)
 - [ ] **Post P05** (#AutomateKaro Hinglish Reel) at **19:30 IST**, the evening-slot test. (Under the P03/P05 swap, post P03 at 15:00 instead.) (30 min)
-- [ ] **Pipeline Google Sheet** created (tabs: Pipeline, Field tests, Scorecard, Content; the Pipeline header row comes from [`automations/README.md`](../automations/README.md)) → `{{GOOGLE_SHEET_ID}}` goes into n8n only, never into `config.js`. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §20. (20 min)
+- [ ] **Pipeline Google Sheet** created (tabs: Pipeline, Field tests, Scorecard, Content, plus Outreach and Clients for [`sales/11-warm-outreach-playbook.md`](../sales/11-warm-outreach-playbook.md) and [`sales/08-case-study-template-and-consent.md`](../sales/08-case-study-template-and-consent.md); the n8n workflows write only to the **Pipeline** tab, whose header row comes from [`automations/README.md`](../automations/README.md)) → `{{GOOGLE_SHEET_ID}}` goes into n8n only, never into `config.js`. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §20. (20 min)
 - [ ] **Own funnel v1 (case study #0):** import and configure [`automations/01-kit-signup-to-pipeline.json`](../automations/01-kit-signup-to-pipeline.json) (Tally → n8n → Pipeline row with lane and business type + WhatsApp alert to you + WhatsApp welcome **only** for people who ticked consent) and [`automations/06-calcom-booking-to-pipeline.json`](../automations/06-calcom-booking-to-pipeline.json) (Cal.com booking → same row). Setup order: [`automations/README.md`](../automations/README.md). (2 h)
-- [ ] **Payment links** (if Razorpay is activated): Session ₹1,999 → `{{RAZORPAY_SESSION_LINK}}`, Audit ₹9,999 → `{{RAZORPAY_AUDIT_LINK}}`, Founding 50% deposit → `{{RAZORPAY_FOUNDING_LINK}}`. Not activated yet → chase KYC and do this on Sun. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §14. (30 min)
+- [ ] **Payment links** (if Razorpay is activated): Session ₹1,999 → `{{RAZORPAY_SESSION_LINK}}`, Audit ₹9,999 → `{{RAZORPAY_AUDIT_LINK}}`, Founding deposit ₹7,500 (50% of ₹14,999 rounded up; the ₹7,499 balance is a per-client link at go-live) → `{{RAZORPAY_FOUNDING_LINK}}`. Not activated yet → chase KYC and do this on Sun. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §14. (30 min)
 - [ ] **PayPal $99 Session link** → `{{PAYPAL_SESSION_LINK}}`. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §16. (20 min)
-- [ ] **Loom and Zoho Sign** accounts; upload the agreement template to Zoho Sign. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §17–18, [`sales/05-consulting-agreement-template.md`](../sales/05-consulting-agreement-template.md). (30 min)
+- [ ] **Loom and Zoho Sign** accounts; upload the agreement template to Zoho Sign. Loom's free plan reportedly caps recordings at 5 minutes: fine for proposals and disclosures, but the Audit's **20-minute recorded walkthrough** needs Loom's paid plan, or an OBS/phone recording shared unlisted via YouTube or Google Drive. [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §17–18, [`sales/05-consulting-agreement-template.md`](../sales/05-consulting-agreement-template.md). (30 min)
 - [ ] Replace every filled token in one pass and redeploy. [`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md) §5, [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §1. (15 min)
 
 ### Sat 24 Oct (day 6) — batch session #1, Field Test #1 (about 5 hours)
@@ -188,7 +189,7 @@ About 4–5 hours. Nothing here is public yet.
 ### Tue 27 Oct (day 9)
 - [ ] **Post P07** at 15:00 (Open Price Book: the ₹34,999 / $1,499 Sprint, what's included and what isn't). [`instagram/carousels.json`](../instagram/carousels.json), [`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md). (20 min)
 - [ ] **Post T03** (P06 hook B, CTA FOUNDING) at 18:00. (15 min)
-- [ ] **Field Test #1 disclosures:** record one generic 2-minute Loom showing how an enquiry could be answered within a minute (labelled DEMO), then send each of the 20 businesses the disclosure message from [`00-strategy.md`](./00-strategy.md) §8. No names are ever published. (90 min, Tue–Wed)
+- [ ] **Field Test #1 disclosures:** record one generic 2-minute Loom showing how an enquiry could be answered within a minute (labelled DEMO), then send each of the 20 businesses the disclosure message from [`00-strategy.md`](./00-strategy.md) §8, with "on Sunday" changed to the real send day (Sat 24 Oct). No names are ever published. (90 min, Tue–Wed)
 - [ ] First Fit Call slots open (Tue–Thu, max 6 a week). After each call: proposal within 24 hours, or the Audit payment link on WhatsApp during the call. [`sales/01-fit-call-script.md`](../sales/01-fit-call-script.md), [`sales/03-proposal-template.md`](../sales/03-proposal-template.md). (20 min per call + 45 min per proposal)
 
 ### Wed 28 Oct (day 10)
@@ -258,10 +259,10 @@ Diwali is **Sun 8 Nov 2026** (Dhanteras Fri 6, Choti Diwali Sat 7, Govardhan Puj
 ### Week 5 (Mon 16 – Sun 22 Nov, days 29–35): deliver, convert, add channels
 - [ ] **Founding Sprint #1 go-live** (if the clock started in week 4): human review of the **first 100 AI conversations**; start the 30-day after-measurement. [`sales/08-case-study-template-and-consent.md`](../sales/08-case-study-template-and-consent.md). (daily 20 min review)
 - [ ] **Start founding Sprint #2** only if no more than 1 other Sprint is running (max 2 at once). (2–3 h a day for 10 working days, estimate)
-- [ ] **CLINIC lead magnet:** *The Missed-Call Recovery Playbook*, keyword `CLINIC` (not yet written; reuse the kit's build pipeline in [`lead-magnet/README.md`](../lead-magnet/README.md)), plus a Comment to Message automation for `CLINIC, Clinic, clinic`. [`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md). (4–6 h over the week)
+- [ ] **CLINIC lead magnet:** *The Missed-Call Recovery Playbook*, keyword `CLINIC` (not yet written; reuse the kit's build pipeline in [`lead-magnet/README.md`](../lead-magnet/README.md)), plus a Comment to Message automation for `CLINIC, Clinic, clinic, CLINICS, clinics`. Until the playbook exists, the CLINIC auto-DM sends the same Lead Leak Kit (it already has clinic lines). [`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md). (4–6 h over the week)
 - [ ] **Cross-post every Reel** to YouTube Shorts and LinkedIn; carousels to LinkedIn as PDF posts (UTM `utm_source=yt` / `utm_source=li`). [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §21–22. (15 min per post)
 - [ ] **Dubai content twice a week** (English). [`instagram/03-content-calendar-30-days.md`](../instagram/03-content-calendar-30-days.md). (inside the 3-h batch; +20 min for English captions)
-- [ ] **Agencies:** start contacting 10 agencies that run Meta ads for brokers or clinics, one to one on LinkedIn, with the Agency Partner offer (list price −25%). Spread over month 2. [`sales/11-warm-outreach-playbook.md`](../sales/11-warm-outreach-playbook.md). (20 min/week)
+- [ ] **Agencies:** start contacting 10 agencies that run Meta ads for brokers or clinics, one to one on LinkedIn, with the Agency Partner offer (list price −25%). Spread over month 2. **Decision for Hemant (before the first partner call):** does the −25% apply beyond builds (Audit, add-ons, retainers)? Suggested defaults: [`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md) §5. [`sales/11-warm-outreach-playbook.md`](../sales/11-warm-outreach-playbook.md). (20 min/week)
 - [ ] ManyChat switch (if decided at day 28): set it up, then **turn off** the Meta automations for the same keywords so nobody gets two DMs. (60 min)
 
 ### Week 6 (Mon 23 – Sun 29 Nov, days 36–42): founding last week
@@ -304,7 +305,7 @@ Diwali is **Sun 8 Nov 2026** (Dhanteras Fri 6, Choti Diwali Sat 7, Govardhan Puj
 ### Week 11 (Mon 28 Dec – Sun 3 Jan, days 71–77): New Year, count the results
 - [ ] Schedule Fri 1 Jan posts in advance; keep the 3-post minimum. (15 min)
 - [ ] **Count documented results (Sun 3 Jan, 20 min).** A documented result = a client build with a measured before and after (method and n shown) and written permission to publish. [`04-weekly-operating-system.md`](./04-weekly-operating-system.md) §7.5. (20 min)
-  - [ ] **3 or more** → prepare the price-rise post and stage (don't deploy) the new prices: Audit ₹14,999 / $699; Solo Sprint ₹44,999 / $1,999. (60 min)
+  - [ ] **3 or more** → prepare the price-rise post and stage (don't deploy) the new prices: Audit ₹14,999 / $699; Solo Sprint ₹44,999 / $1,999. **Decision for Hemant:** does the Clinic Sprint (₹34,999 / $1,499 today, the same as the Solo Sprint) also rise on 18 Jan 2027? The strategy names only the Audit and Solo Sprint ([`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md) §6). (60 min)
   - [ ] **Fewer than 3** → no announcement; prices stay; re-check at the day-90 review.
 
 ### Week 12 (Mon 4 – Sun 10 Jan, days 78–84): price-rise announcement, case studies
@@ -327,4 +328,6 @@ Diwali is **Sun 8 Nov 2026** (Dhanteras Fri 6, Choti Diwali Sat 7, Govardhan Puj
 
 These are the placeholder tokens the repo uses. Fill them in one pass; never commit a real secret. Where each comes from and where it goes: [`03-accounts-setup-guide.md`](./03-accounts-setup-guide.md) §1.
 
-`{{WHATSAPP_NUMBER}}` · `{{WEB3FORMS_ACCESS_KEY}}` · `{{TALLY_KIT_FORM_ID}}` · `{{RAZORPAY_SESSION_LINK}}` · `{{RAZORPAY_AUDIT_LINK}}` · `{{RAZORPAY_FOUNDING_LINK}}` · `{{PAYPAL_SESSION_LINK}}` · `{{GA4_MEASUREMENT_ID}}` · `{{CLARITY_PROJECT_ID}}` · `{{GOOGLE_SHEET_ID}}` · `{{CITY}}`
+**Shared (website, sales, Instagram):** `{{WHATSAPP_NUMBER}}` · `{{WEB3FORMS_ACCESS_KEY}}` · `{{TALLY_KIT_FORM_ID}}` · `{{RAZORPAY_SESSION_LINK}}` · `{{RAZORPAY_AUDIT_LINK}}` · `{{RAZORPAY_FOUNDING_LINK}}` · `{{PAYPAL_SESSION_LINK}}` · `{{GA4_MEASUREMENT_ID}}` · `{{CLARITY_PROJECT_ID}}` · `{{GOOGLE_SHEET_ID}}` · `{{CITY}}`
+
+**Automations only (n8n Config nodes):** `{{WA_PHONE_NUMBER_ID}}` · `{{ALERT_WHATSAPP_NUMBER}}` · `{{CALCULATOR_COPY_URL}}` · `{{DEMO_SHEET_ID}}` · `{{DEMO_WA_PHONE_NUMBER_ID}}` · `{{DEMO_TEST_NUMBERS}}`, plus the n8n environment variables and credentials listed in the same section.

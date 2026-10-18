@@ -79,7 +79,7 @@ Every slide has a `layout`. One template per layout:
 | `stat` | Ink | `eyebrow`, `heading`, `highlight`, `body`, `source` | The highlight is shown huge in amber; a `%` highlight also gets a 0–100 bar. **Every stat needs a `source`** |
 | `cta` | Indigo | `eyebrow`, `heading`, `highlight`, `body` | Last slide. `Comment WORD` in the heading shows a comment pill with WORD; an `askhemant.ai/...` URL shows a link pill (and isn't repeated at the start of the body) |
 
-Optional fields on any slide: `"demo": true` (or on the carousel, for every slide) adds the amber **DEMO – fictional business** badge top-left; `"bg": "paper" | "ink" | "indigo"` overrides the background; `"marker": "check" | "cross" | "number" | "none"` overrides list markers; `"source"` adds a source line at the bottom (Slate on Paper; Mist on Ink, where Slate would fail contrast).
+Optional fields on any slide: `"demo": true` (or on the carousel, for every slide) adds the amber **DEMO – fictional business** badge top-left; `"bg": "paper" | "ink" | "indigo"` overrides the background; `"marker": "check" | "cross" | "number" | "none"` overrides list markers; `"source"` adds a source line at the bottom (Slate on Paper; Mist on Ink, where Slate would fail contrast); `"maxHeading": 92` caps the heading size in px, so a series of slides in one carousel shares one size (P04's Leak 01–03 use it: without it each heading is fitted on its own and the sizes jump between swipes).
 
 **Typography is automatic:** straight quotes become curly, prices (`₹34,999 / $1,499`), times (`10 pm`), dates (`Mon 30 Nov`) and hyphenated words never split across lines, short words are kept with the next word in headings, and headings are line-balanced (it also tries one sentence per line). Use `\n` in a string to force a line break.
 
@@ -96,11 +96,11 @@ Optional fields on any slide: `"demo": true` (or on the carousel, for every slid
 | Key | Produces | Edit to… |
 |---|---|---|
 | `highlights[]` | `highlights/<file>` | Change an icon: `flag`, `tag`, `stopwatch`, `workflow`, `question`, `chart` |
-| `reelCovers[]` | `reel-covers/<id>-cover.png` + `reel-covers/title-overlays/<id>-title.png` | Add a cover for every new Reel: `id`, `bg` (`ink`, `indigo`, `paper`), `kicker`, `title` (≤ 6 words), `highlight`, `small`, `demo` (true for every demo Reel), `strike` (struck-through text), `fine` (small print), and an optional `device`: `message`, `notify`, `stopwatch`, `clock`, `slots`, `flow` or `chips` (see the existing entries) |
+| `reelCovers[]` | `reel-covers/<id>-cover.png` + `reel-covers/title-overlays/<id>-title.png` | Add a cover for every new Reel: `id`, `bg` (`ink`, `indigo`, `paper`), `kicker`, `title` (≤ 6 words), `highlight`, `small`, `demo` (true for every demo Reel), `strike` (struck-through text), `fine` (small print), and an optional `device`: `message`, `notify`, `stopwatch`, `clock`, `slots`, `flow` or `chips` (see the existing entries). On a cover, give `slots` neutral `labels` (P06 uses `01`–`03`): a posted cover stays up after slots fill, so it must never show an OPEN/TAKEN count |
 | `stories.askHemantSunday` / `askHemantSundayAnswer` | the Sunday question box and answer background | Change the prompt line or the answer time |
 | `stories.newPost[]` | `stories/new-post*.png` | Add a teaser frame per post: `file`, `format` (`post` or `reel`), `label`, `line`, `demo` |
 | `stories.founding` | `stories/founding-slots-N-of-3.png`, `founding-closed.png` | `variants` lists what to render (3, 2, 1, 0, "closed") |
-| `stories.kitDm` / `kitComment` | the two Lead Leak Kit promo frames | — |
+| `stories.kitDm[]` / `kitComment` | `kit-dm-me-leaks.png` ("DM me LEAKS", the default), `kit-dm-me-kit.png` ("DM me KIT", the fallback if Business Suite won't take LEAKS as a DM keyword) and `kit-comment-leaks.png` | Each `kitDm` entry names its `file`, `cta` and `keyword` |
 | `overlays` | badge, stopwatch pills, labels, lower third, end cards | `stopwatchTimes`, `labels`, `lowerThird`, `endCards[]` |
 
 ## 6. Files here

@@ -107,6 +107,6 @@ These are example inputs, not benchmarks.
 
 ## Open items for Hemant
 
-- Create the Google Sheet `/copy` link (steps above) and paste it into the Tally kit form's thank-you page and the n8n welcome message. The placeholder list has no token for this link, so it needs adding by hand.
+- Create the Google Sheet `/copy` link (steps above) and paste it into the Tally kit form's thank-you page. For the n8n WhatsApp welcome, it replaces the `{{CALCULATOR_COPY_URL}}` token (`calculator_url` in workflow 01's Config node; see `automations/README.md`).
 - Open each WhatsApp Business app and Meta Business Suite menu the kit names and confirm the labels still match.
 - Before re-sharing, re-read the Business AI line on p.12 against what your app shows.

@@ -49,9 +49,9 @@ The repo uses these exact placeholders. Fill them once; anything still containin
 
 | Token | What it is | Produced by | Paste it into |
 |---|---|---|---|
-| `{{WHATSAPP_NUMBER}}` | Your WhatsApp Business number, digits only with country code, e.g. `9198XXXXXXXX` | §8 | [`website/assets/js/config.js`](../website/assets/js/config.js) `whatsappNumber`; Instagram bio link 4 (`wa.me/…`); n8n alert recipient ([`automations/README.md`](../automations/README.md)); any copy in `instagram/`, `sales/`, `automations/` that shows it |
+| `{{WHATSAPP_NUMBER}}` | Your WhatsApp Business number, digits only with country code, e.g. `9198XXXXXXXX` | §8 | [`website/assets/js/config.js`](../website/assets/js/config.js) `whatsappNumber`; Instagram bio link 4 (`wa.me/…`); any copy in `instagram/`, `sales/`, `automations/` that shows it. In n8n this number is the **sender**: its Cloud API phone-number ID becomes `{{WA_PHONE_NUMBER_ID}}`, and alerts go to a different number (`{{ALERT_WHATSAPP_NUMBER}}`) |
 | `{{WEB3FORMS_ACCESS_KEY}}` | Public key for the home-page contact form | §11 | `config.js` `web3formsAccessKey` **and** the hidden field in [`website/index.html`](../website/index.html) |
-| `{{TALLY_KIT_FORM_ID}}` | The ID in `tally.so/r/<ID>` of the Lead Leak Calculator form | §10.1 | `config.js` `tallyKitFormId`; n8n kit workflow if it filters by form ID |
+| `{{TALLY_KIT_FORM_ID}}` | The ID in `tally.so/r/<ID>` of the Lead Leak Calculator form | §10.1 | `config.js` `tallyKitFormId` only (the n8n kit workflow is linked by Tally's webhook, not by this ID) |
 | `{{RAZORPAY_SESSION_LINK}}` | Full `https://` URL of the ₹1,999 Ask Hemant Session payment page | §14 | `config.js` `razorpaySessionLink`; WhatsApp quick reply `/session`; [`sales/07-follow-up-templates.md`](../sales/07-follow-up-templates.md) |
 | `{{RAZORPAY_AUDIT_LINK}}` | ₹9,999 Lead Leak Audit payment page | §14 | `config.js` `razorpayAuditLink`; quick reply `/audit`; [`sales/01-fit-call-script.md`](../sales/01-fit-call-script.md) (sent on WhatsApp during the call) |
 | `{{RAZORPAY_FOUNDING_LINK}}` | Founding Client Pilot 50% deposit page | §14 | `config.js` `razorpayFoundingLink`; [`sales/10-founding-client-program.md`](../sales/10-founding-client-program.md). Share only after selection and a signed agreement |
@@ -61,15 +61,47 @@ The repo uses these exact placeholders. Fill them once; anything still containin
 | `{{GOOGLE_SHEET_ID}}` | The ID between `/d/` and `/edit` in the pipeline Sheet's URL | §20 | **n8n only** (Google Sheets nodes / credentials). **Never** in `config.js` (it is public) and never committed to the repo |
 | `{{CITY}}` | Your city, e.g. `Pune` | your decision | `config.js` `city` (privacy and terms pages); city hashtag in [`instagram/06-hashtags-keywords-seo.md`](../instagram/06-hashtags-keywords-seo.md); field-test location |
 
+**Automation-only tokens** (in the n8n workflow JSONs' **Config** nodes; never in `config.js`). Fill them in the Config node after import, or with the one-pass `sed` in [`automations/README.md`](../automations/README.md) §5 on copies kept outside the repo.
+
+| Token | What it is | Produced by | Paste it into |
+|---|---|---|---|
+| `{{WA_PHONE_NUMBER_ID}}` | Cloud API **phone number ID** of your business sending number (not the number itself) | §13 (developers.facebook.com → your app → WhatsApp → API setup) | Config node of workflows 01, 05, 06 |
+| `{{ALERT_WHATSAPP_NUMBER}}` | Your personal WhatsApp in E.164 (`+9198XXXXXXXX`) for new-lead alerts and the 8 am digest; **must differ** from the sending number | your decision | Config node of 01, 05 and 03 (demo agent alert) |
+| `{{CALCULATOR_COPY_URL}}` | The Lead Leak Calculator's Google Sheet `/copy` link (`https://docs.google.com/spreadsheets/d/<ID>/copy`) | [`lead-magnet/README.md`](../lead-magnet/README.md) "Publishing it as a Google Sheet" | Config node of 01 (WhatsApp welcome); paste the same link by hand on the Tally thank-you page (§10.1) |
+| `{{DEMO_SHEET_ID}}` | ID of the separate "AskHemant DEMO Lab (fictional data)" spreadsheet | §20 / [`automations/README.md`](../automations/README.md) §4 | Config node of 02, 03, 04 |
+| `{{DEMO_WA_PHONE_NUMBER_ID}}` | Phone number ID of Meta's **test** number | §13 step 2 | Config node of 02, 03, 04 |
+| `{{DEMO_TEST_NUMBERS}}` | Comma-separated E.164 numbers allowed to receive demo messages (your own phones); empty = nobody gets a message | your decision | Config node of 02, 03, 04 |
+
+**n8n environment variables** (set on the VPS in the n8n service's `environment:` or `.env`, per [`automations/README.md`](../automations/README.md) §3; generate random values with `openssl rand -hex 24`; never commit them):
+
+| Variable | Value | Used by |
+|---|---|---|
+| `GENERIC_TIMEZONE`, `TZ` | `Asia/Kolkata` | all (08:00 IST digest, IST timestamps) |
+| `WEBHOOK_URL` | your public n8n address, e.g. `https://n8n.askhemant.ai/` | all webhooks |
+| `N8N_BLOCK_ENV_ACCESS_IN_NODE` | `false` (n8n 2.x blocks env access by default) | signature checks in Code nodes |
+| `NODE_FUNCTION_ALLOW_BUILTIN` | `crypto` | signature checks in Code nodes |
+| `TALLY_SIGNING_SECRET` | the signing secret you set in Tally (§10.1) | 01 |
+| `CALCOM_WEBHOOK_SECRET` | the webhook secret you set in Cal.com (§9) | 06 |
+| `WA_APP_SECRET` | Meta app secret (App settings → Basic) | 03 |
+| `WA_VERIFY_TOKEN` | any random string, also typed into Meta's webhook setup | 03 |
+| `DEMO_WEBHOOK_KEY` | random (optional) | 02, 04 |
+| `EXECUTIONS_DATA_PRUNE`, `EXECUTIONS_DATA_MAX_AGE` | `true`, `336` (14 days) | all (executions hold personal data) |
+
+**n8n credentials** (created in n8n, names exactly as in [`automations/README.md`](../automations/README.md) §2): `WhatsApp Cloud API – AskHemant` and `WhatsApp Cloud API – DEMO` (Header Auth, `Bearer <system user token>`, §13), `Anthropic API key` (Header Auth `x-api-key`, demo workflow 03 only, §23), `Google Sheets – AskHemant` (OAuth2). The WhatsApp **Graph API version** is not a token: it is the value set in each workflow's Config node; check Meta's deprecation dates and update it there.
+
+**GitHub deploy secrets** (not tokens in files): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, optional variables `FTP_SERVER_DIR`, `FTP_PROTOCOL` (§24).
+
+**Not placeholders:** `{{1}}`, `{{2}}` … in [`automations/whatsapp-templates.md`](../automations/whatsapp-templates.md) are WhatsApp template variables that Meta fills per message; leave them as they are.
+
 **Known defaults (no token):** https://askhemant.ai · hello@askhemant.ai · @askhemant (https://instagram.com/askhemant) · Cal.com `askhemant` → https://cal.com/askhemant/fit-call (20 min) and https://cal.com/askhemant/ask-hemant-session (45 min).
 
 **Fill in one pass.** The website part is a single `sed` command in [`website/DEPLOY-HOSTINGER.md`](../website/DEPLOY-HOSTINGER.md) §5. To see every place a token is still unset across the repo, from the repo root:
 
 ```bash
-grep -rn --exclude-dir=.git -E "\{\{(WHATSAPP_NUMBER|WEB3FORMS_ACCESS_KEY|TALLY_KIT_FORM_ID|RAZORPAY_SESSION_LINK|RAZORPAY_AUDIT_LINK|RAZORPAY_FOUNDING_LINK|PAYPAL_SESSION_LINK|GA4_MEASUREMENT_ID|CLARITY_PROJECT_ID|GOOGLE_SHEET_ID|CITY)\}\}" .
+grep -rn --exclude-dir=.git -E "\{\{(WHATSAPP_NUMBER|WEB3FORMS_ACCESS_KEY|TALLY_KIT_FORM_ID|RAZORPAY_SESSION_LINK|RAZORPAY_AUDIT_LINK|RAZORPAY_FOUNDING_LINK|PAYPAL_SESSION_LINK|GA4_MEASUREMENT_ID|CLARITY_PROJECT_ID|GOOGLE_SHEET_ID|CITY|WA_PHONE_NUMBER_ID|ALERT_WHATSAPP_NUMBER|CALCULATOR_COPY_URL|DEMO_SHEET_ID|DEMO_WA_PHONE_NUMBER_ID|DEMO_TEST_NUMBERS)\}\}" .
 ```
 
-Replace public values (number, links, IDs, city) in the repo. Paste private values (`{{GOOGLE_SHEET_ID}}`, API tokens, passwords) **only inside n8n** after importing the workflows.
+Replace public values (number, links, IDs, city) in the repo. Paste private values (`{{GOOGLE_SHEET_ID}}`, the automation-only tokens, API tokens, secrets, passwords) **only inside n8n** (Config nodes, credentials, environment variables) after importing the workflows, and keep any filled workflow copies outside the repo.
 
 ---
 
@@ -135,6 +167,7 @@ Domains bought at Hostinger use Hostinger's nameservers (usually `ns1.dns-parkin
 5. Settings to check (environment variables on the VPS; the template may already set some *(unverified)*):
    - `GENERIC_TIMEZONE=Asia/Kolkata` and `TZ=Asia/Kolkata`, so the 8 am digest and logs use IST.
    - `WEBHOOK_URL` = your public `https://` n8n address, so Tally and Cal.com webhooks point at the right host.
+   - The signing secrets and the rest: the full list is in §1 ("n8n environment variables") and [`automations/README.md`](../automations/README.md) §3.
 6. **Credentials inside n8n** (never in the repo):
    - Google Sheets (OAuth2 with your Google account, or a service account shared on the Sheet) → uses `{{GOOGLE_SHEET_ID}}`.
    - SMTP: hello@askhemant.ai (Hostinger SMTP host and port are in hPanel → Emails *(unverified)*).
@@ -228,13 +261,14 @@ Reported limits, **not verified here**: up to 5 keywords per automation; exact, 
 4. **Automation 3 "FOUNDING"** (optional; the Instagram plan adds it for P06 and T03) — keywords **`FOUNDING, Founding, founding`**; private message, exactly as in [`instagram/02-launch-posts.md`](../instagram/02-launch-posts.md):
    > Here are the founding-client details → askhemant.ai/founding?utm_source=ig&utm_medium=dm&utm_campaign=founding. 3 slots at ₹14,999 / $599 (prices exclude GST), closing Mon 30 Nov 2026 or when full. To check the fit: what do you sell, and roughly how many enquiries do you get a month?
 
-   If you'd rather not run a third automation, answer FOUNDING comments by hand within 4 working hours. **Switch it off after the founding close** (Mon 30 Nov 2026, or earlier when full).
+   If you'd rather not run a third automation, answer FOUNDING comments by hand within 4 working hours. **After the founding close** (Mon 30 Nov 2026 23:59 IST, or earlier when full), **edit the message to the closed text** in [`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.3 rather than deleting the automation, so late commenters still get an honest answer.
    **Live by:** LEAKS **Mon 19 Oct 15:00** (P01) · PRICE **Tue 20 Oct 15:00** (P02) · FOUNDING **Mon 26 Oct 15:00** (P06).
 5. If the tool offers a **public reply** to the comment, use: "Sent! Check your message requests." (it nudges non-followers to look in Requests).
 6. **Test from a second Instagram account** on each live post: comment the keyword in each case variant; the DM must arrive (in **message requests** for non-followers). Delete test comments afterwards.
-7. **Month 2:** add **Automation 3 "CLINIC"** (`CLINIC, Clinic, clinic`) when the clinic magnet exists.
-8. **Rules every tool must obey** ([Meta docs](https://developers.facebook.com/docs/instagram-platform/private-replies/)): one private reply per comment, sent within 7 days; follow-ups only within 24 hours of the person's reply; every message requested; no cold mass DMs.
-9. **Planner:** Business Suite → Planner can schedule posts and Reels for Instagram and the Page, which you need for Diwali (Fri 6 – Tue 10 Nov), Christmas and New Year *(Reel scheduling support unverified; Instagram's in-app scheduling is the fallback)*.
+7. **DM keyword for Stories and Lives (Thu 22 Oct):** `LEAKS` sent as a DM gets the same kit reply. If Business Suite refuses because LEAKS already sits in Automation 1, use the fallback **`KIT, Kit, kit`** and make Story/Live CTAs "DM me KIT" ([`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §2.4).
+8. **Month 2 (from Mon 16 Nov):** add **Automation 4 "CLINIC"** (`CLINIC, Clinic, clinic, CLINICS, clinics`). Until *The Missed-Call Recovery Playbook* exists, it sends the same Lead Leak Kit (which has clinic lines); switch the link when the playbook is published ([`instagram/07-dm-automation-playbook.md`](../instagram/07-dm-automation-playbook.md) §4.4).
+9. **Rules every tool must obey** ([Meta docs](https://developers.facebook.com/docs/instagram-platform/private-replies/)): one private reply per comment, sent within 7 days; follow-ups only within 24 hours of the person's reply; every message requested; no cold mass DMs.
+10. **Planner:** Business Suite → Planner can schedule posts and Reels for Instagram and the Page, which you need for Diwali (Fri 6 – Tue 10 Nov), Christmas and New Year *(Reel scheduling support unverified; Instagram's in-app scheduling is the fallback)*.
 
 ---
 
@@ -402,7 +436,8 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
 3. For real sending: add a **separate number** that is not on the WhatsApp Business app, set the display name "AskHemant", add a payment method.
 4. Create a **system user** in Business settings and generate a permanent access token → paste it into n8n credentials only.
 5. Submit the welcome message as a **template** for approval (see [`automations/whatsapp-templates.md`](../automations/whatsapp-templates.md)); send it only to people who ticked the consent box; honour every STOP.
-6. Every bot is scoped to one business: general-purpose AI chatbots are banned on the WhatsApp Business Platform since 15 Jan 2026 ([respond.io](https://respond.io/blog/whatsapp-general-purpose-chatbots-ban)).
+6. **Graph API version:** the workflows call `graph.facebook.com` with the Graph API version set in each workflow's Config node. Before Meta retires that version, change it there (test on the demo first); [`automations/README.md`](../automations/README.md) §9 has the current note.
+7. Every bot is scoped to one business: general-purpose AI chatbots are banned on the WhatsApp Business Platform since 15 Jan 2026 ([respond.io](https://respond.io/blog/whatsapp-general-purpose-chatbots-ban)).
 
 ---
 
@@ -432,7 +467,7 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
 - Copy each page's full `https://` URL into `config.js`.
 
 ### 14.3 Per-client payment links
-- **Sprint deposits and balances** (50% to start, 50% at go-live), e.g. Solo Sprint ₹34,999 = ₹17,500 + ₹17,499; Team ₹79,999 = ₹40,000 + ₹39,999; founding balance ₹7,499. Create a **Payment Link** per client with their name and the proposal number, expiring with the proposal (7 days).
+- **Sprint deposits and balances** (50% to start, 50% at go-live; the first half is rounded up), e.g. Solo or Clinic Sprint ₹34,999 = ₹17,500 + ₹17,499; Team ₹79,999 = ₹40,000 + ₹39,999; founding balance ₹7,499. Quick Win ₹24,999 = ₹12,500 + ₹12,499 (**Decision for Hemant:** the strategy sets no Quick Win terms; 50/50 is the default shown, [`sales/04-pricing-sheet.md`](../sales/04-pricing-sheet.md) §1). Create a **Payment Link** per client with their name and the proposal number, expiring with the proposal (7 days).
 - **Exit-check test:** a **₹1** Payment Link, paid with your own UPI on Sun 25 Oct, then refunded from the Dashboard.
 
 ---
@@ -444,7 +479,7 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
 
 ### 15.1 Skydo (main)
 1. skydo.com → sign up → KYC (PAN, Aadhaar, bank account, business details) — start **Mon 19 Oct**.
-2. Per client: create an **invoice in USD** using the USD prices (Audit $499, Founding $599, Solo Sprint $1,499, …); 50/50 split on Sprints.
+2. Per client: create an **invoice in USD** using the USD prices (Audit $499, Founding $599, Solo Sprint $1,499, …); 50/50 split on Sprints, first half rounded up: $1,499 = $750 + $749; Team $2,999 = $1,500 + $1,499; Founding $599 = $300 + $299.
 3. **Purpose code P0802** (software consultancy and implementation) on foreign payments, as the strategy says; confirm with your CA ([`sales/09-invoicing-and-tax-notes-india.md`](../sales/09-invoicing-and-tax-notes-india.md)). Avoid P1301/P1499 (personal income).
 4. **Keep every FIRA** with the invoice.
 5. See a CA **before the first foreign invoice** (GST registration becomes compulsory above ₹20 lakh a year including exports; an LUT needs registration ([Skydo](https://www.skydo.com/blog/gst-for-freelancers))).
@@ -471,11 +506,11 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
 
 ## 17. Loom
 
-**Why:** the 3-minute proposal walkthrough, Field Test disclosure videos, the Sprint handover, and the Audit's walkthrough.
+**Why:** the 3-minute proposal walkthrough, Field Test disclosure videos, the Sprint handover, and the Audit's 20-minute recorded walkthrough.
 **Cost:** ₹0 on Free.
 
 1. loom.com → sign up with hello@askhemant.ai → workspace "AskHemant".
-2. Free-plan limits are reported as **25 videos and 5 minutes per video** *(unverified)*. That fits proposals (3 min) and disclosures (2 min) but **not the Audit's 20-minute Loom**. For the Audit: record in OBS and share via Google Drive (link-only) or an unlisted YouTube video, or upgrade Loom when the first Audit is paid.
+2. Free-plan limits are reported as **25 videos and 5 minutes per video** *(unverified)*. That fits proposals (3 min) and disclosures (2 min) but **not the Audit's 20-minute recorded walkthrough** (or a long Sprint handover). For those: Loom's paid plan (upgrade when the first Audit is paid), or an OBS or phone recording shared unlisted via YouTube or Google Drive (link-only).
 3. Settings: camera bubble on; sharing = anyone with the link (proposals); for client screens, share only with that client. **Blur or avoid any real personal data on screen** (DPDP).
 4. Archive old disclosure videos to stay under the free limit.
 
@@ -501,7 +536,7 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
 **Alternative:** your own n8n Instagram flow (a portfolio demo), if Meta's developer access for your account is practical *(unverified)*.
 
 1. Connect @askhemant (requires "Allow access to messages", §5; a linked Facebook Page has historically been required *(unverified)*).
-2. Rebuild **LEAKS**, **PRICE** (and **CLINIC**) as comment triggers with exactly the same DM texts as §7.2.
+2. Rebuild **LEAKS**, **PRICE**, **FOUNDING** (until the close; then the closed text) and, from month 2, **CLINIC** as comment triggers, plus the LEAKS (or KIT) DM keyword, with exactly the same DM texts as §7.2.
 3. **Turn off the matching Meta Business Suite automations** so nobody gets two DMs.
 4. Send new contacts to the pipeline Sheet (ManyChat → webhook → n8n, or ManyChat's Sheets integration *(plan availability unverified)*).
 5. Same rules: one private reply per comment within 7 days; follow-ups only within 24 hours of the person's reply; no broadcasts to people who didn't ask.
@@ -521,6 +556,8 @@ Fields follow [`sales/06-client-onboarding-checklist.md`](../sales/06-client-onb
    - **Field tests** — test #, channel, sent at, first reply at, minutes to first reply, disclosure sent (y/n). Business names stay in this private sheet only; never published.
    - **Scorecard** — File → Import → upload [`kpi-scorecard.csv`](./kpi-scorecard.csv) → "Insert new sheet". Procedure: [`04-weekly-operating-system.md`](./04-weekly-operating-system.md) §4.
    - **Content** — import [`instagram/content-tracker.csv`](../instagram/content-tracker.csv) the same way.
+   - **Outreach** and **Clients** (optional, by hand; n8n never touches them) — the outreach log from [`sales/11-warm-outreach-playbook.md`](../sales/11-warm-outreach-playbook.md) §5 and the consent log from [`sales/08-case-study-template-and-consent.md`](../sales/08-case-study-template-and-consent.md) §5.
+   - The DEMO lab uses a **separate** spreadsheet (`{{DEMO_SHEET_ID}}`), never this one.
 3. The ID is the part of the URL between `/d/` and `/edit` → `{{GOOGLE_SHEET_ID}}` → n8n Google Sheets nodes only.
 4. It holds personal data: keep the retention period stated in the privacy notice and delete test rows after the exit check.
 
@@ -622,4 +659,4 @@ Check these the first time you open each product, and fix this file if anything 
 13. Loom free-plan limits (25 videos / 5 minutes); Zoho Sign free-tier limits (not researched at all).
 14. ManyChat's Facebook Page requirement and Sheets integration plan.
 15. YouTube Shorts maximum length and synthetic-content disclosure details.
-16. Founding deposit amount: **₹7,500** is 50% of ₹14,999 rounded up (balance ₹7,499). Change both if you prefer ₹7,499.50.
+16. (Decided, not unverified) Deposit splits round the first half up everywhere: Founding ₹7,500 + ₹7,499 ($300 + $299); Solo/Clinic Sprint ₹17,500 + ₹17,499 ($750 + $749).

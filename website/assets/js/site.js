@@ -353,6 +353,7 @@
     iframe.setAttribute("title", "Lead Leak Calculator request form");
     $("[data-tally-frame]", box).appendChild(iframe);
     show(box);
+    hide(fb); /* the "message me for the calculator" card is only for when the form isn't configured */
     var fallbackSrc = function () { if (!iframe.src) iframe.src = iframe.getAttribute("data-tally-src"); };
     var s = loadScript("https://tally.so/widgets/embed.js");
     s.onload = function () { try { window.Tally.loadEmbeds(); } catch (e) { fallbackSrc(); } };

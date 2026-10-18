@@ -63,7 +63,7 @@ Each template starts with a **personal first line** in brackets. Write it fresh 
 **The 3 questions:** (1) "Where do most of your leads come from?" (2) "What happens to one that comes in at 10 pm?" (3) "Does anyone follow up after day 2?" Then: "Thanks, that's really useful. Want me to show you what the fix looks like? It's a free 20-min call: askhemant.ai/book."
 
 ### O3. Ex-colleague or classmate (T2)
-- **EN:** Hi [Name], it's been a while! [Personal line: something about their current role or a post of theirs]. I've gone out on my own as AskHemant, building AI + WhatsApp lead systems for real-estate brokers and clinics. Since you're in [their field], is there anyone you'd suggest I talk to? And how are things with you?
+- **EN:** Hi [Name], it's been a while! [Personal line: something about their current role or a post of theirs]. I've started AskHemant, my own practice building AI + WhatsApp lead systems for real-estate brokers and clinics. Since you're in [their field], is there anyone you'd suggest I talk to? And how are things with you?
 - **HI:** Hi [Name], kaafi time ho gaya! [Personal line]. Maine AskHemant naam se apna kaam shuru kiya hai: real-estate brokers aur clinics ke liye AI + WhatsApp lead systems. Aap [their field] mein hain, toh kisi se baat karne ka suggestion denge? Aur aap sunaiye, kaisa chal raha hai?
 
 ### O4. Broker you know personally: the Speed Check (T3)
@@ -91,8 +91,8 @@ Reply in the same place they engaged (a comment reply, or the DM thread they ope
 - **HI:** [10 pm test wale comment / poll reply] ke liye thanks, [Name]. Ek sawaal: [specific question, e.g. "aapki portal leads WhatsApp par aati hain, ya aap call back karte hain?"]
 
 ### O8. Launch announcement, one-to-one (week 2, Mon 26 Oct onward)
-- **EN:** Hi [Name], [personal line]. Small news: I've launched AskHemant. I build AI + WhatsApp systems so property and clinic enquiries get answered straight away, qualified and booked. All my prices are public (askhemant.ai/pricing), and I'm taking 3 founding clients at a lower price in exchange for measured results, until 30 Nov. If anyone comes to mind, I'd be grateful for an intro.
-- **HI:** Hi [Name], [personal line]. Ek chhoti si khabar: maine AskHemant launch kiya hai. AI + WhatsApp systems banata hoon taaki property aur clinic enquiries ko turant reply, qualification aur booking mile. Saare prices public hain (askhemant.ai/pricing), aur 30 Nov tak 3 founding clients le raha hoon, kam price par, measured results ke badle. Koi dhyan mein aaye toh intro kara dijiye, bahut shukriya.
+- **EN:** Hi [Name], [personal line]. Small news: I've launched AskHemant. I build AI + WhatsApp systems so property and clinic enquiries get answered straight away, qualified and booked. All my prices are public (askhemant.ai/pricing), and I'm taking 3 founding clients at a lower price in exchange for measured results, until 30 Nov or until the slots are taken. If anyone comes to mind, I'd be grateful for an intro.
+- **HI:** Hi [Name], [personal line]. Ek chhoti si khabar: maine AskHemant launch kiya hai. AI + WhatsApp systems banata hoon taaki property aur clinic enquiries ko turant reply, qualification aur booking mile. Saare prices public hain (askhemant.ai/pricing), aur 30 Nov tak (ya slots bharne tak) 3 founding clients le raha hoon, kam price par, measured results ke badle. Koi dhyan mein aaye toh intro kara dijiye, bahut shukriya.
 
 **WhatsApp Status (week 2, once):**
 > Launched AskHemant: AI + WhatsApp systems so no lead waits. For brokers and clinics. Prices published: askhemant.ai · Free kit: askhemant.ai/kit
@@ -107,8 +107,8 @@ Reply in the same place they engaged (a comment reply, or the DM thread they ope
 - **HI (to the referral):** Hi [Referral], [Friend] ne kaha aapse baat karoon. Main WhatsApp + AI systems banata hoon jo [property / patient] enquiries ko turant reply karte hain aur [visit / appointment] book karte hain. [Friend] ne bataya [their situation]. Free 20-min baat kaam ki hogi? askhemant.ai/book. Nahi toh koi baat nahi.
 - Afterwards, tell the friend how it went (without sharing anything the referral said in confidence).
 
-### Field-test disclosure (for businesses in the non-consented Field Test; exact strategy text, sent after the test)
-> Hi [Name], full disclosure: on Sunday I sent a test enquiry to your listing as part of a small response-time test. Your name won't be published. The first reply came after [X hours]. Here's a 2-minute video showing how that enquiry could have been answered within a minute. Happy to set it up if you want; if not, the video's yours.
+### Field-test disclosure (for businesses in the non-consented Field Test; the strategy's text with the send day filled in, sent after the test)
+> Hi [Name], full disclosure: on [day, e.g. Saturday] I sent a test enquiry to your listing as part of a small response-time test. Your name won't be published. The first reply came after [X hours]. Here's a 2-minute video showing how that enquiry could have been answered within a minute. Happy to set it up if you want; if not, the video's yours.
 
 ---
 
@@ -144,7 +144,7 @@ Reply in the same place they engaged (a comment reply, or the DM thread they ope
 | next_date | date |
 | referred_by | name of the friend who introduced them |
 | referrals_given | names they introduced |
-| fit_call_booked | y/n (and link the Leads row) |
+| fit_call_booked | y/n (and note the matching Pipeline row) |
 | notes | — |
 
 **Weekly numbers for the Sunday scorecard:** messages sent (cumulative vs 100 / 250 / 400) · reply rate · intros received · Speed Checks done · Fit Calls booked from outreach (vs about half of all calls).
