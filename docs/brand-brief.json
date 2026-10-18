@@ -1,0 +1,399 @@
+{
+  "scores": [
+    {
+      "strategy": "Strategy 1: niche-specialist",
+      "score": 8.4,
+      "rationale": "First client within 60 days: 8. Feasibility: 7. Differentiation: 9. Honesty: 9. Clarity: 9. It has the sharpest client profile for India and Dubai, a Team tier, a demo library and human review of AI conversations. Its weaknesses: week 1 is overloaded (a 15-template kit, a scorecard, an n8n JSON file and 8 demos), there is no measured outreach budget, and the 70/15/15 mix narrows reach before any data comes in."
+    },
+    {
+      "strategy": "Strategy 2: productized-offer",
+      "score": 8.8,
+      "rationale": "First client within 60 days: 9. Feasibility: 8. Differentiation: 8. Honesty: 9. Clarity: 10. It is the only plan that does the conversion arithmetic and admits a new Instagram account cannot fill a calendar alone, so it budgets 1:1 outreach to cover the gap. It also has a founding offer with a real deadline (30 Nov), a test run of the whole funnel from comment to payment before launch, exact copy for the bio, DMs and calls, published prices and a paid side door. Its weaknesses: 11 website pages at launch, a thin lead magnet, and it leaves out Hemant's wider skills (documents, AI products)."
+    },
+    {
+      "strategy": "Strategy 3: personal-brand",
+      "score": 7.2,
+      "rationale": "First client within 60 days: 6. Feasibility: 8. Differentiation: 6. Honesty: 9. Clarity: 7. It has the best weekly production system (one build becomes all 5 posts), lets data choose the niche through lane tags, and includes an AI-product rung that fits Hemant's real skills. Its weaknesses: broad positioning delays the first sale, the account risks attracting learners instead of buyers, and the 8+ offers blur the message."
+    }
+  ],
+  "winner": "Strategy 2: productized-offer (fixed-price offer ladder sold through a short Instagram-to-booking-to-payment funnel, with real estate as the primary niche, clinics secondary, and agencies as a white-label channel)",
+  "graftedIdeas": [
+    "From S1: the client profile and fit signals for India and Dubai (40-500 enquiries a month, Meta ads or portal spend, WhatsApp answered by hand)",
+    "From S1: 'within a minute' is stated as a design target, measured from when a lead reaches the system, never promised as an outcome",
+    "From S1: a Team tier (up to 6 sources and 10 agents, round-robin assignment, CRM, missed-call text-back) at ₹79,999 / $2,999",
+    "From S1: a worked WhatsApp running-cost example (about 900 marketing messages, roughly ₹775 a month, marked as an estimate) shown in every proposal",
+    "From S1: a named demo library D1-D8, each labelled 'DEMO – fictional business', plus human review of the first 100 AI conversations in every pilot",
+    "From S1: Hinglish voiceover with English on-screen text, and the NRI-buyer after-hours angle as a hypothesis to test on calls",
+    "From S3: one weekly build session (Saturday) that becomes 3 Reels, 2 trial-reel hooks and 2 carousels",
+    "From S3: every post tagged with a niche lane (RE/CL/GEN) and a business-type field on the kit form, so the day-60 niche decision runs on real data",
+    "From S3: the #AutomateKaro Hinglish series and the 'Ask Hemant Sunday' question box",
+    "From S3: a Quick Win Build (₹24,999 / $999) and a Custom AI Agent / AI Product Build (from ₹1.5L / $6,000), covering Hemant's skills beyond lead systems",
+    "From S3: the post '7 things I would NOT automate', case studies that include 'what didn't work', and KPIs split into inputs and outputs",
+    "Resolved: a 60/20/20 content mix; the lead-magnet PDF ungated in the DM with only the calculator bonus behind a form; n8n templates on GitHub rather than in the magnet; 6 website pages at launch; a 25% agency discount; a consent-based 'Speed Check' added next to field tests that are disclosed afterwards"
+  ],
+  "brandName": "AskHemant",
+  "domainPrimary": "askhemant.ai",
+  "domainBackups": [
+    "askhemant.com (301 redirect to the .ai; free in year 1 with Hostinger Premium, then ₹1,499/yr)",
+    "askhemanth.com (optional redirect for the 'Hemanth' misspelling)",
+    "hemantautomates.com (personal-name fallback if AskHemant is unavailable; zero web results)",
+    "hemantkumar.ai (second personal-name fallback)",
+    "kramik.ai (brand backup #1, for a future agency or product)",
+    "agentkaar.ai (brand backup #2)"
+  ],
+  "domainNotes": "Choose .ai, not .si. '.si' was almost certainly a typo for '.ai', but .si is real: it is Slovenia's country domain. On Hostinger, .si costs $11.99 / ₹1,169 for the first year and $16.99 / ₹1,649 to renew (hostinger.com/tld/si-domain). It doesn't say 'AI', and anyone who hears 'AI consultant, askhemant dot…' will type .ai and reach whoever owns that name. Hostinger's .ai page lists $89.99 for the first year (a tracker showed $99.99 in Jul 2026) and $109.99/yr to renew, with a 2-year minimum, so about $190-210 (≈₹16.7-18.5K) up front (estimate). The .ai is not covered by Hostinger's free-domain offer (hostinger.com/tld/ai-domain). Buy askhemant.ai as the main domain and claim askhemant.com free with Premium as a redirect. Skip .si and .co. If cash is tight, launch on askhemant.com and add the .ai after the first payment, accepting the risk that someone registers it first. Caveat: availability is NOT verified. WHOIS/RDAP, Hostinger's live search and Instagram's username check were blocked, and the web-search budget ran out during the final synthesis. The research-phase web search found no business using 'AskHemant'. 'GeneX' was rejected because GenexAI, GeneX AI chat, GeneXus and GENEX Services already use it. Run the 5-minute check (Hostinger search, not marked 'premium'; lookup.icann.org; Instagram username check; IP India and USPTO in Classes 35 and 42) before paying.",
+  "instagramHandle": "@askhemant",
+  "handleBackups": [
+    "@askhemant.ai",
+    "@hemantautomates",
+    "@hemant.automates",
+    "@kramik.ai (if the brand changes to Kramik)"
+  ],
+  "instagramNameField": "Hemant | AI Automation Consultant · Real Estate",
+  "instagramBio": "AI + WhatsApp systems so no lead waits\nReal estate & clinics · India + UAE\nFixed prices · live in 10 working days\nFree kit: comment LEAKS ↓",
+  "tagline": "No lead left on read.",
+  "valueProposition": "Every lead answered within a minute, qualified and booked for a site visit or appointment: a fixed-price AI + WhatsApp system, live in 10 working days, built on the client's own accounts. 'Within a minute' is the design target, measured from when a lead reaches the system, not a promised outcome.",
+  "primaryNiche": "Real estate brokers, small brokerages (1-10 agents) and channel partners: India first, Dubai/UAE from month 2. They get roughly 40-500 enquiries a month from Meta ads, property portals, Instagram DMs and WhatsApp, and answer them by hand.",
+  "secondaryNiches": [
+    "Private clinics (dental, derm/aesthetic, physio; 1-10 doctors), sold the Missed-Call & No-Show Recovery Sprint",
+    "Digital-marketing agencies that run Meta ads for brokers or clinics, as a white-label partner channel from month 2 (list price minus 25%)",
+    "General owner-run SMBs as inbound for the Quick Win Build and Custom AI Agent / AI Product Build (20% of content)"
+  ],
+  "audiencePains": [
+    "The first reply is slow: leads go cold while the broker is on a site visit, driving or asleep. Only about 37% of 2,241 US firms answered web leads within an hour (BYU/HBR audit), and only 3% of marketers reply within 5 minutes (NP Digital, Feb 2026)",
+    "Leads are scattered across portals, Meta forms, Instagram DMs, WhatsApp and calls, with no single list (vendor framing; confirm on calls)",
+    "Unqualified or junk Meta-ad leads waste calling time (hypothesis; measure in pilots)",
+    "Nobody follows up after day 2, and site visits or appointments are missed without reminders. Planet DDS reports a 6.9% dental no-show rate in 2025",
+    "Junior agents reply inconsistently, and the owner can't see what happened to each lead",
+    "Clinics miss calls during procedures and lunch, and have no recall or review-request process",
+    "Confusion about Meta's free WhatsApp Business AI (May/Jul 2026): 'Do I even need anyone?' The real gaps are CRM, routing, human handover and follow-up"
+  ],
+  "offers": [
+    {
+      "name": "Lead Leak Kit (lead magnet)",
+      "priceINR": "Free",
+      "priceUSD": "Free",
+      "timeline": "Instant via auto-DM",
+      "deliverables": [
+        "10-page mobile PDF covering the 7 places enquiries go cold",
+        "10 WhatsApp templates in English and Hinglish",
+        "6-question qualification script",
+        "The 10 pm self-test",
+        "Bonus: Lead Leak Calculator (Google Sheet; the owner enters their own numbers)"
+      ],
+      "bestFor": "Any broker or clinic owner who comments LEAKS; starts the DM conversation"
+    },
+    {
+      "name": "Fit Call",
+      "priceINR": "Free (intake form required)",
+      "priceUSD": "Free (intake form required)",
+      "timeline": "20 minutes; Tue-Thu slots, max 6 a week",
+      "deliverables": [
+        "Diagnosis of lead sources, volume and reply speed",
+        "The 1-2 biggest leaks named",
+        "An honest yes or no on fit, and the next step (Audit, Sprint or Kit)"
+      ],
+      "bestFor": "In-niche owners with a budget of ₹15K or more who pass the Cal.com intake form"
+    },
+    {
+      "name": "Ask Hemant Session (side door)",
+      "priceINR": "₹1,999",
+      "priceUSD": "$99",
+      "timeline": "45 minutes, within 48 hours; 100% credited to an Audit or build booked within 14 days",
+      "deliverables": [
+        "45-minute call on any AI or automation question",
+        "Recording",
+        "Written action list within 24 hours"
+      ],
+      "bestFor": "People outside the niche, do-it-yourselfers, budgets under ₹15K"
+    },
+    {
+      "name": "Lead Leak Audit",
+      "priceINR": "₹9,999",
+      "priceUSD": "$499",
+      "timeline": "5 working days; 100% credited to a Sprint booked within 30 days",
+      "deliverables": [
+        "Pre-audit form and 60-minute workshop",
+        "Timed test enquiries through up to 3 of the client's channels, with consent",
+        "Current and proposed lead-flow map",
+        "Leak Report (each leak, its evidence, the fix and the effort)",
+        "ROI worksheet using the client's own numbers",
+        "System blueprint with a fixed quote",
+        "20-minute Loom and 30-minute review call"
+      ],
+      "bestFor": "Owners who want depth before committing, and multi-source or team setups"
+    },
+    {
+      "name": "Founding Client Pilot (3 slots, closes 30 Nov 2026)",
+      "priceINR": "₹14,999",
+      "priceUSD": "$599",
+      "timeline": "About 3 weeks, plus a 30-day measurement period",
+      "deliverables": [
+        "Audit plus Solo Sprint, or Audit plus Clinic Sprint",
+        "Baseline measured during the build",
+        "30-day after-measurement",
+        "In return: written permission to publish a case study, a testimonial in the client's own words if they're happy, and a feedback interview"
+      ],
+      "bestFor": "The first 3 clients: 2 in real estate, 1 clinic (at most 1 in Dubai)"
+    },
+    {
+      "name": "Speed-to-Lead Sprint (Solo)",
+      "priceINR": "₹34,999",
+      "priceUSD": "$1,499",
+      "timeline": "10 working days after access is granted; 50% to start, 50% at go-live",
+      "deliverables": [
+        "Capture from up to 3 lead sources (Meta lead ads, website form, Instagram DMs, portal alerts)",
+        "Instant WhatsApp first reply on the official platform",
+        "AI qualifier scoped to the business, in English or Hinglish, with hot/warm/cold tags",
+        "Handover alerts to the agent",
+        "Site-visit booking with reminders 24 hours and 2 hours before, plus a Maps pin",
+        "30-day follow-up of 6-8 messages, with opt-out",
+        "Lead log in Google Sheets or CRM, and an 8 am daily digest",
+        "Up to 10 Meta-approved templates, Loom handover, 1-page SOP",
+        "14-day bug-fix warranty"
+      ],
+      "bestFor": "Solo brokers and small teams with 2 or more lead sources"
+    },
+    {
+      "name": "Speed-to-Lead System (Team)",
+      "priceINR": "₹79,999",
+      "priceUSD": "$2,999",
+      "timeline": "15 working days; 50/50",
+      "deliverables": [
+        "Everything in Solo",
+        "Up to 6 sources and 10 agents",
+        "Round-robin or by-area assignment",
+        "CRM integration (Zoho, HubSpot, or any CRM with an API)",
+        "Manager dashboard",
+        "Missed-call text-back where the phone system supports it",
+        "2 team training sessions",
+        "30-day warranty"
+      ],
+      "bestFor": "Channel-partner firms, brokerages of 3-10 agents, small developers' sales desks"
+    },
+    {
+      "name": "Missed-Call & No-Show Recovery Sprint (clinics)",
+      "priceINR": "₹34,999",
+      "priceUSD": "$1,499",
+      "timeline": "10 working days; 50/50",
+      "deliverables": [
+        "Missed call → WhatsApp text-back",
+        "Booking link or bot",
+        "Reminders 24 hours and 2 hours before",
+        "Post-visit review request and recall reminders",
+        "DPDP-aware consent capture with minimal health data",
+        "14-day warranty"
+      ],
+      "bestFor": "Dental, derm/aesthetic and physio clinics with 1-10 doctors"
+    },
+    {
+      "name": "Quick Win Build",
+      "priceINR": "₹24,999",
+      "priceUSD": "$999",
+      "timeline": "7-10 working days",
+      "deliverables": [
+        "One workflow of up to about 10 steps (for example form → CRM → WhatsApp/email follow-up, or invoice PDF → AI extraction → Sheet or Zoho Books)",
+        "Documentation",
+        "Loom handover",
+        "14-day bug-fix window"
+      ],
+      "bestFor": "General SMB inbound outside the niche"
+    },
+    {
+      "name": "Custom AI Agent / AI Product Build",
+      "priceINR": "From ₹1,50,000",
+      "priceUSD": "From $6,000",
+      "timeline": "4-8 weeks; scoped only after an Audit",
+      "deliverables": [
+        "GPT- or Claude-powered assistant trained on company SOPs and documents, or a first version of an AI-powered product",
+        "Scope, milestones and acceptance criteria set in the Audit"
+      ],
+      "bestFor": "Businesses wanting internal AI tools or a new AI product"
+    },
+    {
+      "name": "Lead Desk Care (retainer)",
+      "priceINR": "₹9,999/month",
+      "priceUSD": "$299/month",
+      "timeline": "Monthly, 30 days' notice to cancel",
+      "deliverables": [
+        "Monitoring and error alerts",
+        "Fixes within 1 working day",
+        "2 small changes a month",
+        "Monthly prompt tuning",
+        "1-page monthly report (response time, leads, bookings, no-shows)",
+        "WhatsApp support during IST business hours"
+      ],
+      "bestFor": "Every Sprint client once the warranty ends"
+    },
+    {
+      "name": "Lead Desk Growth (retainer)",
+      "priceINR": "₹24,999/month",
+      "priceUSD": "$799/month",
+      "timeline": "3-month minimum",
+      "deliverables": [
+        "Everything in Care",
+        "1 new automation a month",
+        "45-minute monthly optimisation call",
+        "A/B tests of follow-up messages",
+        "Quarterly roadmap"
+      ],
+      "bestFor": "Clients who want continuous improvement"
+    }
+  ],
+  "discoveryCall": "Free, gated, with a paid side door. The 20-minute Fit Call is booked on Cal.com Free at askhemant.ai/book: Tue-Thu 11:00-13:00 and 16:00-18:00 IST, plus 2 evening slots (19:30-21:00 IST) for the UK and US East, capped at 6 a week, on Google Meet. The intake form asks for business type, city or market, lead sources, leads a month, current reply speed, the task to fix first, and a budget band (<₹15K / ₹15-40K / ₹40K-1L / ₹1L+, with USD equivalents). People under ₹15K or outside the niche get the Kit and the paid Ask Hemant Session (₹1,999 / $99, 45 minutes, credited to a build within 14 days). Why free: there is no proof yet and the audience is cold, and paid-call benchmarks (₹1,789 on Topmate; $150-300 abroad) assume a reputation already exists. Switch rule: if there are more than 8 calls a week, a show rate below 70%, or 3+ documented results by day 60, shorten the call to 15 minutes or make the ₹9,999 / $499 Audit the only way in. Reminders go out by Cal.com email plus a WhatsApp Business app message 2 hours before.",
+  "leadMagnet": {
+    "title": "The Lead Leak Kit: 7 places your enquiries go cold, and the WhatsApp fixes",
+    "promise": "In 10 minutes, find where your enquiries go cold and fix the biggest leak this week. No new software needed.",
+    "format": "A 10-page mobile PDF made in Canva (1080×1350 pages that double as carousel slides): the 7 leaks, 10 copy-paste WhatsApp templates in English and Hinglish, a 6-question qualification script, the 10 pm self-test and a 'free tools first' page. The PDF is ungated in the auto-DM. Bonus: the Lead Leak Calculator (Google Sheet, owner's own numbers), behind a 4-field Tally form at askhemant.ai/kit that feeds n8n → Sheet → WhatsApp welcome. That flow is case study #0 and supplies the business-type data for the niche decision. Clinic version in month 2: the Missed-Call Recovery Playbook (keyword CLINIC).",
+    "commentKeyword": "LEAKS"
+  },
+  "primaryCTA": "Comment LEAKS for the free Lead Leak Kit (it arrives by auto-DM; check your message requests). Bio link 1 is askhemant.ai/book for a free 20-minute Fit Call.",
+  "contentPillars": [
+    {
+      "name": "Lead Leaks (35%)",
+      "description": "Screen-recorded speed-to-lead demos for fictional businesses ('Skyline Realty – DEMO', 'SmileCare Dental – DEMO'), each with an on-screen stopwatch. Reach, and shows the core offer working."
+    },
+    {
+      "name": "Build Log (20%)",
+      "description": "Hemant automating their own funnel in public (comment → DM → Tally → n8n → Sheet → WhatsApp), with real weekly numbers even when they are small. Case study #0, which is proof without clients."
+    },
+    {
+      "name": "Open Price Book (15%)",
+      "description": "Published prices, what's included and what isn't, running costs (for example WhatsApp per-message fees, marked as estimates), and ROI from the viewer's own numbers. Buyers sort themselves out before the call."
+    },
+    {
+      "name": "Field Tests (15%)",
+      "description": "Response-time tests disclosed afterwards and anonymised (n=20, method shown, no names), plus the consent-based Speed Check and clinic demos. Original data that people send to colleagues."
+    },
+    {
+      "name": "Straight Talk / #AutomateKaro (15%)",
+      "description": "Anti-hype commentary: what Meta's free WhatsApp AI does and doesn't do, WhatsApp rule changes, '7 things I would NOT automate', the Hinglish #AutomateKaro series and Dubai/English angles. Builds trust and a clear point of view."
+    }
+  ],
+  "weeklyCadence": "3 Reels + 2 carousels + 2 trial reels a week, Stories on 5+ days. Mon: Reel (Lead Leaks demo). Tue: carousel (prices or templates) plus trial reel B of Monday's hook. Wed: Reel (Build Log). Thu: carousel (Field Test or clinic playbook) plus trial reel B. Fri: Reel (#AutomateKaro Hinglish or Dubai/English), testing a 7-9 pm IST slot against the default 2-5 pm. Sat: one 3-hour build and batch session that produces 3 Reels, 2 hooks and 2 carousel scripts. Sun: no post; 'Ask Hemant Sunday' question box and a 30-minute scorecard review. Daily, 40 minutes: reply to all comments and DMs, comment on 10-20 target accounts, and send 10 personal 1:1 messages to warm contacts or people who engaged (no cold mass DMs). From month 2: 1 collab and 1 Live a month, a weekly broadcast-channel post once there are about 300 followers, and Reels cross-posted to LinkedIn and YouTube Shorts. Mix: 60% real estate / 20% clinics / 20% general; 3-5 hashtags; original content only. Never drop below 3 posts a week.",
+  "brandVoice": "A calm, practical builder who shows the work. Owner language, not tech jargon ('your portal lead waited 9 hours', not 'agentic RAG pipeline'). Show, then claim ('watch the timer', 'here's the log'). Every statistic carries a source and a sample size, and vendor statistics are never presented as Hemant's results. Honest about limits ('use Meta's free AI if you only need FAQs', 'here's what didn't work'). Prices published, with only real deadlines. Warm and bilingual: natural Hinglish for India, clean English for Dubai and international posts. Privacy-first (anonymised by default; nothing shown without permission). Banned: 'guaranteed ROI', income claims, '10x', 'revolutionary', fake scarcity, unlabelled demos. Signature phrases: 'No lead left on read.' 'Ask Hemant. Automate the rest.' 'Watch the timer.' 'Here's the real number.'",
+  "visualIdentity": {
+    "primary": "#4338CA (Signal Indigo; white text on it is 7.9:1)",
+    "accent": "#FFB020 (Lead Amber: notification dot, DEMO badge, stopwatch; use it on Ink or Indigo only, never as text on light backgrounds)",
+    "dark": "#0B1020 (Ink; 17.4:1 on Paper)",
+    "light": "#F7F5F0 (Paper, warm off-white)",
+    "headingFont": "Space Grotesk (500/700, Google Fonts), with JetBrains Mono (500/700) for timers, timestamps and prices",
+    "bodyFont": "Inter (400/500/600, Google Fonts); Mukta only if Devanagari is needed",
+    "style": "'The reply that arrives first.' Indigo and amber deliberately contrast with green WhatsApp screenshots and avoid borrowing Meta's brand colours. Supporting colours: Slate #5B5F73, Leak Red #B42318 (before states), Replied Green #15803D (after states), Indigo Tint #A5B4FC and Mist #E8E6F7 for dark mode. Wordmark: 'Ask' in Ink and 'Hemant' in Indigo, in Space Grotesk Bold, with an amber unread-badge dot. Avatar and favicon: an 'AH' chat bubble. The Instagram profile photo is Hemant's face on an Indigo background. Signature device: an amber stopwatch pill timing every demo. Mandatory 'DEMO – fictional business' amber badge, top-left. Carousels: 1080×1350 with 64 px margins, hook slide in Ink on Paper with one amber word, sources in Slate, and an Indigo CTA as the last slide. Reel covers: 1080×1920 with the title in the central safe zone. Burned-in captions in Inter SemiBold, white, on an 80% Ink box. Before/after split screens. Real photos only; no robots, glowing brains, fake dashboards or money shots; blur any real personal data."
+  },
+  "toolStack": [
+    {
+      "purpose": "Website hosting (static HTML, Git deploy from GitHub, free SSL)",
+      "tool": "Hostinger Premium Web Hosting",
+      "cost": "~₹149-249/month intro on a 48-month prepay (~₹7,150-12,000 up front); renews at ~₹449+/month"
+    },
+    {
+      "purpose": "Main domain",
+      "tool": "askhemant.ai via Hostinger",
+      "cost": "$89.99-99.99 first year, $109.99/yr renewal, 2-year minimum (~₹16.7-18.5K up front, estimate)"
+    },
+    {
+      "purpose": "Redirect domain",
+      "tool": "askhemant.com via Hostinger (free domain with Premium)",
+      "cost": "₹0 in year 1, then ~₹1,499/yr"
+    },
+    {
+      "purpose": "Business email",
+      "tool": "Hostinger mailbox hello@askhemant.ai (bundled with Premium)",
+      "cost": "₹0 in year 1, then ~$1-1.6 per mailbox per month"
+    },
+    {
+      "purpose": "Comment-to-DM automation",
+      "tool": "Meta Business Suite Comment to Message (month 1), then ManyChat Essential once more than 25 contacts a month comment (or a custom n8n flow)",
+      "cost": "₹0, then ~$14-17/month"
+    },
+    {
+      "purpose": "Booking and intake",
+      "tool": "Cal.com Free (public Fit Call plus hidden Session, Audit and Kickoff events)",
+      "cost": "₹0"
+    },
+    {
+      "purpose": "Forms (kit bonus, onboarding) and contact form",
+      "tool": "Tally (free) + Web3Forms (250 submissions a month free)",
+      "cost": "₹0"
+    },
+    {
+      "purpose": "Automation lab and own funnel (case study #0)",
+      "tool": "n8n on a Hostinger KVM 2 VPS (one-click n8n template)",
+      "cost": "~$6.99-8.99/month promo, ~$14.99 renewal (prepay ~₹8.4-19K depending on term)"
+    },
+    {
+      "purpose": "Pipeline CRM and weekly scorecard",
+      "tool": "Google Sheets (written by n8n)",
+      "cost": "₹0"
+    },
+    {
+      "purpose": "Hemant's own chat channel",
+      "tool": "WhatsApp Business app (catalogue, quick replies, labels, wa.me link)",
+      "cost": "₹0"
+    },
+    {
+      "purpose": "Client WhatsApp builds",
+      "tool": "WhatsApp Cloud API through n8n, or a BSP (AiSensy/Interakt) on the client's own account",
+      "cost": "Billed to the client: Meta per-message fees (e.g. ~₹0.86 marketing / ₹0.13 utility in India, per a reseller) plus BSP fees"
+    },
+    {
+      "purpose": "AI models for agents and demos",
+      "tool": "OpenAI or Claude API",
+      "cost": "~₹500/month for demos (estimate); client usage billed to the client"
+    },
+    {
+      "purpose": "India payments",
+      "tool": "Razorpay Payment Links/Pages",
+      "cost": "2% + GST per domestic payment; 3% + GST for international cards"
+    },
+    {
+      "purpose": "International payments",
+      "tool": "Skydo invoices (main), Wise Business (backup), PayPal (only for $99 Sessions)",
+      "cost": "Skydo $19 flat under $2K with a free FIRA; PayPal ~4.4% + $0.30"
+    },
+    {
+      "purpose": "Proposals and e-signature",
+      "tool": "Google Docs → PDF + Loom (free) + Zoho Sign (free-tier limits not researched)",
+      "cost": "₹0 (verify)"
+    },
+    {
+      "purpose": "Analytics",
+      "tool": "GA4 + Microsoft Clarity, with UTM tags on every link",
+      "cost": "₹0"
+    },
+    {
+      "purpose": "Content production",
+      "tool": "Phone + clip-on mic, OBS (screen recording), Instagram Edits app, Canva free",
+      "cost": "~₹1,500-3,000 one-time for the mic (estimate)"
+    }
+  ],
+  "assumptions": [
+    "Hemant works solo, is based in India and is budget-conscious",
+    "No existing audience and no public case studies or testimonials",
+    "'.si' was a typo for '.ai'; .ai is recommended either way",
+    "Hemant can build production-quality n8n/Make workflows, WhatsApp Cloud API or BSP integrations, and GPT/Claude agents",
+    "Hemant is comfortable on camera in English and Hindi/Hinglish; if not, screen recordings with voiceover work instead",
+    "About 25-40 hours a week across content, outreach and delivery",
+    "Hemant is happy to publish prices and offer the ₹14,999 / $599 founding discount",
+    "Launch cash of about ₹34-52K for the full stack, or about ₹9-15K for the lean path (estimates)",
+    "Not yet GST-registered (compulsory above ₹20 lakh a year including exports; an LUT for zero-rated exports requires registration); a CA will be consulted",
+    "₹88 = $1 for conversions (estimate); all prices exclude GST",
+    "Domain and handle availability are unverified (lookups blocked; web-search budget exhausted during the final synthesis)",
+    "Diwali falls around Sun 8 Nov 2026 (not verified)"
+  ],
+  "openQuestions": [
+    "Did you mean .ai, or really .si? Is there any Slovenia/EU angle?",
+    "Which city are you in? It decides the local real-estate market, where field tests run, and whether you can meet clients in person",
+    "How many hours a week can you give this: full-time or alongside a job?",
+    "What have you already built (n8n, WhatsApp API, voice agents, CRMs, AI products), and can any of it be shown with permission?",
+    "Do you personally know brokers, channel partners, clinic owners or agency owners who could be founding clients?",
+    "How comfortable are you on camera, and in which languages besides English and Hindi?",
+    "Are you GST-registered or do you have a business entity, and do you have a CA?",
+    "Which budget: full stack (~₹34-52K) or lean (~₹9-15K, .com first)?",
+    "Are you comfortable publishing prices and offering the ₹14,999 / $599 founding price?",
+    "Do you want to stay a personal brand long term, or grow into an agency or product brand later (Kramik or AgentKaar kept in reserve)?",
+    "Which time zones can you take calls in (UAE, UK, US East)?",
+    "Should anything stay private: your face, city or employer?"
+  ]
+}
