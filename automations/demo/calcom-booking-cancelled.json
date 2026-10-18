@@ -1,0 +1,75 @@
+{
+  "triggerEvent": "BOOKING_CANCELLED",
+  "createdAt": "__NOW__",
+  "payload": {
+    "type": "fit-call",
+    "title": "Fit Call between Hemant Kumar and Meera Test",
+    "eventTitle": "Fit Call",
+    "startTime": "__START__",
+    "endTime": "__END__",
+    "uid": "demo-booking-__MSG_ID__",
+    "organizer": {
+      "name": "Hemant Kumar",
+      "email": "hello@askhemant.ai",
+      "timeZone": "Asia/Kolkata"
+    },
+    "attendees": [
+      {
+        "name": "Meera Test",
+        "email": "meera.test@example.com",
+        "timeZone": "Asia/Kolkata"
+      }
+    ],
+    "responses": {
+      "name": {
+        "label": "your_name",
+        "value": "Meera Test"
+      },
+      "email": {
+        "label": "email_address",
+        "value": "meera.test@example.com"
+      },
+      "business-type": {
+        "label": "What kind of business do you run?",
+        "value": "Real estate: broker or agent (India)"
+      },
+      "city": {
+        "label": "Which city or market are you in?",
+        "value": "Pune"
+      },
+      "lead-sources": {
+        "label": "Where do your leads come from?",
+        "value": [
+          "99acres / MagicBricks / Housing.com",
+          "Meta (Facebook/Instagram) lead ads",
+          "Instagram DMs"
+        ]
+      },
+      "leads-per-month": {
+        "label": "Roughly how many leads or enquiries do you get a month?",
+        "value": "40–100"
+      },
+      "reply-speed": {
+        "label": "How fast does a new lead usually get its first reply today?",
+        "value": "Same day"
+      },
+      "fix-first": {
+        "label": "What's the one thing you'd fix first?",
+        "value": "Enquiries that arrive after 9 pm"
+      },
+      "budget": {
+        "label": "What budget do you have in mind for fixing it?",
+        "value": "₹15–40K (about $170–450)"
+      },
+      "whatsapp": {
+        "label": "Your WhatsApp number",
+        "value": "__TEST_NUMBER__"
+      }
+    },
+    "metadata": {
+      "videoCallUrl": "https://meet.google.com/demo-test"
+    },
+    "status": "CANCELLED",
+    "cancellationReason": "Test cancellation"
+  }
+}

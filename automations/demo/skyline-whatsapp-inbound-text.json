@@ -1,0 +1,21 @@
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "DEMO_WABA_ID",
+      "changes": [
+        {
+          "field": "messages",
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": { "display_phone_number": "15550000000", "phone_number_id": "__PHONE_NUMBER_ID__" },
+            "contacts": [{ "profile": { "name": "Riya Demo" }, "wa_id": "__TEST_WA_ID__" }],
+            "messages": [
+              { "from": "__TEST_WA_ID__", "id": "wamid.DEMO__MSG_ID__", "timestamp": "__UNIX__", "type": "text", "text": { "body": "__TEXT__" } }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,506 @@
+{
+  "name": "AskHemant 01 · Kit sign-up → Pipeline + WhatsApp (case study #0)",
+  "nodes": [
+    {
+      "id": "9537680c-280b-4e8f-933f-effd35fce7cd",
+      "name": "Tally webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "askhemant/kit-signup",
+        "responseMode": "onReceived",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "webhookId": "fd8d52de-8dd4-4b7d-9d47-0328ed4d1e2e",
+      "notes": "Tally form (askhemant.ai/kit calculator) → Integrations → Webhooks → this Production URL. Add a signing secret in Tally and the same value as TALLY_SIGNING_SECRET in n8n."
+    },
+    {
+      "id": "3479398a-476c-4b82-b0cc-48a37215d0cd",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9596b9de-a67d-4720-a163-621903eae81d",
+              "name": "pipeline_sheet_id",
+              "value": "{{GOOGLE_SHEET_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "33fcf138-3fde-4a6f-a305-d973fc4b62ae",
+              "name": "pipeline_tab",
+              "value": "Pipeline",
+              "type": "string"
+            },
+            {
+              "id": "74872087-3c15-4f30-bf30-532016d52eb8",
+              "name": "wa_api_base",
+              "value": "https://graph.facebook.com",
+              "type": "string"
+            },
+            {
+              "id": "cc01c078-25ee-4ac6-a579-daaa18319c06",
+              "name": "wa_graph_version",
+              "value": "v21.0",
+              "type": "string"
+            },
+            {
+              "id": "871ca1b9-eb8a-4906-bf2e-8f24fe74c97a",
+              "name": "wa_phone_number_id",
+              "value": "{{WA_PHONE_NUMBER_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "cbfa160f-1253-42dd-b5f6-1ffa06851e49",
+              "name": "alert_whatsapp_number",
+              "value": "{{ALERT_WHATSAPP_NUMBER}}",
+              "type": "string"
+            },
+            {
+              "id": "2176270e-6bdc-43a9-a625-861c0744485f",
+              "name": "calculator_url",
+              "value": "{{CALCULATOR_COPY_URL}}",
+              "type": "string"
+            },
+            {
+              "id": "84cc74c1-df8c-4aac-9ec4-74c089497430",
+              "name": "welcome_template",
+              "value": "ah_kit_welcome",
+              "type": "string"
+            },
+            {
+              "id": "8cf1846a-14b7-4154-b23d-6baa03268287",
+              "name": "welcome_template_lang",
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "id": "6ed94bd0-492a-4d05-8b17-c70c78cfa66f",
+              "name": "alert_template",
+              "value": "ah_internal_new_lead",
+              "type": "string"
+            },
+            {
+              "id": "12f36828-69a5-4bf7-b692-ab269dab0cca",
+              "name": "alert_template_lang",
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "id": "bf16a7a9-ce94-4c47-a321-f48702366a22",
+              "name": "default_country_code",
+              "value": "91",
+              "type": "string"
+            },
+            {
+              "id": "4dc598b8-7cb6-48e0-a240-c0851fe8f8ee",
+              "name": "require_signature",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "notes": "Edit the values here (or replace the {{TOKENS}} in the JSON before import). Non-secret settings only.",
+      "notesInFlow": true
+    },
+    {
+      "id": "4219ee43-693f-44f5-8b8c-2a68bac20b30",
+      "name": "Verify + normalise",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction istDate(d) {\n  return istIso(d).slice(0, 10);\n}\n\nfunction toE164(raw, defaultCc) {\n  // Best-effort E.164 for India (+91) and UAE (+971) numbers. Returns '' if unsure.\n  if (raw === undefined || raw === null) return '';\n  let s = String(raw).trim().replace(/[\\s\\-().\\/]/g, '');\n  if (!s) return '';\n  if (s.startsWith('00')) s = '+' + s.slice(2);\n  const digits = s.replace(/\\D/g, '');\n  if (s.startsWith('+')) return /^[1-9]\\d{7,14}$/.test(digits) ? '+' + digits : '';\n  const cc = String(defaultCc || '91').replace(/\\D/g, '');\n  if (digits.length === 10 && /^[6-9]/.test(digits) && cc === '91') return '+91' + digits;\n  if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits[1])) return '+91' + digits.slice(1);\n  if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits[2])) return '+' + digits;\n  if (digits.length === 10 && digits.startsWith('05')) return '+971' + digits.slice(1);\n  if (digits.length === 9 && digits.startsWith('5') && cc === '971') return '+971' + digits;\n  if (digits.length === 12 && digits.startsWith('9715')) return '+' + digits;\n  return '';\n}\n\nfunction cleanParam(v, max) {\n  // WhatsApp template parameters: no new lines or tabs, no 4+ spaces in a row, never empty.\n  let s = v === undefined || v === null ? '' : String(v);\n  s = s.replace(/[\\r\\n\\t]+/g, ' ').replace(/ {4,}/g, '   ').trim();\n  if (max && s.length > max) s = s.slice(0, max - 1).trimEnd() + '…';\n  return s || '-';\n}\n\nfunction readEnv(name) {\n  // $env is blocked by default on n8n 2.x (N8N_BLOCK_ENV_ACCESS_IN_NODE). Never throws.\n  try {\n    const v = $env[name];\n    return v === undefined || v === null ? '' : String(v);\n  } catch (e) {\n    return '';\n  }\n}\n\nfunction missingConfig(cfg, keys) {\n  return keys.filter((k) => cfg[k] === undefined || cfg[k] === null || String(cfg[k]).trim() === '' || String(cfg[k]).includes('{{'));\n}\n\nfunction waTemplate(toE164Number, name, lang, params) {\n  return {\n    messaging_product: 'whatsapp',\n    recipient_type: 'individual',\n    to: String(toE164Number).replace(/\\D/g, ''),\n    type: 'template',\n    template: {\n      name,\n      language: { code: lang || 'en' },\n      components: params.length ? [{ type: 'body', parameters: params.map((p) => ({ type: 'text', text: cleanParam(p, 900) })) }] : [],\n    },\n  };\n}\n\nfunction newId(prefix) {\n  const d = istDate(new Date()).replace(/-/g, '').slice(2);\n  return `${prefix}-${d}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;\n}\n\nfunction laneOf(businessType) {\n  const s = String(businessType || '').toLowerCase();\n  if (/real\\s*estate|realty|broker|property|channel\\s*partner|developer/.test(s)) return 'RE';\n  if (/clinic|dental|dentist|derm|aesthetic|physio|doctor|hospital|skin/.test(s)) return 'CL';\n  return 'GEN';\n}\n\nfunction leadsMin(text) {\n  const s = String(text || '').toLowerCase();\n  if (!s) return null;\n  if (/under|less than|below|<\\s*\\d/.test(s)) return 0;\n  const m = s.replace(/,/g, '').match(/\\d+/);\n  return m ? Number(m[0]) : null;\n}\n\nfunction fitTemperature(lane, min) {\n  // ICP fit from form answers (strategy §2: roughly 40-500 enquiries a month; under ~20 is too few).\n  if (min === null || min === undefined) return 'unknown';\n  if ((lane === 'RE' || lane === 'CL') && min >= 40) return 'hot';\n  if ((lane === 'RE' || lane === 'CL') && min >= 20) return 'warm';\n  if (lane === 'GEN' && min >= 40) return 'warm';\n  return 'cold';\n}\n\nasync function rawBodyOf(ctx, item, itemIndex) {\n  // The exact bytes the sender signed. Needs the Webhook node option \"Raw Body\".\n  try {\n    if (item.binary && item.binary.data) {\n      const buf = await ctx.helpers.getBinaryDataBuffer(itemIndex, 'data');\n      if (buf && buf.length) return { raw: buf.toString('utf8'), how: 'raw' };\n    }\n  } catch (e) { /* fall through */ }\n  try {\n    const b = item.binary && item.binary.data;\n    if (b && typeof b.data === 'string' && b.data.length > 0 && !b.id) return { raw: Buffer.from(b.data, 'base64').toString('utf8'), how: 'raw' };\n  } catch (e) { /* fall through */ }\n  return { raw: JSON.stringify((item.json && item.json.body) || {}), how: 'reserialised' };\n}\n\nasync function checkSignature(ctx, item, opts) {\n  // opts: { required, secretEnv, header, prefix, encoding }\n  if (!opts.required) return { ok: true, status: 'not checked (Config require_signature = false)' };\n  const secret = readEnv(opts.secretEnv);\n  if (!secret) return { ok: false, status: `no secret: set ${opts.secretEnv} in the n8n environment (and N8N_BLOCK_ENV_ACCESS_IN_NODE=false on n8n 2.x), or set require_signature = false in Config while testing` };\n  let crypto;\n  try { crypto = require('crypto'); } catch (e) {\n    return { ok: false, status: 'the crypto module is blocked: set NODE_FUNCTION_ALLOW_BUILTIN=crypto in the n8n environment' };\n  }\n  const headers = (item.json && item.json.headers) || {};\n  let received = String(headers[opts.header] || headers[opts.header.toLowerCase()] || '').trim();\n  if (!received) return { ok: false, status: `missing ${opts.header} header` };\n  if (opts.prefix && received.startsWith(opts.prefix)) received = received.slice(opts.prefix.length);\n  const { raw, how } = await rawBodyOf(ctx, item, 0);\n  const expected = crypto.createHmac('sha256', secret).update(raw, 'utf8').digest(opts.encoding);\n  const a = Buffer.from(expected);\n  const b = Buffer.from(received);\n  const ok = a.length === b.length && crypto.timingSafeEqual(a, b);\n  return { ok, status: ok ? `valid (${how} body)` : `mismatch (${how} body${how === 'reserialised' ? ': turn on Raw Body in the Webhook node' : ''})` };\n}\n\nconst item = $input.first();\nconst cfg = item.json;\nconst missing = missingConfig(cfg, ['pipeline_sheet_id', 'wa_phone_number_id', 'alert_whatsapp_number', 'calculator_url']);\nif (missing.length) throw new Error('Fill these in the Config node first: ' + missing.join(', '));\n\nconst sig = await checkSignature(this, item, {\n  required: cfg.require_signature !== false, secretEnv: 'TALLY_SIGNING_SECRET',\n  header: 'tally-signature', prefix: '', encoding: 'base64',\n});\nif (!sig.ok) throw new Error('Tally signature check failed: ' + sig.status);\n\nconst now = new Date();\nconst body = cfg.body || {};\nconst data = body.data || {};\nconst fields = Array.isArray(data.fields) ? data.fields : [];\n\nfunction text(f) {\n  if (!f) return '';\n  const v = f.value;\n  const opts = Array.isArray(f.options) ? f.options : [];\n  const label = (id) => {\n    const o = opts.find((x) => x.id === id);\n    return o ? String(o.text ?? o.name ?? id) : String(id);\n  };\n  if (Array.isArray(v)) return v.map((x) => (typeof x === 'string' ? label(x) : (x && (x.text || x.name)) || '')).filter(Boolean).join(', ');\n  if (typeof v === 'boolean') return v ? 'yes' : '';\n  if (v && typeof v === 'object') return String(v.text || v.name || '');\n  if (typeof v === 'string' && opts.length) return label(v);\n  return v === undefined || v === null ? '' : String(v).trim();\n}\nconst find = (re, types) => fields.find((f) => re.test(String(f.label || '')) && (!types || types.includes(f.type)));\nconst hidden = (name) => {\n  const f = fields.find((x) => x.type === 'HIDDEN_FIELDS' && String(x.label || '').toLowerCase() === name);\n  return f ? text(f) : '';\n};\nconst CHOICE = ['DROPDOWN', 'MULTIPLE_CHOICE', 'MULTI_SELECT', 'INPUT_TEXT', 'INPUT_NUMBER', 'RANKING'];\n\nconst firstName = text(find(/first\\s*name|^name$|your name/i, ['INPUT_TEXT'])).split(/\\s+/)[0] || '';\nconst phoneField = fields.find((f) => f.type === 'INPUT_PHONE_NUMBER') || find(/whats\\s*app|phone|mobile/i, ['INPUT_TEXT', 'INPUT_NUMBER']);\nconst whatsapp = toE164(text(phoneField), cfg.default_country_code);\nconst businessType = text(find(/business|industry|what do you (sell|do)/i, CHOICE));\nconst leadsPerMonth = text(find(/lead|enquir/i, CHOICE));\nconst consentField = find(/consent|tips|follow.?up|agree|opt.?in|updates/i, ['CHECKBOXES', 'CHECKBOX', 'MULTIPLE_CHOICE']);\nconst consentText = text(consentField).toLowerCase();\nconst consent = !!consentText && !/^(no|false|0)$/.test(consentText);\n\nconst utm = { source: hidden('utm_source'), medium: hidden('utm_medium'), campaign: hidden('utm_campaign'), content: hidden('utm_content') };\nlet keyword = hidden('keyword').toUpperCase();\nif (!keyword) {\n  if (/leak/i.test(utm.campaign)) keyword = 'LEAKS';\n  else if (/price/i.test(utm.campaign)) keyword = 'PRICE';\n  else if (/clinic/i.test(utm.campaign)) keyword = 'CLINIC';\n}\nconst lane = laneOf(businessType);\nconst min = leadsMin(leadsPerMonth);\n\nlet skip = '';\nif (!consent) skip = 'not sent: no WhatsApp consent';\nelse if (!whatsapp) skip = 'not sent: WhatsApp number unreadable';\n\nconst lead = {\n  lead_id: newId('AH'),\n  date: istDate(now),\n  source: [utm.source, utm.medium, utm.campaign].filter(Boolean).join(' / ') || 'direct',\n  keyword,\n  lane,\n  business_type: businessType,\n  first_name: firstName,\n  whatsapp,\n  whatsapp_raw: text(phoneField),\n  leads_per_month: leadsPerMonth,\n  marketing_consent: consent ? 'yes' : 'no',\n  consent_at: consent ? istIso(now) : '',\n  form: 'kit_calculator',\n  lead_received_at: istIso(now),\n  lead_received_ms: now.getTime(),\n  temperature: fitTemperature(lane, min),\n  tally_submission_id: String(data.submissionId || data.responseId || ''),\n  signature_check: sig.status,\n  send_welcome: !skip,\n  welcome_skip_reason: skip,\n  wa_welcome_payload: skip ? null : waTemplate(whatsapp, cfg.welcome_template, cfg.welcome_template_lang, [firstName || 'there', cfg.calculator_url]),\n};\nreturn [{ json: lead }];\n"
+      },
+      "notes": "Checks the Tally-Signature header, then turns the Tally payload into one clean lead (first name, E.164 WhatsApp, business type, leads a month, consent, UTMs)."
+    },
+    {
+      "id": "d8c2fc0f-5b37-49ce-8ee2-b0b0c3a585b0",
+      "name": "Send welcome?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2ccd2cd1-13a3-459a-a2b5-3c20b422c9ba",
+              "leftValue": "={{ $json.send_welcome === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "notes": "Only people who ticked the separate, unticked consent box get a WhatsApp welcome (DPDP)."
+    },
+    {
+      "id": "998570f2-6196-44ec-a4ca-788fa219afb6",
+      "name": "WhatsApp: welcome template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').first().json.wa_api_base + '/' + $('Config').first().json.wa_graph_version + '/' + $('Config').first().json.wa_phone_number_id + '/messages' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.wa_welcome_payload) }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ahWhatsAppOwn001",
+          "name": "WhatsApp Cloud API – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "c2b39067-8914-4fc1-a551-51625c93b855",
+      "name": "Stamp welcome",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        200
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function waResult(r) {\n  // Reads an HTTP Request node result (fullResponse + neverError) from the Cloud API.\n  if (!r) return { ok: false, status: 'not sent', id: '' };\n  if (r.error) return { ok: false, status: 'failed: ' + String(r.error.message || r.error).slice(0, 180), id: '' };\n  const code = Number(r.statusCode || 0);\n  const b = r.body || {};\n  const id = b.messages && b.messages[0] && b.messages[0].id ? b.messages[0].id : '';\n  if (code >= 200 && code < 300 && id) return { ok: true, status: 'accepted', id };\n  const e = b.error || {};\n  return { ok: false, status: `failed ${code || '?'}${e.code ? ' / ' + e.code : ''}: ${String(e.message || 'no message id').slice(0, 160)}`, id: '' };\n}\n\nconst sentMs = Date.now();\nconst lead = $('Verify + normalise').first().json;\nconst res = waResult($input.first().json);\nreturn [{ json: Object.assign({}, lead, { welcome_ok: res.ok, welcome_status: res.status, welcome_message_id: res.id, welcome_sent_ms: sentMs }) }];\n"
+      },
+      "notes": "Takes the timestamp right after the API call, so seconds_to_reply is honest."
+    },
+    {
+      "id": "6536ed53-2489-4d96-b916-589604d9a773",
+      "name": "Find lead by WhatsApp",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1320,
+        300
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.pipeline_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Pipeline"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "whatsapp",
+              "lookupValue": "={{ $json.whatsapp || '__none__' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "id": "e28f50a8-a511-4e79-bd08-1b3061f09c7d",
+      "name": "Build pipeline row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nconst lead = $('Verify + normalise').first().json;\nconst now = new Date();\nlet w = null;\nif (lead.send_welcome) {\n  try { w = $('Stamp welcome').first().json; } catch (e) { w = null; }\n}\nconst welcomeStatus = lead.send_welcome ? (w ? w.welcome_status : 'failed: no API result') : lead.welcome_skip_reason;\nconst sentAt = w && w.welcome_ok ? istIso(new Date(w.welcome_sent_ms)) : '';\nconst secs = w && w.welcome_ok ? Math.round((w.welcome_sent_ms - lead.lead_received_ms) / 100) / 10 : '';\n\nconst found = $input.all().map((i) => i.json)\n  .find((r) => r && r.lead_id && lead.whatsapp && String(r.whatsapp || '').trim() === lead.whatsapp);\nconst note = `Kit sign-up ${lead.date}. Welcome: ${welcomeStatus}.` + (lead.whatsapp ? '' : ` WhatsApp number unreadable (\"${lead.whatsapp_raw}\").`);\n\nlet row;\nif (found) {\n  row = {\n    lead_id: found.lead_id,\n    business_type: lead.business_type || found.business_type,\n    lane: lead.lane,\n    leads_per_month: lead.leads_per_month || found.leads_per_month,\n    marketing_consent: lead.marketing_consent,\n    consent_at: lead.consent_at,\n    temperature: lead.temperature,\n    updated_at: istIso(now),\n    notes: (found.notes ? found.notes + ' | ' : '') + 'Re-submitted: ' + note,\n  };\n  if (!found.first_name && lead.first_name) row.first_name = lead.first_name;\n  if (!found.first_reply_sent_at && sentAt) { row.first_reply_sent_at = sentAt; row.seconds_to_reply = secs; }\n} else {\n  row = {};\n  for (const col of [\"date\",\"source\",\"keyword\",\"lane\",\"business_type\",\"stage\",\"value\",\"lead_id\",\"first_name\",\"whatsapp\",\"email\",\"leads_per_month\",\"marketing_consent\",\"consent_at\",\"form\",\"lead_received_at\",\"first_reply_sent_at\",\"seconds_to_reply\",\"temperature\",\"booking_event\",\"booking_uid\",\"booking_start\",\"booked_at\",\"booking_status\",\"reminder_sent_at\",\"updated_at\",\"notes\"]) row[col] = '';\n  Object.assign(row, {\n    date: lead.date, source: lead.source, keyword: lead.keyword, lane: lead.lane,\n    business_type: lead.business_type, stage: 'New', lead_id: lead.lead_id,\n    first_name: lead.first_name, whatsapp: lead.whatsapp, leads_per_month: lead.leads_per_month,\n    marketing_consent: lead.marketing_consent, consent_at: lead.consent_at, form: lead.form,\n    lead_received_at: lead.lead_received_at, first_reply_sent_at: sentAt, seconds_to_reply: secs,\n    temperature: lead.temperature, updated_at: istIso(now), notes: note,\n  });\n}\nreturn [{ json: row }];\n"
+      },
+      "notes": "New lead: full row with stage New. Returning lead: updates only the kit fields, never the stage or first-contact times."
+    },
+    {
+      "id": "f9e811dc-7da6-4934-bf54-871f02da7817",
+      "name": "Upsert Pipeline row",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1760,
+        300
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.pipeline_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Pipeline"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW",
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "ee7a6574-58de-44b4-8623-dadd9eb228dd",
+      "name": "Build alert",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function cleanParam(v, max) {\n  // WhatsApp template parameters: no new lines or tabs, no 4+ spaces in a row, never empty.\n  let s = v === undefined || v === null ? '' : String(v);\n  s = s.replace(/[\\r\\n\\t]+/g, ' ').replace(/ {4,}/g, '   ').trim();\n  if (max && s.length > max) s = s.slice(0, max - 1).trimEnd() + '…';\n  return s || '-';\n}\n\nfunction waTemplate(toE164Number, name, lang, params) {\n  return {\n    messaging_product: 'whatsapp',\n    recipient_type: 'individual',\n    to: String(toE164Number).replace(/\\D/g, ''),\n    type: 'template',\n    template: {\n      name,\n      language: { code: lang || 'en' },\n      components: params.length ? [{ type: 'body', parameters: params.map((p) => ({ type: 'text', text: cleanParam(p, 900) })) }] : [],\n    },\n  };\n}\n\nconst cfg = $('Config').first().json;\nconst lead = $('Verify + normalise').first().json;\nconst row = $('Build pipeline row').first().json;\nlet w = null;\ntry { w = $('Stamp welcome').first().json; } catch (e) { w = null; }\nconst isNew = row.stage === 'New';\nconst welcome = lead.send_welcome ? (w ? w.welcome_status : 'failed') : lead.welcome_skip_reason;\nconst sheetResult = $input.first().json;\nconst sheetOk = !(sheetResult && sheetResult.error);\nconst payload = waTemplate(cfg.alert_whatsapp_number, cfg.alert_template, cfg.alert_template_lang, [\n  isNew ? 'new' : 'returning',\n  lead.first_name || 'no name',\n  lead.business_type || 'not given',\n  lead.leads_per_month || 'not given',\n  lead.lane,\n  lead.marketing_consent,\n  lead.source,\n  welcome + (sheetOk ? '' : ' (Sheet write FAILED: check n8n)'),\n]);\nreturn [{ json: { alert_payload: payload } }];\n"
+      }
+    },
+    {
+      "id": "9cf388a0-6d8c-4794-9152-cbf2ac500bb0",
+      "name": "WhatsApp: alert Hemant",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').first().json.wa_api_base + '/' + $('Config').first().json.wa_graph_version + '/' + $('Config').first().json.wa_phone_number_id + '/messages' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.alert_payload) }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ahWhatsAppOwn001",
+          "name": "WhatsApp Cloud API – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Utility template to Hemant's personal WhatsApp (must be a different number from the business number)."
+    }
+  ],
+  "connections": {
+    "Tally webhook": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Verify + normalise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify + normalise": {
+      "main": [
+        [
+          {
+            "node": "Send welcome?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send welcome?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: welcome template",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Find lead by WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: welcome template": {
+      "main": [
+        [
+          {
+            "node": "Stamp welcome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stamp welcome": {
+      "main": [
+        [
+          {
+            "node": "Find lead by WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find lead by WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Build pipeline row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build pipeline row": {
+      "main": [
+        [
+          {
+            "node": "Upsert Pipeline row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Pipeline row": {
+      "main": [
+        [
+          {
+            "node": "Build alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build alert": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: alert Hemant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

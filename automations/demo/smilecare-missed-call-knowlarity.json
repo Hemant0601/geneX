@@ -1,0 +1,8 @@
+{
+  "_demo": "DEMO – fictional business. Field names follow Knowlarity's call-log push as commonly documented; check them in your Knowlarity account before going live.",
+  "uuid": "DEMO-KNOW-__MSG_ID__",
+  "caller_id": "__TEST_NUMBER__",
+  "dispnumber": "+910000000000",
+  "business_call_type": "Missed",
+  "start_time": "__NOW__"
+}

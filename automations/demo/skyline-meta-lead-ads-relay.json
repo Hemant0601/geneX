@@ -1,0 +1,15 @@
+{
+  "_demo": "DEMO – fictional business. Shape of a Meta lead after it is fetched from the Graph API (GET /{leadgen_id}). The lead is invented.",
+  "id": "DEMO-LEAD-0001",
+  "created_time": "__NOW__",
+  "ad_name": "Skyline Heights (DEMO) – 2 & 3 BHK",
+  "form_id": "DEMO-FORM-01",
+  "field_data": [
+    { "name": "full_name", "values": ["Arjun Demo"] },
+    { "name": "phone_number", "values": ["__TEST_NUMBER__"] },
+    { "name": "email", "values": ["arjun.demo@example.com"] },
+    { "name": "project", "values": ["Skyline Heights (DEMO)"] },
+    { "name": "whatsapp_opt_in", "values": ["yes"] },
+    { "name": "language", "values": ["hinglish"] }
+  ]
+}

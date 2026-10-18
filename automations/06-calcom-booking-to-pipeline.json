@@ -1,0 +1,746 @@
+{
+  "name": "AskHemant 06 · Cal.com booking → Pipeline + WhatsApp confirmation and 2-hour reminder",
+  "nodes": [
+    {
+      "id": "09eca1ef-984f-40b8-a2ca-8262b7417e9a",
+      "name": "Cal.com webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "askhemant/calcom",
+        "responseMode": "onReceived",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "webhookId": "2635e4a1-949e-4230-aa8e-ea1ba2d30f4f",
+      "notes": "Cal.com → Settings → Developer → Webhooks: this Production URL; triggers Booking created, Booking rescheduled, Booking cancelled; Secret = CALCOM_WEBHOOK_SECRET."
+    },
+    {
+      "id": "5ab94d72-decb-4d1b-9e50-a86ff410d97c",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6d64ea80-9e31-49ec-b32a-e42483d879f0",
+              "name": "pipeline_sheet_id",
+              "value": "{{GOOGLE_SHEET_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "08200e4d-d2a2-4942-ae8f-e9af397e21c6",
+              "name": "pipeline_tab",
+              "value": "Pipeline",
+              "type": "string"
+            },
+            {
+              "id": "4603edbd-e438-40a5-ac6e-c80cf954c45d",
+              "name": "wa_api_base",
+              "value": "https://graph.facebook.com",
+              "type": "string"
+            },
+            {
+              "id": "f014c429-9585-447e-a4cf-1798156a036f",
+              "name": "wa_graph_version",
+              "value": "v21.0",
+              "type": "string"
+            },
+            {
+              "id": "cd91e51a-265a-42f4-9c1f-be6a4f0ed3aa",
+              "name": "wa_phone_number_id",
+              "value": "{{WA_PHONE_NUMBER_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "26f37e03-15b5-4d34-baa0-20b92f675517",
+              "name": "confirmation_template",
+              "value": "ah_call_confirmation",
+              "type": "string"
+            },
+            {
+              "id": "052a41d5-1151-4b84-b636-a11e874a32d7",
+              "name": "reminder_template",
+              "value": "ah_call_reminder_2h",
+              "type": "string"
+            },
+            {
+              "id": "ac53d77b-db50-439f-92f8-1a09453e6678",
+              "name": "template_lang",
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "id": "63172ed0-dd98-4f0d-9044-dc033ce38442",
+              "name": "reminder_minutes_before",
+              "value": 120,
+              "type": "number"
+            },
+            {
+              "id": "56ace761-dffe-4ee0-9065-cc12a187ff7b",
+              "name": "event_labels",
+              "value": "{\"fit-call\":\"free 20-min Fit Call\",\"ask-hemant-session\":\"45-min Ask Hemant Session\",\"audit-workshop\":\"Lead Leak Audit workshop\",\"kickoff\":\"kickoff call\"}",
+              "type": "string"
+            },
+            {
+              "id": "18bb32e0-54fa-4787-93ca-f379da3c3458",
+              "name": "stage_moving_events",
+              "value": "fit-call",
+              "type": "string"
+            },
+            {
+              "id": "217f1f32-e473-47dc-933a-91dead6f618d",
+              "name": "default_country_code",
+              "value": "91",
+              "type": "string"
+            },
+            {
+              "id": "cac27a76-419c-4393-8488-2e5d63e68ab1",
+              "name": "require_signature",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "notes": "event_labels: Cal.com event slug → words used in the WhatsApp messages. stage_moving_events: slugs that move a lead to \"Call booked\".",
+      "notesInFlow": true
+    },
+    {
+      "id": "0699f753-4b08-4fdc-b091-f97068d83e3b",
+      "name": "Verify + normalise booking",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction toE164(raw, defaultCc) {\n  // Best-effort E.164 for India (+91) and UAE (+971) numbers. Returns '' if unsure.\n  if (raw === undefined || raw === null) return '';\n  let s = String(raw).trim().replace(/[\\s\\-().\\/]/g, '');\n  if (!s) return '';\n  if (s.startsWith('00')) s = '+' + s.slice(2);\n  const digits = s.replace(/\\D/g, '');\n  if (s.startsWith('+')) return /^[1-9]\\d{7,14}$/.test(digits) ? '+' + digits : '';\n  const cc = String(defaultCc || '91').replace(/\\D/g, '');\n  if (digits.length === 10 && /^[6-9]/.test(digits) && cc === '91') return '+91' + digits;\n  if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits[1])) return '+91' + digits.slice(1);\n  if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits[2])) return '+' + digits;\n  if (digits.length === 10 && digits.startsWith('05')) return '+971' + digits.slice(1);\n  if (digits.length === 9 && digits.startsWith('5') && cc === '971') return '+971' + digits;\n  if (digits.length === 12 && digits.startsWith('9715')) return '+' + digits;\n  return '';\n}\n\nfunction readEnv(name) {\n  // $env is blocked by default on n8n 2.x (N8N_BLOCK_ENV_ACCESS_IN_NODE). Never throws.\n  try {\n    const v = $env[name];\n    return v === undefined || v === null ? '' : String(v);\n  } catch (e) {\n    return '';\n  }\n}\n\nfunction missingConfig(cfg, keys) {\n  return keys.filter((k) => cfg[k] === undefined || cfg[k] === null || String(cfg[k]).trim() === '' || String(cfg[k]).includes('{{'));\n}\n\nasync function rawBodyOf(ctx, item, itemIndex) {\n  // The exact bytes the sender signed. Needs the Webhook node option \"Raw Body\".\n  try {\n    if (item.binary && item.binary.data) {\n      const buf = await ctx.helpers.getBinaryDataBuffer(itemIndex, 'data');\n      if (buf && buf.length) return { raw: buf.toString('utf8'), how: 'raw' };\n    }\n  } catch (e) { /* fall through */ }\n  try {\n    const b = item.binary && item.binary.data;\n    if (b && typeof b.data === 'string' && b.data.length > 0 && !b.id) return { raw: Buffer.from(b.data, 'base64').toString('utf8'), how: 'raw' };\n  } catch (e) { /* fall through */ }\n  return { raw: JSON.stringify((item.json && item.json.body) || {}), how: 'reserialised' };\n}\n\nasync function checkSignature(ctx, item, opts) {\n  // opts: { required, secretEnv, header, prefix, encoding }\n  if (!opts.required) return { ok: true, status: 'not checked (Config require_signature = false)' };\n  const secret = readEnv(opts.secretEnv);\n  if (!secret) return { ok: false, status: `no secret: set ${opts.secretEnv} in the n8n environment (and N8N_BLOCK_ENV_ACCESS_IN_NODE=false on n8n 2.x), or set require_signature = false in Config while testing` };\n  let crypto;\n  try { crypto = require('crypto'); } catch (e) {\n    return { ok: false, status: 'the crypto module is blocked: set NODE_FUNCTION_ALLOW_BUILTIN=crypto in the n8n environment' };\n  }\n  const headers = (item.json && item.json.headers) || {};\n  let received = String(headers[opts.header] || headers[opts.header.toLowerCase()] || '').trim();\n  if (!received) return { ok: false, status: `missing ${opts.header} header` };\n  if (opts.prefix && received.startsWith(opts.prefix)) received = received.slice(opts.prefix.length);\n  const { raw, how } = await rawBodyOf(ctx, item, 0);\n  const expected = crypto.createHmac('sha256', secret).update(raw, 'utf8').digest(opts.encoding);\n  const a = Buffer.from(expected);\n  const b = Buffer.from(received);\n  const ok = a.length === b.length && crypto.timingSafeEqual(a, b);\n  return { ok, status: ok ? `valid (${how} body)` : `mismatch (${how} body${how === 'reserialised' ? ': turn on Raw Body in the Webhook node' : ''})` };\n}\n\nfunction fmtWhen(iso, tz) {\n  const zone = tz || 'Asia/Kolkata';\n  const d = new Date(iso);\n  let s;\n  try {\n    s = new Intl.DateTimeFormat('en-IN', { timeZone: zone, weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', hour12: true }).format(d);\n  } catch (e) {\n    s = istIso(d).replace('T', ' ').slice(0, 16);\n    return s + ' IST';\n  }\n  const label = zone === 'Asia/Kolkata' || zone === 'Asia/Calcutta' ? 'IST' : zone === 'Asia/Dubai' ? 'UAE time' : zone.split('/').pop().replace(/_/g, ' ') + ' time';\n  return `${s.replace(/\\s+/g, ' ')} ${label}`;\n}\n\nconst item = $input.first();\nconst cfg = item.json;\nconst missing = missingConfig(cfg, ['pipeline_sheet_id', 'wa_phone_number_id']);\nif (missing.length) throw new Error('Fill these in the Config node first: ' + missing.join(', '));\nconst sig = await checkSignature(this, item, {\n  required: cfg.require_signature !== false, secretEnv: 'CALCOM_WEBHOOK_SECRET',\n  header: 'x-cal-signature-256', prefix: '', encoding: 'hex',\n});\nif (!sig.ok) throw new Error('Cal.com signature check failed: ' + sig.status);\n\nconst body = cfg.body || {};\nconst ev = { BOOKING_CREATED: 'created', BOOKING_RESCHEDULED: 'rescheduled', BOOKING_CANCELLED: 'cancelled' }[String(body.triggerEvent || '').toUpperCase()];\nif (!ev) return []; // PING, meeting events and anything else\nconst p = body.payload || {};\nconst att = (p.attendees || [])[0] || {};\nconst responses = Object.assign({}, p.userFieldsResponses || {}, p.responses || {});\nconst val = (v) => {\n  if (v === undefined || v === null) return '';\n  if (typeof v !== 'object') return String(v).trim();\n  if (Array.isArray(v)) return v.map(val).filter(Boolean).join(', ');\n  if ('value' in v) return val(v.value);\n  if (v.firstName || v.lastName) return [v.firstName, v.lastName].filter(Boolean).join(' ');\n  if (v.optionValue) return String(v.optionValue);\n  return '';\n};\nconst ans = (re, exclude) => {\n  for (const [k, v] of Object.entries(responses)) {\n    const label = v && typeof v === 'object' && !Array.isArray(v) && v.label ? String(v.label) : '';\n    if ((re.test(k) || re.test(label)) && !(exclude && (exclude.test(k) || exclude.test(label)))) {\n      const s = val(v);\n      if (s) return s;\n    }\n  }\n  return '';\n};\nconst slug = String(p.type || (p.eventType && p.eventType.slug) || '').toLowerCase();\nlet labels = {};\ntry { labels = JSON.parse(cfg.event_labels || '{}'); } catch (e) { labels = {}; }\nconst meta = p.metadata || {};\nconst utm = ['utm_source', 'utm_medium', 'utm_campaign'].map((k) => meta[k] || ans(new RegExp('^' + k + '$', 'i'))).filter(Boolean);\nconst name = att.name || ans(/^name$|your.?name/i);\nconst intake = {\n  business_type: ans(/business/i),\n  city: ans(/city|market/i),\n  lead_sources: ans(/source|come from/i, /utm/i),\n  leads_per_month: ans(/leads?.*(month|mo\\b)|how many/i),\n  reply_speed: ans(/reply|respond|speed/i),\n  fix_first: ans(/fix|automate/i),\n  budget: ans(/budget/i),\n};\nconst start = p.startTime ? new Date(p.startTime) : null;\nreturn [{\n  json: {\n    event: ev,\n    slug,\n    event_label: labels[slug] || p.eventTitle || 'call',\n    moves_stage: String(cfg.stage_moving_events || '').split(/[,\\s]+/).includes(slug),\n    uid: String(p.uid || ''),\n    reschedule_uid: String(p.rescheduleUid || p.fromReschedule || ''),\n    start_iso: start && !isNaN(start) ? start.toISOString() : '',\n    start_ist: start && !isNaN(start) ? istIso(start) : '',\n    when_label: start && !isNaN(start) ? fmtWhen(start.toISOString(), att.timeZone || 'Asia/Kolkata') : '',\n    attendee_tz: att.timeZone || 'Asia/Kolkata',\n    name,\n    first_name: String(name || '').split(/\\s+/)[0] || '',\n    email: String(att.email || ans(/e-?mail/i) || '').toLowerCase(),\n    whatsapp: toE164(ans(/whats\\s*app|phone|mobile/i) || att.phoneNumber || p.smsReminderNumber || '', cfg.default_country_code),\n    source: utm.length ? utm.join(' / ') : 'cal.com',\n    intake,\n    cancellation_reason: String(p.cancellationReason || ''),\n    signature_check: sig.status,\n  },\n}];\n"
+      },
+      "notes": "Checks X-Cal-Signature-256, then reads the booking, the attendee and the intake answers (matched by question label, so renaming identifiers is safe)."
+    },
+    {
+      "id": "973f0c00-6b7f-44fa-9c10-50d2e56285a0",
+      "name": "Read Pipeline",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.pipeline_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Pipeline"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "id": "70288edc-4a4f-41b5-9b94-8e8e60682720",
+      "name": "Match lead + build row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction istDate(d) {\n  return istIso(d).slice(0, 10);\n}\n\nfunction toE164(raw, defaultCc) {\n  // Best-effort E.164 for India (+91) and UAE (+971) numbers. Returns '' if unsure.\n  if (raw === undefined || raw === null) return '';\n  let s = String(raw).trim().replace(/[\\s\\-().\\/]/g, '');\n  if (!s) return '';\n  if (s.startsWith('00')) s = '+' + s.slice(2);\n  const digits = s.replace(/\\D/g, '');\n  if (s.startsWith('+')) return /^[1-9]\\d{7,14}$/.test(digits) ? '+' + digits : '';\n  const cc = String(defaultCc || '91').replace(/\\D/g, '');\n  if (digits.length === 10 && /^[6-9]/.test(digits) && cc === '91') return '+91' + digits;\n  if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits[1])) return '+91' + digits.slice(1);\n  if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits[2])) return '+' + digits;\n  if (digits.length === 10 && digits.startsWith('05')) return '+971' + digits.slice(1);\n  if (digits.length === 9 && digits.startsWith('5') && cc === '971') return '+971' + digits;\n  if (digits.length === 12 && digits.startsWith('9715')) return '+' + digits;\n  return '';\n}\n\nfunction cleanParam(v, max) {\n  // WhatsApp template parameters: no new lines or tabs, no 4+ spaces in a row, never empty.\n  let s = v === undefined || v === null ? '' : String(v);\n  s = s.replace(/[\\r\\n\\t]+/g, ' ').replace(/ {4,}/g, '   ').trim();\n  if (max && s.length > max) s = s.slice(0, max - 1).trimEnd() + '…';\n  return s || '-';\n}\n\nfunction waTemplate(toE164Number, name, lang, params) {\n  return {\n    messaging_product: 'whatsapp',\n    recipient_type: 'individual',\n    to: String(toE164Number).replace(/\\D/g, ''),\n    type: 'template',\n    template: {\n      name,\n      language: { code: lang || 'en' },\n      components: params.length ? [{ type: 'body', parameters: params.map((p) => ({ type: 'text', text: cleanParam(p, 900) })) }] : [],\n    },\n  };\n}\n\nfunction newId(prefix) {\n  const d = istDate(new Date()).replace(/-/g, '').slice(2);\n  return `${prefix}-${d}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;\n}\n\nfunction laneOf(businessType) {\n  const s = String(businessType || '').toLowerCase();\n  if (/real\\s*estate|realty|broker|property|channel\\s*partner|developer/.test(s)) return 'RE';\n  if (/clinic|dental|dentist|derm|aesthetic|physio|doctor|hospital|skin/.test(s)) return 'CL';\n  return 'GEN';\n}\n\nfunction leadsMin(text) {\n  const s = String(text || '').toLowerCase();\n  if (!s) return null;\n  if (/under|less than|below|<\\s*\\d/.test(s)) return 0;\n  const m = s.replace(/,/g, '').match(/\\d+/);\n  return m ? Number(m[0]) : null;\n}\n\nfunction fitTemperature(lane, min) {\n  // ICP fit from form answers (strategy §2: roughly 40-500 enquiries a month; under ~20 is too few).\n  if (min === null || min === undefined) return 'unknown';\n  if ((lane === 'RE' || lane === 'CL') && min >= 40) return 'hot';\n  if ((lane === 'RE' || lane === 'CL') && min >= 20) return 'warm';\n  if (lane === 'GEN' && min >= 40) return 'warm';\n  return 'cold';\n}\n\nconst cfg = $('Config').first().json;\nconst b = $('Verify + normalise booking').first().json;\nconst now = new Date();\nconst rows = $input.all().map((i) => i.json).filter((r) => r && r.lead_id);\nconst found = rows.find((r) => b.uid && String(r.booking_uid) === b.uid)\n  || rows.find((r) => b.reschedule_uid && String(r.booking_uid) === b.reschedule_uid)\n  || rows.find((r) => b.whatsapp && toE164(r.whatsapp, cfg.default_country_code) === b.whatsapp)\n  || rows.find((r) => b.email && String(r.email || '').toLowerCase() === b.email);\n\nconst intake = b.intake;\nconst intakeText = [\n  intake.business_type && `Business: ${intake.business_type}`,\n  intake.city && `City/market: ${intake.city}`,\n  intake.lead_sources && `Sources: ${intake.lead_sources}`,\n  intake.leads_per_month && `Leads/month: ${intake.leads_per_month}`,\n  intake.reply_speed && `Reply speed: ${intake.reply_speed}`,\n  intake.fix_first && `Fix first: ${intake.fix_first}`,\n  intake.budget && `Budget: ${intake.budget}`,\n].filter(Boolean).join(' · ');\nconst lane = laneOf(intake.business_type);\nconst lowBudget = /<\\s*₹?\\s*15|under\\s*₹?\\s*15|less than\\s*₹?\\s*15/i.test(intake.budget);\nconst offNiche = /other business/i.test(intake.business_type);\nconst fewLeads = /under\\s*20/i.test(intake.leads_per_month);\n// Red route, sales/02-cal-com-intake-form.md: budget under ₹15K, under 20 leads a month, or \"Other business\".\nconst route = b.slug === 'fit-call' && (lowBudget || offNiche || fewLeads) ? ' ROUTE: budget under ₹15K, under 20 leads a month or outside the niche: send the Kit and the Ask Hemant Session link (₹1,999 / $99) instead.' : '';\nconst status = { created: 'confirmed', rescheduled: 'rescheduled', cancelled: 'cancelled' }[b.event];\nconst what = b.event === 'cancelled'\n  ? `${b.event_label} cancelled${b.cancellation_reason ? ' (' + b.cancellation_reason + ')' : ''}.`\n  : `${b.event_label} ${b.event === 'rescheduled' ? 'moved to' : 'booked for'} ${b.when_label}.`;\nconst note = `${istDate(now)}: ${what}${b.event !== 'cancelled' && intakeText ? ' ' + intakeText + '.' : ''}${route}`;\n\nlet row;\nif (found) {\n  row = { lead_id: found.lead_id, updated_at: istIso(now), notes: (found.notes ? found.notes + ' | ' : '') + note };\n  const sameBooking = !b.uid || String(found.booking_uid) === b.uid || String(found.booking_uid) === b.reschedule_uid || !found.booking_uid;\n  if (b.event === 'cancelled') {\n    if (sameBooking) row.booking_status = 'cancelled';\n  } else {\n    Object.assign(row, { booking_event: b.slug, booking_uid: b.uid, booking_start: b.start_ist, booked_at: istIso(now), booking_status: status });\n    if (b.moves_stage && ['', 'new', 'replied'].includes(String(found.stage || '').trim().toLowerCase())) row.stage = 'Call booked';\n  }\n  if (!found.whatsapp && b.whatsapp) row.whatsapp = b.whatsapp;\n  if (!found.email && b.email) row.email = b.email;\n  if (!found.first_name && b.first_name) row.first_name = b.first_name;\n  if (!found.business_type && intake.business_type) { row.business_type = intake.business_type; row.lane = lane; }\n  if (!found.leads_per_month && intake.leads_per_month) row.leads_per_month = intake.leads_per_month;\n} else {\n  row = {};\n  for (const col of [\"date\",\"source\",\"keyword\",\"lane\",\"business_type\",\"stage\",\"value\",\"lead_id\",\"first_name\",\"whatsapp\",\"email\",\"leads_per_month\",\"marketing_consent\",\"consent_at\",\"form\",\"lead_received_at\",\"first_reply_sent_at\",\"seconds_to_reply\",\"temperature\",\"booking_event\",\"booking_uid\",\"booking_start\",\"booked_at\",\"booking_status\",\"reminder_sent_at\",\"updated_at\",\"notes\"]) row[col] = '';\n  Object.assign(row, {\n    date: istDate(now), source: b.source, lane, business_type: intake.business_type,\n    stage: b.event !== 'cancelled' && b.moves_stage ? 'Call booked' : 'New',\n    lead_id: newId('AH'), first_name: b.first_name, whatsapp: b.whatsapp, email: b.email,\n    leads_per_month: intake.leads_per_month, form: 'calcom_' + (b.slug || 'booking'),\n    lead_received_at: istIso(now), temperature: fitTemperature(lane, leadsMin(intake.leads_per_month)),\n    booking_event: b.slug, booking_uid: b.uid, booking_start: b.start_ist,\n    booked_at: b.event === 'cancelled' ? '' : istIso(now), booking_status: status,\n    updated_at: istIso(now), notes: note,\n  });\n}\n\nconst minutes = Number(cfg.reminder_minutes_before) || 120;\nconst startMs = b.start_iso ? new Date(b.start_iso).getTime() : NaN;\nconst reminderMs = startMs - minutes * 60000;\nconst active = b.event === 'created' || b.event === 'rescheduled';\nconst canMessage = active && !!b.whatsapp;\nconst decision = {\n  event: b.event,\n  lead_id: row.lead_id,\n  booking_uid: b.uid,\n  booking_start: b.start_ist,\n  send_confirmation: canMessage,\n  confirmation_payload: canMessage ? waTemplate(b.whatsapp, cfg.confirmation_template, cfg.template_lang, [b.first_name || 'there', b.event_label, b.when_label]) : null,\n  schedule_reminder: canMessage && isFinite(reminderMs) && reminderMs > now.getTime() + 10 * 60000,\n  reminder_at: isFinite(reminderMs) ? new Date(reminderMs).toISOString() : '',\n  whatsapp: b.whatsapp,\n  first_name: b.first_name,\n  event_label: b.event_label,\n  when_label: b.when_label,\n  start_iso: b.start_iso,\n};\nreturn [{ json: { row, decision } }];\n"
+      },
+      "notes": "Finds the lead by booking uid, WhatsApp or email. Moves the stage forward only (New/Replied → Call booked); a cancellation is flagged in booking_status, never moved backwards."
+    },
+    {
+      "id": "ab115fdd-f2ae-4aaa-8056-f7a98a5eb91b",
+      "name": "Pipeline row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{ json: $('Match lead + build row').first().json.row }];\n"
+      }
+    },
+    {
+      "id": "78d9cb8b-c657-4b90-af59-5e5befb434c0",
+      "name": "Upsert Pipeline row",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1320,
+        300
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.pipeline_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Pipeline"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW",
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "b9547e7d-bb2c-4666-92d1-935a3c6ce1ef",
+      "name": "Decision",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{ json: $('Match lead + build row').first().json.decision }];\n"
+      },
+      "notes": "Carries the decision past the Sheets / HTTP nodes, so the next nodes read plain $json."
+    },
+    {
+      "id": "7ccecdeb-70ea-4e2e-b244-ccd262f80d93",
+      "name": "Send confirmation?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "ee2d3a39-3f54-4a3f-9fa0-5755b2c378f2",
+              "leftValue": "={{ $json.send_confirmation === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "797d8f67-ac95-4e32-8b17-90a93e2ddcc8",
+      "name": "WhatsApp: booking confirmation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1980,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').first().json.wa_api_base + '/' + $('Config').first().json.wa_graph_version + '/' + $('Config').first().json.wa_phone_number_id + '/messages' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.confirmation_payload) }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ahWhatsAppOwn001",
+          "name": "WhatsApp Cloud API – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Utility template \"ah_call_confirmation\". The Cal.com booking form tells people they will get WhatsApp confirmations and reminders."
+    },
+    {
+      "id": "bd57cb4d-6887-4a69-b69c-64c92f2ea533",
+      "name": "Decision (after send)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        200
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [{ json: $('Match lead + build row').first().json.decision }];\n"
+      }
+    },
+    {
+      "id": "9e879c5b-0c14-412a-a538-aa394d6065ef",
+      "name": "Schedule reminder?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        200
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "3d5fb6fc-1725-455b-b278-a243dd93667e",
+              "leftValue": "={{ $json.schedule_reminder === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "8ad65dd9-88e6-486b-b859-dcef7dcad200",
+      "name": "Wait until 2 h before",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2640,
+        100
+      ],
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{ $json.reminder_at }}"
+      },
+      "webhookId": "56af2709-a369-4079-be81-b3e6eb8c1e90",
+      "notes": "Waiting executions are stored in the n8n database, so they survive restarts."
+    },
+    {
+      "id": "0f047386-ce83-441f-a404-4ef57bc5dfa7",
+      "name": "Re-check booking",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2860,
+        100
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.pipeline_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Pipeline"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "lead_id",
+              "lookupValue": "={{ $json.lead_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "id": "11f60a81-f86e-4ab9-a1a5-74f8c04208f8",
+      "name": "Still booked?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3080,
+        100
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function cleanParam(v, max) {\n  // WhatsApp template parameters: no new lines or tabs, no 4+ spaces in a row, never empty.\n  let s = v === undefined || v === null ? '' : String(v);\n  s = s.replace(/[\\r\\n\\t]+/g, ' ').replace(/ {4,}/g, '   ').trim();\n  if (max && s.length > max) s = s.slice(0, max - 1).trimEnd() + '…';\n  return s || '-';\n}\n\nfunction waTemplate(toE164Number, name, lang, params) {\n  return {\n    messaging_product: 'whatsapp',\n    recipient_type: 'individual',\n    to: String(toE164Number).replace(/\\D/g, ''),\n    type: 'template',\n    template: {\n      name,\n      language: { code: lang || 'en' },\n      components: params.length ? [{ type: 'body', parameters: params.map((p) => ({ type: 'text', text: cleanParam(p, 900) })) }] : [],\n    },\n  };\n}\n\nconst cfg = $('Config').first().json;\nconst d = $('Match lead + build row').first().json.decision;\nconst r = $input.all().map((i) => i.json).find((x) => x && x.lead_id === d.lead_id);\nif (!r) return [];\nconst active = ['confirmed', 'rescheduled'].includes(String(r.booking_status || '').toLowerCase());\nconst same = String(r.booking_uid || '') === d.booking_uid && String(r.booking_start || '') === d.booking_start;\nconst future = new Date(d.start_iso).getTime() > Date.now();\nif (!active || !same || !future || r.reminder_sent_at) return [];\nreturn [{ json: { lead_id: d.lead_id, reminder_payload: waTemplate(d.whatsapp, cfg.reminder_template, cfg.template_lang, [d.first_name || 'there', d.event_label, d.when_label]) } }];\n"
+      },
+      "notes": "Sends nothing if the booking was cancelled or moved while waiting (a reschedule starts its own wait)."
+    },
+    {
+      "id": "f0b1021e-7e68-45c6-9dc9-3346d37bf5d4",
+      "name": "WhatsApp: 2-hour reminder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3300,
+        100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').first().json.wa_api_base + '/' + $('Config').first().json.wa_graph_version + '/' + $('Config').first().json.wa_phone_number_id + '/messages' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.reminder_payload) }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ahWhatsAppOwn001",
+          "name": "WhatsApp Cloud API – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Utility template \"ah_call_reminder_2h\": \"Reply 1 to confirm\". Replies land in the WhatsApp Business app (coexistence) for Hemant to read."
+    },
+    {
+      "id": "01048d6d-5d0f-4eb1-927c-ede5ca92b2c2",
+      "name": "Reminder row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3520,
+        100
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction waResult(r) {\n  // Reads an HTTP Request node result (fullResponse + neverError) from the Cloud API.\n  if (!r) return { ok: false, status: 'not sent', id: '' };\n  if (r.error) return { ok: false, status: 'failed: ' + String(r.error.message || r.error).slice(0, 180), id: '' };\n  const code = Number(r.statusCode || 0);\n  const b = r.body || {};\n  const id = b.messages && b.messages[0] && b.messages[0].id ? b.messages[0].id : '';\n  if (code >= 200 && code < 300 && id) return { ok: true, status: 'accepted', id };\n  const e = b.error || {};\n  return { ok: false, status: `failed ${code || '?'}${e.code ? ' / ' + e.code : ''}: ${String(e.message || 'no message id').slice(0, 160)}`, id: '' };\n}\n\nconst d = $('Still booked?').first().json;\nconst res = waResult($input.first().json);\nreturn [{ json: { lead_id: d.lead_id, reminder_sent_at: res.ok ? istIso(new Date()) : 'failed: ' + res.status, updated_at: istIso(new Date()) } }];\n"
+      }
+    },
+    {
+      "id": "ea944e27-dda5-428f-a9c3-51fb976df011",
+      "name": "Mark reminder sent",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        3740,
+        100
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.pipeline_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Pipeline"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW",
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Cal.com webhook": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Verify + normalise booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify + normalise booking": {
+      "main": [
+        [
+          {
+            "node": "Read Pipeline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Pipeline": {
+      "main": [
+        [
+          {
+            "node": "Match lead + build row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Match lead + build row": {
+      "main": [
+        [
+          {
+            "node": "Pipeline row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pipeline row": {
+      "main": [
+        [
+          {
+            "node": "Upsert Pipeline row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Pipeline row": {
+      "main": [
+        [
+          {
+            "node": "Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision": {
+      "main": [
+        [
+          {
+            "node": "Send confirmation?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send confirmation?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: booking confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: booking confirmation": {
+      "main": [
+        [
+          {
+            "node": "Decision (after send)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision (after send)": {
+      "main": [
+        [
+          {
+            "node": "Schedule reminder?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule reminder?": {
+      "main": [
+        [
+          {
+            "node": "Wait until 2 h before",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait until 2 h before": {
+      "main": [
+        [
+          {
+            "node": "Re-check booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Re-check booking": {
+      "main": [
+        [
+          {
+            "node": "Still booked?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Still booked?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: 2-hour reminder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: 2-hour reminder": {
+      "main": [
+        [
+          {
+            "node": "Reminder row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reminder row": {
+      "main": [
+        [
+          {
+            "node": "Mark reminder sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

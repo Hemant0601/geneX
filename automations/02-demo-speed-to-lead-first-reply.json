@@ -1,0 +1,451 @@
+{
+  "name": "AskHemant 02 · DEMO Skyline Realty · speed-to-lead first reply (DEMO – fictional business)",
+  "nodes": [
+    {
+      "id": "91a03d36-31dc-4b97-bcff-2399cc66f1c4",
+      "name": "Lead webhook (DEMO)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "demo/skyline/lead",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "bd54f846-9738-4da9-97c5-a6bf73c972aa",
+      "notes": "DEMO – fictional business. Receives a website-form lead or a Meta lead-ads relay. Test with automations/demo/send-demo-lead.sh."
+    },
+    {
+      "id": "e87a16db-2fbd-4bcb-b497-3f57f433d74c",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3e01c37c-e134-49e0-ad43-d83c5935bd72",
+              "name": "demo_sheet_id",
+              "value": "{{DEMO_SHEET_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "a9fb244d-7db9-44c0-abf7-c695c6e9ee76",
+              "name": "leads_tab",
+              "value": "Demo_Leads",
+              "type": "string"
+            },
+            {
+              "id": "57007688-17a6-4c4d-8a54-fbde36601164",
+              "name": "wa_api_base",
+              "value": "https://graph.facebook.com",
+              "type": "string"
+            },
+            {
+              "id": "9cb8b6a3-bb33-489f-89ef-289a59c0b814",
+              "name": "wa_graph_version",
+              "value": "v21.0",
+              "type": "string"
+            },
+            {
+              "id": "38cc5137-0095-4a62-b9ac-21a657adbc24",
+              "name": "wa_phone_number_id",
+              "value": "{{DEMO_WA_PHONE_NUMBER_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "71219bd4-60bd-45db-b8c2-a0cd34417b2d",
+              "name": "allowed_recipients",
+              "value": "{{DEMO_TEST_NUMBERS}}",
+              "type": "string"
+            },
+            {
+              "id": "85ffb265-1db9-4232-a088-1bc5c8996fa3",
+              "name": "business_name",
+              "value": "Skyline Realty (DEMO)",
+              "type": "string"
+            },
+            {
+              "id": "99e41a61-f8ad-4c5e-b840-a9194bb016f5",
+              "name": "default_project",
+              "value": "Skyline Heights (DEMO)",
+              "type": "string"
+            },
+            {
+              "id": "f2605ece-6c79-41fc-b974-b5bc51ec42f6",
+              "name": "demo_label",
+              "value": "DEMO – fictional business",
+              "type": "string"
+            },
+            {
+              "id": "74b5ba2a-ac29-4d95-a4f1-225c8be0c325",
+              "name": "first_reply_template",
+              "value": "lead_first_reply",
+              "type": "string"
+            },
+            {
+              "id": "645b2593-c8fa-4701-ae8a-5c93ad1fa2d4",
+              "name": "default_country_code",
+              "value": "91",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "notes": "DEMO – fictional business. allowed_recipients: comma-separated numbers that may receive demo messages (your own test phones). \"*\" allows anyone: only for a real client build.",
+      "notesInFlow": true
+    },
+    {
+      "id": "55fbe256-34cb-44a5-a436-f3dd9d0764fe",
+      "name": "Stamp + normalise lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction istDate(d) {\n  return istIso(d).slice(0, 10);\n}\n\nfunction toE164(raw, defaultCc) {\n  // Best-effort E.164 for India (+91) and UAE (+971) numbers. Returns '' if unsure.\n  if (raw === undefined || raw === null) return '';\n  let s = String(raw).trim().replace(/[\\s\\-().\\/]/g, '');\n  if (!s) return '';\n  if (s.startsWith('00')) s = '+' + s.slice(2);\n  const digits = s.replace(/\\D/g, '');\n  if (s.startsWith('+')) return /^[1-9]\\d{7,14}$/.test(digits) ? '+' + digits : '';\n  const cc = String(defaultCc || '91').replace(/\\D/g, '');\n  if (digits.length === 10 && /^[6-9]/.test(digits) && cc === '91') return '+91' + digits;\n  if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits[1])) return '+91' + digits.slice(1);\n  if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits[2])) return '+' + digits;\n  if (digits.length === 10 && digits.startsWith('05')) return '+971' + digits.slice(1);\n  if (digits.length === 9 && digits.startsWith('5') && cc === '971') return '+971' + digits;\n  if (digits.length === 12 && digits.startsWith('9715')) return '+' + digits;\n  return '';\n}\n\nfunction cleanParam(v, max) {\n  // WhatsApp template parameters: no new lines or tabs, no 4+ spaces in a row, never empty.\n  let s = v === undefined || v === null ? '' : String(v);\n  s = s.replace(/[\\r\\n\\t]+/g, ' ').replace(/ {4,}/g, '   ').trim();\n  if (max && s.length > max) s = s.slice(0, max - 1).trimEnd() + '…';\n  return s || '-';\n}\n\nfunction readEnv(name) {\n  // $env is blocked by default on n8n 2.x (N8N_BLOCK_ENV_ACCESS_IN_NODE). Never throws.\n  try {\n    const v = $env[name];\n    return v === undefined || v === null ? '' : String(v);\n  } catch (e) {\n    return '';\n  }\n}\n\nfunction missingConfig(cfg, keys) {\n  return keys.filter((k) => cfg[k] === undefined || cfg[k] === null || String(cfg[k]).trim() === '' || String(cfg[k]).includes('{{'));\n}\n\nfunction waTemplate(toE164Number, name, lang, params) {\n  return {\n    messaging_product: 'whatsapp',\n    recipient_type: 'individual',\n    to: String(toE164Number).replace(/\\D/g, ''),\n    type: 'template',\n    template: {\n      name,\n      language: { code: lang || 'en' },\n      components: params.length ? [{ type: 'body', parameters: params.map((p) => ({ type: 'text', text: cleanParam(p, 900) })) }] : [],\n    },\n  };\n}\n\nfunction allowedSet(list, defaultCc) {\n  // '*' = anyone; '' or an unfilled {{TOKEN}} = nobody (fail safe for demos).\n  const s = String(list || '').trim();\n  if (s === '*') return { any: true, set: new Set(), configured: true };\n  if (!s || s.includes('{{')) return { any: false, set: new Set(), configured: false };\n  return { any: false, set: new Set(s.split(/[,;\\s]+/).map((n) => toE164(n, defaultCc)).filter(Boolean)), configured: true };\n}\n\nfunction newId(prefix) {\n  const d = istDate(new Date()).replace(/-/g, '').slice(2);\n  return `${prefix}-${d}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;\n}\n\nconst receivedAt = new Date();\nconst item = $input.first();\nconst cfg = item.json;\nconst headers = cfg.headers || {};\nconst query = cfg.query || {};\nconst body = cfg.body && typeof cfg.body === 'object' ? cfg.body : {};\n\nconst key = readEnv('DEMO_WEBHOOK_KEY');\nif (key && String(headers['x-demo-key'] || query.key || '') !== key) {\n  return [{ json: { authorised: false } }];\n}\nconst missing = missingConfig(cfg, ['demo_sheet_id', 'wa_phone_number_id']);\nif (missing.length) throw new Error('Fill these in the Config node first: ' + missing.join(', '));\n\nlet f = {};\nlet source = 'website_form';\nlet unsupported = '';\nif (Array.isArray(body.entry)) {\n  unsupported = 'raw Meta leadgen webhook: fetch the lead from the Graph API first (see README), then post its fields here';\n  source = 'meta_lead_ads';\n} else if (Array.isArray(body.field_data)) {\n  source = 'meta_lead_ads';\n  for (const fd of body.field_data) f[String(fd.name || '').toLowerCase()] = Array.isArray(fd.values) ? fd.values[0] : fd.values;\n  f.created_time = body.created_time;\n  f.meta_lead_id = body.id;\n} else {\n  f = Object.assign({}, body.lead && typeof body.lead === 'object' ? body.lead : body);\n  if (f.source) source = String(f.source);\n}\nconst pick = (...keys) => {\n  for (const k of keys) if (f[k] !== undefined && f[k] !== null && String(f[k]).trim() !== '') return String(f[k]).trim();\n  return '';\n};\nconst name = pick('full_name', 'name', 'lead_name') || [pick('first_name'), pick('last_name')].filter(Boolean).join(' ');\nconst rawPhone = pick('whatsapp', 'whatsapp_number', 'phone_number', 'phone', 'mobile');\nconst whatsapp = toE164(rawPhone, cfg.default_country_code);\nconst optRaw = pick('whatsapp_opt_in', 'wa_opt_in', 'consent', 'opt_in').toLowerCase();\nconst optIn = ['yes', 'true', '1', 'on', 'y'].includes(optRaw);\nconst allow = allowedSet(cfg.allowed_recipients, cfg.default_country_code);\nconst allowed = allow.any || allow.set.has(whatsapp);\nconst lang = /^(hi|hinglish)$/i.test(pick('language', 'lang')) ? 'hi' : 'en';\nconst project = pick('project', 'property', 'listing', 'project_name') || cfg.default_project;\nconst createdRaw = pick('submitted_at', 'created_time', 'created_at');\nconst created = createdRaw && !isNaN(new Date(createdRaw)) ? new Date(createdRaw) : null;\n\nlet reason = '';\nif (unsupported) reason = unsupported;\nelse if (!whatsapp) reason = 'no readable WhatsApp number';\nelse if (!optIn) reason = 'no WhatsApp opt-in on the form';\nelse if (!allow.configured) reason = 'allowed_recipients not set in Config (DEMO_TEST_NUMBERS)';\nelse if (!allowed) reason = 'number not in allowed_recipients (DEMO safety list)';\n\nconst firstName = name.split(/\\s+/)[0] || '';\nconst params = [firstName || 'there', project, cfg.business_name];\nconst rendered = lang === 'hi'\n  ? `Namaste ${params[0]} ji, ${params[1]} ke baare mein poochne ke liye thank you! Main ${params[2]} ka WhatsApp assistant hoon. Sahi options bhejne ke liye 2 chhote sawaal pooch loon?`\n  : `Hi ${params[0]}, thanks for asking about ${params[1]}! I'm the WhatsApp assistant for ${params[2]}. May I ask 2 quick questions so we send you the right options?`;\n\nreturn [{\n  json: {\n    authorised: true,\n    send_whatsapp: !reason,\n    skip_reason: reason,\n    lead_id: newId('SKY'),\n    lead_name: name,\n    whatsapp,\n    email: pick('email'),\n    source,\n    project,\n    property_type: pick('property_type', 'bhk', 'configuration'),\n    locality: pick('locality', 'location', 'area'),\n    budget: pick('budget'),\n    source_created_at: created ? istIso(created) : '',\n    source_delay_seconds: created ? Math.max(0, Math.round((receivedAt - created) / 100) / 10) : '',\n    lead_received_at: istIso(receivedAt),\n    lead_received_ms: receivedAt.getTime(),\n    lang,\n    rendered_first_reply: rendered,\n    wa_payload: reason ? null : waTemplate(whatsapp, cfg.first_reply_template, lang, params),\n  },\n}];\n"
+      },
+      "notes": "lead_received_at is stamped here, the moment the lead reaches the system. \"Within a minute\" is a design target measured from this point, not a promise."
+    },
+    {
+      "id": "ea6d202a-d6f0-44b1-8ee3-790d43bf2eb9",
+      "name": "Authorised?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2f224349-1b69-44a5-8574-66707d2fa6a6",
+              "leftValue": "={{ $json.authorised === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c0fafe06-144c-4245-84bf-3ce01cfcee7a",
+      "name": "Respond 401",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        460
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "options": {
+          "responseCode": 401,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "responseBody": "={{ JSON.stringify({ ok: false, error: \"invalid or missing demo key\" }) }}"
+      }
+    },
+    {
+      "id": "ed6abd64-1a1e-426c-8044-b3398375363e",
+      "name": "Send first reply?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        880,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f916fc01-c889-47fe-bccb-a5dd984860e8",
+              "leftValue": "={{ $json.send_whatsapp === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "932fc5b4-7671-473b-8e27-f08d18ad733b",
+      "name": "WhatsApp: first-reply template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').first().json.wa_api_base + '/' + $('Config').first().json.wa_graph_version + '/' + $('Config').first().json.wa_phone_number_id + '/messages' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.wa_payload) }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ahWhatsAppDemo01",
+          "name": "WhatsApp Cloud API – DEMO"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Approved template \"lead_first_reply\" with \"Yes, ask me\" / \"Call me instead\" buttons. The reply opens the 24-hour window for workflow 03."
+    },
+    {
+      "id": "a7db7b57-2564-4ba6-b71f-11f60f9c13b9",
+      "name": "Stamp reply + build row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction waResult(r) {\n  // Reads an HTTP Request node result (fullResponse + neverError) from the Cloud API.\n  if (!r) return { ok: false, status: 'not sent', id: '' };\n  if (r.error) return { ok: false, status: 'failed: ' + String(r.error.message || r.error).slice(0, 180), id: '' };\n  const code = Number(r.statusCode || 0);\n  const b = r.body || {};\n  const id = b.messages && b.messages[0] && b.messages[0].id ? b.messages[0].id : '';\n  if (code >= 200 && code < 300 && id) return { ok: true, status: 'accepted', id };\n  const e = b.error || {};\n  return { ok: false, status: `failed ${code || '?'}${e.code ? ' / ' + e.code : ''}: ${String(e.message || 'no message id').slice(0, 160)}`, id: '' };\n}\n\nconst sentMs = Date.now();\nconst cfg = $('Config').first().json;\nconst lead = $('Stamp + normalise lead').first().json;\nlet res = { ok: false, status: 'not sent: ' + lead.skip_reason, id: '' };\nif (lead.send_whatsapp) res = waResult($input.first().json);\nconst row = {};\nfor (const col of [\"lead_id\",\"business\",\"demo_flag\",\"lead_name\",\"whatsapp\",\"email\",\"source\",\"project\",\"source_created_at\",\"lead_received_at\",\"first_reply_sent_at\",\"seconds_to_reply\",\"source_delay_seconds\",\"wa_message_id\",\"wa_status\",\"temperature\",\"stage\",\"property_type\",\"locality\",\"budget\",\"timeline\",\"finance\",\"purpose\",\"summary\",\"handover_reason\",\"bot_paused\",\"opted_out\",\"visit_requested_at\",\"booked_at\",\"agent_alerted_at\",\"last_inbound_id\",\"last_message_at\",\"history_json\",\"updated_at\",\"notes\"]) row[col] = '';\nObject.assign(row, {\n  lead_id: lead.lead_id,\n  business: cfg.business_name,\n  demo_flag: cfg.demo_label,\n  lead_name: lead.lead_name,\n  whatsapp: lead.whatsapp,\n  email: lead.email,\n  source: lead.source,\n  project: lead.project,\n  source_created_at: lead.source_created_at,\n  lead_received_at: lead.lead_received_at,\n  first_reply_sent_at: res.ok ? istIso(new Date(sentMs)) : '',\n  seconds_to_reply: res.ok ? Math.round((sentMs - lead.lead_received_ms) / 100) / 10 : '',\n  source_delay_seconds: lead.source_delay_seconds,\n  wa_message_id: res.id,\n  wa_status: res.status,\n  temperature: 'unknown',\n  stage: res.ok ? 'Qualifying' : 'New',\n  property_type: lead.property_type,\n  locality: lead.locality,\n  budget: lead.budget,\n  bot_paused: 'no',\n  opted_out: 'no',\n  history_json: res.ok ? JSON.stringify([{ role: 'assistant', text: lead.rendered_first_reply, at: istIso(new Date(sentMs)) }]) : '[]',\n  updated_at: istIso(new Date()),\n  notes: cfg.demo_label,\n});\nreturn [{ json: row }];\n"
+      },
+      "notes": "first_reply_sent_at = when the Cloud API accepted the message. Delivery to the phone adds network time; the on-screen stopwatch shows the true end-to-end time."
+    },
+    {
+      "id": "3fca319a-08fa-4968-b2b7-d8cb22d91306",
+      "name": "Log lead (Demo_Leads)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1760,
+        300
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.demo_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Demo_Leads"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW",
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "b24cf74f-030a-4c9d-8520-d2b74ef8ad80",
+      "name": "Respond 200",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1540,
+        300
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "responseBody": "={{ JSON.stringify({ ok: true, demo: $json.demo_flag, lead_id: $json.lead_id, lead_received_at: $json.lead_received_at, first_reply_sent_at: $json.first_reply_sent_at, seconds_to_reply: $json.seconds_to_reply, whatsapp: $json.wa_status }) }}"
+      }
+    }
+  ],
+  "connections": {
+    "Lead webhook (DEMO)": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Stamp + normalise lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stamp + normalise lead": {
+      "main": [
+        [
+          {
+            "node": "Authorised?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Authorised?": {
+      "main": [
+        [
+          {
+            "node": "Send first reply?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond 401",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send first reply?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: first-reply template",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stamp reply + build row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: first-reply template": {
+      "main": [
+        [
+          {
+            "node": "Stamp reply + build row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stamp reply + build row": {
+      "main": [
+        [
+          {
+            "node": "Respond 200",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond 200": {
+      "main": [
+        [
+          {
+            "node": "Log lead (Demo_Leads)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

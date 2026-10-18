@@ -1,0 +1,132 @@
+{
+  "_about": "WhatsApp message templates in the Cloud API format (POST /{WABA_ID}/message_templates). One object per template name + language. Explained in whatsapp-templates.md. 'account' says which WhatsApp Business Account submits it: 'askhemant' = Hemant's own number (workflows 01, 05, 06); 'demo' = the DEMO test number (workflows 02, 03, 04), reusable later on a client's own account. 'used_by' lists the workflows that send it; [] = prepared for client builds, not sent by workflows 01-06. Every name in 'used_by' must exist, and the number of {{n}} variables must equal what the workflow sends: tools/test-code-nodes.mjs checks both.",
+  "templates": [
+    {
+      "account": "askhemant", "used_by": ["01"],
+      "name": "ah_kit_welcome", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, here is the Lead Leak Calculator you asked for on askhemant.ai: {{2}}\n\nOpen it, choose File > Make a copy, and enter your own numbers. It shows what slow replies may be costing you, using only the numbers you type.\n\nReply STOP if you don't want WhatsApp messages from AskHemant.", "example": { "body_text": [["Meera", "https://docs.google.com/spreadsheets/d/EXAMPLE/copy"]] } },
+        { "type": "FOOTER", "text": "AskHemant · askhemant.ai" }
+      ]
+    },
+    {
+      "account": "askhemant", "used_by": [],
+      "name": "ah_kit_welcome", "language": "hi", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Namaste {{1}} ji, askhemant.ai par aapne jo Lead Leak Calculator maanga tha, yeh raha: {{2}}\n\nIse kholiye, File > Make a copy chuniye aur apne numbers daaliye. Yeh sirf aapke daale hue numbers se dikhata hai ki der se reply karne ka kitna nuksaan ho sakta hai.\n\nWhatsApp messages nahi chahiye toh STOP likhiye.", "example": { "body_text": [["Meera", "https://docs.google.com/spreadsheets/d/EXAMPLE/copy"]] } },
+        { "type": "FOOTER", "text": "AskHemant · askhemant.ai" }
+      ]
+    },
+    {
+      "account": "askhemant", "used_by": ["01"],
+      "name": "ah_internal_new_lead", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Lead Leak Kit sign-up ({{1}} lead).\nName: {{2}}\nBusiness type: {{3}}\nLeads a month: {{4}}\nLane: {{5}}\nWhatsApp tips consent: {{6}}\nSource: {{7}}\nWelcome message: {{8}}\n\nReply to them personally within 4 working hours, then update the stage in the Pipeline sheet.", "example": { "body_text": [["new", "Meera", "Real estate (India)", "40–100", "RE", "yes", "ig / dm / leaks", "accepted"]] } }
+      ]
+    },
+    {
+      "account": "askhemant", "used_by": ["05"],
+      "name": "ah_daily_digest", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Good morning. {{1}} lead summary for {{2}}.\n\nNew leads: {{3}}\nMedian first reply: {{4}}\nAnswered within 60 seconds: {{5}}\nHot leads: {{6}}\nBookings made: {{7}}\nStill waiting for a first reply: {{8}}\n\nThe details are in your Google Sheet.", "example": { "body_text": [["AskHemant", "Mon, 19 Oct", "4 (RE 3, CL 1)", "3.2 s", "3 of 3", "1 (Meera)", "1", "1"]] } }
+      ]
+    },
+    {
+      "account": "askhemant", "used_by": ["06"],
+      "name": "ah_call_confirmation", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, your {{2}} with Hemant is booked for {{3}}.\n\nThe Google Meet link is in your Cal.com confirmation email. To change the time, use the reschedule link in that email.", "example": { "body_text": [["Meera", "free 20-min Fit Call", "Tue, 27 Oct, 11:00 am IST"]] } }
+      ]
+    },
+    {
+      "account": "askhemant", "used_by": ["06"],
+      "name": "ah_call_reminder_2h", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, a quick reminder: your {{2}} with Hemant starts at {{3}}, in about 2 hours.\n\nReply 1 to confirm. To reschedule, use the link in your Cal.com email.", "example": { "body_text": [["Meera", "free 20-min Fit Call", "Tue, 27 Oct, 11:00 am IST"]] } }
+      ]
+    },
+    {
+      "account": "askhemant", "used_by": [],
+      "name": "ah_kit_day2_followup", "language": "en", "category": "MARKETING",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, did you try the 10 pm test from the Lead Leak Kit? Reply with the time your first reply took and I'll tell you the first leak I'd fix.\n\nReply STOP to opt out.", "example": { "body_text": [["Meera"]] } },
+        { "type": "FOOTER", "text": "AskHemant · askhemant.ai" }
+      ]
+    },
+    {
+      "account": "demo", "used_by": ["02"],
+      "name": "lead_first_reply", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, thanks for asking about {{2}}! I'm the WhatsApp assistant for {{3}}. May I ask 2 quick questions so we send you the right options?", "example": { "body_text": [["Riya", "Skyline Heights (DEMO)", "Skyline Realty (DEMO)"]] } },
+        { "type": "BUTTONS", "buttons": [{ "type": "QUICK_REPLY", "text": "Yes, ask me" }, { "type": "QUICK_REPLY", "text": "Call me instead" }] }
+      ]
+    },
+    {
+      "account": "demo", "used_by": ["02"],
+      "name": "lead_first_reply", "language": "hi", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Namaste {{1}} ji, {{2}} ke baare mein poochne ke liye thank you! Main {{3}} ka WhatsApp assistant hoon. Sahi options bhejne ke liye 2 chhote sawaal pooch loon?", "example": { "body_text": [["Arjun", "Skyline Heights (DEMO)", "Skyline Realty (DEMO)"]] } },
+        { "type": "BUTTONS", "buttons": [{ "type": "QUICK_REPLY", "text": "Haan, poochiye" }, { "type": "QUICK_REPLY", "text": "Call kijiye" }] }
+      ]
+    },
+    {
+      "account": "demo", "used_by": ["03"],
+      "name": "agent_hot_lead_alert", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hot lead for {{1}}.\nName: {{2}}\nWhatsApp: {{3}}\nSummary: {{4}}\nWhy now: {{5}}\nSite-visit booking link: {{6}}\n\nPlease call or message them as soon as you can.", "example": { "body_text": [["Skyline Realty (DEMO)", "Riya Demo", "+919800000001", "2BHK in Baner, 80L to 1Cr, buying in 2 months", "wants a site visit", "https://cal.com/askhemant/demo-site-visit"]] } }
+      ]
+    },
+    {
+      "account": "demo", "used_by": ["04"],
+      "name": "clinic_missed_call", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hi, this is {{1}}. Sorry we missed your call, we were with a patient. How can we help? Reply here, or book a slot online: {{2}}\n\nYou can also call us back on this number.", "example": { "body_text": [["SmileCare Dental (DEMO)", "https://cal.com/askhemant/demo-clinic-slot"]] } }
+      ]
+    },
+    {
+      "account": "demo", "used_by": [],
+      "name": "clinic_missed_call", "language": "hi", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Namaste, yeh {{1}} hai. Maaf kijiye, aapka call miss ho gaya, us waqt treatment chal raha tha. Kaise madad karein? Yahin reply kijiye, ya online slot book kijiye: {{2}}\n\nAap isi number par call back bhi kar sakte hain.", "example": { "body_text": [["SmileCare Dental (DEMO)", "https://cal.com/askhemant/demo-clinic-slot"]] } }
+      ]
+    },
+    {
+      "account": "demo", "used_by": [],
+      "name": "site_visit_reminder_24h", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, a quick reminder: your site visit at {{2}} is tomorrow at {{3}}. Reply 1 to confirm or 2 to reschedule.", "example": { "body_text": [["Riya", "Skyline Heights (DEMO)", "11 am"]] } }
+      ]
+    },
+    {
+      "account": "demo", "used_by": [],
+      "name": "site_visit_reminder_2h", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "See you today at {{1}}! Location: {{2}}\nYour agent, {{3}}, will meet you at the gate. Running late? Just reply here.", "example": { "body_text": [["11 am", "https://maps.app.goo.gl/EXAMPLE", "Priya"]] } }
+      ]
+    },
+    {
+      "account": "demo", "used_by": [],
+      "name": "visit_no_show_rescue", "language": "en", "category": "UTILITY",
+      "components": [
+        { "type": "BODY", "text": "We missed you at {{1}} today. No problem! Shall I book a new slot, or send a video tour first?", "example": { "body_text": [["Skyline Heights (DEMO)"]] } },
+        { "type": "BUTTONS", "buttons": [{ "type": "QUICK_REPLY", "text": "Book a new slot" }, { "type": "QUICK_REPLY", "text": "Send a video tour" }] }
+      ]
+    },
+    {
+      "account": "demo", "used_by": [],
+      "name": "lead_day7_revival", "language": "en", "category": "MARKETING",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, still looking in {{2}}? {{3}} new options in your budget came up this week. Want the details?\n\nReply STOP to opt out.", "example": { "body_text": [["Riya", "Baner", "2"]] } },
+        { "type": "BUTTONS", "buttons": [{ "type": "QUICK_REPLY", "text": "Send details" }, { "type": "QUICK_REPLY", "text": "Stop messages" }] }
+      ]
+    },
+    {
+      "account": "demo", "used_by": [],
+      "name": "lead_day30_checkin", "language": "en", "category": "MARKETING",
+      "components": [
+        { "type": "BODY", "text": "Hi {{1}}, it's a month since your {{2}} enquiry. Are you still planning to buy, or shall I close it for now?\n\nReply STOP to opt out.", "example": { "body_text": [["Riya", "Skyline Heights (DEMO)"]] } },
+        { "type": "BUTTONS", "buttons": [{ "type": "QUICK_REPLY", "text": "Still looking" }, { "type": "QUICK_REPLY", "text": "Close it" }, { "type": "QUICK_REPLY", "text": "Stop messages" }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "_demo": "DEMO – fictional business. Skyline Realty and this lead are invented. __TEST_NUMBER__ is replaced by your own test phone.",
+  "source": "website_form",
+  "full_name": "Riya Demo",
+  "whatsapp": "__TEST_NUMBER__",
+  "email": "riya.demo@example.com",
+  "project": "Skyline Heights (DEMO)",
+  "property_type": "2BHK",
+  "message": "Is this still available?",
+  "whatsapp_opt_in": "yes",
+  "language": "en",
+  "submitted_at": "__NOW__"
+}

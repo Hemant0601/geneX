@@ -1,0 +1,121 @@
+{
+  "eventId": "demo-event-__MSG_ID__",
+  "eventType": "FORM_RESPONSE",
+  "createdAt": "__NOW__",
+  "data": {
+    "responseId": "demo-resp-__MSG_ID__",
+    "submissionId": "demo-sub-__MSG_ID__",
+    "respondentId": "demo-respondent",
+    "formId": "demoKitForm",
+    "formName": "Lead Leak Calculator (test submission)",
+    "createdAt": "__NOW__",
+    "fields": [
+      {
+        "key": "question_name",
+        "label": "First name",
+        "type": "INPUT_TEXT",
+        "value": "Meera"
+      },
+      {
+        "key": "question_wa",
+        "label": "WhatsApp number",
+        "type": "INPUT_PHONE_NUMBER",
+        "value": "__TEST_NUMBER__"
+      },
+      {
+        "key": "question_bt",
+        "label": "Business type",
+        "type": "DROPDOWN",
+        "value": [
+          "opt_re"
+        ],
+        "options": [
+          {
+            "id": "opt_re",
+            "text": "Real estate (broker, agent, channel partner, developer)"
+          },
+          {
+            "id": "opt_cl",
+            "text": "Clinic (dental, skin/aesthetic, physio, other)"
+          },
+          {
+            "id": "opt_ag",
+            "text": "Agency (I run ads or marketing for clients)"
+          },
+          {
+            "id": "opt_ot",
+            "text": "Other business"
+          }
+        ]
+      },
+      {
+        "key": "question_lpm",
+        "label": "Leads a month",
+        "type": "DROPDOWN",
+        "value": [
+          "opt_40"
+        ],
+        "options": [
+          {
+            "id": "opt_u20",
+            "text": "Under 20"
+          },
+          {
+            "id": "opt_20",
+            "text": "20–40"
+          },
+          {
+            "id": "opt_40",
+            "text": "40–100"
+          },
+          {
+            "id": "opt_100",
+            "text": "100–500"
+          },
+          {
+            "id": "opt_500",
+            "text": "500+"
+          }
+        ]
+      },
+      {
+        "key": "question_consent",
+        "label": "Marketing consent",
+        "type": "CHECKBOXES",
+        "value": [
+          "opt_yes"
+        ],
+        "options": [
+          {
+            "id": "opt_yes",
+            "text": "Yes, AskHemant may send me WhatsApp tips and follow-ups about lead systems. I can reply STOP at any time."
+          }
+        ]
+      },
+      {
+        "key": "question_consent_opt_yes",
+        "label": "Marketing consent (Yes, AskHemant may send me WhatsApp tips and follow-ups about lead systems. I can reply STOP at any time.)",
+        "type": "CHECKBOXES",
+        "value": true
+      },
+      {
+        "key": "question_utm_source",
+        "label": "utm_source",
+        "type": "HIDDEN_FIELDS",
+        "value": "ig"
+      },
+      {
+        "key": "question_utm_medium",
+        "label": "utm_medium",
+        "type": "HIDDEN_FIELDS",
+        "value": "dm"
+      },
+      {
+        "key": "question_utm_campaign",
+        "label": "utm_campaign",
+        "type": "HIDDEN_FIELDS",
+        "value": "leaks"
+      }
+    ]
+  }
+}

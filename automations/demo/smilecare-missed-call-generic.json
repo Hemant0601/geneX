@@ -1,0 +1,9 @@
+{
+  "_demo": "DEMO – fictional business (SmileCare Dental). Generic payload for any telephony provider that can POST JSON on a missed call.",
+  "provider": "generic",
+  "call_id": "DEMO-CALL-__MSG_ID__",
+  "caller": "__TEST_NUMBER__",
+  "called": "+910000000000",
+  "status": "no-answer",
+  "started_at": "__NOW__"
+}

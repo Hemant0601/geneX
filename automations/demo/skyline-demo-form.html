@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Skyline Realty – DEMO form</title>
+<!--
+  DEMO – fictional business. A one-page enquiry form for filming the speed-to-lead demo
+  (Reel P03 "Watch the timer"). It posts to workflow 02 and shows the timing n8n reports.
+  Open it locally (double-click), or with ?hook=https://n8n.askhemant.ai/webhook/demo/skyline/lead
+  Optional: &key=YOUR_DEMO_WEBHOOK_KEY if you set DEMO_WEBHOOK_KEY in n8n.
+  Never publish this page as if it were a real brokerage.
+-->
+<style>
+  :root { --ink: #0B1020; --paper: #F7F5F0; --amber: #FFB020; --slate: #475569; --line: #D9D5CC; --ok: #15803D; --bad: #B42318; --accent: #1E3A5F; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .badge { position: sticky; top: 0; z-index: 2; background: var(--amber); color: var(--ink); font-weight: 800; text-align: center; padding: 10px 16px; letter-spacing: .02em; }
+  main { max-width: 440px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 26px; line-height: 1.2; margin: 8px 0 4px; color: var(--accent); }
+  .sub { color: var(--slate); margin: 0 0 20px; }
+  label { display: block; font-weight: 600; margin: 14px 0 6px; }
+  input, select { width: 100%; font: inherit; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+  .check { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; font-weight: 400; }
+  .check input { width: auto; margin-top: 4px; }
+  button { margin-top: 20px; width: 100%; font: inherit; font-weight: 700; padding: 14px; border: 0; border-radius: 12px; background: var(--accent); color: #fff; cursor: pointer; }
+  button[disabled] { opacity: .6; cursor: wait; }
+  #result { margin-top: 18px; padding: 14px; border-radius: 10px; background: #fff; border: 1px solid var(--line); display: none; white-space: pre-wrap; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+  #result.ok { border-color: var(--ok); } #result.bad { border-color: var(--bad); }
+  .foot { margin-top: 28px; color: var(--slate); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="badge">DEMO – fictional business</div>
+<main>
+  <h1>Skyline Heights (DEMO)</h1>
+  <p class="sub">2 &amp; 3 BHK apartments by Skyline Realty (DEMO). Leave your WhatsApp number and we'll reply right away.</p>
+  <form id="f" autocomplete="off">
+    <label for="name">Full name</label>
+    <input id="name" name="full_name" required value="Riya Demo">
+    <label for="wa">WhatsApp number (your own test phone)</label>
+    <input id="wa" name="whatsapp" type="tel" required placeholder="+91 98XXX XXXXX">
+    <label for="type">Looking for</label>
+    <select id="type" name="property_type"><option>2BHK</option><option>3BHK</option><option>Villa</option><option>Plot</option></select>
+    <label for="lang">Reply language</label>
+    <select id="lang" name="language"><option value="en">English</option><option value="hinglish">Hinglish</option></select>
+    <label class="check"><input type="checkbox" id="optin" name="whatsapp_opt_in" value="yes" required> <span>I agree to get WhatsApp messages about this enquiry from Skyline Realty (DEMO). Reply STOP any time.</span></label>
+    <button id="go" type="submit">Send enquiry</button>
+  </form>
+  <div id="result" role="status" aria-live="polite"></div>
+  <p class="foot">This page, Skyline Realty and Skyline Heights are invented for a demo. Nothing here is a real listing.</p>
+</main>
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var hook = params.get('hook') || 'http://localhost:5678/webhook/demo/skyline/lead';
+    var key = params.get('key') || '';
+    var out = document.getElementById('result');
+    document.getElementById('f').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = document.getElementById('go');
+      var data = {
+        source: 'website_form',
+        full_name: document.getElementById('name').value,
+        whatsapp: document.getElementById('wa').value,
+        property_type: document.getElementById('type').value,
+        language: document.getElementById('lang').value,
+        project: 'Skyline Heights (DEMO)',
+        whatsapp_opt_in: document.getElementById('optin').checked ? 'yes' : 'no',
+        submitted_at: new Date().toISOString()
+      };
+      var headers = { 'Content-Type': 'application/json' };
+      if (key) headers['x-demo-key'] = key;
+      var t0 = performance.now();
+      btn.disabled = true; btn.textContent = 'Sending…';
+      fetch(hook, { method: 'POST', headers: headers, body: JSON.stringify(data) })
+        .then(function (r) { return r.text().then(function (t) { return { status: r.status, text: t }; }); })
+        .then(function (r) {
+          var ms = Math.round(performance.now() - t0);
+          var j = {}; try { j = JSON.parse(r.text); } catch (err) {}
+          out.style.display = 'block';
+          out.className = r.status === 200 && j.whatsapp === 'accepted' ? 'ok' : 'bad';
+          out.textContent = 'HTTP ' + r.status + ' in ' + ms + ' ms (browser round trip)\n'
+            + (j.seconds_to_reply !== undefined && j.seconds_to_reply !== '' ? 'n8n: lead received → WhatsApp API accepted in ' + j.seconds_to_reply + ' s\n' : '')
+            + 'WhatsApp: ' + (j.whatsapp || r.text || '(no response body)') + '\n'
+            + 'Delivery to the phone adds network time: watch the timer.';
+        })
+        .catch(function (err) {
+          out.style.display = 'block'; out.className = 'bad';
+          out.textContent = 'Could not reach ' + hook + '\n' + err;
+        })
+        .finally(function () { btn.disabled = false; btn.textContent = 'Send enquiry'; });
+    });
+  })();
+</script>
+</body>
+</html>

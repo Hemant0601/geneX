@@ -1,0 +1,511 @@
+{
+  "name": "AskHemant 04 · DEMO SmileCare Dental · missed call → WhatsApp text-back (DEMO – fictional business)",
+  "nodes": [
+    {
+      "id": "85ec0ba2-d82f-473f-819c-bf8a1311add7",
+      "name": "Missed call (POST)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        200
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "demo/smilecare/missed-call",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "b583963c-2d4d-41e2-a4c6-bb932eb264e3",
+      "notes": "Generic JSON, Twilio StatusCallback (form-encoded) or Knowlarity call-log push. DEMO – fictional business."
+    },
+    {
+      "id": "865357a9-03cf-4e63-b8a9-d46f9d213194",
+      "name": "Missed call (GET)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        400
+      ],
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "demo/smilecare/missed-call",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "webhookId": "f9503cc0-447e-460e-9639-93550d6b706a",
+      "notes": "Exotel Passthru applet (sends the call details as query parameters)."
+    },
+    {
+      "id": "8c82846a-7e3c-4c69-91d3-80457086a1c5",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f7b450d0-b871-4bf8-82e5-ef3e14b11507",
+              "name": "demo_sheet_id",
+              "value": "{{DEMO_SHEET_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "7bbc9173-c784-4149-b471-1cf420bc1af0",
+              "name": "calls_tab",
+              "value": "Demo_Clinic_Calls",
+              "type": "string"
+            },
+            {
+              "id": "72d67c39-e168-4dcd-a31c-68579f2842cc",
+              "name": "wa_api_base",
+              "value": "https://graph.facebook.com",
+              "type": "string"
+            },
+            {
+              "id": "dc9524ca-f240-4ff5-a2bc-f4a05b7a893b",
+              "name": "wa_graph_version",
+              "value": "v21.0",
+              "type": "string"
+            },
+            {
+              "id": "5404e276-93e5-4ba1-945d-3cedf0d904c5",
+              "name": "wa_phone_number_id",
+              "value": "{{DEMO_WA_PHONE_NUMBER_ID}}",
+              "type": "string"
+            },
+            {
+              "id": "fd227599-a88b-4d41-986b-f5176943ca0d",
+              "name": "allowed_recipients",
+              "value": "{{DEMO_TEST_NUMBERS}}",
+              "type": "string"
+            },
+            {
+              "id": "28104d3e-69f8-40a4-b2f5-ab78a7d3f332",
+              "name": "clinic_name",
+              "value": "SmileCare Dental (DEMO)",
+              "type": "string"
+            },
+            {
+              "id": "ca89e2bf-c2a0-49bd-b80d-e06926c0a713",
+              "name": "booking_link",
+              "value": "https://cal.com/askhemant/demo-clinic-slot",
+              "type": "string"
+            },
+            {
+              "id": "c2397ba6-e731-4b15-96b8-48883477d5ab",
+              "name": "template",
+              "value": "clinic_missed_call",
+              "type": "string"
+            },
+            {
+              "id": "e7768197-a5a2-4795-9719-0dc686e2240c",
+              "name": "template_lang",
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "id": "265d3994-2765-40d2-a50a-12a4c9d5429b",
+              "name": "dedupe_minutes",
+              "value": 60,
+              "type": "number"
+            },
+            {
+              "id": "e2267627-435b-448b-b310-53bddb0f1a38",
+              "name": "demo_label",
+              "value": "DEMO – fictional business",
+              "type": "string"
+            },
+            {
+              "id": "f33d9cd1-4ed8-4b19-89d3-42ec4dc24b0b",
+              "name": "default_country_code",
+              "value": "91",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "notes": "DEMO – fictional business. Health data: log only the caller number and call times, never symptoms or treatment.",
+      "notesInFlow": true
+    },
+    {
+      "id": "9db2b967-6a74-48c0-a9ed-3630880a9f23",
+      "name": "Normalise call event",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction istDate(d) {\n  return istIso(d).slice(0, 10);\n}\n\nfunction toE164(raw, defaultCc) {\n  // Best-effort E.164 for India (+91) and UAE (+971) numbers. Returns '' if unsure.\n  if (raw === undefined || raw === null) return '';\n  let s = String(raw).trim().replace(/[\\s\\-().\\/]/g, '');\n  if (!s) return '';\n  if (s.startsWith('00')) s = '+' + s.slice(2);\n  const digits = s.replace(/\\D/g, '');\n  if (s.startsWith('+')) return /^[1-9]\\d{7,14}$/.test(digits) ? '+' + digits : '';\n  const cc = String(defaultCc || '91').replace(/\\D/g, '');\n  if (digits.length === 10 && /^[6-9]/.test(digits) && cc === '91') return '+91' + digits;\n  if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits[1])) return '+91' + digits.slice(1);\n  if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits[2])) return '+' + digits;\n  if (digits.length === 10 && digits.startsWith('05')) return '+971' + digits.slice(1);\n  if (digits.length === 9 && digits.startsWith('5') && cc === '971') return '+971' + digits;\n  if (digits.length === 12 && digits.startsWith('9715')) return '+' + digits;\n  return '';\n}\n\nfunction cleanParam(v, max) {\n  // WhatsApp template parameters: no new lines or tabs, no 4+ spaces in a row, never empty.\n  let s = v === undefined || v === null ? '' : String(v);\n  s = s.replace(/[\\r\\n\\t]+/g, ' ').replace(/ {4,}/g, '   ').trim();\n  if (max && s.length > max) s = s.slice(0, max - 1).trimEnd() + '…';\n  return s || '-';\n}\n\nfunction readEnv(name) {\n  // $env is blocked by default on n8n 2.x (N8N_BLOCK_ENV_ACCESS_IN_NODE). Never throws.\n  try {\n    const v = $env[name];\n    return v === undefined || v === null ? '' : String(v);\n  } catch (e) {\n    return '';\n  }\n}\n\nfunction missingConfig(cfg, keys) {\n  return keys.filter((k) => cfg[k] === undefined || cfg[k] === null || String(cfg[k]).trim() === '' || String(cfg[k]).includes('{{'));\n}\n\nfunction waTemplate(toE164Number, name, lang, params) {\n  return {\n    messaging_product: 'whatsapp',\n    recipient_type: 'individual',\n    to: String(toE164Number).replace(/\\D/g, ''),\n    type: 'template',\n    template: {\n      name,\n      language: { code: lang || 'en' },\n      components: params.length ? [{ type: 'body', parameters: params.map((p) => ({ type: 'text', text: cleanParam(p, 900) })) }] : [],\n    },\n  };\n}\n\nfunction allowedSet(list, defaultCc) {\n  // '*' = anyone; '' or an unfilled {{TOKEN}} = nobody (fail safe for demos).\n  const s = String(list || '').trim();\n  if (s === '*') return { any: true, set: new Set(), configured: true };\n  if (!s || s.includes('{{')) return { any: false, set: new Set(), configured: false };\n  return { any: false, set: new Set(s.split(/[,;\\s]+/).map((n) => toE164(n, defaultCc)).filter(Boolean)), configured: true };\n}\n\nfunction newId(prefix) {\n  const d = istDate(new Date()).replace(/-/g, '').slice(2);\n  return `${prefix}-${d}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;\n}\n\nconst item = $input.first();\nconst cfg = item.json;\nconst headers = cfg.headers || {};\nconst q = cfg.query || {};\nconst b = cfg.body && typeof cfg.body === 'object' ? cfg.body : {};\nconst key = readEnv('DEMO_WEBHOOK_KEY');\nif (key && String(headers['x-demo-key'] || q.key || b.key || '') !== key) return [];\nconst missing = missingConfig(cfg, ['demo_sheet_id', 'wa_phone_number_id']);\nif (missing.length) throw new Error('Fill these in the Config node first: ' + missing.join(', '));\n\nconst d = Object.assign({}, q, b);\nconst get = (...keys) => {\n  for (const k of keys) if (d[k] !== undefined && d[k] !== null && String(d[k]).trim() !== '') return String(d[k]).trim();\n  return '';\n};\nlet provider = get('provider').toLowerCase();\nif (!provider) {\n  if (d.AccountSid || d.CallStatus) provider = 'twilio';\n  else if (d.CallSid && (d.CallFrom || d.DialCallStatus || d.CallType)) provider = 'exotel';\n  else if (d.caller_id || d.dispnumber || d.business_call_type || d.knowlarity_number) provider = 'knowlarity';\n  else provider = 'generic';\n}\nlet caller = '', called = '', status = '', callId = '';\nif (provider === 'twilio') {\n  caller = get('From', 'Caller'); called = get('To', 'Called');\n  status = get('DialCallStatus', 'CallStatus'); callId = get('CallSid');\n} else if (provider === 'exotel') {\n  caller = get('CallFrom', 'From'); called = get('CallTo', 'To');\n  status = get('DialCallStatus', 'CallType', 'Status'); callId = get('CallSid');\n} else if (provider === 'knowlarity') {\n  caller = get('caller_id', 'customer_number', 'caller'); called = get('dispnumber', 'knowlarity_number', 'called_number');\n  status = get('business_call_type', 'call_status', 'call_type', 'status'); callId = get('uuid', 'call_id', 'callid');\n} else {\n  caller = get('caller', 'from', 'caller_number', 'phone'); called = get('called', 'to', 'called_number');\n  status = get('status', 'call_status', 'event'); callId = get('call_id', 'id');\n}\nconst s = status.toLowerCase().replace(/[\\s_]+/g, '-');\nconst missed = /^(missed|no-?answer|noanswer|not-?answered|busy|failed|cancel+ed|call-attempt|missed-call|unanswered)$/.test(s);\nconst callerE164 = toE164(caller, cfg.default_country_code);\nconst allow = allowedSet(cfg.allowed_recipients, cfg.default_country_code);\nlet reason = '';\nif (!missed) reason = `not a missed call (status \"${status || 'none'}\")`;\nelse if (!callerE164) reason = 'caller number unreadable (withheld or landline)';\nelse if (!allow.configured) reason = 'allowed_recipients not set in Config (DEMO_TEST_NUMBERS)';\nelse if (!(allow.any || allow.set.has(callerE164))) reason = 'caller not in allowed_recipients (DEMO safety list)';\nconst now = new Date();\nreturn [{\n  json: {\n    call_id: callId || newId('CALL'),\n    provider,\n    caller: callerE164 || caller,\n    caller_e164: callerE164,\n    called_number: called,\n    call_status: status,\n    missed,\n    call_received_at: istIso(now),\n    call_received_ms: now.getTime(),\n    eligible: !reason,\n    skip_reason: reason,\n    wa_payload: reason ? null : waTemplate(callerE164, cfg.template, cfg.template_lang, [cfg.clinic_name, cfg.booking_link]),\n  },\n}];\n"
+      },
+      "notes": "Maps Exotel / Knowlarity / Twilio / generic payloads to one shape. Check field names against your provider account before going live."
+    },
+    {
+      "id": "4d32361f-7854-49ef-a3e6-608c48c8425a",
+      "name": "Missed + allowed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "bdb03fc3-0764-4b52-9457-178aa3c9504e",
+              "leftValue": "={{ $json.eligible === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d1370c39-c6e4-44f3-b676-d3f65e50b43e",
+      "name": "Recent texts to caller",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        880,
+        200
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.demo_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Demo_Clinic_Calls"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "caller",
+              "lookupValue": "={{ $json.caller_e164 || '__none__' }}"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "id": "9496c0b4-1bc7-4c92-b1fe-093eea690ef9",
+      "name": "Skip if texted recently",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        200
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const cfg = $('Config').first().json;\nconst call = $('Normalise call event').first().json;\nconst windowMs = (Number(cfg.dedupe_minutes) || 60) * 60000;\nconst recent = $input.all().map((i) => i.json)\n  .filter((r) => r && r.text_back_sent_at && String(r.caller) === call.caller_e164)\n  .map((r) => new Date(r.text_back_sent_at).getTime())\n  .filter((t) => !isNaN(t) && call.call_received_ms - t < windowMs);\nreturn [{ json: { text_back: recent.length === 0, skip_reason: recent.length ? `already texted this caller in the last ${cfg.dedupe_minutes} minutes` : '', wa_payload: call.wa_payload } }];\n"
+      },
+      "notes": "A patient who calls three times gets one message, not three."
+    },
+    {
+      "id": "33ee0f3b-c723-42a1-8554-2d9ffa6ebbfc",
+      "name": "Text back?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        200
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6f8b454b-2270-48c4-8cba-a3148cb7a884",
+              "leftValue": "={{ $json.text_back === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "451a00fe-4c9d-4491-9e9e-50c8f55b7a61",
+      "name": "WhatsApp: missed-call template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').first().json.wa_api_base + '/' + $('Config').first().json.wa_graph_version + '/' + $('Config').first().json.wa_phone_number_id + '/messages' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.wa_payload) }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ahWhatsAppDemo01",
+          "name": "WhatsApp Cloud API – DEMO"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Utility template \"clinic_missed_call\" with the booking link."
+    },
+    {
+      "id": "effdb6a3-769f-44a0-b610-2fe964f58038",
+      "name": "Build call log row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        300
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function istIso(d) {\n  // ISO 8601 in India Standard Time, e.g. 2026-10-19T23:42:05+05:30\n  const t = new Date((d instanceof Date ? d : new Date(d)).getTime() + 330 * 60000);\n  return t.toISOString().slice(0, 19) + '+05:30';\n}\n\nfunction waResult(r) {\n  // Reads an HTTP Request node result (fullResponse + neverError) from the Cloud API.\n  if (!r) return { ok: false, status: 'not sent', id: '' };\n  if (r.error) return { ok: false, status: 'failed: ' + String(r.error.message || r.error).slice(0, 180), id: '' };\n  const code = Number(r.statusCode || 0);\n  const b = r.body || {};\n  const id = b.messages && b.messages[0] && b.messages[0].id ? b.messages[0].id : '';\n  if (code >= 200 && code < 300 && id) return { ok: true, status: 'accepted', id };\n  const e = b.error || {};\n  return { ok: false, status: `failed ${code || '?'}${e.code ? ' / ' + e.code : ''}: ${String(e.message || 'no message id').slice(0, 160)}`, id: '' };\n}\n\nconst sentMs = Date.now();\nconst cfg = $('Config').first().json;\nconst call = $('Normalise call event').first().json;\nlet res = null;\ntry { res = waResult($('WhatsApp: missed-call template').first().json); } catch (e) { res = null; }\nlet reason = call.skip_reason;\nif (!reason && !res) {\n  try { reason = $('Skip if texted recently').first().json.skip_reason; } catch (e) { reason = 'not sent'; }\n}\nconst row = {};\nfor (const col of [\"call_id\",\"business\",\"demo_flag\",\"provider\",\"caller\",\"called_number\",\"call_status\",\"missed\",\"call_received_at\",\"text_back_sent_at\",\"seconds_to_text_back\",\"wa_message_id\",\"wa_status\",\"booking_link\",\"notes\"]) row[col] = '';\nObject.assign(row, {\n  call_id: call.call_id,\n  business: cfg.clinic_name,\n  demo_flag: cfg.demo_label,\n  provider: call.provider,\n  caller: call.caller,\n  called_number: call.called_number,\n  call_status: call.call_status,\n  missed: call.missed ? 'yes' : 'no',\n  call_received_at: call.call_received_at,\n  text_back_sent_at: res && res.ok ? istIso(new Date(sentMs)) : '',\n  seconds_to_text_back: res && res.ok ? Math.round((sentMs - call.call_received_ms) / 100) / 10 : '',\n  wa_message_id: res ? res.id : '',\n  wa_status: res ? res.status : 'not sent: ' + reason,\n  booking_link: res && res.ok ? cfg.booking_link : '',\n  notes: cfg.demo_label,\n});\nreturn [{ json: row }];\n"
+      }
+    },
+    {
+      "id": "059087b1-144c-43a4-962f-6f9bf539c3a2",
+      "name": "Log call (Demo_Clinic_Calls)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1980,
+        300
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Config').first().json.demo_sheet_id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Demo_Clinic_Calls"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW",
+          "handlingExtraData": "ignoreIt"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ahGoogleSheets01",
+          "name": "Google Sheets – AskHemant"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Missed call (POST)": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Missed call (GET)": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Normalise call event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalise call event": {
+      "main": [
+        [
+          {
+            "node": "Missed + allowed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Missed + allowed?": {
+      "main": [
+        [
+          {
+            "node": "Recent texts to caller",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build call log row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recent texts to caller": {
+      "main": [
+        [
+          {
+            "node": "Skip if texted recently",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skip if texted recently": {
+      "main": [
+        [
+          {
+            "node": "Text back?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text back?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: missed-call template",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build call log row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: missed-call template": {
+      "main": [
+        [
+          {
+            "node": "Build call log row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build call log row": {
+      "main": [
+        [
+          {
+            "node": "Log call (Demo_Clinic_Calls)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}
