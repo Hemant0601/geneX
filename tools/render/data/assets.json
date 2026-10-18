@@ -1,0 +1,362 @@
+{
+  "_about": "Text for every non-carousel graphic. Edit here, then run: node tools/render/render-assets.mjs. Carousel copy lives in instagram/carousels.json. Never put invented results, client names or follower counts in here. Demo items must keep \"demo\": true (adds the amber DEMO – fictional business badge).",
+  "highlights": [
+    {
+      "file": "highlight-01-start-here.png",
+      "name": "Start Here",
+      "icon": "flag"
+    },
+    {
+      "file": "highlight-02-pricing.png",
+      "name": "Pricing",
+      "icon": "tag"
+    },
+    {
+      "file": "highlight-03-demos.png",
+      "name": "Demos",
+      "icon": "stopwatch"
+    },
+    {
+      "file": "highlight-04-build-log.png",
+      "name": "Build Log",
+      "icon": "workflow"
+    },
+    {
+      "file": "highlight-05-faq.png",
+      "name": "FAQ",
+      "icon": "question"
+    },
+    {
+      "file": "highlight-06-results.png",
+      "name": "Results",
+      "icon": "chart",
+      "note": "Hold back: only create this highlight once real, consented results exist."
+    }
+  ],
+  "reelCovers": [
+    {
+      "id": "P01",
+      "date": "Mon 19 Oct",
+      "bg": "indigo",
+      "kicker": "Straight Talk",
+      "title": "No lead left on read.",
+      "highlight": "read",
+      "small": "I'm Hemant. I build AI + WhatsApp systems so no lead waits.",
+      "device": {
+        "type": "message",
+        "time": "10:42 pm",
+        "text": "Is the 3BHK still available?"
+      }
+    },
+    {
+      "id": "T01",
+      "date": "Tue 20 Oct",
+      "trial": true,
+      "bg": "ink",
+      "kicker": "Straight Talk",
+      "title": "On a site visit. New lead. Now what?",
+      "highlight": "New lead.",
+      "device": {
+        "type": "notify",
+        "label": "New enquiry",
+        "meta": "now"
+      }
+    },
+    {
+      "id": "P03",
+      "date": "Wed 21 Oct",
+      "bg": "ink",
+      "demo": true,
+      "kicker": "Lead Leaks",
+      "title": "Watch the timer.",
+      "highlight": "timer",
+      "small": "11:42 pm lead · Skyline Realty",
+      "device": {
+        "type": "stopwatch",
+        "time": "00:00",
+        "label": "lead arrives → reply sent"
+      }
+    },
+    {
+      "id": "T02",
+      "date": "Thu 22 Oct",
+      "trial": true,
+      "bg": "ink",
+      "demo": true,
+      "kicker": "Lead Leaks",
+      "title": "Watch the timer.",
+      "highlight": "timer",
+      "small": "11:42 pm lead",
+      "device": {
+        "type": "stopwatch",
+        "time": "00:00",
+        "label": "lead arrives → reply sent"
+      }
+    },
+    {
+      "id": "P05",
+      "date": "Fri 23 Oct",
+      "bg": "paper",
+      "kicker": "Straight Talk",
+      "title": "The 10 pm test",
+      "highlight": "10 pm",
+      "small": "#AutomateKaro",
+      "device": {
+        "type": "clock",
+        "time": "10:00 pm"
+      }
+    },
+    {
+      "id": "P06",
+      "date": "Mon 26 Oct",
+      "bg": "indigo",
+      "kicker": "Open Price Book",
+      "title": "3 founding clients",
+      "highlight": "3",
+      "small": "Closes Mon 30 Nov",
+      "device": {
+        "type": "slots",
+        "open": 3,
+        "total": 3
+      }
+    },
+    {
+      "id": "T03",
+      "date": "Tue 27 Oct",
+      "trial": true,
+      "bg": "indigo",
+      "kicker": "Open Price Book",
+      "title": "₹14,999\ninstead of\n₹34,999",
+      "highlight": "₹14,999",
+      "strike": "₹34,999",
+      "small": "3 founding slots · the catch",
+      "fine": "Prices exclude GST"
+    },
+    {
+      "id": "P08",
+      "date": "Wed 28 Oct",
+      "bg": "ink",
+      "kicker": "Build Log",
+      "title": "Build Log #1",
+      "highlight": "#1",
+      "small": "my own funnel, real numbers",
+      "device": {
+        "type": "flow",
+        "steps": [
+          "Comment",
+          "DM",
+          "Form",
+          "n8n",
+          "Sheet",
+          "WhatsApp"
+        ]
+      }
+    },
+    {
+      "id": "T04",
+      "date": "Thu 29 Oct",
+      "trial": true,
+      "bg": "paper",
+      "kicker": "Build Log",
+      "title": "My own funnel. Real numbers.",
+      "highlight": "Real numbers.",
+      "device": {
+        "type": "flow",
+        "steps": [
+          "Comment",
+          "DM",
+          "Form",
+          "n8n",
+          "Sheet",
+          "WhatsApp"
+        ]
+      }
+    },
+    {
+      "id": "P10",
+      "date": "Fri 30 Oct",
+      "bg": "ink",
+      "demo": true,
+      "kicker": "Lead Leaks",
+      "title": "Missed call → booked",
+      "highlight": "booked",
+      "small": "SmileCare Dental",
+      "device": {
+        "type": "chips",
+        "items": [
+          {
+            "icon": "phone",
+            "text": "Missed call · 1:12 pm",
+            "tone": "red"
+          },
+          {
+            "icon": "chat",
+            "text": "WhatsApp text-back",
+            "tone": "plain"
+          },
+          {
+            "icon": "calendar",
+            "text": "Booked + reminders",
+            "tone": "green"
+          }
+        ]
+      }
+    }
+  ],
+  "stories": {
+    "askHemantSunday": {
+      "kicker": "Every Sunday",
+      "title": "Ask Hemant Sunday",
+      "highlight": "Sunday",
+      "sub": "Your questions about AI, WhatsApp and automating your business.",
+      "when": "Answers tonight · 17:00–19:00 IST",
+      "privacy": "Your name is never shown."
+    },
+    "askHemantSundayAnswer": {
+      "kicker": "Ask Hemant Sunday",
+      "tagline": "Ask Hemant. Automate the rest."
+    },
+    "newPost": [
+      {
+        "file": "new-post.png",
+        "format": "post",
+        "label": "New post"
+      },
+      {
+        "file": "new-reel.png",
+        "format": "reel",
+        "label": "New Reel"
+      },
+      {
+        "file": "new-post-P01.png",
+        "format": "reel",
+        "label": "New Reel",
+        "line": "10:42 pm. “Is the 3BHK still available?” Who replies first?"
+      },
+      {
+        "file": "new-post-P02.png",
+        "format": "post",
+        "label": "New post",
+        "line": "Who I help, how I work, and exactly what I charge"
+      },
+      {
+        "file": "new-post-P03.png",
+        "format": "reel",
+        "label": "New Reel",
+        "demo": true,
+        "line": "This lead came in at 11:42 pm. Watch who replies first."
+      },
+      {
+        "file": "new-post-P04.png",
+        "format": "post",
+        "label": "New post",
+        "line": "You paid for that enquiry. Here are 7 places it goes cold."
+      },
+      {
+        "file": "new-post-P05.png",
+        "format": "reel",
+        "label": "New Reel",
+        "line": "The 10 pm test: enquire on your own listing tonight."
+      },
+      {
+        "file": "new-post-P06.png",
+        "format": "reel",
+        "label": "New Reel",
+        "line": "I have zero case studies. So here's my offer to my first 3 clients."
+      },
+      {
+        "file": "new-post-P07.png",
+        "format": "post",
+        "label": "New post",
+        "line": "What ₹34,999 buys you, and what it doesn't"
+      },
+      {
+        "file": "new-post-P08.png",
+        "format": "reel",
+        "label": "New Reel",
+        "line": "Build Log #1: my own funnel, real numbers."
+      },
+      {
+        "file": "new-post-P09.png",
+        "format": "post",
+        "label": "New post",
+        "line": "Meta's WhatsApp AI is free now. Do you still need me?"
+      },
+      {
+        "file": "new-post-P10.png",
+        "format": "reel",
+        "label": "New Reel",
+        "demo": true,
+        "line": "1:12 pm. Lunch break. A patient calls. Nobody picks up."
+      }
+    ],
+    "founding": {
+      "variants": [
+        3,
+        2,
+        1,
+        0,
+        "closed"
+      ],
+      "kicker": "Founding clients",
+      "closes": "Closes Mon 30 Nov 2026 or when full",
+      "offer": "Lead Leak Audit + Sprint for ₹14,999 / $599. The Sprint alone is ₹34,999 / $1,499. Prices exclude GST.",
+      "inReturn": "In return: measured before/after numbers I can publish, only with your written permission.",
+      "link": "askhemant.ai/founding",
+      "full": "All 3 founding slots are taken.",
+      "fullSub": "Thank you. Prices and the next step are at askhemant.ai/pricing",
+      "closed": "The founding program closed on Mon 30 Nov 2026.",
+      "closedSub": "Prices and the next step are at askhemant.ai/pricing"
+    },
+    "kitDm": {
+      "pill": "Free kit",
+      "title": "The Lead Leak Kit",
+      "sub": "7 places your enquiries go cold, and the WhatsApp fixes.",
+      "cta": "DM me KIT",
+      "keyword": "KIT",
+      "note": "It lands in your DMs. Free, no email needed.",
+      "alt": "On a post? Comment LEAKS."
+    },
+    "kitComment": {
+      "title": "Comment LEAKS on this post",
+      "keyword": "LEAKS",
+      "note": "The free Lead Leak Kit lands in your DMs. Check your message requests."
+    }
+  },
+  "overlays": {
+    "demoBadge": "DEMO – fictional business",
+    "stopwatchTimes": [
+      "00:00",
+      "00:15",
+      "00:30",
+      "00:45",
+      "01:00"
+    ],
+    "labels": [
+      "Lead arrives",
+      "Reply sent",
+      "2× speed"
+    ],
+    "lowerThird": {
+      "name": "Hemant",
+      "brand": "AskHemant",
+      "role": "AI + WhatsApp systems so no lead waits"
+    },
+    "endCards": [
+      {
+        "file": "end-card-leaks.png",
+        "keyword": "LEAKS",
+        "line": "Comment LEAKS",
+        "sub": "→ the free Lead Leak Kit",
+        "note": "Check your message requests."
+      },
+      {
+        "file": "end-card-founding.png",
+        "keyword": "FOUNDING",
+        "line": "Comment FOUNDING",
+        "sub": "→ the founding-client details",
+        "note": "3 slots · closes Mon 30 Nov 2026 or when full. Check your message requests."
+      }
+    ]
+  }
+}

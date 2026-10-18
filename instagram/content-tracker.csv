@@ -1,0 +1,32 @@
+date,post_id,format,pillar,lane,hook,cta_keyword,posted_time_ist,reach,plays,avg_watch_s,sends,saves,comments,keyword_comments,dms,profile_visits,link_clicks,follows,notes
+2026-10-19,P01,Reel,P5 Straight Talk,RE,"10:42 pm. A buyer asks, 'Is the 3BHK still available?' Who replies first?",LEAKS,,,,,,,,,,,,,Planned 15:00 IST. Intro / cornerstone. Pin as placeholder until 26 Oct. Copy: 02-launch-posts.md
+2026-10-20,P02,Carousel,P3 Open Price Book,GEN,"Who I help, how I work, and exactly what I charge",PRICE,,,,,,,,,,,,,Planned 15:00. PIN #1. Copy: 02-launch-posts.md + carousels.json
+2026-10-20,T01,Trial reel,P5 Straight Talk,RE,On a site visit. New lead. Now what?,LEAKS,,,,,,,,,,,,,Planned 18:00. Hook B of P01 (scenario vs owner-situation hook). Compare 24 h vs P01
+2026-10-21,P03,Reel,P1 Lead Leaks,RE,11:42 pm. New lead. Watch the timer.,LEAKS,,,,,,,,,,,,,Planned 15:00. PIN #2. DEMO: Skyline Realty. Real timer
+2026-10-22,P04,Carousel,P1 Lead Leaks,RE,You paid for that enquiry. Here are 7 places it goes cold.,LEAKS,,,,,,,,,,,,,Planned 15:00. Lead Leak Kit teaser. Re-test LEAKS automation before posting
+2026-10-22,T02,Trial reel,P1 Lead Leaks,RE,Raat ke 11:42 baje lead aayi. Dekho reply kaun pehle karta hai.,LEAKS,,,,,,,,,,,,,Planned 18:00. Hinglish hook of P03. DEMO: Skyline Realty
+2026-10-23,P05,Reel,P5 Straight Talk,RE,"Tonight, 10 pm: enquire on your OWN listing.",LEAKS,,,,,,,,,,,,,Planned 19:30 (evening slot test). #AutomateKaro Hinglish
+2026-10-26,P06,Reel,P3 Open Price Book,RE,0 case studies. 3 founding slots.,FOUNDING,,,,,,,,,,,,,Planned 15:00. PIN #3. Founding close Mon 30 Nov 2026
+2026-10-27,P07,Carousel,P3 Open Price Book,RE,"What ₹34,999 buys you, and what it doesn't",book,,,,,,,,,,,,,"Planned 15:00. Open Price Book: Speed-to-Lead Sprint ₹34,999 / $1,499 excl. GST"
+2026-10-27,T03,Trial reel,P3 Open Price Book,RE,"₹14,999 instead of ₹34,999. The catch?",FOUNDING,,,,,,,,,,,,,Planned 18:00. Hook B of P06 (price-first vs honesty-first)
+2026-10-28,P08,Reel,P2 Build Log,GEN,Comment LEAKS → watch what happens,LEAKS,,,,,,,,,,,,,Planned 15:00. Build Log #1: own funnel (comment > DM > form > n8n > Sheet > WhatsApp). Real week-1 numbers
+2026-10-29,P09,Carousel,P5 Straight Talk,GEN,Meta's WhatsApp AI is free now. Do you still need me?,LEAKS,,,,,,,,,,,,,Planned 15:00. Re-check Meta Business AI features before posting
+2026-10-29,T04,Trial reel,P2 Build Log,GEN,My own funnel. Real numbers.,LEAKS,,,,,,,,,,,,,Planned 18:00. Hook B of P08 (credibility vs interactive)
+2026-10-30,P10,Reel,P1 Lead Leaks,CL,1:12 pm. Missed call. Watch the timer.,LEAKS,,,,,,,,,,,,,Planned 15:00 (afternoon control vs P05). DEMO: SmileCare Dental
+2026-11-02,P11,Reel,P1 Lead Leaks,RE,Festive enquiry. 9:52 pm. Watch who replies first.,LEAKS,,,,,,,,,,,,,Planned 15:00. DEMO: Skyline Realty. Pre-Diwali. Hashtags RE-1
+2026-11-03,P12,Carousel,P3 Open Price Book,GEN,"What AI automation actually costs in India. My full price list, 2026.",PRICE,,,,,,,,,,,,,Planned 15:00. Full ladder in INR + USD excl. GST; ₹775/month running-cost estimate with sources. Hashtags GEN-4
+2026-11-03,T05,Trial reel,P1 Lead Leaks,RE,This buyer enquired at 9:52 pm. One broker replied next morning. (DEMO),LEAKS,,,,,,,,,,,,,Planned 18:00. Hook B of P11
+2026-11-04,P13,Reel,P4 Field Tests,RE,I enquired about 20 flats in {{CITY}}. [__] replied within an hour.,LEAKS,,,,,,,,,,,,,"Planned 15:00. Field Test #1 results (sent Sat 24 Oct, n=20, disclosed, no names). Real numbers only. Hashtags RE-5"
+2026-11-05,P14,Carousel,P2 Build Log,GEN,"My own lead funnel, 2 weeks in. Every number, even the small ones.",LEAKS,,,,,,,,,,,,,Planned 15:00. Build Log #2 (19 Oct-1 Nov numbers). Hashtags GEN-2
+2026-11-05,T06,Trial reel,P4 Field Tests,RE,Only [__] of 20 brokers asked me a single question. (alt: 20 property enquiries. 48 hours. The median reply took [__].),LEAKS,,,,,,,,,,,,,Planned 18:00. Hook B of P13; use whichever line is true
+2026-11-06,P15,Reel,P5 Straight Talk,RE,It's Dhanteras. You're at the puja. A buyer just sent 'Price?',LEAKS,,,,,,,,,,,,,SCHEDULED 12:00 (Dhanteras). #AutomateKaro Hinglish; DEMO clip badged. Outreach paused 6-10 Nov. Hashtags RE-4
+2026-11-09,P16,Reel,P1 Lead Leaks,CL,6.9% of dental appointments are no-shows. Here are the 2 messages that run before every one.,LEAKS,,,,,,,,,,,,,SCHEDULED 15:00 (Govardhan Puja). DEMO: SmileCare Dental. Source: Planet DDS 2025 via DOCS Education (US). Hashtags CL-1
+2026-11-10,P17,Carousel,P5 Straight Talk,GEN,7 things I would NOT automate with AI (yet).,LEAKS,,,,,,,,,,,,,SCHEDULED 15:00 (Bhai Dooj). CTA Save + LEAKS. No trial reel today. Hashtags GEN-1
+2026-11-11,P18,Reel,P2 Build Log,RE,"A: Founding client #1, day [__]: their lead flow before I touch anything. / B: 3 weeks into my own funnel. Here's what broke.",LEAKS,,,,,,,,,,,,,Planned 15:00. Build Log #3. Version A only with written client permission (lane RE); version B = own funnel (change lane to GEN). Hashtags RE-2 / GEN-2
+2026-11-12,P19,Carousel,P4 Field Tests,CL,The lunch-hour test: how many patients call your clinic while nobody's at the desk?,LEAKS,,,,,,,,,,,,,Planned 15:00. Clinic self-test; slide 8 DEMO visual. Field Test #2 (clinics) sent today. Hashtags CL-2
+2026-11-12,T07,Trial reel,P2 Build Log,RE,A: I'm not changing anything in this broker's setup for 10 days. Here's why. / B: My own automation broke. I found out [__] hours later.,LEAKS,,,,,,,,,,,,,Planned 18:00. Hook B of P18 (match P18's version and lane)
+2026-11-13,P20,Reel,P1 Lead Leaks,RE,11:40 pm in Dubai. A lead asks about a 1-bed in the Marina. The viewing is booked before you wake up.,LEAKS,,,,,,,,,,,,,Planned 19:30 IST (18:00 Dubai). Dubai/English. DEMO: Skyline Realty. Hashtags DXB-1
+2026-11-16,P21,Reel,P1 Lead Leaks,CL,Your patient left happy. Will they remember your clinic in 6 months?,LEAKS,,,,,,,,,,,,,Planned 15:00. DEMO: SmileCare Dental. Review request + 6-month recall. CLINIC keyword only if playbook live. Hashtags CL-3
+2026-11-17,P22,Carousel,P3 Open Price Book,RE,Founding slots close Mon 30 Nov. [N] of 3 still open. Here's exactly who they're for.,FOUNDING,,,,,,,,,,,,,Planned 15:00. Real slot count only (signed + 50% paid). Swap to 'all filled' version if N=0. Hashtags RE-3
+2026-11-17,T08,Trial reel,P1 Lead Leaks,CL,"Six months from now, will your patient remember your clinic's name?",LEAKS,,,,,,,,,,,,,Planned 18:00. Hook B of P21. DEMO
+2026-11-18,P23,Reel,P2 Build Log,GEN,Month 1 of AskHemant. The real numbers.,LEAKS,,,,,,,,,,,,,Planned 15:00. Build Log #4: day-30 target vs actual. Cash optional. Hashtags GEN-2

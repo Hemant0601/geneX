@@ -1,0 +1,369 @@
+{
+  "carousels": [
+    {
+      "id": "P02",
+      "title": "Who I help, how I work, my prices",
+      "lane": "GEN",
+      "slides": [
+        {
+          "layout": "hook",
+          "eyebrow": "Start here",
+          "heading": "Who I help, how I work, and exactly what I charge",
+          "highlight": "what I charge",
+          "body": "No \"DM for price\". Every number is in this post."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "Who I help",
+          "heading": "Brokers and clinics who still answer WhatsApp by hand",
+          "body": "Real-estate brokers, small brokerages, channel partners and private clinics. India first, Dubai/UAE too. Roughly 40–500 enquiries a month from 2 or more sources."
+        },
+        {
+          "layout": "list",
+          "eyebrow": "What I build",
+          "heading": "One system that answers every enquiry",
+          "items": [
+            "Instant WhatsApp first reply",
+            "AI asks your qualifying questions",
+            "Hot leads alerted to your agent",
+            "Site visit booked, reminded twice",
+            "30-day follow-up, with opt-out",
+            "Every lead logged, 8 am digest"
+          ],
+          "body": "\"Within a minute\" is my design target, counted from when the lead reaches the system. Not a promise."
+        },
+        {
+          "layout": "steps",
+          "eyebrow": "How I work",
+          "heading": "Three steps. A fixed price at each one.",
+          "items": [
+            "Free 20-min Fit Call: honest yes or no",
+            "Lead Leak Audit: every leak, fixed quote",
+            "Sprint: live in 10 working days",
+            "Optional: Lead Desk Care keeps it running"
+          ]
+        },
+        {
+          "layout": "price",
+          "eyebrow": "Step 2",
+          "heading": "Lead Leak Audit",
+          "price": {
+            "inr": "₹9,999",
+            "usd": "$499",
+            "note": "5 working days · 100% credited to a Sprint booked within 30 days · excl. GST"
+          },
+          "body": "Timed test enquiries (with your consent), a lead-flow map, a Leak Report and a fixed quote."
+        },
+        {
+          "layout": "price",
+          "eyebrow": "Step 3 · the flagship",
+          "heading": "Speed-to-Lead Sprint (Solo)",
+          "price": {
+            "inr": "₹34,999",
+            "usd": "$1,499",
+            "note": "Live in 10 working days after access · 50% to start, 50% at go-live · excl. GST"
+          },
+          "body": "Up to 3 lead sources, the AI qualifier, site-visit booking with reminders, 30-day follow-up and a 14-day bug-fix warranty."
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Also on the price list",
+          "heading": "Other ways to work with me",
+          "items": [
+            "Speed-to-Lead System (Team): ₹79,999 / $2,999",
+            "Missed-Call & No-Show Sprint: ₹34,999 / $1,499",
+            "Lead Desk Care: ₹9,999 / $299 a month",
+            "Ask Hemant Session: ₹1,999 / $99",
+            "Quick Win Build: ₹24,999 / $999",
+            "Custom AI Agent: from ₹1,50,000 / $6,000"
+          ],
+          "body": "All prices exclude GST. Running costs are billed to your own accounts."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "How I build",
+          "heading": "Your accounts. Your data. No guaranteed-ROI promises.",
+          "body": "I build on your own Meta, WhatsApp and CRM accounts. WhatsApp fees and AI usage are billed to you directly. You own the system once it's paid for."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "Honest note",
+          "heading": "New brand. No case studies yet. Every demo is labelled.",
+          "body": "So I'm taking 3 founding clients at ₹14,999 / $599 in exchange for measured, publishable results. Closes Mon 30 Nov 2026 or when full."
+        },
+        {
+          "layout": "cta",
+          "eyebrow": "Your next step",
+          "heading": "Comment PRICE for the full price list",
+          "highlight": "PRICE",
+          "body": "I'll DM you every price, what's included, and a running-cost example. Check your message requests."
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "title": "7 places your enquiries go cold",
+      "lane": "RE",
+      "slides": [
+        {
+          "layout": "hook",
+          "eyebrow": "Lead Leak Kit · preview",
+          "heading": "You paid for that enquiry. Here are 7 places it goes cold.",
+          "highlight": "cold",
+          "body": "Most of them happen after the lead lands. Most have a free fix."
+        },
+        {
+          "layout": "stat",
+          "eyebrow": "Why speed matters",
+          "heading": "Only about 37% answered web leads within an hour",
+          "highlight": "37%",
+          "body": "An audit of 2,241 US firms. 23% never answered at all. No comparable India study found, so I'm running my own small tests.",
+          "source": "BYU ScholarsArchive / HBR, \"The Short Life of Online Sales Leads\" (2011). US data."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "Leak 01",
+          "heading": "After-hours enquiries",
+          "body": "A Meta-ad lead lands at 10:42 pm. You see it after breakfast. Free fix tonight: a WhatsApp Business away message that thanks them and asks one question."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "Leak 02",
+          "heading": "Portal leads that never reach WhatsApp",
+          "body": "99acres, MagicBricks or Housing.com alerts sit under OTP emails. You paid for that lead. Free fix: a Gmail filter that stars every portal alert."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "Leak 03",
+          "heading": "Instagram DMs stuck in Message requests",
+          "body": "\"Price?\" is a raised hand. Three days later, they've forgotten your listing. Free fix: check Message requests every evening."
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Leaks 04–07",
+          "heading": "Four more leaks, after the first reply",
+          "items": [
+            "04 · No qualifying questions",
+            "05 · No visit reminders, so no-shows",
+            "06 · No follow-up after day 2",
+            "07 · Leads not logged anywhere"
+          ],
+          "body": "Each one has a free fix in the kit, using the WhatsApp Business app."
+        },
+        {
+          "layout": "steps",
+          "eyebrow": "Find your biggest leak",
+          "heading": "The 10 pm test, tonight",
+          "highlight": "10 pm",
+          "items": [
+            "Enquire on your own listing at 10 pm",
+            "Use a friend's phone, with their OK",
+            "Note the time. Don't warn anyone.",
+            "Score the first reply next morning"
+          ]
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Inside the free kit",
+          "heading": "The Lead Leak Kit",
+          "items": [
+            "All 7 leaks, each with a free fix",
+            "10 WhatsApp templates, English + Hinglish",
+            "A 6-question qualification script",
+            "The 10 pm self-test scorecard",
+            "Bonus: Lead Leak Calculator, your numbers"
+          ],
+          "body": "Send this to whoever answers your WhatsApp."
+        },
+        {
+          "layout": "cta",
+          "eyebrow": "Free · no email needed",
+          "heading": "Comment LEAKS and I'll DM you the kit",
+          "highlight": "LEAKS",
+          "body": "If you don't follow me yet, the DM lands in your message requests. Check there."
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "title": "Open Price Book: the Speed-to-Lead Sprint",
+      "lane": "RE",
+      "slides": [
+        {
+          "layout": "hook",
+          "eyebrow": "Open Price Book",
+          "heading": "What ₹34,999 buys you, and what it doesn't",
+          "highlight": "doesn't",
+          "body": "The Speed-to-Lead Sprint, line by line. $1,499 outside India. Prices exclude GST."
+        },
+        {
+          "layout": "price",
+          "eyebrow": "The flagship",
+          "heading": "Speed-to-Lead Sprint (Solo)",
+          "price": {
+            "inr": "₹34,999",
+            "usd": "$1,499",
+            "note": "Live in 10 working days after access · 50% to start, 50% at go-live · excl. GST"
+          },
+          "body": "For solo brokers and small teams with 2 or more lead sources."
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Included · 1 of 2",
+          "heading": "Getting every lead answered",
+          "items": [
+            "Capture from up to 3 lead sources",
+            "Instant WhatsApp reply, official platform",
+            "AI qualifier in English or Hinglish",
+            "Hot, warm and cold tags",
+            "Hot lead → WhatsApp alert to agent"
+          ],
+          "body": "Sources: Meta lead ads, website form, Instagram DMs, and portal alerts where the portal allows."
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Included · 2 of 2",
+          "heading": "Getting the visit booked and tracked",
+          "items": [
+            "Site-visit booking, reminders, Maps pin",
+            "30-day follow-up, 6–8 messages, opt-out",
+            "Lead log in Sheets or your CRM",
+            "8 am daily digest to you",
+            "Up to 10 Meta-approved templates",
+            "Loom handover, SOP, 14-day warranty"
+          ]
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Not included",
+          "heading": "What's NOT in the ₹34,999",
+          "highlight": "NOT",
+          "items": [
+            "WhatsApp per-message fees (billed by Meta)",
+            "Your WhatsApp provider (BSP) plan",
+            "AI usage on your own API account",
+            "A 4th lead source (+₹4,999 / $199)",
+            "Team routing: the Team tier, ₹79,999 / $2,999",
+            "Any promise of deals or revenue"
+          ]
+        },
+        {
+          "layout": "stat",
+          "eyebrow": "Running costs · worked example",
+          "heading": "About ₹775 a month in Meta fees",
+          "highlight": "₹775",
+          "body": "300 new leads a month × 3 follow-ups you start ≈ 900 marketing messages, before GST and provider fees. An estimate: check Meta's live rate card.",
+          "source": "~₹0.86 per marketing message in India, per reseller MyOperator. Meta has charged per message since 1 Jul 2025."
+        },
+        {
+          "layout": "steps",
+          "eyebrow": "How the 10 days run",
+          "heading": "From access to go-live in 10 working days",
+          "items": [
+            "Day 0: access checklist done, clock starts",
+            "Day 1: Meta verification, templates submitted",
+            "Day 5: demo of your lead flow",
+            "Day 10: go-live",
+            "Day 24: warranty ends; Care offered"
+          ]
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "The on-time promise",
+          "heading": "Not live in 10 working days? First month of Care free.",
+          "body": "Counted from when your access checklist is complete. After that, Lead Desk Care is optional: ₹9,999 / $299 a month, 30 days' notice to cancel."
+        },
+        {
+          "layout": "cta",
+          "eyebrow": "Free · 20 minutes",
+          "heading": "Book a free Fit Call: link in bio",
+          "highlight": "Fit Call",
+          "body": "askhemant.ai/book. I'll tell you honestly whether the Sprint fits, or whether a free tool will do. Messaged me instead? Check your message requests."
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "title": "Meta's free WhatsApp AI vs what you actually need",
+      "lane": "GEN",
+      "slides": [
+        {
+          "layout": "hook",
+          "eyebrow": "Straight talk",
+          "heading": "Meta's WhatsApp AI is free now. Do you still need me?",
+          "highlight": "free",
+          "body": "Honest answer: maybe not. Here's how to tell."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "What changed in 2026",
+          "heading": "Meta launched Business AI on WhatsApp for Indian businesses",
+          "body": "Business AI arrived in May 2026, Meta Business Agent in July. They answer customers for you, around the clock. Basic FAQ bots are now close to free.",
+          "source": "Deccan Herald; UNI (2026). Features change often: check your app."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "When free is enough",
+          "heading": "Mostly FAQs? Use Meta's free AI.",
+          "body": "Timings, location, price list, \"is it available?\". One number, one person replying, leads from one place. Set it up yourself and keep your money."
+        },
+        {
+          "layout": "compare",
+          "eyebrow": "Side by side",
+          "heading": "Free AI in the app vs a connected lead system",
+          "left": {
+            "label": "Meta's free AI",
+            "items": [
+              "Answers common customer questions",
+              "Lives inside your WhatsApp",
+              "You set it up, ₹0"
+            ]
+          },
+          "right": {
+            "label": "What you still connect",
+            "items": [
+              "Portal, Meta-form and Instagram leads",
+              "Routing: hot lead to the right agent",
+              "Handover rules you decide",
+              "Day-7 and day-30 follow-ups",
+              "One log in your Sheet or CRM"
+            ]
+          },
+          "source": "Based on Meta's announced features, Oct 2026. Check your app."
+        },
+        {
+          "layout": "list",
+          "eyebrow": "Decide in 30 seconds",
+          "heading": "4 questions that decide it",
+          "items": [
+            "Do leads come from 2+ sources?",
+            "Does more than one person reply?",
+            "Do leads go quiet after day 2?",
+            "Do you know last month's lead count?"
+          ],
+          "body": "Mostly no: use the free AI. Mostly yes (or no count at all): you need the connected system."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "The rule since 15 Jan 2026",
+          "heading": "General-purpose AI chatbots are banned on WhatsApp's business platform",
+          "body": "Bots must be scoped to your business: enquiries, bookings, support. So \"ChatGPT on WhatsApp\" is out. Every assistant I build answers only about your business.",
+          "source": "respond.io, \"WhatsApp general-purpose chatbots ban\" (2026)."
+        },
+        {
+          "layout": "statement",
+          "eyebrow": "Where I fit",
+          "heading": "I use Meta's free tools where they fit, then connect the rest",
+          "body": "Your accounts, your number. I connect lead sources, the qualifier, handover, booking and 30-day follow-up. Solo Sprint: ₹34,999 / $1,499, excl. GST."
+        },
+        {
+          "layout": "cta",
+          "eyebrow": "Free tools first",
+          "heading": "Comment LEAKS for the free Lead Leak Kit",
+          "highlight": "LEAKS",
+          "body": "It has a \"free tools first\" page: set up Meta's free options before you pay anyone, me included. Check your message requests."
+        }
+      ]
+    }
+  ]
+}
