@@ -89,6 +89,7 @@
         <ul class="items">${lis}</ul>
         ${s.body ? `<p class="note" data-role="body">${rich(s.body)}</p>` : ''}`,
       fit: [{ name: '--gap', min: 20 }, { name: '--h', min: 76 }, { name: '--i', min: 38 }, { name: '--b', min: 34 }, { name: '--gap', min: 14 }, { name: '--h', min: 64 }, { name: '--i', min: 34 }],
+      grow: [{ name: '--gap', max: 40 }],
     };
   };
 
@@ -111,6 +112,7 @@
         <ol class="steps" style="${hasDay ? '--node-w:164px' : ''}">${lis}</ol>
         ${s.body ? `<p class="note" data-role="body">${rich(s.body)}</p>` : ''}`,
       fit: [{ name: '--gap', min: 28 }, { name: '--h', min: 76 }, { name: '--i', min: 38 }, { name: '--gap', min: 18 }, { name: '--h', min: 64 }, { name: '--i', min: 34 }],
+      grow: [{ name: '--gap', max: 92 }],
     };
   };
 
@@ -222,11 +224,11 @@
         </footer>
       </div>`;
     document.body.innerHTML = html;
-    return { fit: built.fit };
+    return { fit: built.fit, grow: built.grow || [] };
   };
 
   // Fit #slide's content into its <main>, then return QA results.
-  AH.finishSlide = (fitVars) => {
+  AH.finishSlide = (fitVars, growVars = []) => {
     const root = document.getElementById('slide');
     const main = root.querySelector('.s-main');
     const content = root.querySelector('.s-content');
@@ -234,6 +236,16 @@
     const frame = { get clientHeight() { const cs = getComputedStyle(main); return main.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom); } };
     const fits = AH.fit(frame, content, fitVars || [], root);
     if (fits) AH.setHeadings(root, '--h', 64, () => content.getBoundingClientRect().height <= frame.clientHeight + 0.5);
+    // sparse slides: open up the rhythm (never past `max`), keeping at least 120 px of air
+    if (fits) for (const g of growVars) {
+      let guard = 0;
+      while (guard++ < 60 && frame.clientHeight - content.getBoundingClientRect().height > 120) {
+        const cur = parseFloat(getComputedStyle(root).getPropertyValue(g.name));
+        if (!(cur < g.max)) break;
+        root.style.setProperty(g.name, Math.min(g.max, cur + 2) + 'px');
+      }
+      if (content.getBoundingClientRect().height > frame.clientHeight) root.style.setProperty(g.name, (parseFloat(getComputedStyle(root).getPropertyValue(g.name)) - 2) + 'px');
+    }
     // optical placement: centred layouts sit slightly above centre, top layouts drop a little
     const free = Math.round(frame.clientHeight - content.getBoundingClientRect().height);
     if (free > 0) content.style.marginTop = Math.round(root.dataset.align === 'center' ? free * 0.42 : Math.min(free * 0.3, 110)) + 'px';

@@ -44,14 +44,16 @@
 
   // Typographic polish on already-escaped text: glue prices, times and dates so they never split.
   function polish(html, heading) {
-    if (heading) html = html.replace(/(^|[\s(])([A-Za-z]{1,2}) (?=\S)/g, '$1$2&nbsp;'); // glue "No", "a", "I", "to" to the next word
+    if (heading) html = html.replace(/(?<=^|[\s(;])([a-z]{1,2}|[A-Z][a-z]?) (?=\S)/g, '$1&nbsp;'); // glue "No", "a", "I", "to" to the next word
     return html
       .replace(/(from\s)?₹[\d,]+(?:\s\/\s\$[\d,]+)?/g, (m) => `<span class="nw">${m}</span>`)
       .replace(/(?<![\w₹$])\$[\d,]+/g, (m) => `<span class="nw">${m}</span>`)
       .replace(/(\d{1,2}(?::\d{2})?) (am|pm)\b/g, '$1&nbsp;$2')
       .replace(/(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b/g, '$1&nbsp;$2')
       .replace(/(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\d)/g, '$1&nbsp;$2')
-      .replace(/(\d) (min|working|days|×)/g, '$1&nbsp;$2')
+      .replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4})\b/g, '$1&nbsp;$2')
+      .replace(/(\d) (min|days?|months?)\b/g, '$1&nbsp;$2')
+      .replace(/(\d) ×/g, '$1&nbsp;×')
       .replace(/ (→|×|≈) /g, '&nbsp;$1 ')
       .replace(/(\S+) \+ (\S+)/g, '<span class="nw">$1 + $2</span>')
       // never break inside a hyphenated compound ("Speed-to-Lead", "guaranteed-ROI", "30-day")
@@ -150,6 +152,7 @@
       const endsSentence = /[.?!][”’)]?$/.test(lastWord);
       const weight = isLast ? 0.5 : endsSentence ? 0.4 : i === 0 ? 1.2 : 1.0;
       sc += weight * (1 - r) ** 2;
+      if (w.slice(0, -1).some((x) => /[.?!][”’)]?$/.test(x))) sc += 0.12;           // a sentence ends mid-line
       if (!isLast) {
         if (w.length >= 2 && /[.?!][”’)]?$/.test(w[w.length - 2])) sc += 0.25; // a new sentence starts at the line end
         if (/[,:;]$/.test(lastWord)) sc -= 0.04;                                  // breaking at punctuation reads well
@@ -182,12 +185,24 @@
     const orig = el.dataset.orig;
     const broken = orig.replace(/([.?!](?:<\/mark>)?)(?: |&nbsp;|\u00A0)(?=(?:<[^>]+>)*[A-Z“‘₹$0-9])/g, '$1 <br>');
     const variants = broken !== orig ? [[orig, 0], [broken, -0.1]] : [[orig, 0]];
+    // one block per sentence, each balanced on its own ("You paid for / that enquiry. / Here are …")
+    const parts = broken.split(' <br>');
+    const closed = (p) => (p.match(/<mark/g) || []).length === (p.match(/<\/mark>/g) || []).length && (p.match(/<span/g) || []).length === (p.match(/<\/span>/g) || []).length;
+    if (parts.length > 1 && parts.every(closed)) variants.push([parts, -0.12]);
     let best = null;
     for (const [html, bonus] of variants) {
-      el.innerHTML = html;
-      const r = balanceWidth(el);
+      let r;
+      if (Array.isArray(html)) {
+        el.style.maxWidth = '';
+        el.innerHTML = html.map((p) => `<span class="sent" style="display:block;text-wrap:wrap">${p}</span>`).join(' ');
+        for (const sp of el.querySelectorAll(':scope > .sent')) balanceWidth(sp);
+        r = { score: scoreLines(AH.lines(el)), w: '' };
+      } else {
+        el.innerHTML = html;
+        r = balanceWidth(el);
+      }
       const sc = r.score + bonus;
-      if (!best || sc < best.score) best = { score: sc, html, w: r.w };
+      if (!best || sc < best.score) best = { score: sc, html: el.innerHTML, w: r.w };
     }
     el.innerHTML = best.html;
     el.style.maxWidth = best.w;

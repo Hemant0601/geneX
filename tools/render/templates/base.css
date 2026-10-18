@@ -90,3 +90,4 @@ b, strong { font-weight: 700; }
 
 /* ---------- QA helpers ---------- */
 [data-qa-fail] { outline: 4px dashed var(--ah-leak-red) !important; }
+.h .g-arrow, .title .g-arrow { margin-right: -0.12em; }

@@ -8,6 +8,7 @@
 //   node tools/render/render-carousels.mjs --id P04,P07    # only these
 //   node tools/render/render-carousels.mjs --sheet /tmp/x  # also write an overview PNG per carousel
 //   node tools/render/render-carousels.mjs --force         # write PNGs even if QA fails
+//   node tools/render/render-carousels.mjs --pdf            # also write <id>/<id>-document.pdf (LinkedIn document post)
 //   options: --json <file>  --out <dir>  --scale 2 (2160 x 2700 for print/zoom)
 //
 // QA runs on every slide before anything is written (a carousel with a FAIL is skipped unless --force):
@@ -16,6 +17,8 @@
 //   no amber text on light backgrounds, nothing outside the canvas; widows are reported as warnings.
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
+import { pathToFileURL } from 'url';
 import { REPO, launch, openTemplate, parseArgs, rel, ensureDir, contactSheet, report } from './lib/render-core.mjs';
 
 const args = parseArgs(process.argv.slice(2));
@@ -42,9 +45,9 @@ for (const c of carousels) {
     errors.length = 0;
     let res;
     try {
-      const { fit } = await page.evaluate(({ slide, ctx }) => window.AH.renderSlide(slide, ctx), { slide, ctx: { id: c.id, index: i + 1, total, demo: !!c.demo } });
+      const { fit, grow } = await page.evaluate(({ slide, ctx }) => window.AH.renderSlide(slide, ctx), { slide, ctx: { id: c.id, index: i + 1, total, demo: !!c.demo } });
       await page.evaluate(() => window.AH.ready());
-      res = await page.evaluate((fit) => window.AH.finishSlide(fit), fit);
+      res = await page.evaluate(({ fit, grow }) => window.AH.finishSlide(fit, grow), { fit, grow });
       const shot = await page.locator('#slide').screenshot({ type: 'png' });
       rendered.push({ name, shot });
     } catch (e) {
@@ -63,6 +66,19 @@ for (const c of carousels) {
   for (const f of fs.readdirSync(dir)) if (/^slide-\d+\.png$/.test(f)) fs.unlinkSync(path.join(dir, f));
   for (const r of rendered) fs.writeFileSync(path.join(OUT, r.name), r.shot);
   console.log(`✓ ${c.id}: ${rendered.length} slides → ${rel(dir)}/`);
+  if (args.pdf) {
+    // one 1080 x 1350 page per slide, built from the PNGs just written
+    const html = `<!doctype html><meta charset="utf-8"><style>@page{size:1080px 1350px;margin:0}html,body{margin:0}img{display:block;width:1080px;height:1350px;break-after:page}</style>` +
+      rendered.map((r) => `<img src="${pathToFileURL(path.join(OUT, r.name)).href}">`).join('');
+    const tmp = path.join(os.tmpdir(), `ah-${c.id}-${process.pid}.html`);
+    fs.writeFileSync(tmp, html);
+    const pdfPage = await page.context().newPage();
+    await pdfPage.goto(pathToFileURL(tmp).href, { waitUntil: 'load' });
+    await pdfPage.pdf({ path: path.join(dir, `${c.id}-document.pdf`), width: '1080px', height: '1350px', printBackground: true });
+    await pdfPage.close();
+    fs.unlinkSync(tmp);
+    console.log(`  + ${rel(path.join(dir, `${c.id}-document.pdf`))}`);
+  }
   if (args.sheet) {
     ensureDir(path.resolve(args.sheet));
     await contactSheet(page, rendered.map((r) => path.join(OUT, r.name)), path.resolve(args.sheet, `${c.id}-sheet.png`), { cols: 5, thumbW: 432 });

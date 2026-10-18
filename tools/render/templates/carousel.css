@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 52px;
-  padding-bottom: 28px;
+  padding-bottom: 44px;
 }
 .s-content { display: flex; flex-direction: column; flex: none; }
 .s-main.center > .s-content { margin-top: auto; margin-bottom: auto; }
@@ -224,7 +224,7 @@
   font: 700 32px/1 var(--mono); letter-spacing: 0.02em; white-space: nowrap;
 }
 .node.opt { background: transparent; color: var(--ah-indigo); border: 3px dashed var(--ah-indigo); }
-.node.opt svg { width: 32px; height: 32px; }
+.node.opt svg { width: 36px; height: 36px; }
 .steps .t { padding-top: 14px; text-wrap: pretty; }
 .steps .t b { font-weight: 700; display: block; margin-bottom: 4px; }
 .steps .t span.rest { color: var(--ah-ink); }
